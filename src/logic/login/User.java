@@ -1,4 +1,4 @@
-package logic;
+package logic.login;
 
 public class User {
 	
