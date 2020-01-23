@@ -1,17 +1,17 @@
-package logic.PublishARequestAd;
+package logic.PublishAnAd;
 
-public class PublishARequestAdBean {
+public class PublishAnAdBean {
 	private String title;
 	private String body;
-	private static PublishARequestAdBean instance;
+	private static PublishAnAdBean instance;
 	
-	public static PublishARequestAdBean getInstance() {
+	public static PublishAnAdBean getInstance() {
 		if(instance == null) 
-			instance = new PublishARequestAdBean();
+			instance = new PublishAnAdBean();
 		return instance;
 	}
 	
-	private PublishARequestAdBean() {
+	private PublishAnAdBean() {
 		this.title = "";
 		this.body = "";
 	}

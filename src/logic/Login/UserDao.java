@@ -1,4 +1,4 @@
-package logic.login;
+package logic.Login;
 
 import java.io.*;
 import java.util.*;
@@ -17,7 +17,7 @@ public class UserDao {
 		try {
 			JSONParser parser = new JSONParser();
 		
-			JSONArray array = (JSONArray) parser.parse(new FileReader("src/logic/credential.json"));
+			JSONArray array = (JSONArray) parser.parse(new FileReader("src/logic/File/credential.json"));
 
 			for (Object obj : array){
 				JSONObject credential = (JSONObject) obj;

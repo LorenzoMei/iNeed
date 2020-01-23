@@ -1,4 +1,4 @@
-package logic.PublishARequestAd;
+package logic.PublishAnAd;
 
 import java.io.*;
 import java.util.*;
@@ -8,18 +8,18 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import logic.login.User;
+import logic.Login.User;
 
 public class PostDao {
 	
 	int currentId;
 	long currentPosition = 0;
 	
-	public void createPostDao(String title, String body, String type) {
+	public void createPost(String title, String body, String type) {
 		
 		JSONParser jsonParser = new JSONParser();
 		
-		try (FileReader reader = new FileReader("src/logic/post.json")) {			
+		try (FileReader reader = new FileReader("src/logic//File/post.json")) {			
 			//Read JSON file
             Object obj = jsonParser.parse(reader);
             
@@ -27,7 +27,7 @@ public class PostDao {
 
 			currentId = Integer.parseInt((String)ad.get("id"));
 			
-			FileWriter writer = new FileWriter("src/logic/post.json");
+			FileWriter writer = new FileWriter("src/logic/File/post.json");
 			
 			ad.replace("id", Integer.toString(currentId), Integer.toString(currentId+1));
 			

@@ -1,4 +1,4 @@
-package logic.PublishARequestAd;
+package logic.PublishAnAd;
 
 public class Post {
 	private String title;

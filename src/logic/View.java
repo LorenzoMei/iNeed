@@ -1,13 +1,14 @@
 package logic;
 
-import logic.PublishARequestAd.Post;
-import logic.PublishARequestAd.PublishARequestAdBean;
-import logic.PublishARequestAd.PublishARequestAdController;
-import logic.PublishARequestAd.PublishARequestAdInterface;
-import logic.login.LoginBean;
-import logic.login.LoginController;
-import logic.login.LoginControllerInterface;
-import logic.login.User;
+import logic.Login.LoginBean;
+import logic.Login.LoginController;
+import logic.Login.LoginControllerInterface;
+import logic.Login.User;
+import logic.PublishAnAd.Post;
+import logic.PublishAnAd.PublishARequestAdController;
+import logic.PublishAnAd.PublishAnAdBean;
+import logic.PublishAnAd.PublishAnAdInterface;
+import logic.PublishAnAd.PostFactory;;
 
 public class View {
 	public static void main(String[] args) {
@@ -17,9 +18,9 @@ public class View {
 		System.out.println("Username: " + username);
 		System.out.println("Password: " + passw);
 		
-		LoginBean b = LoginBean.getInstance();
-		b.setUsername(username);
-		b.setPassw(passw);
+		LoginBean loginBean = LoginBean.getInstance();
+		loginBean.setUsername(username);
+		loginBean.setPassw(passw);
 		
 		LoginControllerInterface control = LoginController.getInstance();
 		User found = control.login();
@@ -29,14 +30,33 @@ public class View {
 		else
 			System.out.println("Errato!");
 		
-		String title = "Cerco passaggio per andare a lavoro";
-		String body = "Cerco passaggio per andare a lavoro zona anagnina";
+		//PublishAnAdInterface control1 = PublishARequestAdController.getInstance();
+		//control1.createPost();
 		
-		PublishARequestAdBean b1 = PublishARequestAdBean.getInstance();
-		b1.setTitle(title);
-		b1.setBody(body);
+		PublishAnAdBean publishAdBean = PublishAnAdBean.getInstance();
+		PostFactory p = new PostFactory();
 		
-		PublishARequestAdInterface control1 = PublishARequestAdController.getInstance();
-		control1.createPost();
+		boolean boo = false;
+		
+		if(boo) {
+			String title = "Cerco passaggio per andare a lavoro";
+			String body = "Cerco passaggio per andare a lavoro zona anagnina";
+			
+			publishAdBean.setTitle(title);
+			publishAdBean.setBody(body);
+			
+			PublishAnAdInterface request = p.typePost(1);
+			request.createPost();
+		}
+		else {
+			String title = "Offro posto letto";
+			String body = "Offro posto letto per le prossime 2 notti. Zona tuscolana";
+			
+			publishAdBean.setTitle(title);
+			publishAdBean.setBody(body);
+			
+			PublishAnAdInterface offer = p.typePost(2);
+			offer.createPost();
+		}
 	}
 }

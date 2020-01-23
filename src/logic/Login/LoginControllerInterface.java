@@ -1,4 +1,4 @@
-package logic.login;
+package logic.Login;
 
 public interface LoginControllerInterface {
 
