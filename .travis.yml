@@ -6,6 +6,11 @@ addons:
                 organization: "lorenzomei"
                 token:
                         secure: "4e4fc6ab727645cc72666e2eced67fee6f4e6a39"
+notifications:
+        slack:
+                rooms:
+                        - mjstudygroup:aroIFvc9nvH41hQM5lQ1gZon#ispw_project_code
+
 script: 
         - ant build
         - sonar-scanner
