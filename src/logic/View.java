@@ -1,5 +1,7 @@
 package logic;
 
+import logic.CheckAnswersOfAnAd.CheckAnswersBean;
+import logic.CheckAnswersOfAnAd.CheckAnswersController;
 import logic.Login.LoginBean;
 import logic.Login.LoginController;
 import logic.Login.LoginControllerInterface;
@@ -8,12 +10,38 @@ import logic.PublishAnAd.Post;
 import logic.PublishAnAd.PublishARequestAdController;
 import logic.PublishAnAd.PublishAnAdBean;
 import logic.PublishAnAd.PublishAnAdInterface;
-import logic.PublishAnAd.PostFactory;;
+import logic.SignUp.SignUpBean;
+import logic.SignUp.SignUpController;
+import logic.SignUp.SignUpControllerInterface;
+import logic.PublishAnAd.PostFactory;
+
+import java.util.ArrayList;
+
+import logic.CheckAnswersOfAnAd.*;
 
 public class View {
 	public static void main(String[] args) {
-		String username = "user1";
-		String passw = "passw1";
+		//SIGN UP NEW USER
+		
+		String us = "newUser";
+		String pas = "newPassw";
+		String email = "djcid@gmail.com";
+		String city = "roma";
+			
+		SignUpBean signUpBean = SignUpBean.getInstance();
+		signUpBean.setUsername(us);
+		signUpBean.setPassword(pas);
+		signUpBean.setEmail(email);
+		signUpBean.setCity(city);
+				
+		SignUpControllerInterface signUpController = SignUpController.getInstance();
+		signUpController.signUp();
+				
+		
+		//LOGIN TEST
+		
+		String username = "newUser";
+		String passw = "newPassw";
 		
 		System.out.println("Username: " + username);
 		System.out.println("Password: " + passw);
@@ -28,10 +56,9 @@ public class View {
 		if(found != null)
 			System.out.println("Ciao!");
 		else
-			System.out.println("Errato!");
+			System.out.println("Errato!");		
 		
-		//PublishAnAdInterface control1 = PublishARequestAdController.getInstance();
-		//control1.createPost();
+		//PUBLISH AD TEST
 		
 		PublishAnAdBean publishAdBean = PublishAnAdBean.getInstance();
 		PostFactory p = new PostFactory();
@@ -57,6 +84,19 @@ public class View {
 			
 			PublishAnAdInterface offer = p.typePost(2);
 			offer.createPost();
+		}
+		
+		//CHECK ASNWERS TEST
+		
+		CheckAnswersBean checkAnswersBean = CheckAnswersBean.getInstance();
+		checkAnswersBean.setId(1);
+		
+		CheckAnswersControllerInterface answersController = CheckAnswersController.getInstance();
+		Answers list = answersController.AnswersList();
+		ArrayList <String> l = list.getAnswersList();
+		
+		for(Object obj : l) {
+			System.out.println("Candidato: " + (String)obj);
 		}
 	}
 }

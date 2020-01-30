@@ -13,13 +13,12 @@ import logic.Login.User;
 public class PostDao {
 	
 	int currentId;
-	long currentPosition = 0;
 	
 	public void createPost(String title, String body, String type) {
 		
 		JSONParser jsonParser = new JSONParser();
 		
-		try (FileReader reader = new FileReader("src/logic//File/post.json")) {			
+		try (FileReader reader = new FileReader("src/logic/File/post.json")) {			
 			//Read JSON file
             Object obj = jsonParser.parse(reader);
             
