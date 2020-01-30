@@ -6,9 +6,14 @@ addons:
                 organization: lorenzomei
                 token:
                         secure: 4e4fc6ab727645cc72666e2eced67fee6f4e6a39
-notifications:
-        slack: - mjstudygroup:aroIFvc9nvH41hQM5lQ1gZon
-
-script: 
+        apt:
+                packages:
+                        openjdk-8-jre-headless
+before-install:
+        - sudo apt-get update -q
+        - sudo apt-get install openjfx -y
+script:
         - ant build
         - sonar-scanner
+
+
