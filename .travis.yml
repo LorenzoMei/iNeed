@@ -9,8 +9,11 @@ addons:
         apt:
                 packages:
                         openjdk-8-jre-headless
+
 notifications:
-        slack: - mjstudygroup:aroIFvc9nvH41hQM5lQ1gZon
+        slack:
+                rooms:
+                        - mjstudygroup:aroIFvc9nvH41hQM5lQ1gZon#ispw_project_code
 
 before-install:
         - sudo apt-get update -q
