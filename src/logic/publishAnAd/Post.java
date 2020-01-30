@@ -1,4 +1,4 @@
-package logic.PublishAnAd;
+package logic.publishAnAd;
 
 public class Post {
 	private String title;

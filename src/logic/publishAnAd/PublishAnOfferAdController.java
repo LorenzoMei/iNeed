@@ -1,4 +1,4 @@
-package logic.PublishAnAd;
+package logic.publishAnAd;
 
 public class PublishAnOfferAdController implements PublishAnAdInterface{
 

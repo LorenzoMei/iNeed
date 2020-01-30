@@ -1,6 +1,6 @@
-package logic.SignUp;
+package logic.signUp;
 
-import logic.Login.UserDao;
+import logic.login.UserDao;
 
 public class SignUpController implements SignUpControllerInterface{
 	

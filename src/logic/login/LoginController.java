@@ -1,4 +1,4 @@
-package logic.Login;
+package logic.login;
 
 public class LoginController implements LoginControllerInterface{
 	private static LoginController instance;

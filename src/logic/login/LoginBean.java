@@ -1,4 +1,4 @@
-package logic.Login;
+package logic.login;
 
 public class LoginBean {
 	private String username;

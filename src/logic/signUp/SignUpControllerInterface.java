@@ -1,4 +1,4 @@
-package logic.SignUp;
+package logic.signUp;
 
 public interface SignUpControllerInterface {
 

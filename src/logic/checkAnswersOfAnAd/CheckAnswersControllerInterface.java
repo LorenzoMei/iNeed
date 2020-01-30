@@ -1,4 +1,4 @@
-package logic.CheckAnswersOfAnAd;
+package logic.checkAnswersOfAnAd;
 
 public interface CheckAnswersControllerInterface {
 	

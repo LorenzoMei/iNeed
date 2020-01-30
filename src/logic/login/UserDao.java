@@ -1,4 +1,4 @@
-package logic.Login;
+package logic.login;
 
 import java.io.*;
 import java.util.*;
