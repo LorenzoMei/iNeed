@@ -9,6 +9,9 @@ addons:
         apt:
                 packages:
                         openjdk-8-jre-headless
+notifications:
+        slack: - mjstudygroup:aroIFvc9nvH41hQM5lQ1gZon
+
 before-install:
         - sudo apt-get update -q
         - sudo apt-get install openjfx -y
