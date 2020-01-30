@@ -1,23 +1,21 @@
 package logic;
 
-import logic.checkAnswersOfAnAd.CheckAnswersBean;
-import logic.checkAnswersOfAnAd.CheckAnswersController;
 import logic.login.LoginBean;
 import logic.login.LoginController;
 import logic.login.LoginControllerInterface;
 import logic.login.User;
-import logic.publishAnAd.Post;
-import logic.publishAnAd.PublishARequestAdController;
-import logic.publishAnAd.PublishAnAdBean;
-import logic.publishAnAd.PublishAnAdInterface;
-import logic.signUp.SignUpBean;
-import logic.signUp.SignUpController;
-import logic.signUp.SignUpControllerInterface;
-import logic.publishAnAd.PostFactory;
+import logic.publishanad.Post;
+import logic.publishanad.PostFactory;
+import logic.publishanad.PublishARequestAdController;
+import logic.publishanad.PublishAnAdBean;
+import logic.publishanad.PublishAnAdInterface;
+import logic.signup.SignUpBean;
+import logic.signup.SignUpController;
+import logic.signup.SignUpControllerInterface;
 
 import java.util.ArrayList;
 
-import logic.checkAnswersOfAnAd.*;
+import logic.checkanswersofanad.*;
 
 public class View {
 	public static void main(String[] args) {
@@ -36,7 +34,6 @@ public class View {
 				
 		SignUpControllerInterface signUpController = SignUpController.getInstance();
 		signUpController.signUp();
-				
 		
 		//LOGIN TEST
 		

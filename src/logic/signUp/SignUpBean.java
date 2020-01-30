@@ -1,4 +1,4 @@
-package logic.signUp;
+package logic.signup;
 
 public class SignUpBean {
 	

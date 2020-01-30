@@ -1,4 +1,4 @@
-package logic.checkAnswersOfAnAd;
+package logic.checkanswersofanad;
 
 public class CheckAnswersBean {
 	

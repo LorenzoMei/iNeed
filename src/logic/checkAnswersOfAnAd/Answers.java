@@ -1,4 +1,4 @@
-package logic.checkAnswersOfAnAd;
+package logic.checkanswersofanad;
 
 import java.util.ArrayList;
 

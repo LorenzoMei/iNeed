@@ -1,4 +1,4 @@
-package logic.signUp;
+package logic.signup;
 
 import logic.login.UserDao;
 
