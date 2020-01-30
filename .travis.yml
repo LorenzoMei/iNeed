@@ -3,9 +3,9 @@ jdk:
         - openjdk8
 addons:
         sonarcloud:
-                organization: "lorenzomei"
+                organization: lorenzomei
                 token:
-                        secure: "4e4fc6ab727645cc72666e2eced67fee6f4e6a39"
+                        secure: 4e4fc6ab727645cc72666e2eced67fee6f4e6a39
 notifications:
         slack: - mjstudygroup:aroIFvc9nvH41hQM5lQ1gZon
 
