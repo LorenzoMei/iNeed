@@ -18,8 +18,8 @@ public class DAOFactory {
 	
 	public DAO getDAOReference() {
 		/* After reading a system property, chooses the subclass of DAO by reflection using the following assumptions:
-		 * 1. All DAO subclasses are named like DAOdbType;
-		 * 2. DAOFactory, DAO and all DAO subclasses are located in the same package;
+		 * 1. All DAO subclasses are named like DAOdbType,
+		 * 2. DAOFactory, DAO and all DAO subclasses are located in the same package.
 		 * 
 		 * @ return DAO, null if there was some error
 		*/ 
