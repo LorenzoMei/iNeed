@@ -2,5 +2,5 @@ package logic.login;
 
 public interface LoginControllerInterface {
 
-	public User login();
+	public void login(CredentialsBean credentials);
 }

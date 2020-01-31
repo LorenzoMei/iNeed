@@ -3,7 +3,6 @@ package logic.login;
 public class LoginController implements LoginControllerInterface{
 	
 	private static LoginController instance = null;
-	LoginBean bean = LoginBean.getInstance();
 	
 	public static LoginController getInstance() {
 		if(instance == null) 
@@ -11,13 +10,10 @@ public class LoginController implements LoginControllerInterface{
 		return instance;
 	}
 	
-	private LoginController() {
-	}
-	
-	public User login() {
-		String username = bean.getUsername();
-		String passw = bean.getPassw();
+	public void login(CredentialsBean credentials) {
+		String username = credentials.getUsername();
+		String passw = credentials.getPassw();
 		User u = UserDao.findUsernameAndPassw(username, passw);
-		return u;
+		credentials.setUser(u);
 	}
 }
