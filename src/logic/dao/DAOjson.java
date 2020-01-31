@@ -1,16 +1,27 @@
-package logic.login;
+package logic.dao;
 
 import java.io.*;
-import java.util.*;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class UserDao {
+import logic.entity.User;
 
-	public static User findUsernameAndPassw(String username, String passw) {
+public class DAOjson implements DAO{
+
+	private static DAOjson ref = null;
+	
+	public static DAOjson getReference() {
+		
+		if (ref == null) {
+			ref = new DAOjson();
+		}
+		
+		return ref;
+	}
+	
+	public User loadUser(String username, String passw) {
 		
 		User user = null;
 		
@@ -26,6 +37,7 @@ public class UserDao {
 				user = new User(username, passw);
 		}
 		catch (FileNotFoundException e) {
+			// TODO print these using a logger
 	        System.out.println("File non trovato");
 	        return null;
 	    } catch (IOException e) {
@@ -37,7 +49,14 @@ public class UserDao {
 		return user;
 	}
 	
-	public static void createAccount(String username, String passw, String email, String city) {
+	public void storeUser(User user) {
+		// TODO stub
+	}
+	
+	private void createAccount(String username, String passw, String email, String city) {
+		
+// 		TODO this function should not be in this DAO. Instead, it should be in LoginController class, which is responsible to create a User newUser entity with the info of the new user.
+//		Then, the entity will be sent to this DAO which will store it in DB if the account does not already exist.
 		
 		try {
 			JSONParser parser = new JSONParser();

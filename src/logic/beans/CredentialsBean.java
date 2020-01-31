@@ -1,19 +1,16 @@
-package logic.login;
+package logic.beans;
 
-public class LoginBean {
+import logic.entity.User;
+
+public class CredentialsBean {
 	private String username;
 	private String passw;
-	private static LoginBean instance;
+	private User user;
 	
-	public static LoginBean getInstance() {
-		if(instance == null) 
-			instance = new LoginBean();
-		return instance;
-	}
-	
-	private LoginBean() {
+	private CredentialsBean() {
 		this.username = "";
 		this.passw = "";
+		this.user = null;
 	}
 	
 	public void setUsername(String username) {
@@ -24,11 +21,19 @@ public class LoginBean {
 		this.passw = passw;
 	}
 	
+	public void setUser(User ref) {
+		this.user = ref;
+	}
+	
 	public String getUsername() {
 		return this.username;
 	}
 	
 	public String getPassw() {
 		return this.passw;
+	}
+	
+	public User getUser() {
+		return this.user;
 	}
 }

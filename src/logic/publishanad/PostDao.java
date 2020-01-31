@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import logic.login.User;
+import logic.entity.User;
 
 public class PostDao {
 	

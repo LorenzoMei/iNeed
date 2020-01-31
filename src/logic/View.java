@@ -1,9 +1,7 @@
 package logic;
 
-import logic.login.LoginBean;
 import logic.login.LoginController;
 import logic.login.LoginControllerInterface;
-import logic.login.User;
 import logic.publishanad.Post;
 import logic.publishanad.PostFactory;
 import logic.publishanad.PublishARequestAdController;
@@ -15,7 +13,9 @@ import logic.signup.SignUpControllerInterface;
 
 import java.util.ArrayList;
 
+import logic.beans.CredentialsBean;
 import logic.checkanswersofanad.*;
+import logic.entity.User;
 
 public class View {
 	public static void main(String[] args) {
@@ -43,7 +43,7 @@ public class View {
 		System.out.println("Username: " + username);
 		System.out.println("Password: " + passw);
 		
-		LoginBean loginBean = LoginBean.getInstance();
+		CredentialsBean loginBean = CredentialsBean.getInstance();
 		loginBean.setUsername(username);
 		loginBean.setPassw(passw);
 		

@@ -1,5 +1,10 @@
 package logic.login;
 
+import logic.dao.DAOFactory;
+import logic.beans.CredentialsBean;
+import logic.dao.DAO;
+import logic.entity.User;
+
 public class LoginController implements LoginControllerInterface{
 	
 	private static LoginController instance = null;
@@ -13,7 +18,10 @@ public class LoginController implements LoginControllerInterface{
 	public void login(CredentialsBean credentials) {
 		String username = credentials.getUsername();
 		String passw = credentials.getPassw();
-		User u = UserDao.findUsernameAndPassw(username, passw);
+		
+		DAO daoRef = DAOFactory.getReference().getDAOReference();  
+		
+		User u = daoRef.loadUser(username, passw);
 		credentials.setUser(u);
 	}
 }

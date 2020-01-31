@@ -1,4 +1,4 @@
-package logic.login;
+package logic.entity;
 
 public class User {
 	
