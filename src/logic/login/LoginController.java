@@ -1,7 +1,8 @@
 package logic.login;
 
 public class LoginController implements LoginControllerInterface{
-	private static LoginController instance;
+	
+	private static LoginController instance = null;
 	LoginBean bean = LoginBean.getInstance();
 	
 	public static LoginController getInstance() {
