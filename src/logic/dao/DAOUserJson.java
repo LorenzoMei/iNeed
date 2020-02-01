@@ -8,14 +8,14 @@ import org.json.simple.parser.ParseException;
 
 import logic.entity.User;
 
-public class DAOjson implements DAO{
+public class DAOUserJson  implements logic.dao.DAOUser{
 
-	private static DAOjson ref = null;
+	private static DAOUserJson ref = null;
 	
-	public static DAOjson getReference() {
+	public static DAOUserJson getReference() {
 		
 		if (ref == null) {
-			ref = new DAOjson();
+			ref = new DAOUserJson();
 		}
 		
 		return ref;
