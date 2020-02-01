@@ -24,12 +24,12 @@ public class DAOFactoryUser extends DAOFactory {
 	}
 	
 	@Override
-	public DAOUser getDAOReference() {
+	public Object getDAOReference() {
 		
 //		@ return : reference to DAOUSer object
 		
 		try {
-			return (logic.dao.DAOUser) Class.forName(this.getClass().getPackage().getName() + "." + "DAOUser" + this.readDBType()).getMethod("getReference", (Class<?>) null).invoke((Object) null, (Object[])null);
+			return Class.forName(this.getClass().getPackage().getName() + "." + "DAOUser" + this.readDBType()).getMethod("getReference", (Class<?>) null).invoke((Object) null, (Object[])null);
 		} 
 		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException | ClassNotFoundException e) {
