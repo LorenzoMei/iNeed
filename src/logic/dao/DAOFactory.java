@@ -12,7 +12,7 @@ public abstract class DAOFactory {
 //		@ param entity : simple name of entity type
 //		@ return : reference to actual entity factory
 		
-		String className = DAOFactory.class.getPackage().getName() + "DAOFactory" + entity;
+		String className = DAOFactory.class.getPackage().getName() + "." + "DAOFactory" + entity;
 		DAOFactory actualFactory = null;
 		try {
 			actualFactory = (DAOFactory) Class.forName(className).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[]) null);

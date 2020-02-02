@@ -6,10 +6,28 @@
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="iNeed">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../var/lib/snapd/snap/eclipse/40/"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
+    <path id="JUnit 5.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.opentest4j_1.1.1.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.apiguardian_1.0.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
     <path id="iNeed.classpath">
+        <path refid="JUnit 5.libraryclasspath"/>
         <pathelement location="bin"/>
         <pathelement location="JSON library/json-simple-1.1.1.jar"/>
     </path>
@@ -17,6 +35,8 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -47,5 +67,31 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="iNeed">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="iNeed.classpath"/>
+        </junit>
+    </target>
+    <target name="test.dao">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="iNeed.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>

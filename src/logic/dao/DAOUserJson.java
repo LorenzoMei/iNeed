@@ -8,7 +8,7 @@ import org.json.simple.parser.ParseException;
 
 import logic.entity.User;
 
-public class DAOUserJson  implements logic.dao.DAOUser{
+public class DAOUserJson  implements DAOUser{
 
 	private static DAOUserJson ref = null;
 	
