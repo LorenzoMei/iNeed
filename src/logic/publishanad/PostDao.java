@@ -50,7 +50,5 @@ public class PostDao {
 		catch (ParseException e) {
             e.printStackTrace();
         }
-		
-		return;
 	}	
 }

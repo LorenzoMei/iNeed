@@ -20,8 +20,6 @@ public class PublishARequestAdController implements PublishAnAdInterface{
 		String type = "Richiesta";
 		
 		PostDao post = new PostDao();
-		post.createPost(title, body, type);
-		
-		return;
+		post.createPost(title, body, type);		
 	}
 }

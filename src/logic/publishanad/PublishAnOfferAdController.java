@@ -21,7 +21,5 @@ public class PublishAnOfferAdController implements PublishAnAdInterface{
 		
 		PostDao post = new PostDao();
 		post.createPost(title, body, type);
-		
-		return;
 	}
 }
