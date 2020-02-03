@@ -2,5 +2,5 @@ package logic.checkanswersofanad;
 
 public interface CheckAnswersControllerInterface {
 	
-	public Answers AnswersList() ;
+	public Answers answersList() ;
 }

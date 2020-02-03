@@ -14,7 +14,7 @@ public class CheckAnswersController implements CheckAnswersControllerInterface{
 	private CheckAnswersController() {
 	}
 	
-	public Answers AnswersList(){
+	public Answers answersList(){
 		CheckAnswersBean bean = CheckAnswersBean.getInstance();
 		int id = bean.getId();
 		return AnswersDao.listOfAnswers(id);
