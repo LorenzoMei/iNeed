@@ -1,14 +1,11 @@
 package logic.publishanad;
 
 import java.io.*;
-import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import logic.entity.User;
 
 public class PostDao {
 	
@@ -39,16 +36,9 @@ public class PostDao {
 			
 			writer.write(ad.toJSONString());
 			writer.close();
-			
         } 
-		catch (FileNotFoundException e) {
+		catch (IOException | ParseException e) {
             e.printStackTrace();
         } 
-		catch (IOException e) {
-            e.printStackTrace();
-        } 
-		catch (ParseException e) {
-            e.printStackTrace();
-        }
 	}	
 }
