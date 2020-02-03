@@ -1,6 +1,10 @@
 package logic.dao;
 
 import java.io.*;
+
+import java.util.logging.Level; 
+import java.util.logging.Logger; 
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -9,6 +13,9 @@ import org.json.simple.parser.ParseException;
 import logic.entity.User;
 
 public class DAOUserJson  implements DAOUser{
+	
+	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
+	private String pathnameFile = "src/logic/File/credential.json"; 
 
 	private static DAOUserJson ref = null;
 	
@@ -28,7 +35,7 @@ public class DAOUserJson  implements DAOUser{
 		try {
 			JSONParser parser = new JSONParser();
 		
-			JSONArray array = (JSONArray) parser.parse(new FileReader("src/logic/File/credential.json"));
+			JSONArray array = (JSONArray) parser.parse(new FileReader(pathnameFile));
 			
 			JSONObject obj = (JSONObject) array.get(0);
 			String password = (String) obj.get(username);
@@ -36,16 +43,10 @@ public class DAOUserJson  implements DAOUser{
 			if(password.equals(passw))
 				user = new User(username, passw);
 		}
-		catch (FileNotFoundException e) {
-			// TODO print these using a logger
-	        System.out.println("File non trovato");
+		catch (IOException | ParseException e) {
+	        logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO loadUser()");
 	        return null;
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    } catch (ParseException e) {
-	        e.printStackTrace();
-	    }
-		
+	    }		
 		return user;
 	}
 	
@@ -61,13 +62,13 @@ public class DAOUserJson  implements DAOUser{
 		try {
 			JSONParser parser = new JSONParser();
 			
-			FileReader reader = new FileReader("src/logic/File/credential.json");
+			FileReader reader = new FileReader(pathnameFile);
 			
             JSONArray array = (JSONArray) parser.parse(reader);
             JSONObject dict1 = (JSONObject) array.get(0);
             JSONObject dict2 = (JSONObject) array.get(1);
             
-			FileWriter writer = new FileWriter("src/logic/File/credential.json");
+			FileWriter writer = new FileWriter(pathnameFile);
 			
 			dict1.put(username, passw);
 			
@@ -81,12 +82,8 @@ public class DAOUserJson  implements DAOUser{
 			writer.close();
 			
 		}
-		catch (FileNotFoundException e) {
-	        System.out.println("File non trovato");
-	    } catch (IOException e) {
-	    	e.printStackTrace();
-	    } catch (ParseException e) {
-	        e.printStackTrace();
+		catch (IOException | ParseException e) {
+			logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO createAccount()");
 	    }
 	}
 }
