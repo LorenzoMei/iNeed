@@ -41,7 +41,7 @@ public class DAOUserJson  implements DAOUser{
 			String password = (String) obj.get(username);
 			
 			if(password.equals(passw))
-				user = new User(username, passw);
+				user = new User();
 		}
 		catch (IOException | ParseException e) {
 	        logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO loadUser()");

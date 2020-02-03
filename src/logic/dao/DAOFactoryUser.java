@@ -2,7 +2,7 @@ package logic.dao;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class DAOFactoryUser extends DAOFactory {
+public class DAOFactoryUser implements DAOFactory {
 	
 //	Singleton Factory
 	
