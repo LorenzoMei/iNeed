@@ -7,7 +7,7 @@ public class CredentialsBean {
 	private String passw;
 	private User user;
 	
-	private CredentialsBean() {
+	public CredentialsBean() {
 		this.username = "";
 		this.passw = "";
 		this.user = null;

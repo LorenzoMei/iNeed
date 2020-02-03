@@ -1,6 +1,6 @@
 package logic.signup;
 
-import logic.dao.DAOjson;
+import logic.dao.DAOUserJson;
 
 public class SignUpController implements SignUpControllerInterface{
 	
@@ -22,6 +22,6 @@ public class SignUpController implements SignUpControllerInterface{
 		String email = bean.getEmail();
 		String city = bean.getCity();
 		
-		DAOjson.createAccount(username, passw, email, city);
+		DAOUserJson.createAccount(username, passw, email, city);
 	}
 }

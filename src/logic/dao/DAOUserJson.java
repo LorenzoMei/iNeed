@@ -53,7 +53,7 @@ public class DAOUserJson  implements DAOUser{
 		// TODO stub
 	}
 	
-	private void createAccount(String username, String passw, String email, String city) {
+	public void createAccount(String username, String passw, String email, String city) {
 		
 // 		TODO this function should not be in this DAO. Instead, it should be in LoginController class, which is responsible to create a User newUser entity with the info of the new user.
 //		Then, the entity will be sent to this DAO which will store it in DB if the account does not already exist.

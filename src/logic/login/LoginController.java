@@ -2,7 +2,7 @@ package logic.login;
 
 import logic.dao.DAOFactory;
 import logic.beans.CredentialsBean;
-import logic.dao.DAO;
+import logic.dao.DAOUser;
 import logic.entity.User;
 
 public class LoginController implements LoginControllerInterface{
@@ -19,7 +19,7 @@ public class LoginController implements LoginControllerInterface{
 		String username = credentials.getUsername();
 		String passw = credentials.getPassw();
 		
-		DAO daoRef = DAOFactory.getReference().getDAOReference();  
+		DAOUser daoRef = (DAOUser) DAOFactory.getReference("User").getDAOReference();  
 		
 		User u = daoRef.loadUser(username, passw);
 		credentials.setUser(u);
