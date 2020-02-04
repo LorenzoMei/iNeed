@@ -39,20 +39,19 @@ public class DAOUserJson implements DAOUser{
 		throw new NoSuchMethodException();
 	}
 	
-	public User loadUser(String username, String passw) {
+	public User loadUser(User user) {
 		
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
 		
-		File userDB = new File(pathnameFile + username + ".json");
-		User user = null;
+		File userDB = new File(pathnameFile + user.getUsername() + ".json");
 		try (FileReader reader = new FileReader(userDB)){
 			JSONArray root = (JSONArray) JSONValue.parseWithException(reader);
 			for (int i = 0; i < root.size(); i ++) {
 				JSONObject currentNode = (JSONObject) root.get(i);
 				String currentUsername = (String) currentNode.get("username");
 				String currentPassw = (String) currentNode.get("passw");
-				if (currentUsername.equals(username) && currentPassw.contentEquals(passw)) {
+				if (currentUsername.equals(user.getUsername()) && currentPassw.contentEquals(user.getPassw())) {
 					user = new User();
 					Field[] attributes = user.getClass().getDeclaredFields();
 					for (int j = 0; j < attributes.length; j ++) {

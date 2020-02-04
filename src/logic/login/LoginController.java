@@ -19,12 +19,10 @@ public class LoginController implements LoginControllerInterface{
 		
 //		TODO implement handling error logic for user not found case
 		
-		String username = credentials.getUsername();
-		String passw = credentials.getPassw();
-		
 		DAOUser daoRef = (DAOUser) DAOFactory.getReference("User").getDAOReference();  
 		
-		User u = daoRef.loadUser(username, passw);
+		User u = new User();
+		daoRef.loadUser(u);
 		credentials.setUser(u);
 	}
 }
