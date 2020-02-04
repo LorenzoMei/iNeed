@@ -15,7 +15,7 @@ import logic.entity.User;
 public class DAOUserJson implements DAOUser{
 	
 	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
-	private String pathnameFile = "src/logic/File/userDB.json"; 
+	private String pathnameFile = "src/logic/file/userDB.json"; 
 
 	private static DAOUserJson ref = null;
 	
@@ -64,18 +64,8 @@ public class DAOUserJson implements DAOUser{
 			}	
 		} catch (FileNotFoundException e) {
 			logger.log(Level.SEVERE, "File " + pathnameFile + " not found");
-		} catch (IOException e) {
+		} catch (IOException | ParseException | NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			logger.log(Level.SEVERE, e.toString());
-		} catch (ParseException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (NoSuchMethodException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (IllegalAccessException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (IllegalArgumentException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (InvocationTargetException e) {
-			logger.log(Level.SEVERE, e.toString());			
 		}
 		
 		return user;		
@@ -93,7 +83,6 @@ public class DAOUserJson implements DAOUser{
 			JSONObject values = new JSONObject();
 			JSONArray root = new JSONArray();
 			Field[] attributes = user.getClass().getDeclaredFields();
-			Method[] methods = user.getClass().getMethods();
 						
 			for (int i = 0; i < attributes.length; i ++) {
 				if (Modifier.isPrivate(attributes[i].getModifiers())) {
@@ -103,20 +92,9 @@ public class DAOUserJson implements DAOUser{
 			root.add(values);
 			root.writeJSONString(writer);
 			
-		} catch (IOException e) {
+		} catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException | InvocationTargetException | NoSuchMethodException e) {
 			logger.log(Level.SEVERE, e.toString());
-		} catch (IllegalAccessException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (IllegalArgumentException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (SecurityException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (InvocationTargetException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (NoSuchMethodException e) {
-			logger.log(Level.SEVERE, e.toString());
-		}
-		 
+		}		 
 	}
 	
 	public void createAccount(String username, String passw, String email, String city) {
