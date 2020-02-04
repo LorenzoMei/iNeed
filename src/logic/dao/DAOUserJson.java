@@ -15,7 +15,7 @@ import logic.entity.User;
 public class DAOUserJson implements DAOUser{
 	
 	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
-	private String pathnameFile = "src/logic/file/userDB.json"; 
+	private String pathnameFile = "db/json/users/"; 
 
 	private static DAOUserJson ref = null;
 	
@@ -44,7 +44,7 @@ public class DAOUserJson implements DAOUser{
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
 		
-		File userDB = new File(pathnameFile);
+		File userDB = new File(pathnameFile + username + ".json");
 		User user = null;
 		try (FileReader reader = new FileReader(userDB)){
 			JSONArray root = (JSONArray) JSONValue.parseWithException(reader);
@@ -56,8 +56,8 @@ public class DAOUserJson implements DAOUser{
 					user = new User();
 					Field[] attributes = user.getClass().getDeclaredFields();
 					for (int j = 0; j < attributes.length; j ++) {
-						if (Modifier.isPrivate(attributes[i].getModifiers())) {
-							this.getGetterOrSetter("set", attributes[i].getName(), user).invoke(user, currentNode.get(attributes[i].getName()));
+						if (Modifier.isPrivate(attributes[j].getModifiers())) {
+							this.getGetterOrSetter("set", attributes[j].getName(), user).invoke(user, currentNode.get(attributes[j].getName()));
 						}
 					}
 				}
@@ -78,7 +78,7 @@ public class DAOUserJson implements DAOUser{
 //				root (or maybe we can write every user in his own file?), so an append write mode
 //				should be implemented.
 		
-		File userDB = new File("src/logic/file/userDB.json");
+		File userDB = new File(pathnameFile + user.getUsername() + ".json");
 		try (FileWriter writer = new FileWriter(userDB)) {
 			JSONObject values = new JSONObject();
 			JSONArray root = new JSONArray();
@@ -102,15 +102,16 @@ public class DAOUserJson implements DAOUser{
 // 		TODO 	this function should not be in this DAO. Instead, it should be in LoginController class, which is responsible to create a User newUser entity with the info of the new user.
 //			 	Then, the entity will be sent to this DAO which will store it in DB if the account does not already exist.
 		
-		try (FileWriter writer = new FileWriter(pathnameFile)) {
-			
+		try {
 			JSONParser parser = new JSONParser();
 			
 			FileReader reader = new FileReader(pathnameFile);
 			
             JSONArray array = (JSONArray) parser.parse(reader);
             JSONObject dict1 = (JSONObject) array.get(0);
-            JSONObject dict2 = (JSONObject) array.get(1);			
+            JSONObject dict2 = (JSONObject) array.get(1);
+            
+			FileWriter writer = new FileWriter(pathnameFile);
 			
 			dict1.put(username, passw);
 			
@@ -120,7 +121,9 @@ public class DAOUserJson implements DAOUser{
 			
 			dict2.put(username, jSonInfo);
 			
-			writer.write(array.toJSONString());			
+			writer.write(array.toJSONString());
+			writer.close();
+			
 		}
 		catch (IOException | ParseException e) {
 			logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO createAccount()");
