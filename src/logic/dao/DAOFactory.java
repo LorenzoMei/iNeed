@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public interface DAOFactory {
 	
-	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
+	Logger logger = Logger.getLogger(DAOFactory.class.getName());
 	
 	public static DAOFactory getReference(String entity) {
 			
