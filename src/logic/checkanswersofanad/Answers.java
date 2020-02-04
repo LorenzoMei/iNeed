@@ -1,12 +1,13 @@
 package logic.checkanswersofanad;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Answers {
 	
-	private ArrayList <String> answersList = new ArrayList <String>();
+	private List <String> answersList = new ArrayList <>();
 	
-	public ArrayList <String> getAnswersList() {
+	public List <String> getAnswersList() {
 		return this.answersList;
 	}
 	
