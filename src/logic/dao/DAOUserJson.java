@@ -102,17 +102,13 @@ public class DAOUserJson implements DAOUser{
 // 		TODO 	this function should not be in this DAO. Instead, it should be in LoginController class, which is responsible to create a User newUser entity with the info of the new user.
 //			 	Then, the entity will be sent to this DAO which will store it in DB if the account does not already exist.
 		
-		try {
+		try (FileReader reader = new FileReader(pathnameFile); FileWriter writer = new FileWriter(pathnameFile)) {
+			
 			JSONParser parser = new JSONParser();
-			
-			FileReader reader = new FileReader(pathnameFile);
-			
             JSONArray array = (JSONArray) parser.parse(reader);
             JSONObject dict1 = (JSONObject) array.get(0);
             JSONObject dict2 = (JSONObject) array.get(1);
             
-			FileWriter writer = new FileWriter(pathnameFile);
-			
 			dict1.put(username, passw);
 			
 			JSONArray jSonInfo = new JSONArray();
@@ -121,9 +117,7 @@ public class DAOUserJson implements DAOUser{
 			
 			dict2.put(username, jSonInfo);
 			
-			writer.write(array.toJSONString());
-			writer.close();
-			
+			writer.write(array.toJSONString());			
 		}
 		catch (IOException | ParseException e) {
 			logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO createAccount()");
