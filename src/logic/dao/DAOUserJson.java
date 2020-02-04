@@ -52,7 +52,6 @@ public class DAOUserJson implements DAOUser{
 				String currentUsername = (String) currentNode.get("username");
 				String currentPassw = (String) currentNode.get("passw");
 				if (currentUsername.equals(user.getUsername()) && currentPassw.contentEquals(user.getPassw())) {
-					user = new User();
 					Field[] attributes = user.getClass().getDeclaredFields();
 					for (int j = 0; j < attributes.length; j ++) {
 						if (Modifier.isPrivate(attributes[j].getModifiers())) {
