@@ -14,7 +14,7 @@ import logic.dao.DAOUserJson;
 
 public class AnswersDao {
 	
-	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
+	Logger logger = Logger.getLogger(AnswersDao.class.getName());
 	
 	public Answers listOfAnswers(int id) {
 		
@@ -34,13 +34,7 @@ public class AnswersDao {
             	list.setAnswersList((String)(obj));
             }
 		}
-		catch(IOException e) {
-			logger.log(Level.SEVERE, e.toString());
-		}
-		catch(ParseException e) {
-			logger.log(Level.SEVERE, e.toString());
-		}
-		catch(NullPointerException e) {
+		catch(IOException | ParseException | NullPointerException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}
 	
