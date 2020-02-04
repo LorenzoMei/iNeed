@@ -3,6 +3,7 @@ package logic.login;
 import logic.dao.DAOFactory;
 import logic.beans.CredentialsBean;
 import logic.dao.DAOUser;
+import logic.dao.UserNotFoundException;
 import logic.entity.User;
 
 public class LoginController implements LoginControllerInterface{
@@ -15,14 +16,18 @@ public class LoginController implements LoginControllerInterface{
 		return instance;
 	}
 	
-	public void login(CredentialsBean credentials) {
+	public void login(CredentialsBean credentials) throws WrongPasswordException, UserNotFoundException{
 		
 //		TODO implement handling error logic for user not found case
 		
 		DAOUser daoRef = (DAOUser) DAOFactory.getReference("User").getDAOReference();  
-		
 		User u = new User();
-		daoRef.loadUser(u);
-		credentials.setUser(u);
+		daoRef.loadUser(u, credentials.getUsername());
+		if (u.getPassw().equals(credentials.getPassw())) {
+			credentials.setUser(u);
+		}
+		else {
+			throw new WrongPasswordException();
+		}
 	}
 }

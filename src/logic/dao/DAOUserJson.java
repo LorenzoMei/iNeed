@@ -39,19 +39,19 @@ public class DAOUserJson implements DAOUser{
 		throw new NoSuchMethodException();
 	}
 	
-	public User loadUser(User user) {
+	public User loadUser(User user, String username) throws UserNotFoundException{
 		
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
 		
-		File userDB = new File(pathnameFile + user.getUsername() + ".json");
+		String fileName = pathnameFile + username + ".json";
+		File userDB = new File(fileName);
 		try (FileReader reader = new FileReader(userDB)){
 			JSONArray root = (JSONArray) JSONValue.parseWithException(reader);
 			for (int i = 0; i < root.size(); i ++) {
 				JSONObject currentNode = (JSONObject) root.get(i);
 				String currentUsername = (String) currentNode.get("username");
-				String currentPassw = (String) currentNode.get("passw");
-				if (currentUsername.equals(user.getUsername()) && currentPassw.contentEquals(user.getPassw())) {
+				if (currentUsername.equals(username)) {
 					Field[] attributes = user.getClass().getDeclaredFields();
 					for (int j = 0; j < attributes.length; j ++) {
 						if (Modifier.isPrivate(attributes[j].getModifiers())) {
@@ -61,8 +61,11 @@ public class DAOUserJson implements DAOUser{
 				}
 			}	
 		} catch (FileNotFoundException e) {
-			logger.log(Level.SEVERE, "File " + pathnameFile + " not found");
-		} catch (IOException | ParseException | NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			logger.log(Level.SEVERE, "file" + fileName + " not found");
+			throw new UserNotFoundException();
+		} 
+		
+		catch (IOException | ParseException | NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}
 		
