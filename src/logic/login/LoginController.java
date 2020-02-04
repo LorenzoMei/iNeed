@@ -16,6 +16,9 @@ public class LoginController implements LoginControllerInterface{
 	}
 	
 	public void login(CredentialsBean credentials) {
+		
+//		TODO implement handling error logic for user not found case
+		
 		String username = credentials.getUsername();
 		String passw = credentials.getPassw();
 		

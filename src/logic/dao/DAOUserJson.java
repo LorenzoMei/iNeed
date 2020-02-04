@@ -1,21 +1,21 @@
 package logic.dao;
 
 import java.io.*;
-
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.logging.Level; 
 import java.util.logging.Logger; 
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
 import logic.entity.User;
 
-public class DAOUserJson  implements DAOUser{
+public class DAOUserJson implements DAOUser{
 	
 	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
-	private String pathnameFile = "src/logic/File/credential.json"; 
+	private String pathnameFile = "src/logic/File/userDB.json"; 
 
 	private static DAOUserJson ref = null;
 	
@@ -28,36 +28,101 @@ public class DAOUserJson  implements DAOUser{
 		return ref;
 	}
 	
+	private Method getGetterOrSetter(String getOrSet, String attrName, Object obj) throws NoSuchMethodException {
+		
+		Method[] methods = obj.getClass().getMethods();
+		for (int j = 0; j < methods.length; j ++) {
+			if (methods[j].getName().contains(getOrSet) && methods[j].getName().contains(attrName.substring(0, 1).toUpperCase() + attrName.substring(1))) {
+				return methods[j];
+			}
+		}
+		throw new NoSuchMethodException();
+	}
+	
 	public User loadUser(String username, String passw) {
 		
+//		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
+//		@ return User if retrieved, null otherwise
+		
+		File userDB = new File(pathnameFile);
 		User user = null;
-		
-		try {
-			JSONParser parser = new JSONParser();
-		
-			JSONArray array = (JSONArray) parser.parse(new FileReader(pathnameFile));
-			
-			JSONObject obj = (JSONObject) array.get(0);
-			String password = (String) obj.get(username);
-			
-			if(password.equals(passw))
-				user = new User();
+		try (FileReader reader = new FileReader(userDB)){
+			JSONArray root = (JSONArray) JSONValue.parseWithException(reader);
+			for (int i = 0; i < root.size(); i ++) {
+				JSONObject currentNode = (JSONObject) root.get(i);
+				String currentUsername = (String) currentNode.get("username");
+				String currentPassw = (String) currentNode.get("passw");
+				if (currentUsername.equals(username) && currentPassw.contentEquals(passw)) {
+					user = new User();
+					Field[] attributes = user.getClass().getDeclaredFields();
+					for (int j = 0; j < attributes.length; j ++) {
+						if (Modifier.isPrivate(attributes[i].getModifiers())) {
+							this.getGetterOrSetter("set", attributes[i].getName(), user).invoke(user, currentNode.get(attributes[i].getName()));
+						}
+					}
+				}
+			}	
+		} catch (FileNotFoundException e) {
+			logger.log(Level.SEVERE, "File " + pathnameFile + " not found");
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (ParseException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (NoSuchMethodException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (IllegalAccessException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (IllegalArgumentException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (InvocationTargetException e) {
+			logger.log(Level.SEVERE, e.toString());			
 		}
-		catch (IOException | ParseException e) {
-	        logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO loadUser()");
-	        return null;
-	    }		
-		return user;
+		
+		return user;		
 	}
 	
 	public void storeUser(User user) {
-		// TODO stub
+		
+//		It stores user data in a JSON array, coping values of all User attributes using reflection
+//		TODO: 	for each user exist a dictionary node, and every node should be added to the array
+//				root (or maybe we can write every user in his own file?), so an append write mode
+//				should be implemented.
+		
+		File userDB = new File("src/logic/file/userDB.json");
+		try (FileWriter writer = new FileWriter(userDB)) {
+			JSONObject values = new JSONObject();
+			JSONArray root = new JSONArray();
+			Field[] attributes = user.getClass().getDeclaredFields();
+			Method[] methods = user.getClass().getMethods();
+						
+			for (int i = 0; i < attributes.length; i ++) {
+				if (Modifier.isPrivate(attributes[i].getModifiers())) {
+					values.put(attributes[i].getName(), this.getGetterOrSetter("get", attributes[i].getName(), user).invoke(user, (Object[]) null));
+				}
+			}
+			root.add(values);
+			root.writeJSONString(writer);
+			
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (IllegalAccessException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (IllegalArgumentException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (SecurityException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (InvocationTargetException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (NoSuchMethodException e) {
+			logger.log(Level.SEVERE, e.toString());
+		}
+		 
 	}
 	
 	public void createAccount(String username, String passw, String email, String city) {
 		
-// 		TODO this function should not be in this DAO. Instead, it should be in LoginController class, which is responsible to create a User newUser entity with the info of the new user.
-//		Then, the entity will be sent to this DAO which will store it in DB if the account does not already exist.
+// 		TODO 	this function should not be in this DAO. Instead, it should be in LoginController class, which is responsible to create a User newUser entity with the info of the new user.
+//			 	Then, the entity will be sent to this DAO which will store it in DB if the account does not already exist.
 		
 		try {
 			JSONParser parser = new JSONParser();
