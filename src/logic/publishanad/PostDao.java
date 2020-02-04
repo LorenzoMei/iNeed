@@ -9,8 +9,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import logic.dao.DAOFactory;
-
 public class PostDao {
 	
 	int currentId;

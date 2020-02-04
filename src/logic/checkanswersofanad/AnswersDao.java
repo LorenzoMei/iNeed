@@ -10,8 +10,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import logic.dao.DAOUserJson;
-
 public class AnswersDao {
 	
 	Logger logger = Logger.getLogger(AnswersDao.class.getName());
