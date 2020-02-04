@@ -2,15 +2,21 @@ package logic.checkanswersofanad;
 
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import logic.dao.DAOUserJson;
+
 public class AnswersDao {
 	
-	public static Answers listOfAnswers(int id) {
+	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
+	
+	public Answers listOfAnswers(int id) {
 		
         Answers list = new Answers();
 		
@@ -29,13 +35,13 @@ public class AnswersDao {
             }
 		}
 		catch(IOException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.toString());
 		}
 		catch(ParseException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.toString());
 		}
 		catch(NullPointerException e) {
-			System.out.println("Errore. Post non trovato!");
+			logger.log(Level.SEVERE, e.toString());
 		}
 	
 		return list;

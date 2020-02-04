@@ -1,10 +1,13 @@
 package logic.dao;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DAOFactoryUser implements DAOFactory {
 	
 //	Singleton Factory
+	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
 	
 	private static DAOFactoryUser ref = null;
 	
@@ -35,7 +38,7 @@ public class DAOFactoryUser implements DAOFactory {
 				| SecurityException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block, must handle these exceptions properly
 			
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.toString());
 			return null;
 		}
 	}

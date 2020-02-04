@@ -1,8 +1,12 @@
 package logic.dao;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public interface DAOFactory {
+	
+	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
 	
 	public static DAOFactory getReference(String entity) {
 			
@@ -18,7 +22,7 @@ public interface DAOFactory {
 			actualFactory = (DAOFactory) Class.forName(className).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[]) null);
 		}
 		catch (NoSuchMethodException | SecurityException | ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-				e.printStackTrace();
+			logger.log(Level.SEVERE, e.toString());
 		}
 		
 		return actualFactory;
