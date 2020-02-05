@@ -8,16 +8,16 @@ import logic.entity.User;
 public class TestDAOUserJson {
 	
 	@Test
-	public void testStoreAndLoadUser() {
+	public void testStoreAndLoadUser() throws UserNotFoundException {
 		
 		User stored = new User();
-		User loaded;
+		User loaded = new User();
 		
 		stored.setUsername("PippoDuro69");
 		stored.setPassw("qualunquemente");
 		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference();
 		dao.storeUser(stored);
-		loaded = dao.loadUser(stored.getUsername(), stored.getPassw());
+		dao.loadUser(loaded, stored.getUsername());
 		Assert.assertEquals(stored.getUsername(), loaded.getUsername());
 	}
 }
