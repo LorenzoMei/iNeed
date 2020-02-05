@@ -59,7 +59,7 @@ public abstract class DAOJson {
 		
 		Method[] methods = obj.getClass().getMethods();
 		for (int j = 0; j < methods.length; j ++) {
-			if (methods[j].getName().contains(getOrSet) && methods[j].getName().contains(attrName.substring(0, 1).toUpperCase() + attrName.substring(1))) {
+			if (methods[j].getName().contains(getOrSet) && methods[j].getName().contains(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) && !methods[j].isSynthetic()) {
 				return methods[j];
 			}
 		}
@@ -77,7 +77,7 @@ public abstract class DAOJson {
 			Field[] attributes = obj.getClass().getDeclaredFields();
 						
 			for (int i = 0; i < attributes.length; i ++) {
-				if (Modifier.isPrivate(attributes[i].getModifiers())) {
+				if (Modifier.isPrivate(attributes[i].getModifiers()) && !attributes[i].isSynthetic()) {
 					values.put(attributes[i].getName(), this.getGetterOrSetter("get", attributes[i].getName(), obj).invoke(obj, (Object[]) null));
 				}
 			}
@@ -100,7 +100,7 @@ public abstract class DAOJson {
 				if (this.checkPrimaryKey(currentNode, primaryKeyNames, primaryKeyValues)) {
 					Field[] attributes = obj.getClass().getDeclaredFields();
 					for (int j = 0; j < attributes.length; j ++) {
-						if (Modifier.isPrivate(attributes[j].getModifiers())) {
+						if (Modifier.isPrivate(attributes[j].getModifiers()) && !attributes[j].isSynthetic()) {
 							this.getGetterOrSetter("set", attributes[j].getName(), obj).invoke(obj, currentNode.get(attributes[j].getName()));
 						}
 					}
