@@ -1,7 +1,9 @@
 package logic.view.login;
 
 import logic.beans.CredentialsBean;
+import logic.dao.UserNotFoundException;
 import logic.login.LoginController;
+import logic.login.WrongPasswordException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -115,26 +117,28 @@ public class ViewLogin extends Application {
                     return;
                 }
 	        	else {
+	        		
 	        		CredentialsBean data = new CredentialsBean();
 	        		LoginController controller = new LoginController();
 	        		data.setUsername(username);
 	        		data.setPassw(passw);
-	        		controller.login(data);
-	        		if((data.getUser()) != null) {
-		        		actionSignIn.setText("Signed in, welcome back " + username);
-
-	        		}
-	        		else {
+	        		try {
+						controller.login(data);
+					} catch (WrongPasswordException e1) {
+						e1.printStackTrace();
 		        		actionSignIn.setText("Sorry username or password is wrong! ");
+		        		return;
+		        		
+					} catch (UserNotFoundException e1) {
+						e1.printStackTrace();
+		        		actionSignIn.setText("Sorry the user doesn't exist! ");
+		        		return;
 
-	        		}
-	        		
+					}
 
+		        	actionSignIn.setText("Signed in, welcome back " + username);
 
-	        		
-	        		
 	        	}
-
 	        }});
 	    
 	    

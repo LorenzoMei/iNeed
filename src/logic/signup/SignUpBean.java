@@ -15,7 +15,7 @@ public class SignUpBean {
 		return instance;
 	}
 	
-	private SignUpBean() {
+	public SignUpBean() {
 		this.username = "";
 		this.passw = "";
 		this.email = "";
