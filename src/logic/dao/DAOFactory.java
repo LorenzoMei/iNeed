@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 public interface DAOFactory {
 	
 	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
+	public String DBType = "Json";
 	
 	public static DAOFactory getReference(String entity) {
 			
@@ -14,9 +15,9 @@ public interface DAOFactory {
 //		La scelta della figlia da istanziare si basa sulla valutazione di un parametro
 		
 //		@ param entity : simple name of entity type
-//		@ return : reference to actual entity factory
+//		@ return : reference to actual entity factory	
 		
-		String className = DAOFactory.class.getPackage().getName() + "." + "DAOFactory" + entity;
+		String className = DAOFactory.class.getPackage().getName() + "." + "DAOFactory" + entity + DBType;
 		DAOFactory actualFactory = null;
 		try {
 			actualFactory = (DAOFactory) Class.forName(className).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[]) null);

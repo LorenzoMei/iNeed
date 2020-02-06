@@ -3,26 +3,19 @@ package logic.dao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOFactoryUser implements DAOFactory {
+public class DAOFactoryUserJson implements DAOFactory {
 	
 //	Singleton Factory
 	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
 	
-	private static DAOFactoryUser ref = null;
+	private static DAOFactoryUserJson ref = null;
 	
-	public static DAOFactoryUser getReference() {
+	public static DAOFactoryUserJson getReference() {
 		
 		if (ref == null) {
-			ref = new DAOFactoryUser();
+			ref = new DAOFactoryUserJson();
 		}
 		return ref;
-	}
-	
-	private String readDBType() {
-		
-//		TODO stub
-		
-		return "Json";
 	}
 	
 	@Override
@@ -34,7 +27,7 @@ public class DAOFactoryUser implements DAOFactory {
 		
 		
 		try {
-			String className = this.getClass().getPackage().getName() + "." + "DAOUser" + this.readDBType();
+			String className = this.getClass().getPackage().getName() + "." + "DAOUserJson";
 			if (wrapped == null) {
 				wrapped = DBMSJson.getReference();
 			}
