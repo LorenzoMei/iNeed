@@ -1,6 +1,5 @@
 package logic.dao;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,15 +26,25 @@ public class DAOFactoryUser implements DAOFactory {
 	}
 	
 	@Override
-	public Object getDAOReference() {
+	public DAOJson getDAOReference(DAOJson wrapped) {
 		
-//		@ return : reference to DAOUSer object
+		/*	Decorates wrapped DAOJson object with a DAOUserJson decorator
+		 */		
+		//	@ return : reference to DAOUSer object
+		
 		
 		try {
-			return Class.forName(this.getClass().getPackage().getName() + "." + "DAOUser" + this.readDBType()).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[])null);
+			String className = this.getClass().getPackage().getName() + "." + "DAOUser" + this.readDBType();
+			if (wrapped == null) {
+				wrapped = DBMSJson.getReference();
+			}
+			DAOJson dao = (DAOJson) Class.forName(className).newInstance();
+			DAOJsonDecorator daoDecorator = (DAOJsonDecorator) dao;
+			daoDecorator.setDBMS(wrapped);
+			return dao;
+
 		} 
-		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
-				| SecurityException | ClassNotFoundException e) {
+		catch (IllegalAccessException | IllegalArgumentException | SecurityException | ClassNotFoundException | InstantiationException e) {
 			// TODO Auto-generated catch block, must handle these exceptions properly
 			
 			logger.log(Level.SEVERE, e.toString());

@@ -28,7 +28,7 @@ public interface DAOFactory {
 		return actualFactory;
 		}
 	
-	public Object getDAOReference();
+	public DAOJson getDAOReference(DAOJson wrapped);
 	
 //	NOTA : al richiedente della DAO è lasciata la responsabilità del casting alla DAO voluta
 
