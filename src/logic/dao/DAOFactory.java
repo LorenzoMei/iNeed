@@ -4,17 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public abstract class DAOFactory {
+public interface DAOFactory {
 	
-	private static Logger logger = Logger.getLogger(DAOFactory.class.getName());
-	public static String DBType = readDBType();
-	
-	private static String readDBType() {
-		
-//		TODO: stub
-		
-		return "Json";
-	}
+	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
 	
 	public static DAOFactory getReference(String entity) {
 			
@@ -22,9 +14,9 @@ public abstract class DAOFactory {
 //		La scelta della figlia da istanziare si basa sulla valutazione di un parametro
 		
 //		@ param entity : simple name of entity type
-//		@ return : reference to actual entity factory	
+//		@ return : reference to actual entity factory
 		
-		String className = DAOFactory.class.getPackage().getName() + "." + "DAOFactory" + entity + readDBType();
+		String className = DAOFactory.class.getPackage().getName() + "." + "DAOFactory" + entity;
 		DAOFactory actualFactory = null;
 		try {
 			actualFactory = (DAOFactory) Class.forName(className).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[]) null);
@@ -36,7 +28,7 @@ public abstract class DAOFactory {
 		return actualFactory;
 		}
 	
-	public abstract DAOJson getDAOReference(DAOJson wrapped);
+	public Object getDAOReference();
 	
 //	NOTA : al richiedente della DAO è lasciata la responsabilità del casting alla DAO voluta
 

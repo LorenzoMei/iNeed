@@ -12,7 +12,7 @@ public class TestDaoFactory {
 		String entity = "User";
 		String className = "logic.dao.DAOUserJson";
 		
-		DAOUser daoRef = (DAOUser) DAOFactory.getReference(entity).getDAOReference(null);
+		DAOUser daoRef = (DAOUser) DAOFactory.getReference(entity).getDAOReference();
 		Assert.assertEquals(className, daoRef.getClass().getName());
 	}
 

@@ -1,7 +1,10 @@
 package logic.dao;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level; 
@@ -11,20 +14,20 @@ import org.json.simple.parser.*;
 
 import logic.entity.User;
 
-public class DAOUserJson implements DAOUser, DAOJson, DAOJsonDecorator{
-	
-//	Decorator wich wraps a DBMSJson Object in order to provide DAOUser operations which use DBMSJson operations
+public class DAOUserJson extends DAOJson implements DAOUser{
 	
 	Logger logger = Logger.getLogger(DAOUserJson.class.getName());
 	private String pathnameFile = "db/json/User/"; 
-	private DAOJson dbms; 
+
+	private static DAOUserJson ref = null;
 	
-	public void setDBMS(DAOJson val) {
-		this.dbms = val;
-	}
-	
-	public DAOJson getDBMS() {
-		return dbms;
+	public static DAOUserJson getReference() {
+		
+		if (ref == null) {
+			ref = new DAOUserJson();
+		}
+		
+		return ref;
 	}
 	
 	public void loadUser(User user, String username) throws UserNotFoundException{
@@ -88,20 +91,5 @@ public class DAOUserJson implements DAOUser, DAOJson, DAOJsonDecorator{
 		catch (IOException | ParseException e) {
 			logger.log(Level.SEVERE, "ERRORE IN DAOUserJson.java NEL METODO createAccount()");
 	    }
-	}
-
-	public void store(Object obj, List<String> primaryKeyNames) throws IOException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException, NoSuchMethodException {
-		
-		this.dbms.store(obj, primaryKeyNames);
-		
-	}
-
-	public void load(Object obj, List<String> primaryKeyNames, List<String> primaryKeyValues)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
-			IOException, ParseException, ElementInDBNotFoundException {
-		
-		this.dbms.load(obj, primaryKeyNames, primaryKeyValues);
-		
 	}
 }

@@ -15,7 +15,7 @@ public class TestDAOUserJson {
 		
 		stored.setUsername("PippoDuro69");
 		stored.setPassw("qualunquemente");
-		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference(null);
+		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference();
 		dao.storeUser(stored);
 		dao.loadUser(loaded, stored.getUsername());
 		Assert.assertEquals(stored.getUsername(), loaded.getUsername());
