@@ -182,6 +182,9 @@ public class ViewSignUp extends Application {
 		            String username = userNameTextField.getText();
 		            String passw = pwBox.getText();
 		            String vPsw = pwCBox.getText();
+		            String city = cityTextField.getText();
+		            String email = emailTextField.getText();
+
 		        	actionSignIn.setId("actionSignIn");
 		        	
 		        	if(nameTextField.getText().isEmpty()) {//If isn't inserted a Name
@@ -223,6 +226,8 @@ public class ViewSignUp extends Application {
 		        		SignUpBean data = new SignUpBean();
 		        		data.setUsername(username);
 		        		data.setPassword(passw);
+		        		data.setCity(city);
+		        		data.setEmail(email);
 		        		
 		        		try {
 							SignUpController.getInstance().signUp(data);

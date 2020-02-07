@@ -37,6 +37,8 @@ public class SignUpController implements SignUpControllerInterface{
 			e.printStackTrace();
 			userTemp.setUsername(username);
 			userTemp.setPassw(passw);
+			userTemp.setCity(city);
+			userTemp.setEmail(email);
 			DAO.storeUser(userTemp);
 			
 			checker = false;
