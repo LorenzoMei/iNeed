@@ -4,6 +4,9 @@ public class User {
 	
 	private String username;
 	private String passw;
+	private String city;
+
+	
 	
 	public User() {
 		this.username = "";

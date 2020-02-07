@@ -179,7 +179,7 @@ public class ViewSignUp extends Application {
 		        @Override
 		        public void handle(ActionEvent e) {
 		            actionCancel.setText(null);
-		            String username = nameTextField.getText();
+		            String username = userNameTextField.getText();
 		            String passw = pwBox.getText();
 		            String vPsw = pwCBox.getText();
 		        	actionSignIn.setId("actionSignIn");
