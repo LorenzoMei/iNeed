@@ -23,7 +23,7 @@ public class DAOFactoryUser implements DAOFactory {
 		
 //		TODO stub
 		
-		return "Json";
+		return "Serialize";
 	}
 	
 	@Override

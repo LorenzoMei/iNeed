@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import logic.entity.User;
 
-public class TestDAOUserJson {
+public class TestDAOUser {
 	
 	@Test
 	public void testStoreAndLoadUser() throws UserNotFoundException {
@@ -13,8 +13,8 @@ public class TestDAOUserJson {
 		User stored = new User();
 		User loaded = new User();
 		
-		stored.setUsername("PippoDuro69");
-		stored.setPassw("qualunquemente");
+		stored.setUsername("Daniele");
+		stored.setPassw("galeone879");
 		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference();
 		dao.storeUser(stored);
 		dao.loadUser(loaded, stored.getUsername());
