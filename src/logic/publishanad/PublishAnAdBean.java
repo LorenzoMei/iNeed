@@ -1,19 +1,23 @@
 package logic.publishanad;
 
+import logic.entity.Data;
+import logic.entity.User;
+
 public class PublishAnAdBean {
+	private User user;
 	private String title;
 	private String body;
-	private static PublishAnAdBean instance;
+	private Data data;
 	
-	public static PublishAnAdBean getInstance() {
-		if(instance == null) 
-			instance = new PublishAnAdBean();
-		return instance;
-	}
-	
-	private PublishAnAdBean() {
+	public PublishAnAdBean() {
+		this.user = null;
 		this.title = "";
 		this.body = "";
+		this.data = data;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public void setTitle(String title) {
@@ -22,6 +26,10 @@ public class PublishAnAdBean {
 	
 	public void setBody(String body) {
 		this.body = body;
+	}
+	
+	public User getUser() {
+		return this.user;
 	}
 	
 	public String getTitle() {

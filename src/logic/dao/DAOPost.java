@@ -1,4 +1,4 @@
-package logic.publishanad;
+package logic.dao;
 
 import java.io.*;
 import java.util.logging.Level;
@@ -9,11 +9,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class PostDao {
+public class DAOPost {
 	
 	int currentId;
 	
-	Logger logger = Logger.getLogger(PostDao.class.getName());
+	Logger logger = Logger.getLogger(DAOPost.class.getName());
 	
 	public void createPost(String title, String body, String type) {
 		

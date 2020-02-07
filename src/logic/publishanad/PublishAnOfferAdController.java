@@ -1,5 +1,7 @@
 package logic.publishanad;
 
+import logic.dao.DAOPost;
+
 public class PublishAnOfferAdController implements PublishAnAdInterface{
 
 	private static PublishAnOfferAdController instance;
@@ -19,7 +21,7 @@ public class PublishAnOfferAdController implements PublishAnAdInterface{
 		String body = bean.getBody();
 		String type = "Offerta";
 		
-		PostDao post = new PostDao();
+		DAOPost post = new DAOPost();
 		post.createPost(title, body, type);
 	}
 }
