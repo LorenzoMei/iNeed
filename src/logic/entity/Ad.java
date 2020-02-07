@@ -1,14 +1,22 @@
-package logic.publishanad;
+package logic.entity;
 
-public class Post {
+public class Ad {
+	private User user;
 	private String title;
 	private String body;
 	private String type;
+	private Data data;
 	
-	public Post() {
+	public Ad() {
+		this.user = null;
 		this.title = "";
 		this.body = "";
 		this.type = "";
+		this.data = null;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public void setTitle(String title) {
@@ -23,6 +31,14 @@ public class Post {
 		this.type = type;
 	}
 	
+	public void setData(Data data) {
+		this.data = data;
+	}
+	
+	public User getUser() {
+		return this.user;
+	}
+	
 	public String getTitle() {
 		return this.title;
 	}
@@ -33,5 +49,9 @@ public class Post {
 	
 	public String getType() {
 		return this.type;
+	}
+	
+	public Data getData() {
+		return this.data;
 	}
 }
