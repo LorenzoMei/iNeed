@@ -24,6 +24,8 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 		return ref;
 	}
 	
+	private DAOUserSerialize() {}
+	
 	public void loadUser(User user, String username) throws UserNotFoundException{
 		
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.

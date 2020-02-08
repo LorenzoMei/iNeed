@@ -11,6 +11,8 @@ public class DAOFactoryUser implements DAOFactory {
 	
 	private static DAOFactoryUser ref = null;
 	
+	private DAOFactoryUser() {};
+	
 	public static DAOFactoryUser getReference() {
 		
 		if (ref == null) {

@@ -16,7 +16,7 @@ public class SignUpController implements SignUpControllerInterface{
 		return instance;
 	}
 
-
+	private SignUpController() {}
 
 	public void signUp(SignUpBean bean) throws UsernameAlreadyTakenException {
 		

@@ -16,6 +16,8 @@ public class LoginController implements LoginControllerInterface{
 		return instance;
 	}
 	
+	private LoginController() {}
+	
 	public void login(CredentialsBean credentials) throws WrongPasswordException, UserNotFoundException{
 		
 //		TODO implement handling error logic for user not found case

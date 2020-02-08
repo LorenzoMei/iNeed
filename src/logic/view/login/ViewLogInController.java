@@ -62,7 +62,7 @@ public class ViewLogInController implements Initializable {
     	else {
     		
     		CredentialsBean data = new CredentialsBean();
-    		LoginController controller = new LoginController();
+    		LoginController controller = LoginController.getInstance();
     		data.setUsername(username);
     		data.setPassw(passw);
     		try {
