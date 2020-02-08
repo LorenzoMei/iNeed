@@ -9,13 +9,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class DAOPost {
+import logic.entity.Ad;
+
+public class DAOAd extends DAOJson{
 	
 	int currentId;
 	
-	Logger logger = Logger.getLogger(DAOPost.class.getName());
+	Logger logger = Logger.getLogger(DAOAd.class.getName());
 	
-	public void createPost(String title, String body, String type) {
+	public void storeAd(Ad ad) {
 		
 		JSONParser jsonParser = new JSONParser();
 		
@@ -23,20 +25,22 @@ public class DAOPost {
 			//Read JSON file
             Object obj = jsonParser.parse(reader);
             
-            JSONObject ad = (JSONObject) obj;
+            JSONObject root = (JSONObject) obj;
 
-			currentId = Integer.parseInt((String)ad.get("id"));
+			currentId = Integer.parseInt((String)root.get("id"));
 			
-			ad.replace("id", Integer.toString(currentId), Integer.toString(currentId+1));
+			root.replace("id", Integer.toString(currentId), Integer.toString(currentId+1));
 			
 			JSONArray jSonPost = new JSONArray();
-			jSonPost.add(title);
-			jSonPost.add(body);
-			jSonPost.add(type);
+			jSonPost.add(ad.getUser().getUsername());
+			jSonPost.add(ad.getTitle());
+			jSonPost.add(ad.getBody());
+			jSonPost.add(ad.getType());
+			jSonPost.add(ad.getData());
 			
-			ad.put(currentId, jSonPost);
+			root.put(currentId, jSonPost);
 			
-			writer.write(ad.toJSONString());
+			writer.write(root.toJSONString());
         } 
 		catch (IOException | ParseException e) {
 			logger.log(Level.SEVERE, e.toString());

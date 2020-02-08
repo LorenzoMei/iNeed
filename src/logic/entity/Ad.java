@@ -1,11 +1,13 @@
 package logic.entity;
 
+import java.time.LocalDate;
+
 public class Ad {
 	private User user;
 	private String title;
 	private String body;
 	private String type;
-	private Data data;
+	private LocalDate data;
 	
 	public Ad() {
 		this.user = null;
@@ -31,7 +33,7 @@ public class Ad {
 		this.type = type;
 	}
 	
-	public void setData(Data data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 	
@@ -51,7 +53,7 @@ public class Ad {
 		return this.type;
 	}
 	
-	public Data getData() {
+	public LocalDate getData() {
 		return this.data;
 	}
 }
