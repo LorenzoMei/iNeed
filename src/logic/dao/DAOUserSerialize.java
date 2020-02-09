@@ -12,7 +12,6 @@ import logic.entity.User;
 public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 
 	Logger logger = Logger.getLogger(this.getClass().getName());
-	Logger logger = Logger.getLogger(DAOUserSerialize.class.getName());
 
 	private static DAOUserSerialize ref = null;
 	

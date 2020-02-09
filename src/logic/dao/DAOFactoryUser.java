@@ -8,7 +8,6 @@ public class DAOFactoryUser implements DAOFactory {
 	
 //	Singleton Factory
 	Logger logger = Logger.getLogger(this.getClass().getName());
-	Logger logger = Logger.getLogger(DAOFactoryUser.class.getName());
 	
 	private static DAOFactoryUser ref = null;
 	

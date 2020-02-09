@@ -1,6 +1,6 @@
 package logic.entity;
 
-import java.time.LocalDate;
+import java.util.Calendar;
 
 public class User {
 	
@@ -11,7 +11,7 @@ public class User {
 	private String name;
 	private String surName;
 	private User friend;
-	//private LocalDate bDate;
+	private Calendar bDate;
 
 	
 	public User() {
@@ -21,10 +21,14 @@ public class User {
 		this.email = "";
 		this.name = "";
 		this.surName = "";
-		//this.bDate = null;
+		this.bDate = null;
 	}
 	
 	//all the sets on attributes
+	
+	public void setBDate(Calendar val) {
+		this.bDate = val;		
+	}
 	
 	public void setFriend(User val) {
 		this.friend = val;
@@ -54,11 +58,6 @@ public class User {
 		this.surName = surName;
 	}
 	
-	/*public void setBirthDate(LocalDate bDate) {
-		this.bDate = bDate;
-	}*/
-	
-	
 	//all the gets on attributes
 	public User getFriend() {
 		return this.friend;
@@ -87,8 +86,8 @@ public class User {
 		return this.name;
 	}
 	
-	/*public LocalDate getBirthDate() {
+	public Calendar getBDate() {
 		return this.bDate;
-	}*/
+	}
 	
 }
