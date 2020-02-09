@@ -1,5 +1,7 @@
 package logic.signup;
 
+import java.time.LocalDate;
+
 import logic.dao.DAOFactory;
 import logic.dao.DAOUser;
 import logic.dao.DAOUserJson;
@@ -26,6 +28,9 @@ public class SignUpController implements SignUpControllerInterface{
 		//TODO implement more attributes for the entity User
 		String email = bean.getEmail();
 		String city = bean.getCity();
+		String name = bean.getSurName();
+		String surName = bean.getSurName();
+		//LocalDate bDate = bean.getBirthDate();
 		
 		User userTemp = new User();
 		
@@ -39,6 +44,9 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setPassw(passw);
 			userTemp.setCity(city);
 			userTemp.setEmail(email);
+			userTemp.setName(name);
+			userTemp.setSurName(surName);
+			//userTemp.setBirthDate(bDate);
 			DAO.storeUser(userTemp);
 			
 			checker = false;

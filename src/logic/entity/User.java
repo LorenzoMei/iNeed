@@ -10,7 +10,7 @@ public class User {
 	private String email;
 	private String name;
 	private String surName;
-	private LocalDate bDate;
+	//private LocalDate bDate;
 
 	
 	public User() {
@@ -20,7 +20,7 @@ public class User {
 		this.email = "";
 		this.name = "";
 		this.surName = "";
-		this.bDate = null;
+		//this.bDate = null;
 	}
 	
 	//all the sets on attributes
@@ -48,9 +48,9 @@ public class User {
 		this.surName = surName;
 	}
 	
-	public void setBirthDate(LocalDate bDate) {
+	/*public void setBirthDate(LocalDate bDate) {
 		this.bDate = bDate;
-	}
+	}*/
 	
 	
 	//all the gets on attributes
@@ -77,8 +77,8 @@ public class User {
 		return this.name;
 	}
 	
-	public LocalDate getBirthDate() {
+	/*public LocalDate getBirthDate() {
 		return this.bDate;
-	}
+	}*/
 	
 }

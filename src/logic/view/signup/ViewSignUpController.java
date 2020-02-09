@@ -82,9 +82,9 @@ public class ViewSignUpController implements Initializable{
         String email = emailTextField.getText();
         String name = nameTextField.getText();
         String surName = surNameTextField.getText();
-        
         Calendar  today = Calendar.getInstance();   
         LocalDate bDate = datePickerTextField.getValue();
+        
 		int bDay = bDate.get(ChronoField.DAY_OF_MONTH);
 		int bMonth = bDate.get(ChronoField.MONTH_OF_YEAR);
 		int bYear = bDate.get(ChronoField.YEAR);
@@ -163,13 +163,14 @@ public class ViewSignUpController implements Initializable{
         else {
     		
     		SignUpBean data = new SignUpBean();
+    		
     		data.setUsername(username);
     		data.setPassword(passw);
     		data.setCity(city);
     		data.setEmail(email);
-    		/*data.setDate(bDate);
+    		//data.setBirthDate(bDate);
     		data.setName(name);
-    		data.setSurName(surName);*/
+    		data.setSurName(surName);
     		
     		try {
 				SignUpController.getInstance().signUp(data);

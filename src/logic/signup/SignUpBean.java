@@ -1,5 +1,7 @@
 package logic.signup;
 
+import java.time.LocalDate;
+
 public class SignUpBean {
 	
 	private static SignUpBean instance;
@@ -8,6 +10,9 @@ public class SignUpBean {
 	private String passw;
 	private String email;
 	private String city;
+	private String name;
+	private String surName;
+	//private LocalDate bDate;
 	
 	public static SignUpBean getInstance() {
 		if(instance == null)
@@ -20,6 +25,9 @@ public class SignUpBean {
 		this.passw = "";
 		this.email = "";
 		this.city = "";
+		this.name = "";
+		this.surName = "";
+		//this.bDate = null;
 	}
 	
 	public void setUsername(String username) {
@@ -38,6 +46,19 @@ public class SignUpBean {
 		this.city = city;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setSurName(String surName) {
+		this.surName = surName;
+	}
+	
+	/*public void setBirthDate(LocalDate bDate) {
+		this.bDate = bDate;
+	}*/
+	
+	
 	public String getUsername() {
 		return this.username;
 	}
@@ -53,4 +74,17 @@ public class SignUpBean {
 	public String getCity() {
 		return this.city;
 	}
+	
+	public String getSurName() {
+		return this.surName;
+	}
+	
+	public String getname() {
+		return this.name;
+	}
+	
+	/*public LocalDate getBirthDate() {
+		return this.bDate;
+	}*/
+	
 }
