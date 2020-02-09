@@ -56,6 +56,7 @@ public abstract class DAOSerialize {
 		
 		return path;
 	}
+	
 	private EntitySerializable entityToSerializable(Object obj) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, IOException{
 		
 		EntitySerializable buffer = new EntitySerializable();
@@ -69,7 +70,6 @@ public abstract class DAOSerialize {
 				} catch (NotSerializableException e) {
 					attrVal = this.entityToSerializable(attrVal);
 				}
-				
 				finally {
 					buffer.getAttributes().put(attributes[i].getName(), attrVal);
 				}
@@ -80,18 +80,20 @@ public abstract class DAOSerialize {
 	
 	private void serializableToEntity(Object obj, EntitySerializable buffer) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, InstantiationException, ClassNotFoundException {
 		Field[] attributes = obj.getClass().getDeclaredFields();
+		Object buffVal = null;
+		Object nestedObj = null;
 		for (int j = 0; j < attributes.length; j ++) {
-			Object buffVal = buffer.getAttributes().get(attributes[j].getName());
-			if (Modifier.isPrivate(attributes[j].getModifiers()) && !attributes[j].isSynthetic() && !EntitySerializable.class.isInstance(buffVal)){		
-				this.getGetterOrSetter("set", attributes[j].getName(), obj).invoke(obj, buffVal);
-			}
-			else if (Modifier.isPrivate(attributes[j].getModifiers()) && !attributes[j].isSynthetic() && EntitySerializable.class.isInstance(buffVal)) {
-				Object nestedObj = Class.forName(buffer.getEntityClassName()).newInstance();
-				this.serializableToEntity(nestedObj, (EntitySerializable) buffVal);
-				this.getGetterOrSetter("set", attributes[j].getName(), obj).invoke(obj, nestedObj);
-			}
+				buffVal = buffer.getAttributes().get(attributes[j].getName());
+				if (Modifier.isPrivate(attributes[j].getModifiers()) && !attributes[j].isSynthetic() && !EntitySerializable.class.isInstance(buffVal)){		
+						this.getGetterOrSetter("set", attributes[j].getName(), obj).invoke(obj, buffVal);
+				}
+				else if (Modifier.isPrivate(attributes[j].getModifiers()) && !attributes[j].isSynthetic() && EntitySerializable.class.isInstance(buffVal)) {
+						nestedObj = Class.forName(((EntitySerializable) buffer.getAttributes().get(attributes[j].getName())).getEntityClassName()).newInstance();
+						this.serializableToEntity(nestedObj, (EntitySerializable) buffVal);
+						this.getGetterOrSetter("set", attributes[j].getName(), obj).invoke(obj, nestedObj);
+					}
+				}
 		}
-	}
 	
 	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, IOException{
 

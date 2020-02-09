@@ -1,6 +1,6 @@
 package logic.entity;
 
-import java.time.LocalDate;
+import java.util.Calendar;
 
 public class Ad {
 	private int id;
@@ -8,7 +8,7 @@ public class Ad {
 	private String title;
 	private String body;
 	private String type;
-	private LocalDate data;
+	private Calendar data;
 	
 	public Ad() {
 		this.id = -1;
@@ -39,7 +39,7 @@ public class Ad {
 		this.type = type;
 	}
 	
-	public void setData(LocalDate data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 	
@@ -63,7 +63,7 @@ public class Ad {
 		return this.type;
 	}
 	
-	public LocalDate getData() {
+	public Calendar getData() {
 		return this.data;
 	}
 }

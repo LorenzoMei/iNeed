@@ -43,7 +43,8 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 			throw new AdNotFoundException();
 		} 
 		
-		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+		catch (IOException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
+			e.printStackTrace();
 			logger.log(Level.SEVERE, e.toString());
 		} 
 	}
@@ -79,7 +80,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 			}
 		} 
 		
-		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
 			logger.log(Level.SEVERE, e.toString());
 		} 
 	}
