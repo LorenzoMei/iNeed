@@ -3,6 +3,7 @@ package logic.entity;
 import java.time.LocalDate;
 
 public class Ad {
+	private int id;
 	private User user;
 	private String title;
 	private String body;
@@ -10,11 +11,16 @@ public class Ad {
 	private LocalDate data;
 	
 	public Ad() {
+		this.id = -1;
 		this.user = null;
 		this.title = "";
 		this.body = "";
 		this.type = "";
 		this.data = null;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public void setUser(User user) {
@@ -35,6 +41,10 @@ public class Ad {
 	
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public User getUser() {

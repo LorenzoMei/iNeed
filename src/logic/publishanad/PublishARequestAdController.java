@@ -2,13 +2,11 @@ package logic.publishanad;
 
 import logic.dao.DAOFactory;
 import logic.entity.Ad;
+import logic.entity.AdId;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import logic.dao.DAOAd;
 
@@ -25,32 +23,34 @@ public class PublishARequestAdController implements PublishAnAdInterface{
 	private PublishARequestAdController() {
 	}
 	
-	public void createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		
-		List<Object> valueAttributesBean = new ArrayList<>();
-		
-		Method[] methodsOfAdBean = publishAdBean.getClass().getMethods();
-		
-		//TODO same functionality as getGetterOrSetter in DAOSerialize
-		
-		for(int i = 0; i < publishAdBean.getClass().getDeclaredFields().length; i++) {
-			if(methodsOfAdBean[i].getName().contains("get")) 
-				valueAttributesBean.add(methodsOfAdBean[i].invoke(publishAdBean, (Object[]) null));
-		}
-		
-		valueAttributesBean.add(LocalDate.now());
-		valueAttributesBean.add("Request");
-				
-		Ad ad = new Ad();
-		Field[] attributes = ad.getClass().getDeclaredFields();
-		Method[] methodsOfAd = ad.getClass().getMethods();
-		
-		for(int i = 0; i < attributes.length; i++) {
-			if(methodsOfAd[i].getName().contains("set"))
-				methodsOfAd[i].invoke(ad, valueAttributesBean.get(i));
-		}
+	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
 		DAOAd dao = (DAOAd) DAOFactory.getReference("Ad").getDAOReference();
-		dao.storeAd(ad);		
+		Ad ad = new Ad();
+		AdId id = new AdId();
+		
+		dao.loadId(id);
+		
+		ad.setId(id.getId());
+		ad.setData(LocalDate.now());
+		ad.setType("Request");
+		
+		Method[] methodsBean = publishAdBean.getClass().getMethods();
+				
+		Method[] methodsEntity = ad.getClass().getMethods();
+		
+		for(int i = 0; i < methodsBean.length; i++) {
+			if(methodsBean[i].getName().contains("get")) {
+				for(int j = 0; j < methodsEntity.length; j++) {
+					if(methodsEntity[j].getName().contains("set" + methodsBean[i].getName().substring(3, 4).toUpperCase() + methodsBean[i].getName().substring(4))) {
+						Object value = methodsBean[i].invoke(publishAdBean, (Object[]) null);
+						methodsEntity[j].invoke(ad, (Object) value);
+					}
+				}
+			}
+		}
+		
+		dao.storeAd(ad);
+		return ad;
 	}
 }

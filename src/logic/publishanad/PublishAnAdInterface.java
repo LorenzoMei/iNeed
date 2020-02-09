@@ -2,8 +2,10 @@ package logic.publishanad;
 
 import java.lang.reflect.InvocationTargetException;
 
+import logic.entity.Ad;
+
 public interface PublishAnAdInterface {
 
-	public void createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
+	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
 
 }

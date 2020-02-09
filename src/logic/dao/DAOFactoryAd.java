@@ -4,19 +4,19 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOFactoryUser implements DAOFactory {
+public class DAOFactoryAd implements DAOFactory {
 	
 //	Singleton Factory
-	Logger logger = Logger.getLogger(DAOFactoryUser.class.getName());
+	Logger logger = Logger.getLogger(DAOFactoryAd.class.getName());
 	
-	private static DAOFactoryUser ref = null;
+	private static DAOFactoryAd ref = null;
 	
-	private DAOFactoryUser() {};
+	private DAOFactoryAd() {};
 	
-	public static DAOFactoryUser getReference() {
+	public static DAOFactoryAd getReference() {
 		
 		if (ref == null) {
-			ref = new DAOFactoryUser();
+			ref = new DAOFactoryAd();
 		}
 		return ref;
 	}
@@ -31,10 +31,10 @@ public class DAOFactoryUser implements DAOFactory {
 	@Override
 	public Object getDAOReference() {
 		
-//		@ return : reference to DAOUSer object
+//		@ return : reference to DAOAd object
 		
 		try {
-			return Class.forName(this.getClass().getPackage().getName() + "." + "DAOUser" + this.readDBType()).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[])null);
+			return Class.forName(this.getClass().getPackage().getName() + "." + "DAOAd" + this.readDBType()).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[])null);
 		} 
 		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException | ClassNotFoundException e) {
