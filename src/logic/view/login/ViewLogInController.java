@@ -29,17 +29,19 @@ public class ViewLogInController implements Initializable {
 	 
 	 public void initialize(URL location, ResourceBundle resources) {
 	        userNameTextField.setPromptText("*Es. Rossi.Mario25");
-	     
 
 		}
 
 	@FXML protected void handleSubmitButtonBack(ActionEvent event) {
 	        actionCancel.setText("");
 	        actionLogIn.setText("");
+	        
 	}
     
     @FXML protected void handleSubmitButtonCancel(ActionEvent event) {
     	actionLogIn.setText("");
+    	passwordTextField.clear();
+    	userNameTextField.clear();
         actionCancel.setText("Canceled");
     }
     

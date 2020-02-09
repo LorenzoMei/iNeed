@@ -106,7 +106,7 @@
         <items>
             <HBox>
                <children>
-                <Button mnemonicParsing="false" onAction="#handleSubmitButtonBack" text="Back" />
+                <Button  mnemonicParsing="false" onAction="#handleSubmitButtonBack" text="Back" />
                </children>
                <effect>
                   <DropShadow />

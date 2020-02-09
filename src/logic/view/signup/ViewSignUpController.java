@@ -5,12 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.stage.Window;
 import logic.signup.SignUpBean;
@@ -26,11 +30,12 @@ public class ViewSignUpController implements Initializable{
     @FXML private TextField cityTextField;
     @FXML private TextField surNameTextField;
     @FXML private TextField userNameTextField;
-    @FXML private TextField cellTextField;
     @FXML private PasswordField passwordTextField;
     @FXML private PasswordField passwordVTextField;
     @FXML private Hyperlink facebookHyperLink;
     @FXML private Hyperlink logInHyperLink;
+    @FXML private DatePicker datePickerTextField;
+
     
     @FXML private GridPane grid;
  
@@ -41,11 +46,12 @@ public class ViewSignUpController implements Initializable{
         userNameTextField.setPromptText("*Es. Rossi.Mario25");
         cityTextField.setPromptText("Es. Roma");
         emailTextField.setPromptText("*Es. Mario.Ro@jmail.gg");
-        cellTextField.setPromptText("Es. Roma");
-
+        datePickerTextField.setPromptText("*Es. dd/mm/yyyy");
 	}
+	
         
 	@FXML protected void handleSubmitButtonBack(ActionEvent event) {
+		//TODO buttonBack functionalities
 		actionSignIn.setText("");
         actionCancel.setText("Ciao");
     }
@@ -57,10 +63,11 @@ public class ViewSignUpController implements Initializable{
     	cityTextField.clear();
     	passwordTextField.clear();
     	passwordVTextField.clear();
-    	cellTextField.clear();
+    	datePickerTextField.getEditor();
     	surNameTextField.clear();
         actionSignIn.setText("");
         actionCancel.setText("Canceled");
+        datePickerTextField.getEditor().clear();
         
 
     }
@@ -73,8 +80,48 @@ public class ViewSignUpController implements Initializable{
         String vPsw = passwordVTextField.getText();
         String city = cityTextField.getText();
         String email = emailTextField.getText();
+        String name = nameTextField.getText();
+        String surName = surNameTextField.getText();
         
-        System.out.println(nameTextField.getText());
+        Calendar  today = Calendar.getInstance();   
+        LocalDate bDate = datePickerTextField.getValue();
+		int bDay = bDate.get(ChronoField.DAY_OF_MONTH);
+		int bMonth = bDate.get(ChronoField.MONTH_OF_YEAR);
+		int bYear = bDate.get(ChronoField.YEAR);
+		int todayDay = today.get(Calendar.DATE);
+		int todayMonth = today.get(Calendar.MONTH) + 1;
+		int todayYear = today.get(Calendar.YEAR);
+		int difference = todayYear - bYear;
+		
+		
+        if((difference) <= 18) {
+        	 if(((difference) == 18) && (bMonth <= todayMonth)) {
+        		 if((bMonth == todayMonth) && (bDay <= todayDay)) {
+        			 if(bDay == todayDay) {
+        				 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Happy Birthday!", "Just in time sir: " + username);
+        			 }
+        			 else {
+            			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "You are to young to join us, see you in " + (bDay - todayDay) + " days!");
+
+        			 }
+        		 }
+        		 else {
+        			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "You are to young to join us, see you in " + (bMonth -todayMonth) + " months!");
+                     return;
+        		 }		 
+        	 }
+        	 else{
+        		 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "You are to young to join us now, see you soon!");
+                 return;
+        	 }
+        	
+        }
+        
+        if((bYear > todayYear) || (bYear == todayYear && bMonth > todayMonth) || (bYear == todayYear && bMonth == todayMonth && bDay > todayDay) ) {
+        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Are you from future?", "Tell me tomorrow lotterys numbers! NOW!");
+            return;
+        }
+
         
         if(nameTextField.getText().isEmpty()) {//If isn't inserted a Name
             showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "Please enter your Name!");
@@ -120,6 +167,9 @@ public class ViewSignUpController implements Initializable{
     		data.setPassword(passw);
     		data.setCity(city);
     		data.setEmail(email);
+    		/*data.setDate(bDate);
+    		data.setName(name);
+    		data.setSurName(surName);*/
     		
     		try {
 				SignUpController.getInstance().signUp(data);
