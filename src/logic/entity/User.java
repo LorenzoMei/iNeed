@@ -10,6 +10,7 @@ public class User {
 	private String email;
 	private String name;
 	private String surName;
+	private User friend;
 	//private LocalDate bDate;
 
 	
@@ -24,6 +25,11 @@ public class User {
 	}
 	
 	//all the sets on attributes
+	
+	public void setFriend(User val) {
+		this.friend = val;
+	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -54,6 +60,10 @@ public class User {
 	
 	
 	//all the gets on attributes
+	public User getFriend() {
+		return this.friend;
+	}
+	
 	public String getEmail() {
 		return this.email;
 	}

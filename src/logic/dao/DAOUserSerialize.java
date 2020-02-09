@@ -11,6 +11,7 @@ import logic.entity.User;
 
 public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 
+	Logger logger = Logger.getLogger(this.getClass().getName());
 	Logger logger = Logger.getLogger(DAOUserSerialize.class.getName());
 
 	private static DAOUserSerialize ref = null;
@@ -44,7 +45,7 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 			throw new UserNotFoundException();
 		} 
 		
-		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
 			logger.log(Level.SEVERE, e.toString());
 		} 
 	}
