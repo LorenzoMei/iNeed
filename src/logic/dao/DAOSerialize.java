@@ -2,6 +2,7 @@ package logic.dao;
 
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -48,6 +49,10 @@ public abstract class DAOSerialize {
 	
 	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException {
 		String path = DBPath + obj.getClass().getSimpleName() + "/";
+		File dirToStoreIn = new File(path);
+		if (!dirToStoreIn.exists()) {
+			dirToStoreIn.mkdirs();
+		}
 		for (int k = 0; k < primaryKeyNames.size(); k ++) {
 			
 			path += this.getGetterOrSetter("get", primaryKeyNames.get(k), obj).invoke(obj, (Object[])null); 
@@ -96,7 +101,7 @@ public abstract class DAOSerialize {
 		}
 	
 	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, IOException{
-
+		
 		try (
 				FileOutputStream dest = new FileOutputStream(this.getPathToStoreIn(obj, primaryKeyNames));
 				ObjectOutputStream writer = new ObjectOutputStream(dest);){

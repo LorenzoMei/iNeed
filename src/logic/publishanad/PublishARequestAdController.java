@@ -26,7 +26,7 @@ public class PublishARequestAdController implements PublishAnAdInterface{
 	
 	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
-		DAOAd dao = (DAOAd) DAOFactory.getReference("Ad").getDAOReference();
+		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		Ad ad = new Ad();
 		AdId id = new AdId();
 		

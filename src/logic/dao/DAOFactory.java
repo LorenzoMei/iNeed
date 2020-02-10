@@ -4,32 +4,43 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public interface DAOFactory {
+public class DAOFactory {
 	
-	public static Logger logger = Logger.getLogger(DAOFactory.class.getName());
+//	Singleton Factory
+	Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	public static DAOFactory getReference(String entity) {
-			
-//		le richieste di istanziazione di una DAOFactory sono rimbalzate a una delle sue figlie tramite reflection.
-//		La scelta della figlia da istanziare si basa sulla valutazione di un parametro
+	private static DAOFactory ref = null;
+	
+	private DAOFactory() {};
+	
+	public static DAOFactory getReference() {
 		
-//		@ param entity : simple name of entity type
-//		@ return : reference to actual entity factory
+		if (ref == null) {
+			ref = new DAOFactory();
+		}
+		return ref;
+	}
+	
+	private String readDBType() {
 		
-		String className = DAOFactory.class.getPackage().getName() + "." + "DAOFactory" + entity;
-		DAOFactory actualFactory = null;
+//		TODO stub
+		
+		return "Serialize";
+	}
+	
+	public Object getDAOReference(String entity) {
+		
+//		@ return : reference to DAOUSer object
+		
 		try {
-			actualFactory = (DAOFactory) Class.forName(className).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[]) null);
+			return Class.forName(this.getClass().getPackage().getName() + "." + "DAO" + entity + this.readDBType()).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[])null);
+		} 
+		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+				| SecurityException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block, must handle these exceptions properly
+			
+			logger.log(Level.SEVERE, e.toString());
+			return null;
 		}
-		catch (NoSuchMethodException | SecurityException | ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			DAOFactory.logger.log(Level.SEVERE, e.toString());
-		}
-		
-		return actualFactory;
-		}
-	
-	public Object getDAOReference();
-	
-//	NOTA : al richiedente della DAO è lasciata la responsabilità del casting alla DAO voluta
-
+	}
 }

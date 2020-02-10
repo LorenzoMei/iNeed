@@ -33,7 +33,7 @@ public class SignUpController implements SignUpControllerInterface{
 		
 		User userTemp = new User();
 		
-		DAOUser DAO = (DAOUser) DAOFactory.getReference("User").getDAOReference();
+		DAOUser DAO = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		
 		try {
 			DAO.loadUser(userTemp, username);
