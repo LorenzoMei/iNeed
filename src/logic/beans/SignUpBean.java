@@ -30,6 +30,8 @@ public class SignUpBean {
 		this.bDate = null;
 	}
 	
+	//all the sets on attributes
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -58,7 +60,8 @@ public class SignUpBean {
 		this.bDate = userBirthDate;
 	}
 	
-	
+	//all the gets on attributes
+
 	public String getUsername() {
 		return this.username;
 	}
