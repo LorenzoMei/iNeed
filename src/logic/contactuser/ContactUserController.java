@@ -20,7 +20,7 @@ public class ContactUserController implements ContactUserInterface{
 	private ContactUserController() {		
 	}
 	
-	public Message contactUser(ContactUserBean contactBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public Message contactUser(ContactUserBean contactBean) throws IllegalAccessException, InvocationTargetException {
 		
 		Message message = new Message();
 		
@@ -49,7 +49,7 @@ public class ContactUserController implements ContactUserInterface{
 				for(int j = 0; j < methodsEntity.length; j++) {
 					if(methodsEntity[j].getName().contains("set" + methodsBean[i].getName().substring(3, 4).toUpperCase() + methodsBean[i].getName().substring(4))) {
 						Object value = methodsBean[i].invoke(contactBean, (Object[]) null);
-						methodsEntity[j].invoke(message, (Object) value);
+						methodsEntity[j].invoke(message, value);
 					}
 				}
 			}

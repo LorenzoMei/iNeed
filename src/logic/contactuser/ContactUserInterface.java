@@ -6,5 +6,5 @@ import logic.entity.Message;
 
 public interface ContactUserInterface {
 	
-	public Message contactUser(ContactUserBean contactBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException; 
+	public Message contactUser(ContactUserBean contactBean) throws IllegalAccessException, InvocationTargetException; 
 }
