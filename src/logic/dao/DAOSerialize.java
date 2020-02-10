@@ -36,8 +36,8 @@ public abstract class DAOSerialize {
 		throw new NoSuchMethodException();
 	}
 	
-	private String getPathToLoadFrom(List <String> primaryKeyValues) {
-		String path = DBPath;
+	private String getPathToLoadFrom(Object obj, List <String> primaryKeyValues) {
+		String path = DBPath + obj.getClass().getSimpleName() + "/";
 		for (int k = 0; k < primaryKeyValues.size(); k ++) {
 			path += primaryKeyValues.get(k);
 		}
@@ -47,7 +47,7 @@ public abstract class DAOSerialize {
 	}
 	
 	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException {
-		String path = DBPath;
+		String path = DBPath + obj.getClass().getSimpleName() + "/";
 		for (int k = 0; k < primaryKeyNames.size(); k ++) {
 			
 			path += this.getGetterOrSetter("get", primaryKeyNames.get(k), obj).invoke(obj, (Object[])null); 
@@ -110,13 +110,13 @@ public abstract class DAOSerialize {
 //		@ return User if retrieved, null otherwise
 		
 		try (
-				FileInputStream src = new FileInputStream(this.getPathToLoadFrom(primaryKeyValues));
+				FileInputStream src = new FileInputStream(this.getPathToLoadFrom(obj, primaryKeyValues));
 				ObjectInputStream reader = new ObjectInputStream(src);){
 			EntitySerializable buffer = (EntitySerializable) reader.readObject();
 			this.serializableToEntity(obj, buffer);
 		}
 		catch (FileNotFoundException e) {
-			throw new ElementInDBNotFoundException(this.getPathToLoadFrom(primaryKeyValues));
+			throw new ElementInDBNotFoundException(this.getPathToLoadFrom(obj, primaryKeyValues));
 		}
 	}
 	
