@@ -12,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
+import logic.beans.CredentialsBean;
+import logic.dao.UserNotFoundException;
+import logic.login.LoginController;
+import logic.login.WrongPasswordException;
 
 
 public class ViewLogin extends View implements Initializable {
@@ -73,7 +77,7 @@ public class ViewLogin extends View implements Initializable {
     	
     	else {
     		
-    		/*CredentialsBean data = new CredentialsBean();
+    		CredentialsBean data = new CredentialsBean();
     		LoginController controller = LoginController.getInstance();
     		data.setUsername(username);
     		data.setPassw(passw);
@@ -89,7 +93,7 @@ public class ViewLogin extends View implements Initializable {
 				actionLogIn.setText("Sorry the user doesn't exist! ");
         		return;
 
-			}*/
+			}
 
         	actionLogIn.setText("Logged in, welcome back " + username);
 

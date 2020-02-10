@@ -1,10 +1,7 @@
 package logic.view;
 
-import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Client extends Application{

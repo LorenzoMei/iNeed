@@ -2,7 +2,6 @@ package logic.signup;
 
 
 import java.util.Calendar;
-
 import logic.beans.SignUpBean;
 import logic.dao.DAOFactory;
 import logic.dao.DAOUser;
@@ -26,7 +25,6 @@ public class SignUpController implements SignUpControllerInterface{
 		Boolean checker = true;
 		String username = bean.getUsername();
 		String passw = bean.getPassword();
-		//TODO implement more attributes for the entity User
 		String email = bean.getEmail();
 		String city = bean.getCity();
 		String name = bean.getSurName();
@@ -56,16 +54,6 @@ public class SignUpController implements SignUpControllerInterface{
 		if(checker) 
 			throw new UsernameAlreadyTakenException();
 
-		
-		
-		
-		
-
 	}
-
-
-
-
-
 
 }
