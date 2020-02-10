@@ -17,7 +17,7 @@ import java.util.Calendar;
 import java.util.Calendar.Builder;
 import java.util.ResourceBundle;
 import javafx.stage.Window;
-import logic.beans.SignUpsBean;
+import logic.beans.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
  
@@ -171,7 +171,7 @@ public class ViewSignUp extends View implements Initializable{
         
         else {
     		
-        	SignUpsBean usersBean = new SignUpsBean();
+        	SignUpBean usersBean = new SignUpBean();
     		
     		
     		usersBean.setUsername(username);

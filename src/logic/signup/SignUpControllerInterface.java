@@ -1,9 +1,9 @@
 package logic.signup;
 
-import logic.beans.SignUpsBean;
+import logic.beans.SignUpBean;
 
 public interface SignUpControllerInterface {
 
-		public void signUp(SignUpsBean bean) throws UsernameAlreadyTakenException;
+		public void signUp(SignUpBean bean) throws UsernameAlreadyTakenException;
 
 }

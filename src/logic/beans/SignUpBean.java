@@ -3,9 +3,7 @@ package logic.beans;
 import java.util.Calendar;
 
 
-public class SignUpsBean {
-	
-	private static SignUpsBean instance;
+public class SignUpBean {
 	
 	private String username;
 	private String passw;
@@ -15,13 +13,7 @@ public class SignUpsBean {
 	private String surName;
 	private Calendar bDate;
 	
-	public static SignUpsBean getInstance() {
-		if(instance == null)
-			instance = new SignUpsBean();
-		return instance;
-	}
-	
-	public SignUpsBean() {
+	public SignUpBean() {
 		this.username = "";
 		this.passw = "";
 		this.email = "";

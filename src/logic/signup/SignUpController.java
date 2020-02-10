@@ -2,7 +2,7 @@ package logic.signup;
 
 
 import java.util.Calendar;
-import logic.beans.SignUpsBean;
+import logic.beans.SignUpBean;
 import logic.dao.DAOFactory;
 import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;
@@ -20,7 +20,7 @@ public class SignUpController implements SignUpControllerInterface{
 
 	private SignUpController() {}
 
-	public void signUp(SignUpsBean bean) throws UsernameAlreadyTakenException {
+	public void signUp(SignUpBean bean) throws UsernameAlreadyTakenException {
 		
 		Boolean checker = true;
 		String username = bean.getUsername();

@@ -35,8 +35,6 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -76,7 +74,6 @@
             <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
             <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
-            <test name="test.view.signup.TestSignup" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
@@ -123,7 +120,6 @@
             <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
             <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
-            <test name="test.view.signup.TestSignup" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
@@ -163,6 +159,11 @@
             <classpath refid="iNeed.classpath"/>
         </junit>
     </target>
+    <target name="Client">
+        <java classname="logic.view.Client" failonerror="true" fork="yes">
+            <classpath refid="iNeed.classpath"/>
+        </java>
+    </target>
     <target name="TestDAOUser">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -179,11 +180,6 @@
     </target>
     <target name="Signup">
         <java classname="tesview.Signup" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
-        </java>
-    </target>
-    <target name="Client">
-        <java classname="logic.view.Client" failonerror="true" fork="yes">
             <classpath refid="iNeed.classpath"/>
         </java>
     </target>
