@@ -95,7 +95,6 @@ public class ViewSignUp extends View implements Initializable{
 		int bYear = bDate.get(ChronoField.YEAR);
 		
 		calendarBuilder.setDate(bYear, bMonth, bDay);
-		
 		Calendar userBirthDate = calendarBuilder.build();
 		
 		int todayDay = today.get(Calendar.DATE);
@@ -172,18 +171,19 @@ public class ViewSignUp extends View implements Initializable{
         
         else {
     		
-    		SignUpBean data = new SignUpBean();
+        	SignUpBean usersBean = new SignUpBean();
     		
-    		data.setUsername(username);
-    		data.setPassword(passw);
-    		data.setCity(city);
-    		data.setEmail(email);
-    		data.setBirthDate(userBirthDate);
-    		data.setName(name);
-    		data.setSurName(surName);
+    		
+    		usersBean.setUsername(username);
+    		usersBean.setPassword(passw);
+    		usersBean.setCity(city);
+    		usersBean.setEmail(email);
+    		usersBean.setBirthDate(userBirthDate);
+    		usersBean.setName(name);
+    		usersBean.setSurName(surName);
     		
     		try {
-				SignUpController.getInstance().signUp(data);
+				SignUpController.getInstance().signUp(usersBean);
 			} catch (UsernameAlreadyTakenException e1) {
 				e1.printStackTrace();
 				actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
