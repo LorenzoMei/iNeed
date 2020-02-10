@@ -1,4 +1,4 @@
-package logic.view.signup;
+package logic.view;
  
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ import logic.signup.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
  
-public class ViewSignUpController implements Initializable{
+public class ViewSignUp extends View implements Initializable{
 	
     @FXML private Text actionSignIn;
     @FXML private Text actionCancel;
@@ -35,10 +35,13 @@ public class ViewSignUpController implements Initializable{
     @FXML private Hyperlink facebookHyperLink;
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
-
-    
     @FXML private GridPane grid;
  
+    public  ViewSignUp() {
+    	this.setFXMLPath("fxml_signup.fxml");
+    	this.setNext("logic.view.ViewLogin");
+    }
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		nameTextField.setPromptText("*Es. Mario");
@@ -168,7 +171,7 @@ public class ViewSignUpController implements Initializable{
     		data.setPassword(passw);
     		data.setCity(city);
     		data.setEmail(email);
-    		//data.setBirthDate(bDate);
+    		data.setBirthDate(bDate);
     		data.setName(name);
     		data.setSurName(surName);
     		
@@ -182,6 +185,10 @@ public class ViewSignUpController implements Initializable{
     		
     		
     		actionSignIn.setText("Signed in, welcome " + username);
+    		
+    		
+    		Context.getReference().goNext();
+    		
     	}
 
    
@@ -197,6 +204,22 @@ public class ViewSignUpController implements Initializable{
         alert.initOwner(owner);
         alert.show();
     }
+
+
+	@Override
+	public void goNext() {
+		View nextView;
+		try {
+			nextView = (View) Class.forName(this.getNext()).newInstance();
+			nextView.setPrevious(this);
+			Context.getReference().setCurrentView(nextView);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 
 
 

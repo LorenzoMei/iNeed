@@ -1,8 +1,7 @@
-package logic.view.login;
+package logic.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -13,17 +12,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
-import logic.beans.CredentialsBean;
-import logic.dao.UserNotFoundException;
-import logic.login.LoginController;
-import logic.login.WrongPasswordException;
 
-public class ViewLogInController implements Initializable {
+
+public class ViewLogin extends View implements Initializable {
+	
+	public ViewLogin() {
+		this.setFXMLPath("fxml_login.fxml");
+	}
+	
+	  //ScreensController myController;
+	
 	 @FXML private Text actionLogIn;
 	 @FXML private Text actionCancel;
 	 @FXML private TextField userNameTextField;
 	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
+
+    
 	 
 	 @FXML private Hyperlink facebookHyperLink;
 	 
@@ -31,10 +36,15 @@ public class ViewLogInController implements Initializable {
 	        userNameTextField.setPromptText("*Es. Rossi.Mario25");
 
 		}
+	 
+	/* public void setScreenParent(ScreensController screenParent){
+	        myController = screenParent;
+	    }*/
 
 	@FXML protected void handleSubmitButtonBack(ActionEvent event) {
 	        actionCancel.setText("");
 	        actionLogIn.setText("");
+	      //  myController.setScreen(ScreensFramework.screen3ID);
 	        
 	}
     
@@ -63,7 +73,7 @@ public class ViewLogInController implements Initializable {
     	
     	else {
     		
-    		CredentialsBean data = new CredentialsBean();
+    		/*CredentialsBean data = new CredentialsBean();
     		LoginController controller = LoginController.getInstance();
     		data.setUsername(username);
     		data.setPassw(passw);
@@ -79,7 +89,7 @@ public class ViewLogInController implements Initializable {
 				actionLogIn.setText("Sorry the user doesn't exist! ");
         		return;
 
-			}
+			}*/
 
         	actionLogIn.setText("Logged in, welcome back " + username);
 
@@ -96,6 +106,12 @@ public class ViewLogInController implements Initializable {
         alert.initOwner(owner);
         alert.show();
     }
+
+	@Override
+	public void goNext() {
+		// TODO Auto-generated method stub
+		
+	}
     
     
 }
