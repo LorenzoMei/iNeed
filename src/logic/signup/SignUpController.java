@@ -1,7 +1,11 @@
 package logic.signup;
 
+import java.time.LocalDate;
+
+import logic.beans.SignUpBean;
 import logic.dao.DAOFactory;
 import logic.dao.DAOUser;
+import logic.dao.DAOUserJson;
 import logic.dao.UserNotFoundException;
 import logic.entity.User;
 
@@ -52,5 +56,16 @@ public class SignUpController implements SignUpControllerInterface{
 		if(checker) 
 			throw new UsernameAlreadyTakenException();
 
+		
+		
+		
+		
+
 	}
+
+
+
+
+
+
 }

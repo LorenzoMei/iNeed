@@ -1,4 +1,6 @@
-package logic.signup;
+package logic.beans;
+
+import java.util.Calendar;
 
 public class SignUpBean {
 	
@@ -10,7 +12,7 @@ public class SignUpBean {
 	private String city;
 	private String name;
 	private String surName;
-	//private LocalDate bDate;
+	private Calendar bDate;
 	
 	public static SignUpBean getInstance() {
 		if(instance == null)
@@ -25,7 +27,7 @@ public class SignUpBean {
 		this.city = "";
 		this.name = "";
 		this.surName = "";
-		//this.bDate = null;
+		this.bDate = null;
 	}
 	
 	public void setUsername(String username) {
@@ -52,9 +54,9 @@ public class SignUpBean {
 		this.surName = surName;
 	}
 	
-	/*public void setBirthDate(LocalDate bDate) {
-		this.bDate = bDate;
-	}*/
+	public void setBirthDate(Calendar userBirthDate) {
+		this.bDate = userBirthDate;
+	}
 	
 	
 	public String getUsername() {
@@ -81,8 +83,8 @@ public class SignUpBean {
 		return this.name;
 	}
 	
-	/*public LocalDate getBirthDate() {
+	public Calendar getBirthDate() {
 		return this.bDate;
-	}*/
+	}
 	
 }
