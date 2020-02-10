@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public interface DAOFactory {
 	
-	Logger logger = Logger.getLogger(DAOFactory.class.getName());
+	public static Logger logger = Logger.getLogger(DAOFactory.class.getName());
 	
 	public static DAOFactory getReference(String entity) {
 			
@@ -22,7 +22,7 @@ public interface DAOFactory {
 			actualFactory = (DAOFactory) Class.forName(className).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[]) null);
 		}
 		catch (NoSuchMethodException | SecurityException | ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			logger.log(Level.SEVERE, e.toString());
+			DAOFactory.logger.log(Level.SEVERE, e.toString());
 		}
 		
 		return actualFactory;

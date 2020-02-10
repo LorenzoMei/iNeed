@@ -31,9 +31,9 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 //		@ return User if retrieved, null otherwise
 		
 		
-		List <String> primaryKeyNames = new ArrayList <String>();
+		List <String> primaryKeyNames = new ArrayList <>();
 		primaryKeyNames.add("id");
-		List <String> primaryKeyValues = new ArrayList <String>();
+		List <String> primaryKeyValues = new ArrayList <>();
 		primaryKeyValues.add(Integer.toString(id));
 		
 		try {
@@ -50,7 +50,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	}
 	
 	public void storeAd(Ad ad) {
-		List<String> primaryKeyNames = new ArrayList<String>();
+		List<String> primaryKeyNames = new ArrayList<>();
 		primaryKeyNames.add("id");
 		try {
 			this.store(ad, primaryKeyNames);
@@ -64,7 +64,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		
 		List <String> primaryKeyNames = new ArrayList <String>();
 		primaryKeyNames.add("name");
-		List <String> primaryKeyValues = new ArrayList <String>();
+		List <String> primaryKeyValues = new ArrayList <>();
 		primaryKeyValues.add("lastId");
 		
 		try {
