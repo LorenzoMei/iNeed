@@ -17,7 +17,7 @@ import java.util.Calendar;
 import java.util.Calendar.Builder;
 import java.util.ResourceBundle;
 import javafx.stage.Window;
-import logic.beans.SignUpBean;
+import logic.signup.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
  
