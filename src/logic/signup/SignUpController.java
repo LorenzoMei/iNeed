@@ -3,6 +3,7 @@ package logic.signup;
 
 import java.util.Calendar;
 
+import logic.beans.SignUpBean;
 import logic.dao.DAOFactory;
 import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;

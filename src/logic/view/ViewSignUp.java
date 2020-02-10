@@ -16,8 +16,9 @@ import java.time.temporal.ChronoField;
 import java.util.Calendar;
 import java.util.Calendar.Builder;
 import java.util.ResourceBundle;
+
 import javafx.stage.Window;
-import logic.signup.SignUpBean;
+import logic.beans.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
  
@@ -101,7 +102,6 @@ public class ViewSignUp extends View implements Initializable{
 		int todayMonth = today.get(Calendar.MONTH) + 1;
 		int todayYear = today.get(Calendar.YEAR);
 		int difference = todayYear - bYear;
-		
 		
         if((difference) <= 18) {
         	 if(((difference) == 18) && (bMonth <= todayMonth)) {
