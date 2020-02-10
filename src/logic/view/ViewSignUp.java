@@ -15,9 +15,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 import java.util.Calendar;
+import java.util.Calendar.Builder;
 import java.util.ResourceBundle;
 import javafx.stage.Window;
-import logic.signup.SignUpBean;
+import logic.beans.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
  
@@ -86,11 +87,18 @@ public class ViewSignUp extends View implements Initializable{
         String name = nameTextField.getText();
         String surName = surNameTextField.getText();
         Calendar  today = Calendar.getInstance();   
+        Builder calendarBuilder  = new Calendar.Builder();
         LocalDate bDate = datePickerTextField.getValue();
+        
         
 		int bDay = bDate.get(ChronoField.DAY_OF_MONTH);
 		int bMonth = bDate.get(ChronoField.MONTH_OF_YEAR);
 		int bYear = bDate.get(ChronoField.YEAR);
+		
+		calendarBuilder.setDate(bYear, bMonth, bDay);
+		
+		Calendar userBirthDate = calendarBuilder.build();
+		
 		int todayDay = today.get(Calendar.DATE);
 		int todayMonth = today.get(Calendar.MONTH) + 1;
 		int todayYear = today.get(Calendar.YEAR);
@@ -171,7 +179,7 @@ public class ViewSignUp extends View implements Initializable{
     		data.setPassword(passw);
     		data.setCity(city);
     		data.setEmail(email);
-    		data.setBirthDate(bDate);
+    		data.setBirthDate(userBirthDate);
     		data.setName(name);
     		data.setSurName(surName);
     		
