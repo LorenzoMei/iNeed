@@ -1,7 +1,5 @@
 package logic.signup;
 
-import java.time.LocalDate;
-
 public class SignUpBean {
 	
 	private static SignUpBean instance;
