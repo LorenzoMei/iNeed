@@ -11,7 +11,7 @@ public class DAOFactory {
 	
 	private static DAOFactory ref = null;
 	
-	private DAOFactory() {};
+	private DAOFactory() {}
 	
 	public static DAOFactory getReference() {
 		
@@ -37,7 +37,6 @@ public class DAOFactory {
 		} 
 		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block, must handle these exceptions properly
 			
 			logger.log(Level.SEVERE, e.toString());
 			return null;

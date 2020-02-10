@@ -18,11 +18,11 @@ import java.util.List;
 
 public abstract class DAOSerialize {
 	
-	private String DBPath = readDBPath();
+	private String dBPath = readDBPath();
 	
 	private String readDBPath() {
 //		TODO: stub
-		return "db/serialized/";
+		return "db" + File.separator + "serialized" + File.separator;
 	}
 	
 	protected Method getGetterOrSetter(String getOrSet, String attrName, Object obj) throws NoSuchMethodException {
@@ -38,31 +38,28 @@ public abstract class DAOSerialize {
 	}
 	
 	private String getPathToLoadFrom(Object obj, List <String> primaryKeyValues) {
-		String path = DBPath + obj.getClass().getSimpleName() + "/";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		for (int k = 0; k < primaryKeyValues.size(); k ++) {
-			path += primaryKeyValues.get(k);
+			stringBuilder.append(primaryKeyValues.get(k));
 		}
-		path += ".ser";
+		stringBuilder.append(".ser");
 		
-		return path;
+		return stringBuilder.toString();
 	}
-	
+
 	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException {
-		String path = DBPath + obj.getClass().getSimpleName() + "/";
-		File dirToStoreIn = new File(path);
-		if (!dirToStoreIn.exists()) {
-			dirToStoreIn.mkdirs();
-		}
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		for (int k = 0; k < primaryKeyNames.size(); k ++) {
-			
-			path += this.getGetterOrSetter("get", primaryKeyNames.get(k), obj).invoke(obj, (Object[])null); 
+			this.getGetterOrSetter("get", primaryKeyNames.get(k), obj).invoke(obj, (Object[])null);
 		}
-		path += ".ser";
+		stringBuilder.append(".ser");
 		
-		return path;
+		return stringBuilder.toString();
 	}
 	
-	private EntitySerializable entityToSerializable(Object obj) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, IOException{
+	private EntitySerializable entityToSerializable(Object obj) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException{
 		
 		EntitySerializable buffer = new EntitySerializable();
 		buffer.setEntityClassName(obj.getClass().getName());
@@ -83,7 +80,7 @@ public abstract class DAOSerialize {
 		return buffer;
 	}
 	
-	private void serializableToEntity(Object obj, EntitySerializable buffer) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, InstantiationException, ClassNotFoundException {
+	private void serializableToEntity(Object obj, EntitySerializable buffer) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, ClassNotFoundException {
 		Field[] attributes = obj.getClass().getDeclaredFields();
 		Object buffVal = null;
 		Object nestedObj = null;
@@ -100,7 +97,7 @@ public abstract class DAOSerialize {
 				}
 		}
 	
-	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, IOException{
+	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException{
 		
 		try (
 				FileOutputStream dest = new FileOutputStream(this.getPathToStoreIn(obj, primaryKeyNames));
@@ -109,7 +106,7 @@ public abstract class DAOSerialize {
 			writer.writeObject(buffer);
 		}
 	}
-	protected void load(Object obj, List <String> primaryKeyNames, List <String> primaryKeyValues) throws IOException, ClassNotFoundException, ElementInDBNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+	protected void load(Object obj, List <String> primaryKeyValues) throws IOException, ClassNotFoundException, ElementInDBNotFoundException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 		
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise

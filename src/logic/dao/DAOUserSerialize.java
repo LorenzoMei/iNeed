@@ -31,14 +31,11 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
 		
-		
-		List <String> primaryKeyNames = new ArrayList <String>();
-		primaryKeyNames.add("username");
 		List <String> primaryKeyValues = new ArrayList <String>();
 		primaryKeyValues.add(username);
 		
 		try {
-			this.load(user, primaryKeyNames, primaryKeyValues);
+			this.load(user, primaryKeyValues);
 		} catch (ElementInDBNotFoundException e) {
 			logger.log(Level.SEVERE, "file" + e.getPath() + " not found");
 			throw new UserNotFoundException();

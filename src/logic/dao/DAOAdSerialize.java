@@ -30,14 +30,11 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
 		
-		
-		List <String> primaryKeyNames = new ArrayList <>();
-		primaryKeyNames.add("id");
 		List <String> primaryKeyValues = new ArrayList <>();
 		primaryKeyValues.add(Integer.toString(id));
 		
 		try {
-			this.load(ad, primaryKeyNames, primaryKeyValues);
+			this.load(ad, primaryKeyValues);
 		} catch (ElementInDBNotFoundException e) {
 			logger.log(Level.SEVERE, "file" + e.getPath() + " not found");
 			throw new AdNotFoundException();
@@ -62,13 +59,13 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
 	public void loadId(AdId id) {
 		
-		List <String> primaryKeyNames = new ArrayList <String>();
+		List <String> primaryKeyNames = new ArrayList <>();
 		primaryKeyNames.add("name");
 		List <String> primaryKeyValues = new ArrayList <>();
 		primaryKeyValues.add("lastId");
 		
 		try {
-			this.load(id, primaryKeyNames, primaryKeyValues);
+			this.load(id, primaryKeyValues);
 		} catch (ElementInDBNotFoundException e) {
 			logger.log(Level.INFO, "file" + e.getPath() + " not found");
 			logger.log(Level.INFO, "create file " + e.getPath());
