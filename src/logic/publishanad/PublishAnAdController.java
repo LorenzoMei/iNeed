@@ -48,7 +48,7 @@ public class PublishAnAdController implements PublishAnAdInterface{
 		AdId id = new AdId();
 		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		
-		dao.loadId(id);
+		dao.loadLastId(id);
 		ad.setId(id.getId());
 		
 		dao.storeAd(ad);
