@@ -2,8 +2,6 @@ package logic.contactuser;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.Calendar.Builder;
 
 import logic.entity.Data;
 import logic.entity.Message;
