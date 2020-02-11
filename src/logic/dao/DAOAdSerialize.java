@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import logic.entity.Ad;
+import logic.entity.RequestAd;
 import logic.entity.AdId;
 
 public class DAOAdSerialize extends DAOSerialize implements DAOAd{
@@ -25,7 +25,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		return ref;
 	}
 	
-	public void loadAd(Ad ad, int id) throws AdNotFoundException {
+	public void loadAd(RequestAd ad, int id) throws AdNotFoundException {
 		
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
@@ -38,14 +38,12 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		} catch (ElementInDBNotFoundException e) {
 			logger.log(Level.SEVERE, "file" + e.getPath() + " not found");
 			throw new AdNotFoundException();
-		} 
-		
-		catch (IOException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
+		} catch (IOException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
 			logger.log(Level.SEVERE, e.toString());
 		} 
 	}
 	
-	public void storeAd(Ad ad) {
+	public void storeAd(RequestAd ad) {
 		List<String> primaryKeyNames = new ArrayList<>();
 		primaryKeyNames.add("id");
 		try {
@@ -74,9 +72,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 			} catch(IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | IOException ex) {
 				logger.log(Level.SEVERE, "cannot create file " + e.getPath());
 			}
-		} 
-		
-		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
+		} catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
 			logger.log(Level.SEVERE, e.toString());
 		} 
 	}
