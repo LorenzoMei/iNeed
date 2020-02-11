@@ -1,7 +1,7 @@
 package logic.dao;
 
 import logic.entity.Ad;
-import logic.entity.AdId;
+import logic.support.AdId;
 
 public interface DAOAd {
 	

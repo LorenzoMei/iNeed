@@ -1,11 +1,11 @@
-package logic.publishanad;
+package logic.support;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class GetAndSetValue {
+public class ValueEntity {
 	
-	public void getBeanSetEntity(Object bean, Object entity) throws IllegalAccessException, InvocationTargetException {
+	public void getFromBeanAndSetEntity(Object bean, Object entity) throws IllegalAccessException, InvocationTargetException {
 		
 		Method[] methodsBean = bean.getClass().getMethods();
 		Method[] methodsEntity = entity.getClass().getMethods();

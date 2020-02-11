@@ -1,4 +1,4 @@
-package logic.entity;
+package logic.support;
 
 public class AdId{
 

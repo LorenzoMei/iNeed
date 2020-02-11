@@ -3,8 +3,8 @@ package logic.contactuser;
 import java.lang.reflect.InvocationTargetException;
 
 import logic.entity.Message;
-import logic.publishanad.Data;
-import logic.publishanad.GetAndSetValue;
+import logic.support.Data;
+import logic.support.ValueEntity;
 
 public class ContactUserController implements ContactUserInterface{
 	
@@ -26,8 +26,8 @@ public class ContactUserController implements ContactUserInterface{
 		
 		message.setData(data.buildDateAndHour());
 		
-		GetAndSetValue setEntity = new GetAndSetValue();
-		setEntity.getBeanSetEntity(contactBean, message);
+		ValueEntity setEntity = new ValueEntity();
+		setEntity.getFromBeanAndSetEntity(contactBean, message);
 		
 		return message;
 		

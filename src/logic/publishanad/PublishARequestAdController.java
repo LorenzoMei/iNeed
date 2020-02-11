@@ -2,7 +2,9 @@ package logic.publishanad;
 
 import logic.dao.DAOFactory;
 import logic.entity.Ad;
-import logic.entity.AdId;
+import logic.support.AdId;
+import logic.support.Data;
+import logic.support.ValueEntity;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -35,8 +37,8 @@ public class PublishARequestAdController implements PublishAnAdInterface{
 		ad.setData(data.buildDate());
 		ad.setType("Request");
 		
-		GetAndSetValue setEntity = new GetAndSetValue();	
-		setEntity.getBeanSetEntity(publishAdBean, data);
+		ValueEntity setEntity = new ValueEntity();	
+		setEntity.getFromBeanAndSetEntity(publishAdBean, data);
 		
 		dao.storeAd(ad);
 		return ad;
