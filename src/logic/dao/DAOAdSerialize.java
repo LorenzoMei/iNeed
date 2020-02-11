@@ -41,7 +41,6 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		} 
 		
 		catch (IOException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
-			e.printStackTrace();
 			logger.log(Level.SEVERE, e.toString());
 		} 
 	}

@@ -2,18 +2,19 @@ package logic.dao;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EntitySerializable implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private String entityClassName;
-	private HashMap<String, Object> attributes;
+	private Map<String, Serializable> attributes;
 	
 	public String getEntityClassName() {
 		return this.entityClassName;
 	}
 	
-	public HashMap<String, Object> getAttributes(){
+	public Map<String, Serializable> getAttributes(){
 		if (this.attributes == null) {
 			this.attributes = new HashMap<>();
 		}
@@ -24,8 +25,5 @@ public class EntitySerializable implements Serializable {
 		this.entityClassName = val;
 	}
 	
-	public void setAttributes(HashMap <String, Object> val) {
-		
-		this.attributes = val;
-	}
+	
 }

@@ -2,7 +2,7 @@ package logic.dao;
 
 public class ElementInDBNotFoundException extends Exception {
 	
-	final private String path;
+	private final String path;
 	
 	public ElementInDBNotFoundException(String path) {
 		this.path = path;

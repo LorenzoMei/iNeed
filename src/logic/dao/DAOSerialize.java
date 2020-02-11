@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -70,7 +71,7 @@ public abstract class DAOSerialize {
 					attrVal = this.entityToSerializable(attrVal);
 				}
 				finally {
-					buffer.getAttributes().put(attributes[i].getName(), attrVal);
+					buffer.getAttributes().put(attributes[i].getName(), (Serializable) attrVal);
 				}
 			}
 		}
