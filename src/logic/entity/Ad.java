@@ -2,22 +2,12 @@ package logic.entity;
 
 import java.util.Calendar;
 
-public class Ad {
-	private int id;
-	private User user;
-	private String title;
-	private String body;
-	private String type;
-	private Calendar data;
-	
-	public Ad() {
-		this.id = -1;
-		this.user = null;
-		this.title = "";
-		this.body = "";
-		this.type = "";
-		this.data = null;
-	}
+public abstract class Ad {
+	protected int id = -1;
+	protected User user = null;
+	protected String title = "";
+	protected String body = "";
+	protected Calendar data = null;
 	
 	public void setId(int id) {
 		this.id = id;
@@ -33,10 +23,6 @@ public class Ad {
 	
 	public void setBody(String body) {
 		this.body = body;
-	}
-	
-	public void setType(String type) {
-		this.type = type;
 	}
 	
 	public void setData(Calendar data) {
@@ -57,10 +43,6 @@ public class Ad {
 	
 	public String getBody() {
 		return this.body;
-	}
-	
-	public String getType() {
-		return this.type;
 	}
 	
 	public Calendar getData() {
