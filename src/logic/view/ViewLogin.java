@@ -22,6 +22,7 @@ public class ViewLogin extends View implements Initializable {
 	
 	public ViewLogin() {
 		this.setFXMLPath("fxml_login.fxml");
+    	this.setNext("logic.view.ViewFlow");
 	}
 	
 	  //ScreensController myController;
@@ -96,6 +97,7 @@ public class ViewLogin extends View implements Initializable {
 			}
 
         	actionLogIn.setText("Logged in, welcome back " + username);
+    		Context.getReference().goNext();
 
     	}
 
@@ -111,9 +113,17 @@ public class ViewLogin extends View implements Initializable {
         alert.show();
     }
 
-	@Override
-	public void goNext() {
-		// TODO Auto-generated method stub
+    public void goNext() {
+		View nextView;
+		try {
+			nextView = (View) Class.forName(this.getNext()).newInstance();
+			nextView.setPrevious(this);
+			Context.getReference().setCurrentView(nextView);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
     
