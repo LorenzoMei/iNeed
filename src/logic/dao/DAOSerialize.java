@@ -37,12 +37,9 @@ public abstract class DAOSerialize {
 	private void buildAttributes(Class<?> currentClass, List<Field> attributes){
 		
 		Class<?> superClass = (Class<?>) currentClass.getGenericSuperclass();
-		
-		System.out.println("current Class " + currentClass.getSimpleName() + " has " + superClass.getSimpleName() + " as super");
-		
+				
 		Field [] currentAttributes = currentClass.getDeclaredFields();
 		for (int i = 0; i < currentAttributes.length; i++) {
-			System.out.println("attributes += " + currentAttributes[i].getName());
 			attributes.add(currentAttributes[i]);
 		}
 		if (superClass != Object.class) {
@@ -60,7 +57,7 @@ public abstract class DAOSerialize {
 		return stringBuilder.toString();
 	}
 
-	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IllegalArgumentException {
+	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		File test = new File(stringBuilder.toString());
@@ -79,32 +76,23 @@ public abstract class DAOSerialize {
 		return stringBuilder.toString();
 	}
 	
-	private EntitySerializable entityToSerializable(Object obj) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException, IllegalArgumentException{
+	private EntitySerializable entityToSerializable(Object obj) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException{
 		EntitySerializable buffer = new EntitySerializable();
 		buffer.setEntityClassName(obj.getClass().getName());
 		List<Field> attributesList = new ArrayList<>();
 		this.buildAttributes(obj.getClass(), attributesList);
 		
-		
 		Field[] attributes = new Field[attributesList.size()];
-		attributesList.toArray(attributes);
-		
-		
-		
-		System.out.println("TENTO DI SERIALIZZARE OBJECT: " + obj.getClass().getName());
-		
-		
+		attributesList.toArray(attributes);		
 		
 		for (int i = 0; i < attributes.length; i ++) {
 
 			if ((Modifier.isPrivate(attributes[i].getModifiers()) || Modifier.isProtected(attributes[i].getModifiers())) && !attributes[i].isSynthetic()) {					
-				System.out.println("NOME ATTRIBUTO: " + attributes[i].getName());
 				Object attrVal = null;
 				try (ObjectOutputStream tester = new ObjectOutputStream(new ByteArrayOutputStream())) {
 					attrVal = GetGetterOrSetter.getGetter(attributes[i].getName(), obj).invoke(obj, (Object[]) null);
 					tester.writeObject(attrVal);
 				} catch (NotSerializableException e) {			
-					System.out.println("NON SERIALIZZABILE");
 					attrVal = this.entityToSerializable(attrVal);
 				}
 				catch(NoSuchGetterException e) {
@@ -112,14 +100,13 @@ public abstract class DAOSerialize {
 				}
 				finally {
 					buffer.getAttributes().put(attributes[i].getName(), (Serializable) attrVal);
-					System.out.println("AGGIUNTO A BUFFER: " + attributes[i].getName() + ", " + attrVal);
 				}
 			}
 		}
 		return buffer;
 	}
 	
-	private void serializableToEntity(Object obj, EntitySerializable buffer) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, ClassNotFoundException, IllegalArgumentException {
+	private void serializableToEntity(Object obj, EntitySerializable buffer) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, ClassNotFoundException {
 		
 		List<Field> attributesList = new ArrayList<>();
 		this.buildAttributes(obj.getClass(), attributesList);	
@@ -152,7 +139,7 @@ public abstract class DAOSerialize {
 		}
 	}
 	
-	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException, IllegalArgumentException{
+	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
 		try (
 				FileOutputStream dest = new FileOutputStream(this.getPathToStoreIn(obj, primaryKeyNames));
 				ObjectOutputStream writer = new ObjectOutputStream(dest);){
@@ -160,7 +147,7 @@ public abstract class DAOSerialize {
 			writer.writeObject(buffer);
 		}
 	}
-	protected void load(Object obj, List <String> primaryKeyValues) throws IOException, ClassNotFoundException, ElementInDBNotFoundException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalArgumentException {
+	protected void load(Object obj, List <String> primaryKeyValues) throws IOException, ClassNotFoundException, ElementInDBNotFoundException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
 		
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
