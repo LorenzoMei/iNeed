@@ -7,6 +7,7 @@ import logic.dao.AdNotFoundException;
 import logic.dao.DAOAd;
 import logic.dao.DAOFactory;
 import logic.entity.Ad;
+import logic.entity.RequestAd;
 import logic.entity.User;
 
 public class TestDaoAd {
@@ -39,7 +40,7 @@ public class TestDaoAd {
 		String title = "Cerco posto letto";
 		String body = "Cerco qualcuno disponibile ad offrire un posto letto per il 17/02/2020";
 
-		Ad storedAd = new Ad();
+		Ad storedAd = new RequestAd();
 		storedAd.setUser(user);
 		storedAd.setTitle(title);
 		storedAd.setBody(body);
@@ -48,7 +49,7 @@ public class TestDaoAd {
 		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		
 		daoAd.storeAd(storedAd);
-		Ad loadedAd = new Ad();
+		Ad loadedAd = new RequestAd();
 		daoAd.loadAd(loadedAd, 5);
 		
 		Assert.assertEquals(storedAd.getUser().getUsername(), loadedAd.getUser().getUsername());
