@@ -31,7 +31,7 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 //		Searches in every node of the root in DB for a User with the same username and passw as the ones provided.
 //		@ return User if retrieved, null otherwise
 		
-		List <String> primaryKeyValues = new ArrayList <String>();
+		List <String> primaryKeyValues = new ArrayList <>();
 		primaryKeyValues.add(username);
 		
 		try {
@@ -50,7 +50,7 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 		
 //		It stores user data in a JSON array, coping values of all User attributes using reflection
 		
-		List<String> primaryKeyNames = new ArrayList<String>();
+		List<String> primaryKeyNames = new ArrayList<>();
 		primaryKeyNames.add("username");
 		try {
 			this.store(user, primaryKeyNames);

@@ -44,23 +44,20 @@ public abstract class DAOSerialize {
 			stringBuilder.append(primaryKeyValues.get(k));
 		}
 		stringBuilder.append(".ser");
-		
 		return stringBuilder.toString();
 	}
 
-	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException {
+	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		for (int k = 0; k < primaryKeyNames.size(); k ++) {
-			this.getGetterOrSetter("get", primaryKeyNames.get(k), obj).invoke(obj, (Object[])null);
+			stringBuilder.append(this.getGetterOrSetter("get", primaryKeyNames.get(k), obj).invoke(obj, (Object[])null));
 		}
 		stringBuilder.append(".ser");
-		
 		return stringBuilder.toString();
 	}
 	
 	private EntitySerializable entityToSerializable(Object obj) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException{
-		
 		EntitySerializable buffer = new EntitySerializable();
 		buffer.setEntityClassName(obj.getClass().getName());
 		Field[] attributes = obj.getClass().getDeclaredFields();
@@ -69,7 +66,7 @@ public abstract class DAOSerialize {
 				Object attrVal = this.getGetterOrSetter("get", attributes[i].getName(), obj).invoke(obj, (Object[]) null);
 				try (ObjectOutputStream tester = new ObjectOutputStream(new ByteArrayOutputStream())) {
 					tester.writeObject(attrVal);
-				} catch (NotSerializableException e) {
+				} catch (NotSerializableException e) {					
 					attrVal = this.entityToSerializable(attrVal);
 				}
 				finally {
@@ -98,7 +95,6 @@ public abstract class DAOSerialize {
 		}
 	
 	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException{
-		
 		try (
 				FileOutputStream dest = new FileOutputStream(this.getPathToStoreIn(obj, primaryKeyNames));
 				ObjectOutputStream writer = new ObjectOutputStream(dest);){
