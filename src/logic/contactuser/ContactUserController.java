@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.Calendar.Builder;
 
+import logic.entity.Data;
 import logic.entity.Message;
 
 public class ContactUserController implements ContactUserInterface{
@@ -23,23 +24,9 @@ public class ContactUserController implements ContactUserInterface{
 	public Message contactUser(ContactUserBean contactBean) throws IllegalAccessException, InvocationTargetException {
 		
 		Message message = new Message();
+		Data data = new Data();
 		
-		Calendar calendar = Calendar.getInstance();
-		Builder calendarBuilder = new Calendar.Builder();
-		
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH);
-		int date = calendar.get(Calendar.DATE);
-		int hour = calendar.get(Calendar.HOUR);
-		int minute = calendar.get(Calendar.MINUTE);
-		int seconds = calendar.get(Calendar.SECOND);
-		
-		calendarBuilder.setDate(year, month, date);
-		calendarBuilder.setTimeOfDay(hour, minute, seconds);
-		
-		Calendar data = calendarBuilder.build();
-		
-		message.setData(data);
+		message.setData(data.buildDateAndHour());
 		
 		Method[] methodsBean = contactBean.getClass().getMethods();
 		Method[] methodsEntity = message.getClass().getMethods();

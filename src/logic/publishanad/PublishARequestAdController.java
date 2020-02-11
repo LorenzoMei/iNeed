@@ -3,6 +3,7 @@ package logic.publishanad;
 import logic.dao.DAOFactory;
 import logic.entity.Ad;
 import logic.entity.AdId;
+import logic.entity.Data;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -29,21 +30,12 @@ public class PublishARequestAdController implements PublishAnAdInterface{
 		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		Ad ad = new Ad();
 		AdId id = new AdId();
+		Data data = new Data();
 		
 		dao.loadId(id);
 		
-		Calendar calendar = Calendar.getInstance();
-		Builder calendarBuilder = new Calendar.Builder();
-		
-		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.MONTH);
-		int date = calendar.get(Calendar.DATE);
-		
-		calendarBuilder.setDate(year, month, date);
-		Calendar data = calendarBuilder.build();
-		
 		ad.setId(id.getId());
-		ad.setData(data);
+		ad.setData(data.buildDate());
 		ad.setType("Request");
 		
 		Method[] methodsBean = publishAdBean.getClass().getMethods();
