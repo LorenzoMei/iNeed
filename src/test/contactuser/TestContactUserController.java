@@ -1,7 +1,6 @@
 package test.contactuser;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Calendar;
 
 import org.junit.jupiter.api.Test;
 import org.junit.Assert;

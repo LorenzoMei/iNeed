@@ -24,7 +24,7 @@ public class PublishAnOfferAdController implements PublishAnAdInterface{
 	private PublishAnOfferAdController() {
 	}
 	
-	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, InvocationTargetException {
 		
 		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		Ad ad = new Ad();
@@ -55,7 +55,7 @@ public class PublishAnOfferAdController implements PublishAnAdInterface{
 				for(int j = 0; j < methodsEntity.length; j++) {
 					if(methodsEntity[j].getName().contains("set" + methodsBean[i].getName().substring(3, 4).toUpperCase() + methodsBean[i].getName().substring(4))) {
 						Object value = methodsBean[i].invoke(publishAdBean, (Object[]) null);
-						methodsEntity[j].invoke(ad, (Object) value);
+						methodsEntity[j].invoke(ad, value);
 					}
 				}
 			}
