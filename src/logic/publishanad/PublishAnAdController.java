@@ -2,6 +2,7 @@ package logic.publishanad;
 
 import logic.dao.DAOFactory;
 import logic.entity.Ad;
+import logic.entity.AdFactory;
 import logic.entity.AdId;
 import logic.entity.Data;
 
@@ -10,34 +11,24 @@ import java.lang.reflect.Method;
 
 import logic.dao.DAOAd;
 
-public class PublishAnOfferAdController implements PublishAnAdInterface{
+public class PublishAnAdController implements PublishAnAdInterface{
 	
-	private static PublishAnOfferAdController instance;
+	private static PublishAnAdController instance;
 	
-	public static PublishAnOfferAdController getInstance() {
+	public static PublishAnAdController getInstance() {
 		if(instance == null)
-			instance = new PublishAnOfferAdController();
+			instance = new PublishAnAdController();
 		return instance;
 	}
 	
-	private PublishAnOfferAdController() {
+	private PublishAnAdController() {
 	}
 	
 	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, InvocationTargetException {
 		
-		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
-		Ad ad = new Ad();
-		AdId id = new AdId();
-		Data data = new Data();
-		
-		dao.loadId(id);
-		
-		ad.setId(id.getId());
-		ad.setData(data.buildDate());
-		ad.setType("Offer");
+		Ad ad = AdFactory.getReference().typePost(publishAdBean.getType());
 		
 		Method[] methodsBean = publishAdBean.getClass().getMethods();
-				
 		Method[] methodsEntity = ad.getClass().getMethods();
 		
 		for(int i = 0; i < methodsBean.length; i++) {
@@ -50,6 +41,15 @@ public class PublishAnOfferAdController implements PublishAnAdInterface{
 				}
 			}
 		}
+		
+		Data data = new Data();
+		ad.setData(data.buildDate());	
+		
+		AdId id = new AdId();
+		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
+		
+		dao.loadId(id);
+		ad.setId(id.getId());
 		
 		dao.storeAd(ad);
 		return ad;
