@@ -45,7 +45,7 @@ public class TestDaoAd {
 		storedAd.setBody(body);
 		storedAd.setId(5);
 		
-		DAOAd daoAd = (DAOAd) DAOFactory.getReference("Ad").getDAOReference();
+		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		
 		daoAd.storeAd(storedAd);
 		Ad loadedAd = new Ad();

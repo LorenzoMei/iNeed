@@ -55,6 +55,7 @@ public class ViewSignUp extends View implements Initializable{
         
 	@FXML protected void handleSubmitButtonBack(ActionEvent event) {
 		//TODO buttonBack functionalities
+		Context.getReference().goNext();
 		actionSignIn.setText("");
         actionCancel.setText("Ciao");
     }

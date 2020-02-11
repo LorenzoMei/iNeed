@@ -19,7 +19,7 @@ public class TestDAOUser {
 		stored.setUsername("Daniele");
 		stored.setPassw("galeone879");
 		
-		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference();
+		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		dao.storeUser(stored);
 		dao.loadUser(loaded, stored.getUsername());
 		Assert.assertEquals(stored.getUsername(), loaded.getUsername());
@@ -37,7 +37,7 @@ public class TestDAOUser {
 		stored.setPassw("galeone879");
 		stored.setFriend(friend);
 		
-		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference();
+		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		dao.storeUser(friend);
 		dao.storeUser(stored);
 		dao.loadUser(loaded, stored.getUsername());
@@ -57,7 +57,7 @@ public class TestDAOUser {
 		stored.setPassw("galeone879");
 		stored.setBDate(storedBDate);
 		
-		DAOUser dao = (DAOUser) DAOFactory.getReference("User").getDAOReference();
+		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		dao.storeUser(stored);
 		dao.loadUser(loaded, stored.getUsername());
 		Assert.assertEquals(stored.getBDate().get(Calendar.YEAR), loaded.getBDate().get(Calendar.YEAR));

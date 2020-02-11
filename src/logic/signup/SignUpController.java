@@ -22,6 +22,7 @@ public class SignUpController implements SignUpControllerInterface{
 
 	public void signUp(SignUpBean bean) throws UsernameAlreadyTakenException {
 		
+		Boolean checker = true;
 		String username = bean.getUsername();
 		String passw = bean.getPassword();
 		String email = bean.getEmail();
@@ -32,10 +33,10 @@ public class SignUpController implements SignUpControllerInterface{
 		
 		User userTemp = new User();
 		
-		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
+		DAOUser DAO = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		
 		try {
-			dao.loadUser(userTemp, username);
+			DAO.loadUser(userTemp, username);
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
 			userTemp.setUsername(username);
@@ -45,12 +46,13 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setName(name);
 			userTemp.setSurName(surName);
 			userTemp.setBDate(bDate);
-			dao.storeUser(userTemp);
+			DAO.storeUser(userTemp);
 			
-			return;
+			checker = false;
 		}
 		
-		throw new UsernameAlreadyTakenException();
+		if(checker) 
+			throw new UsernameAlreadyTakenException();
 
 	}
 
