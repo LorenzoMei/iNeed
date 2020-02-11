@@ -54,7 +54,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		}		 
 	}
 	
-	public void loadId(AdId id) {
+	public void loadLastId(AdId id) {
 		
 		List <String> primaryKeyNames = new ArrayList <>();
 		primaryKeyNames.add("name");
@@ -63,6 +63,8 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		
 		try {
 			this.load(id, primaryKeyValues);
+			id.setId(id.getId() + 1);
+			this.store(id, primaryKeyNames);
 		} catch (ElementInDBNotFoundException e) {
 			logger.log(Level.INFO, "file" + e.getPath() + " not found");
 			logger.log(Level.INFO, "create file " + e.getPath());
