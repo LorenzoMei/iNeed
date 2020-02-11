@@ -22,7 +22,6 @@ public class SignUpController implements SignUpControllerInterface{
 
 	public void signUp(SignUpBean bean) throws UsernameAlreadyTakenException {
 		
-		Boolean checker = true;
 		String username = bean.getUsername();
 		String passw = bean.getPassword();
 		String email = bean.getEmail();
@@ -48,11 +47,10 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setBDate(bDate);
 			DAO.storeUser(userTemp);
 			
-			checker = false;
+			return;
 		}
 		
-		if(checker) 
-			throw new UsernameAlreadyTakenException();
+		throw new UsernameAlreadyTakenException();
 
 	}
 

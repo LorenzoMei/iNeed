@@ -6,6 +6,6 @@ import logic.entity.Ad;
 
 public interface PublishAnAdInterface {
 
-	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException;
+	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, InvocationTargetException;
 
 }
