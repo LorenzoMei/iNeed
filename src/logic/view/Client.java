@@ -18,7 +18,7 @@ public class Client extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Client.stage = primaryStage;
+		Client.setStage(primaryStage); 
 		Context.getReference().goNext();
 		
 		

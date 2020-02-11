@@ -1,6 +1,8 @@
 package logic.view;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Context {
+	Logger logger = Logger.getLogger(this.getClass().getName());
+
 
 	private static Context ref = null;
 	
@@ -36,10 +40,13 @@ public class Context {
 		
 	}
 	
-	public Parent loadScreen(String resource) throws IOException {
+	public Parent loadScreen(String resource) throws FXMLNotFoundException {
        
-        	Parent root = FXMLLoader.load(getClass().getResource(resource));
-            return root;
+            try {
+				return FXMLLoader.load(getClass().getResource(resource));
+			} catch (IOException e) {
+				throw new FXMLNotFoundException();				
+			}
         
 
 	}
@@ -52,9 +59,9 @@ public class Context {
 			stage.show();
 
 			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (FXMLNotFoundException e) {
+			logger.log(Level.SEVERE, e.toString());
+			
 		}
 		
 	}
