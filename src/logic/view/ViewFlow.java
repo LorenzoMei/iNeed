@@ -1,7 +1,10 @@
 package logic.view;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -21,11 +24,12 @@ public class ViewFlow extends View implements Initializable {
     	this.setNext("logic.view.ViewFlow");
 	}
 	
-	
+	 String formError = "FORM ERROR!";
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
 	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
+	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
 	 public void initialize(URL location, ResourceBundle resources) {
 		 searchTextField.setPromptText("*Es. Meccanico auto");
@@ -68,8 +72,8 @@ public class ViewFlow extends View implements Initializable {
 			nextView.setPrevious(this);
 			Context.getReference().setCurrentView(nextView);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.toString() + " Error in goNext");
+
 		}
 		
 		

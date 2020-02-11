@@ -20,7 +20,6 @@ public class LoginController implements LoginControllerInterface{
 	
 	public void login(CredentialsBean credentials) throws WrongPasswordException, UserNotFoundException{
 		
-//		TODO implement handling error logic for user not found case
 		
 		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference("User");  
 		User u = new User();

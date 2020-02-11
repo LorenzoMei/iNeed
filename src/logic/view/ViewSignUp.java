@@ -28,6 +28,7 @@ import logic.signup.UsernameAlreadyTakenException;
  
 public class ViewSignUp extends View implements Initializable{
 	
+	String formError = "FORM ERROR!";
     @FXML private Text actionSignIn;
     @FXML private Text actionCancel;
     @FXML private TextField nameTextField;
@@ -130,7 +131,6 @@ public class ViewSignUp extends View implements Initializable{
     	logger.log(Level.SEVERE, "Signup Populated the textInputFields");
 
 
-
         String username = userNameTextField.getText();
         String passw = passwordTextField.getText();
         String vPsw = passwordVTextField.getText();
@@ -143,7 +143,7 @@ public class ViewSignUp extends View implements Initializable{
         LocalDate bDate = datePickerTextField.getValue();        
         
         if(bDate == null) {
-        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "Insert a Date please!");
+        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Insert a Date please!");
             return;
     
         }
@@ -170,20 +170,20 @@ public class ViewSignUp extends View implements Initializable{
 
 		
     	if((difference) < 18 || (bYear > todayYear) ) {
-			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "Invalid date, you're too young chek regulations ");
+			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Invalid date, you're too young check regulations ");
 
     	}
 		
         
         if(passw.compareTo(vPsw) != 0) {
-            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Form Error!", "Your password doesn't match!");
+            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),formError, "Your password doesn't match!");
             return;
     }
     
 		for(int i = 0; i < textInputFields.size(); i++) {
 		        logger.log(Level.SEVERE, textInputFields.get(i).getClass().getSimpleName());
 		        if(textInputFields.get(i).getText().isEmpty()) {
-		        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Service Error!", "Empty Fields, complete all the obligatoryFileds");
+		        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Service field Error!", "Empty Fields, complete all the obligatoryFileds");
 		            return;
 		        }
 		        else {

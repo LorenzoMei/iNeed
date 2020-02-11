@@ -1,10 +1,6 @@
 package logic.view;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +27,7 @@ import logic.login.WrongPasswordException;
 
 public class ViewLogin extends View implements Initializable {
 	
-	
+	 String formError = "FORM ERROR!";
 	 @FXML private Text actionLogIn;
 	 @FXML private Text actionCancel;
 	 @FXML private TextField userNameTextField;
@@ -103,7 +99,7 @@ public class ViewLogin extends View implements Initializable {
         	
         	logger.log(Level.SEVERE, textInputFields.get(i).getClass().getSimpleName());
         	if(textInputFields.get(i).getText().isEmpty()) {
-        		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Service Error!", "Empty Fields");
+        		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Empty Fields");
                 return;
         	}
         	else {
@@ -149,7 +145,7 @@ public class ViewLogin extends View implements Initializable {
 			nextView.setPrevious(this);
 			Context.getReference().setCurrentView(nextView);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.toString() + " Error in goNext");
 		}
 		
 		
