@@ -32,10 +32,10 @@ public class SignUpController implements SignUpControllerInterface{
 		
 		User userTemp = new User();
 		
-		DAOUser DAO = (DAOUser) DAOFactory.getReference().getDAOReference("User");
+		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		
 		try {
-			DAO.loadUser(userTemp, username);
+			dao.loadUser(userTemp, username);
 		} catch (UserNotFoundException e) {
 			e.printStackTrace();
 			userTemp.setUsername(username);
@@ -45,7 +45,7 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setName(name);
 			userTemp.setSurName(surName);
 			userTemp.setBDate(bDate);
-			DAO.storeUser(userTemp);
+			dao.storeUser(userTemp);
 			
 			return;
 		}
