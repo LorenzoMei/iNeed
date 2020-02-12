@@ -1,22 +1,28 @@
 package logic.entity;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class Message {
-	private User user;
+	private String userSenderUsername;
+	private String userReciverUsername;
 	private String text;
 	private Object image;
-	private Calendar data;
+	private Date data;
 
 	public Message() {
-		this.user = null;
+		this.userSenderUsername = "";
+		this.userReciverUsername = "";
 		this.text = "";
 		this.image = null;
 		this.data = null;
 	}
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserSenderUsername(String userSender) {
+		this.userSenderUsername = userSender;
+	}
+	
+	public void setUserReciverUsername(String userReciver) {
+		this.userReciverUsername = userReciver;
 	}
 	
 	public void setText(String text) {
@@ -27,12 +33,16 @@ public class Message {
 		this.image = image;
 	}
 	
-	public void setData(Calendar data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 	
-	public User getUser() {
-		return this.user;
+	public String getUserSenderUsername() {
+		return this.userSenderUsername;
+	}
+	
+	public String getUserReciverUsername() {
+		return this.userReciverUsername;
 	}
 	
 	public String getText() {
@@ -43,7 +53,7 @@ public class Message {
 		return this.image;
 	}
 	
-	public Calendar getData() {
+	public Date getData() {
 		return this.data;
 	}
 }

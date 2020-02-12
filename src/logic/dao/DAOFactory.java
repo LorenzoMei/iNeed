@@ -14,6 +14,7 @@ public class DAOFactory {
 	private static DAOFactory ref = null;
 	public static final String ENTITYNAME_AD = "Ad";
 	public static final String ENTITYNAME_USER = "User";
+	public static final String ENTITYNAME_MESSAGE = "Message";
 	
 	private DAOFactory() {}
 	

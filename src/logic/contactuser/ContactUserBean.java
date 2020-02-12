@@ -1,20 +1,24 @@
 package logic.contactuser;
 
-import logic.entity.User;
-
 public class ContactUserBean {
-	private User user;
+	private String userSenderUsername;
+	private String userReciverUsername;
 	private String text;
 	private Object image;
 	
 	public ContactUserBean() {
-		this.user = null;
+		this.userSenderUsername = null;
+		this.userReciverUsername = null;
 		this.text = "";
 		this.image = null;
 	}
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserSenderUsername(String userSender) {
+		this.userSenderUsername = userSender;
+	}
+	
+	public void setUserReciverUsername(String userReciver) {
+		this.userReciverUsername = userReciver;
 	}
 	
 	public void setText(String text) {
@@ -25,8 +29,12 @@ public class ContactUserBean {
 		this.image = image;
 	}
 	
-	public User getUser() {
-		return this.user;
+	public String getUserSenderUsername() {
+		return this.userSenderUsername;
+	}
+	
+	public String getUserReciverUsername() {
+		return this.userReciverUsername;
 	}
 	
 	public String getText() {

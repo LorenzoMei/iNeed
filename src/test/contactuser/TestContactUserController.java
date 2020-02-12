@@ -1,7 +1,7 @@
 package test.contactuser;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Calendar;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.Assert;
@@ -17,25 +17,40 @@ class TestContactUserController {
 	@Test
 	public void testMessageEntity() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
-		User user = new User();
-		user.setName("Pippo");
-		user.setSurName("Pluto");
-		user.setEmail("ciao@gmail.com");
-		user.setCity("Rome");
+		User userSender = new User();
+		userSender.setName("Pippo");
+		userSender.setUsername("Pluto");
+		userSender.setEmail("ciao@gmail.com");
+		userSender.setCity("Rome");
+		
+		User userReciver = new User();
+		userReciver.setName("topolino");
+		userReciver.setUsername("minnie");
+		userReciver.setEmail("deve@njdevde.com");
+		userReciver.setCity("Torino");
 		
 		String text = "Ciao, ti contatto per metterci d'accordo sul favore che ti dovevo fare";
 		
-		ContactUserBean bean = new ContactUserBean();
+		ContactUserBean contactBean = new ContactUserBean();
 		
-		bean.setUser(user);
-		bean.setText(text);
+		contactBean.setUserSenderUsername(userSender.getUsername());
+		contactBean.setUserReciverUsername(userReciver.getUsername());
+		contactBean.setText(text);
 		
 		ContactUserInterface controller = ContactUserController.getInstance();
-		Message message = controller.contactUser(bean);
+		controller.writeMessage(contactBean);
 		
-		Assert.assertSame(bean.getUser(), message.getUser());
-		Assert.assertEquals(bean.getText(), message.getText());
-		System.out.println(message.getData().getTime());
+		List<Message> message = controller.readMessages(contactBean);
+				
+		for(int i = 0; i < message.size(); i++) {
+			System.out.println("SENDER: " +message.get(i).getUserSenderUsername());
+			System.out.println("RECIVER: " +message.get(i).getUserReciverUsername());
+			System.out.println("TEXT: " +message.get(i).getText());
+			System.out.println("DATA: " +message.get(i).getData());
+			Assert.assertEquals(contactBean.getUserSenderUsername(), message.get(i).getUserSenderUsername());
+			Assert.assertEquals(contactBean.getUserReciverUsername(), message.get(i).getUserReciverUsername());
+			Assert.assertEquals(contactBean.getText(), message.get(i).getText());
+		}
 	}
 
 }

@@ -28,8 +28,8 @@ public abstract class DAOSerialize {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	private String dBPath = readDBPath();
 	
-	private static final String PRIMARY_KEY_VALUES_SEPARATOR = "#";
-	private static final String SERIALIZED_EXTENSION = ".ser";
+	protected final String PRIMARY_KEY_VALUES_SEPARATOR = "#";
+	protected final String SERIALIZED_EXTENSION = ".ser";
 	
 	protected String readDBPath() {
 //		TODO: stub
@@ -54,9 +54,9 @@ public abstract class DAOSerialize {
 		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		for (int k = 0; k < primaryKeyValues.size(); k ++) {
 			stringBuilder.append(primaryKeyValues.get(k).toString());
-			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
+			stringBuilder.append(this.PRIMARY_KEY_VALUES_SEPARATOR);
 		}
-		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
+		stringBuilder.append(this.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
 
@@ -70,13 +70,13 @@ public abstract class DAOSerialize {
 		try{
 			for (int k = 0; k < primaryKeyNames.size(); k ++) {
 				stringBuilder.append(ReflectionMiscellaneous.getGetter(primaryKeyNames.get(k), obj).invoke(obj, (Object[])null).toString());
-				stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
+				stringBuilder.append(this.PRIMARY_KEY_VALUES_SEPARATOR);
 			}	
 		}
 		catch(NoSuchGetterException e) {
 			logger.log(Level.SEVERE, "No such get method for attribute " + e.getAttrName());
 		}
-		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
+		stringBuilder.append(this.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
 	
