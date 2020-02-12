@@ -10,37 +10,46 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <path id="JUnit 5.libraryclasspath">
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.jupiter.api_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.jupiter.engine_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.jupiter.params_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.platform.commons_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.platform.engine_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.platform.launcher_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.platform.runner_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.platform.suite.api_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit.vintage.engine_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.opentest4j_1.2.0.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.apiguardian_1.1.0.v20190826-0900.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
-    </path>
-    <path id="JavaFX SDK.libraryclasspath">
-        <pathelement location="../../../../../../../Users/mikes/.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_2.3.0.201603030809.jar"/>
-    </path>
     <path id="iNeed.classpath">
         <pathelement location="bin"/>
-        <path refid="JUnit 5.libraryclasspath"/>
-        <path refid="JavaFX SDK.libraryclasspath"/>
-        <pathelement location="JSON library/json-simple-1.1.1.jar"/>
-        <pathelement location="JSON library/GMapsFX-2.10.0.jar"/>
-        <pathelement location="External librarys/GMapsFX-2.10.0.jar"/>
+        <pathelement location="External libraries/GMapsFX-2.10.0.jar"/>
     </path>
+    <path id="run.Client.classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.Client.bootclasspath"/>
+    <path id="run.Registration (1).classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.Registration (1).bootclasspath"/>
+    <path id="run.Registration (2).classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.Registration (2).bootclasspath"/>
+    <path id="run.RegistrationModule.classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.RegistrationModule.bootclasspath"/>
+    <path id="run.TestSignup.classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.TestSignup.bootclasspath"/>
+    <path id="run.ViewLogin (1).classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.ViewLogin (1).bootclasspath"/>
+    <path id="run.ViewLogin.classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.ViewLogin.bootclasspath"/>
+    <path id="run.ViewSignUp.classpath">
+        <path refid="iNeed.classpath"/>
+    </path>
+    <path id="run.ViewSignUp.bootclasspath"/>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src">
+            <fileset dir=".">
                 <exclude name="**/*.ucls"/>
                 <exclude name="**/*.java"/>
             </fileset>
@@ -55,7 +64,7 @@
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
+            <src path="."/>
             <classpath refid="iNeed.classpath"/>
         </javac>
     </target>
@@ -75,22 +84,34 @@
     </target>
     <target name="Client">
         <java classname="logic.view.Client" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.Client.classpath"/>
+            <bootclasspath>
+                <path refid="run.Client.bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="Registration (1)">
         <java classname="test.view.register.Registration" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.Registration (1).classpath"/>
+            <bootclasspath>
+                <path refid="run.Registration (1).bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="Registration (2)">
         <java classname="logic.view.registration.Registration" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.Registration (2).classpath"/>
+            <bootclasspath>
+                <path refid="run.Registration (2).bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="RegistrationModule">
         <java classname="test.view.register.RegistrationModule" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.RegistrationModule.classpath"/>
+            <bootclasspath>
+                <path refid="run.RegistrationModule.bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="TestSignup">
@@ -99,22 +120,34 @@
             <formatter type="xml"/>
             <test name="test.view.signup.TestSignup" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.TestSignup.classpath"/>
+            <bootclasspath>
+                <path refid="run.TestSignup.bootclasspath"/>
+            </bootclasspath>
         </junit>
     </target>
     <target name="ViewLogin (1)">
         <java classname="logic.view.ViewLogin" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.ViewLogin (1).classpath"/>
+            <bootclasspath>
+                <path refid="run.ViewLogin (1).bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="ViewLogin">
         <java classname="logic.view.ViewLogIn" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.ViewLogin.classpath"/>
+            <bootclasspath>
+                <path refid="run.ViewLogin.bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="ViewSignUp">
         <java classname="logic.view.signup.ViewSignUp" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
+            <classpath refid="run.ViewSignUp.classpath"/>
+            <bootclasspath>
+                <path refid="run.ViewSignUp.bootclasspath"/>
+            </bootclasspath>
         </java>
     </target>
     <target name="junitreport">

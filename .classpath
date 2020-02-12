@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<accessrules>
-			<accessrule kind="accessible" pattern="javafx/**"/>
-			<accessrule kind="accessible" pattern="com/sub/webkit/**"/>
-		</accessrules>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/daniele/eclipse-workspace_2019-03/iNeed/JSON library/json-simple-1.1.1.jar"/>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/External libraries/GMapsFX-2.10.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
