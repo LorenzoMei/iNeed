@@ -3,6 +3,8 @@ package logic.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -21,7 +23,6 @@ public class ViewFlow extends View implements Initializable {
 	
 	public ViewFlow() {
 		this.setFXMLPath("fxml_flow.fxml");
-    	this.setNext("logic.view.ViewFlow");
 	}
 	
 	 String formError = "FORM ERROR!";
@@ -36,8 +37,17 @@ public class ViewFlow extends View implements Initializable {
 		}
 	 
 	
+	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
+	 		 actionCancel.setText("");
+		     actionCancel.setText("vado su map");
+          	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
+	    	 Context.getReference().goNext("logic.view.ViewMap");
+
+		 }
+	 
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
- 		Context.getReference().goNext();
+ 		Context.getReference().goNext("logic.view.ViewFlow");
+
  		 actionCancel.setText("");
 	     actionCancel.setText("pagina aggiornata");
 	 }
@@ -47,10 +57,6 @@ public class ViewFlow extends View implements Initializable {
 	        actionCancel.setText("Utente");
 	        
 	}
-    
-
-    
-   
     
     
     private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
@@ -64,19 +70,23 @@ public class ViewFlow extends View implements Initializable {
 
 
     
-	@Override
-	public void goNext() {
+    @Override
+	public void goNext(String viewName) {
 		View nextView;
 		try {
-			nextView = (View) Class.forName(this.getNext()).newInstance();
+//			p
+			System.out.println("ViewFlow: attempting to set nextState as "+viewName);
+			nextView = (View) Class.forName(viewName).newInstance();
+//			p
+			System.out.println("ViewFlow: nextView is "+nextView.getClass().getSimpleName());
 			nextView.setPrevious(this);
+			
 			Context.getReference().setCurrentView(nextView);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString() + " Error in goNext");
 
 		}
-		
-		
+
 	}
     
 }

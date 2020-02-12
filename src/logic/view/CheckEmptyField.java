@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextInputControl;
-import logic.misc.ReflectionMiscellaneous;
+import logic.misc.GetGetterOrSetter;
 import logic.misc.NoSuchGetterException;
 
 public class CheckEmptyField {
@@ -41,7 +41,7 @@ public class CheckEmptyField {
 						&& fieldArrayAttributes[i].getAnnotation(classAnnotation) != null 
 						&& fieldArrayAttributes[i].getType().getSimpleName().contains("Field") ) {
 					try {
-						textInputFields.add((TextInputControl)ReflectionMiscellaneous.getGetter( fieldArrayAttributes[i].getName(), obj).invoke(obj, (Object[]) null));
+						textInputFields.add((TextInputControl)GetGetterOrSetter.getGetter( fieldArrayAttributes[i].getName(), obj).invoke(obj, (Object[]) null));
 					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
 							| NoSuchGetterException e) {
 						

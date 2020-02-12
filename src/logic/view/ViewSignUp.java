@@ -51,7 +51,7 @@ public class ViewSignUp extends View implements Initializable{
     	
     	this.textInputFields = new ArrayList<>();
     	this.setFXMLPath("fxml_signup.fxml");
-    	this.setNext("logic.view.ViewLogin");
+//    	this.setNext("logic.view.ViewLogin");
     }
     
 	@Override
@@ -94,10 +94,14 @@ public class ViewSignUp extends View implements Initializable{
 	}
 	
         
-	@FXML protected void handleSubmitButtonBack(ActionEvent event) {
-		Context.getReference().goNext();
-		actionSignIn.setText("");
-        actionCancel.setText("Ciao");
+	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
+		
+//		p
+		System.out.println("I'm "+this.getClass().getSimpleName()+", setting next to " + this.getNext());
+		System.out.println("ViewSignup: next state set to: "+this.getNext());
+		Context.getReference().goNext("logic.view.ViewLogin");
+//		actionSignIn.setText("");
+//        actionCancel.setText("Ciao");
     }
 	
     @FXML protected void handleSubmitButtonCancel(ActionEvent event) {
@@ -161,8 +165,7 @@ public class ViewSignUp extends View implements Initializable{
 		calendarBuilder.setDate(bYear, bMonth, bDay);
 		Calendar userBirthDate = calendarBuilder.build();
 		
-		int todayDay = today.get(Calendar.DATE);
-		int todayMonth = today.get(Calendar.MONTH) + 1;
+
 		int todayYear = today.get(Calendar.YEAR);
 		int difference = todayYear - bYear;
 		
@@ -210,7 +213,10 @@ public class ViewSignUp extends View implements Initializable{
 	    		actionSignIn.setText("Signed in, welcome " + username);
 	    		
 	    		
-	    		Context.getReference().goNext();
+	    		this.setNext("logic.view.ViewLogin");
+//	    		p
+	    		System.out.println("I'm "+this.getClass().getSimpleName()+", setting next to " + this.getNext());
+	    		Context.getReference().goNext("logic.view.ViewLogin");
 	    		
 	    	}
         
@@ -229,20 +235,22 @@ public class ViewSignUp extends View implements Initializable{
 
 
 	@Override
-	public void goNext() {
+	public void goNext(String viewName) {
 		View nextView;
 		try {
-			nextView = (View) Class.forName(this.getNext()).newInstance();
+//			p
+			System.out.println("ViewSignup: attempting to set nextState as "+viewName);
+			nextView = (View) Class.forName(viewName).newInstance();
+//			p
+			System.out.println("ViewSignUp: nextView is "+nextView.getClass().getSimpleName());
 			nextView.setPrevious(this);
+			
 			Context.getReference().setCurrentView(nextView);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString() + " Error in goNext");
 
 		}
-		
-		
+
 	}
-
-
 
 }

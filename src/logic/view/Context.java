@@ -28,16 +28,22 @@ public class Context {
 		this.currentView = currentView;
 	}
 	
-	public void goNext() {
+	public void goFirstState() {
 		
+		this.goNext(InitialState.INITIAL_STATE_TARGET);
+
+	}
+	
+	public void goNext(String viewName) {
 		if (currentView == null) {
 			currentView = new InitialState();
 		}
-		
-		currentView.goNext();
+		System.out.println("Context: currentState is "+currentView.getClass().getSimpleName());
+		currentView.goNext(viewName);
+//		p
+		System.out.println("Context: currentState changed to "+currentView.getClass().getSimpleName());
+
 		this.draw(Client.getStage());
-		
-		
 	}
 	
 	public Parent loadScreen(String resource) throws FXMLNotFoundException {
@@ -54,6 +60,9 @@ public class Context {
 	public void draw(Stage stage) {
 		
 		try {
+//			p
+//			logger.log(Level.SEVERE, "I'M ON CONTEXT MY CURRENT VIEW IS: " + currentView.getClass().getSimpleName());
+
 			Parent root = this.loadScreen(currentView.getFXMLPath());
 			stage.setScene(new Scene(root));
 			stage.show();

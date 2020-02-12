@@ -62,7 +62,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
                            </children>
                            <effect>
                               <DropShadow />
@@ -141,7 +141,7 @@
             <Button layoutX="758.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleSubmitButtonUpdate" text="Update" />
             <HBox layoutX="369.0" layoutY="20.0">
                <children>
-                  <Button mnemonicParsing="false" text="View on Map" />
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" text="View on Map" />
                </children>
                <effect>
                   <DropShadow color="#fcfcfc" />

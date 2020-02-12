@@ -37,6 +37,6 @@ public abstract class View {
 	
 	
     //This method will allow the injection of the Parent ScreenPane
-    public abstract void goNext();
+    public abstract void goNext(String viewName);
 }
 

@@ -89,7 +89,7 @@
          </font>
       </Text>
       <Text fx:id="actionCancel" fill="#fcfc1b" layoutX="444.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="225.6708984375" />
-      <HBox layoutX="504.0" layoutY="711.0" style="-fx-background-color: white;">
+      <HBox layoutX="504.0" layoutY="650.0" style="-fx-background-color: white;">
          <children>
             <Button mnemonicParsing="false" onAction="#handleSubmitButtonSignUp" text="SignUp">
             <font>
@@ -114,12 +114,8 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Text>
-      <ToolBar prefHeight="40.0" prefWidth="1100.0">
-        <items>
-          <Button mnemonicParsing="false" onAction="#handleSubmitButtonBack" text="Back" />
-        </items>
-      </ToolBar>
-      <Hyperlink fx:id="logInHyperLink" layoutX="492.0" layoutY="679.0" text="Click Here to logIn" underline="true" />
+      <ToolBar prefHeight="40.0" prefWidth="1100.0" />
       <Hyperlink fx:id="helpHyperLink" layoutX="537.0" layoutY="847.0" text="help" underline="true" />
+    <Button layoutX="518.0" layoutY="729.0" mnemonicParsing="false" onAction="#handleSubmitButtonLogIn" text="Or LogIn" />
    </children>
 </Pane>

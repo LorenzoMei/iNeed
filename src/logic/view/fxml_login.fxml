@@ -97,17 +97,9 @@
             <DropShadow height="24.11" radius="12.3325" width="27.22" />
          </effect>
       </HBox>
-      <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="753.0" prefHeight="29.0" prefWidth="106.0" text="SignUp" textAlignment="CENTER" underline="true">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Hyperlink>
       <ToolBar blendMode="MULTIPLY" prefHeight="45.0" prefWidth="1100.0">
         <items>
             <HBox>
-               <children>
-                <Button mnemonicParsing="false" onAction="#handleSubmitButtonBack" text="Back" />
-               </children>
                <effect>
                   <DropShadow />
                </effect>
@@ -129,5 +121,6 @@
             <Font size="13.0" />
          </font>
       </Hyperlink>
+    <Button layoutX="504.0" layoutY="765.0" mnemonicParsing="false" onAction="#handleSubmitButtonSignUp" text="SignUp" />
    </children>
 </Pane>
