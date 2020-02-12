@@ -19,17 +19,19 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import logic.misc.GetGetterOrSetter;
+import logic.misc.ReflectionMiscellaneous;
 import logic.misc.NoSuchGetterException;
 import logic.misc.NoSuchSetterException;
 
 public abstract class DAOSerialize {
 
 	Logger logger = Logger.getLogger(this.getClass().getName());
-	
 	private String dBPath = readDBPath();
 	
-	private String readDBPath() {
+	private static final String PRIMARY_KEY_VALUES_SEPARATOR = "#";
+	private static final String SERIALIZED_EXTENSION = ".ser";
+	
+	protected String readDBPath() {
 //		TODO: stub
 		return "db" + File.separator + "serialized" + File.separator;
 	}
@@ -51,9 +53,10 @@ public abstract class DAOSerialize {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		for (int k = 0; k < primaryKeyValues.size(); k ++) {
-			stringBuilder.append(primaryKeyValues.get(k));
+			stringBuilder.append(primaryKeyValues.get(k).toString());
+			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 		}
-		stringBuilder.append(".ser");
+		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
 
@@ -66,13 +69,14 @@ public abstract class DAOSerialize {
 		}
 		try{
 			for (int k = 0; k < primaryKeyNames.size(); k ++) {
-				stringBuilder.append(GetGetterOrSetter.getGetter(primaryKeyNames.get(k), obj).invoke(obj, (Object[])null));
+				stringBuilder.append(ReflectionMiscellaneous.getGetter(primaryKeyNames.get(k), obj).invoke(obj, (Object[])null).toString());
+				stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 			}	
 		}
 		catch(NoSuchGetterException e) {
 			logger.log(Level.SEVERE, "No such get method for attribute " + e.getAttrName());
 		}
-		stringBuilder.append(".ser");
+		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
 	
@@ -87,10 +91,11 @@ public abstract class DAOSerialize {
 		
 		for (int i = 0; i < attributes.length; i ++) {
 
-			if ((Modifier.isPrivate(attributes[i].getModifiers()) || Modifier.isProtected(attributes[i].getModifiers())) && !attributes[i].isSynthetic()) {					
+			if ((Modifier.isPrivate(attributes[i].getModifiers()) || Modifier.isProtected(attributes[i].getModifiers()))
+					&& !attributes[i].isSynthetic()) {					
 				Object attrVal = null;
 				try (ObjectOutputStream tester = new ObjectOutputStream(new ByteArrayOutputStream())) {
-					attrVal = GetGetterOrSetter.getGetter(attributes[i].getName(), obj).invoke(obj, (Object[]) null);
+					attrVal = ReflectionMiscellaneous.getGetter(attributes[i].getName(), obj).invoke(obj, (Object[]) null);
 					tester.writeObject(attrVal);
 				} catch (NotSerializableException e) {			
 					attrVal = this.entityToSerializable(attrVal);
@@ -120,7 +125,7 @@ public abstract class DAOSerialize {
 				buffVal = buffer.getAttributes().get(attributes[j].getName());
 				if ((Modifier.isPrivate(attributes[j].getModifiers()) || Modifier.isProtected(attributes[j].getModifiers())) && !attributes[j].isSynthetic() && !EntitySerializable.class.isInstance(buffVal)){		
 						try{
-							GetGetterOrSetter.getSetter(attributes[j].getName(), obj).invoke(obj, buffVal);
+							ReflectionMiscellaneous.getSetter(attributes[j].getName(), obj).invoke(obj, buffVal);
 						}
 						catch(NoSuchSetterException e) {
 							logger.log(Level.SEVERE, "No such set method for attribute " + e.getAttrName());
@@ -130,7 +135,7 @@ public abstract class DAOSerialize {
 						nestedObj = Class.forName(((EntitySerializable) buffer.getAttributes().get(attributes[j].getName())).getEntityClassName()).newInstance();
 						this.serializableToEntity(nestedObj, (EntitySerializable) buffVal);
 						try{
-							GetGetterOrSetter.getSetter(attributes[j].getName(), obj).invoke(obj, nestedObj);
+							ReflectionMiscellaneous.getSetter(attributes[j].getName(), obj).invoke(obj, nestedObj);
 						}
 						catch(NoSuchSetterException e) {
 							logger.log(Level.SEVERE, "No such set method for attribute " + e.getAttrName());

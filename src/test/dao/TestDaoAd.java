@@ -44,13 +44,13 @@ public class TestDaoAd {
 		storedAd.setUser(user);
 		storedAd.setTitle(title);
 		storedAd.setBody(body);
-		storedAd.setId(5);
+//		storedAd.setId(5);
 		
 		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
 		
-		daoAd.storeAd(storedAd);
+		daoAd.storeNewAd(storedAd);
 		Ad loadedAd = new RequestAd();
-		daoAd.loadAd(loadedAd, 5);
+		daoAd.loadAd(loadedAd, 1);
 		
 		Assert.assertEquals(storedAd.getUser().getUsername(), loadedAd.getUser().getUsername());
 	}

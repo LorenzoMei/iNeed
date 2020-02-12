@@ -2,26 +2,35 @@ package logic.entity;
 
 public class AdId{
 
-	private String name= "lastId";
-	private int id;
+//	private String name;
+	private int lastId;
+	private String type;
 	
-	public AdId() {
-		this.id = 1;
+//	public AdId() {
+//		this.name = this.getClass().getSimpleName();
+//	}
+	
+	public void setType(String val) {
+		this.type = val;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setLastId(int id) {
+		this.lastId = id;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+	
+	public String getType() {
+		return this.type;
 	}
 	
-	public int getId() {
-		return this.id;
+	public int getLastId() {
+		return this.lastId;
 	}
 	
-	public String getName() {
-		return this.name;
-	}
+//	public String getName() {
+//		return this.name;
+//	}
 }
