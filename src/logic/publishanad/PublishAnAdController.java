@@ -3,7 +3,6 @@ package logic.publishanad;
 import logic.dao.DAOFactory;
 import logic.entity.Ad;
 import logic.entity.AdFactory;
-import logic.entity.AdId;
 import logic.entity.Data;
 
 import java.lang.reflect.InvocationTargetException;
@@ -45,12 +44,7 @@ public class PublishAnAdController implements PublishAnAdInterface{
 		Data data = new Data();
 		ad.setData(data.buildDate());	
 		
-		AdId id = new AdId();
 		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
-		
-		dao.loadLastId(id);
-		ad.setId(id.getId());
-		
 		dao.storeAd(ad);
 		return ad;
 	}

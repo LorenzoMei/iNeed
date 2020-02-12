@@ -44,6 +44,11 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	}
 	
 	public void storeAd(Ad ad) {
+		
+		AdId id= new AdId();
+		loadLastId(id);
+		ad.setId(id.getId());
+		
 		List<String> primaryKeyNames = new ArrayList<>();
 		primaryKeyNames.add("id");
 		try {
@@ -54,7 +59,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		}		 
 	}
 	
-	public void loadLastId(AdId id) {
+	private void loadLastId(AdId id) {
 		
 		List <String> primaryKeyNames = new ArrayList <>();
 		primaryKeyNames.add("name");
