@@ -1,6 +1,10 @@
 package logic.dao;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,6 +14,8 @@ public class DAOFactory {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	private static DAOFactory ref = null;
+	public static final String ENTITYNAME_AD = "Ad";
+	public static final String ENTITYNAME_USER = "User";
 	
 	private DAOFactory() {}
 	
@@ -26,6 +32,24 @@ public class DAOFactory {
 //		TODO stub
 		
 		return "Serialize";
+	}
+	
+	public List<String> getSupportedEntitesNames(){
+		Field[] allFields = this.getClass().getDeclaredFields();
+		List<String> supportedEntitiesNames = new ArrayList<>();
+			for (int i = 0; i < allFields.length; i ++) {
+				try {
+					if (Modifier.isStatic(allFields[i].getModifiers())
+							&& Modifier.isFinal(allFields[i].getModifiers())
+							&& !allFields[i].isSynthetic()
+							&& allFields[i].getName().contains("ENTITYNAME")) {
+							supportedEntitiesNames.add((String) allFields[i].get(null));
+					}
+				} catch (IllegalArgumentException | IllegalAccessException e) {
+					logger.log(Level.SEVERE, e.toString()); 
+			} 
+		}
+		return supportedEntitiesNames;
 	}
 	
 	public Object getDAOReference(String entity) {
