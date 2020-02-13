@@ -4,8 +4,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Calendar;
 
-import logic.viewanad.NoSuchIsOrderedByMethodException;
-
 public class EntityComparator {
 	
 	public final static String NAME_ENTITYCOMPARATOR_METHODS = "isSortedBy";
@@ -14,7 +12,7 @@ public class EntityComparator {
 		
 		return d1.compareTo(d2) >= 0;
 	}
-	public static Method getIsSortedByMethod(Order order) throws NoSuchIsOrderedByMethodException{
+	public static Method getIsSortedByMethod(Order order) throws NoSuchIsSortedByMethodException{
 		Method[] allMethods = EntityComparator.class.getDeclaredMethods();
 		for (int i = 0; i < allMethods.length; i ++) {
 			if (Modifier.isPrivate(allMethods[i].getModifiers()) 
@@ -23,7 +21,7 @@ public class EntityComparator {
 				return allMethods[i];
 			}
 		}
-		throw new NoSuchIsOrderedByMethodException(order);
+		throw new NoSuchIsSortedByMethodException(order);
 		
 	}
 }

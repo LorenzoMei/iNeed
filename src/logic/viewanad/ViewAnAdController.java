@@ -14,6 +14,8 @@ import logic.entity.Ad;
 import logic.entity.OfferAd;
 import logic.entity.RequestAd;
 import logic.misc.EntityComparator;
+import logic.misc.NoSuchIsSortedByMethodException;
+import logic.misc.Order;
 
 public class ViewAnAdController implements ViewAnAdControllerInterface{
 
@@ -29,7 +31,7 @@ public class ViewAnAdController implements ViewAnAdControllerInterface{
 	
 	private ViewAnAdController() {}
 	
-	private void sortAds(List<Ad> allAds, Order order) throws NoSuchIsOrderedByMethodException {
+	private void sortAds(List<Ad> allAds, Order order) throws NoSuchIsSortedByMethodException {
 		for (int i = 0; i < allAds.size(); i ++) {
 			int minPos = i;
 			for (int j = i ; j < allAds.size(); j ++) {
@@ -39,6 +41,8 @@ public class ViewAnAdController implements ViewAnAdControllerInterface{
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 					logger.log(Level.SEVERE, e.toString() + ": " + e.getMessage());
+				} catch (NoSuchIsSortedByMethodException e) {
+					logger.log(Level.WARNING, e.getMessage());
 				}
 			}
 			Ad temp = allAds.get(i);
@@ -77,7 +81,7 @@ public class ViewAnAdController implements ViewAnAdControllerInterface{
 			try {
 				this.sortAds(allAds, bean.getOrder());
 			}
-			catch (NoSuchIsOrderedByMethodException e) {
+			catch (NoSuchIsSortedByMethodException e) {
 				logger.log(Level.WARNING, e.getMessage());
 				logger.log(Level.WARNING, "setting list order as " + Order.UNSORTED.getValue());
 			}

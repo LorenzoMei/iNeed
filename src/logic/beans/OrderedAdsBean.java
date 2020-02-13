@@ -3,7 +3,7 @@ package logic.beans;
 import java.util.List;
 
 import logic.entity.Ad;
-import logic.viewanad.Order;
+import logic.misc.Order;
 public class OrderedAdsBean {
 	
 	private List<Ad> ads;

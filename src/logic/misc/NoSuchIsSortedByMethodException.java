@@ -1,10 +1,10 @@
-package logic.viewanad;
+package logic.misc;
 
-public class NoSuchIsOrderedByMethodException extends Exception {
+public class NoSuchIsSortedByMethodException extends Exception {
 	
 	private final Order order;
 	
-	public NoSuchIsOrderedByMethodException(Order order) {
+	public NoSuchIsSortedByMethodException(Order order) {
 		super("unsupported order " + order.getValue());
 		this.order = order;
 	}
