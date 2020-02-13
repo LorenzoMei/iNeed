@@ -5,9 +5,16 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+
+import com.sun.istack.internal.logging.Logger;
 
 public class ReflectionMiscellaneous {
 	
+	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class);
+	
+	private ReflectionMiscellaneous() {}
+		
 	public static Method getGetter(String attrName, Object obj) throws NoSuchGetterException {
 		try{
 			return getGetterOrSetter("get", attrName, obj);
@@ -29,10 +36,10 @@ public class ReflectionMiscellaneous {
 	private static Method getGetterOrSetter(String getOrSet, String attrName, Object obj) throws NoSuchMethodException {
 		
 		Method[] methods = obj.getClass().getMethods();
-		System.out.println("Searching method " + getOrSet + " for: " + attrName);
+		logger.log(Level.INFO, "Searching method " + getOrSet + " for: " + attrName);
 		for (int j = 0; j < methods.length; j ++) {
 			if (methods[j].getName().contains(getOrSet) && methods[j].getName().contains(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) && !methods[j].isSynthetic()) {
-				System.out.println(methods[j].getName());
+				logger.log(Level.INFO, methods[j].getName());
 				return methods[j];
 			}
 		}
@@ -40,8 +47,7 @@ public class ReflectionMiscellaneous {
 	}
 	
 	public static List<Field> getSupported(Object obj, String constantName) {
-//		p
-		System.out.println("getting all constants of " + obj.getClass().getSimpleName());
+		logger.log(Level.INFO, "getting all constants of " + obj.getClass().getSimpleName());
 		Field[] allFields = obj.getClass().getDeclaredFields();
 		List<Field> supported = new ArrayList<>();
 			for (int i = 0; i < allFields.length; i ++) {
@@ -49,10 +55,9 @@ public class ReflectionMiscellaneous {
 							&& Modifier.isStatic(allFields[i].getModifiers())
 							&& !allFields[i].isSynthetic()
 							&& allFields[i].getName().contains(constantName)) {
-//					p
-					System.out.println("adding " + allFields[i].getName());
+					logger.log(Level.INFO, "adding " + allFields[i].getName());
 					supported.add(allFields[i]);
-					}
+				}
 		}
 		return supported;
 	}

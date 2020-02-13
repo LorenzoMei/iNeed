@@ -1,4 +1,4 @@
-package logic.viewanad;
+package logic.misc;
 
 public enum Order {
 	TIME ("Time"), UNSORTED (null);

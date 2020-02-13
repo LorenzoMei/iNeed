@@ -5,7 +5,6 @@ import java.lang.reflect.Modifier;
 import java.util.Calendar;
 
 import logic.viewanad.NoSuchIsOrderedByMethodException;
-import logic.viewanad.Order;
 
 public class EntityComparator {
 	
