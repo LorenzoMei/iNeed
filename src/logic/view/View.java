@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
-import logic.entity.User;
 
 public abstract class View {
     
@@ -31,7 +30,6 @@ public abstract class View {
 		this.next = next;
 	}
 	
-
 	public String getNext() {
 		return this.next;
 	}

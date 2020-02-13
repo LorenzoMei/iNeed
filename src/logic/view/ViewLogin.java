@@ -32,8 +32,6 @@ public class ViewLogin extends View implements Initializable {
 	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
 	 @FXML private Hyperlink facebookHyperLink;
-	 private final static String gotoFlow = "logic.view.ViewFlow";
-	 private final static String gotoSigUp = "logic.view.ViewSignUp";
 	 private List<TextInputControl> textInputFields;
   	 Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -54,9 +52,8 @@ public class ViewLogin extends View implements Initializable {
 	
 	 
 	public void initialize(URL location, ResourceBundle resources) {
-		String status = "My location " + location + " my resoursources: " + resources;
-		logger.log(Level.SEVERE, status);
-		userNameTextField.setPromptText("*Es. Rossi.Mario25");
+		logger.log(Level.SEVERE,"My location " + location + " my resoursources: " + resources);
+        userNameTextField.setPromptText("*Es. Rossi.Mario25");
 
 	}
 	 
@@ -64,7 +61,7 @@ public class ViewLogin extends View implements Initializable {
 	@FXML protected void handleSubmitButtonSignUp(ActionEvent event) {
 	        actionCancel.setText("");
 	        actionLogIn.setText("");
-	    	Context.getReference().goNext(gotoSigUp);
+	    	Context.getReference().goNext("logic.view.ViewSignUp");
 
 	}
     
@@ -131,7 +128,7 @@ public class ViewLogin extends View implements Initializable {
 
         		
         		actionLogIn.setText("Logged in, welcome back " + username);
-   	    	    Context.getReference().goNext(gotoFlow);
+   	    	    Context.getReference().goNext("logic.view.ViewFlow");
 
             }
 

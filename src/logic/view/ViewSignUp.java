@@ -41,7 +41,6 @@ public class ViewSignUp extends View implements Initializable{
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
     @FXML private GridPane grid;
-    private final static String gotoLogin = "logic.view.ViewLogin";
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -51,12 +50,12 @@ public class ViewSignUp extends View implements Initializable{
     	
     	this.textInputFields = new ArrayList<>();
     	this.setFXMLPath("fxml_signup.fxml");
+//    	this.setNext("logic.view.ViewLogin");
     }
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		String status = "My location " + location + " my resoursources: " + resources;
-		logger.log(Level.SEVERE, status);
+		logger.log(Level.SEVERE,"My location " + location + " my resoursources: " + resources);
 
 		nameTextField.setPromptText("*Es. Mario");
         surNameTextField.setPromptText("*Es. Rossi");
@@ -98,7 +97,7 @@ public class ViewSignUp extends View implements Initializable{
         
 	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
 		
-		Context.getReference().goNext(gotoLogin);
+		Context.getReference().goNext("logic.view.ViewLogin");
 		actionSignIn.setText("");
 
     }
@@ -151,18 +150,14 @@ public class ViewSignUp extends View implements Initializable{
     
         }
         
-        
+    	logger.log(Level.SEVERE, "bdate: " + bDate );
 
         
 		int bDay = bDate.get(ChronoField.DAY_OF_MONTH);
 		int bMonth = bDate.get(ChronoField.MONTH_OF_YEAR);
 		int bYear = bDate.get(ChronoField.YEAR);
 		
-		final String birthDate = "bdate: " + bDate;
-		final String birthDay = "day: " + bDay;
-        
-    	logger.log(Level.SEVERE, birthDate);
-    	logger.log(Level.SEVERE, birthDay);
+    	logger.log(Level.SEVERE, "day: " + bDay );
 
 		
 		calendarBuilder.setDate(bYear, bMonth, bDay);
@@ -193,8 +188,7 @@ public class ViewSignUp extends View implements Initializable{
 		            return;
 		        }
 		        else {
-		    		logger.log(Level.INFO, "0 Empty Fields");
-
+		        	
 		        }
 			        SignUpBean usersBean = new SignUpBean();
 		    		usersBean.setUsername(username);
@@ -213,9 +207,12 @@ public class ViewSignUp extends View implements Initializable{
 					return;
 				}
 	    		
+	    		
 	    		actionSignIn.setText("Signed in, welcome " + username);
-
-	    		Context.getReference().goNext(gotoLogin);
+	    		
+	    		
+	    		this.setNext("logic.view.ViewLogin");
+	    		Context.getReference().goNext("logic.view.ViewLogin");
 	    		
 	    	}
         

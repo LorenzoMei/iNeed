@@ -15,6 +15,7 @@ import logic.dao.DAOFactory;
 import logic.entity.Ad;
 import logic.entity.OfferAd;
 import logic.entity.RequestAd;
+import logic.misc.EntityComparator;
 
 public class ViewAnAdController implements ViewAnAdControllerInterface{
 
@@ -30,34 +31,12 @@ public class ViewAnAdController implements ViewAnAdControllerInterface{
 	
 	private ViewAnAdController() {}
 	
-	private Method getIsSortedByMethod(String order) throws NoSuchListByOrderMethodException{
-		Method[] allMethods = this.getClass().getDeclaredMethods();
-		for (int i = 0; i < allMethods.length; i ++) {
-			if (Modifier.isPrivate(allMethods[i].getModifiers()) 
-					&& allMethods[i].getName().contains("IsSorted" + order)
-					&& !allMethods[i].isSynthetic()) {
-				return allMethods[i];
-			}
-		}
-		throw new NoSuchListByOrderMethodException(order);
-		
-	}
-	
-	private Boolean IsSortedByTime(Ad ad1, Ad ad2){
-		if (ad1.getData().compareTo(ad2.getData()) >= 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	
-	private void sortAds(List<Ad> allAds, String order) throws NoSuchListByOrderMethodException {
+	private void sortAds(List<Ad> allAds, Order order) throws NoSuchIsOrderedByMethodException {
 		for (int i = 0; i < allAds.size(); i ++) {
 			int minPos = i;
 			for (int j = i ; j < allAds.size(); j ++) {
 				try {
-					if (((Boolean) this.getIsSortedByMethod(order).invoke(this, allAds.get(minPos), allAds.get(j))) == false) {
+					if (((Boolean) EntityComparator.getIsSortedByMethod(order).invoke(this, allAds.get(minPos), allAds.get(j))) == false) {
 						minPos = j;
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -96,13 +75,13 @@ public class ViewAnAdController implements ViewAnAdControllerInterface{
 	@Override
 	public void listAllAds(OrderedAdsBean bean) {
 		List<Ad> allAds = getAllAds();
-		if (bean.getOrder() != ViewAnAdControllerInterface.UNSORTED) {
+		if (bean.getOrder() != Order.UNSORTED) {
 			try {
 				this.sortAds(allAds, bean.getOrder());
 			}
-			catch (NoSuchListByOrderMethodException e) {
+			catch (NoSuchIsOrderedByMethodException e) {
 				logger.log(Level.WARNING, e.getMessage());
-				logger.log(Level.WARNING, "setting list order as " + ViewAnAdControllerInterface.UNSORTED);
+				logger.log(Level.WARNING, "setting list order as " + Order.UNSORTED.getValue());
 			}
 			finally {
 				bean.setAds(allAds);		

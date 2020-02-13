@@ -3,12 +3,12 @@ package logic.beans;
 import java.util.List;
 
 import logic.entity.Ad;
-import logic.viewanad.ViewAnAdControllerInterface;
+import logic.viewanad.Order;
 
 public class OrderedAdsBean {
 	
 	private List<Ad> ads;
-	private String order;
+	private Order order;
 	
 	public OrderedAdsBean() {
 		this.setOrderUnsorted();
@@ -18,7 +18,7 @@ public class OrderedAdsBean {
 		return this.ads;
 	}
 	
-	public String getOrder() {
+	public Order getOrder() {
 		return this.order;
 	}
 	
@@ -27,15 +27,15 @@ public class OrderedAdsBean {
 	}
 	
 	
-	private void setOrder(String order) {
+	public void setOrder(Order order) {
 		this.order = order;
 	}
 	
 	public void setOrderByTime() {
-		this.setOrder(ViewAnAdControllerInterface.BY_TIME);
+		this.setOrder(Order.TIME);
 	}
 	
 	public void setOrderUnsorted() {
-		this.setOrder(ViewAnAdControllerInterface.UNSORTED);
+		this.setOrder(Order.UNSORTED);
 	}
 }

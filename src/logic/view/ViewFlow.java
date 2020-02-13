@@ -31,6 +31,7 @@ public class ViewFlow extends View implements Initializable {
 	 String formError = "FORM ERROR!";
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
+//	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 private User activeUser;
@@ -79,6 +80,7 @@ public class ViewFlow extends View implements Initializable {
 	 }
 	 
 	 
+	 
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 	 		actionCancel.setText("");
 	 		actionCancel.setText("MakeAnAd");
@@ -112,12 +114,12 @@ public class ViewFlow extends View implements Initializable {
 	 		 actionCancel.setText("");
 		     actionCancel.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
-	    	 Context.getReference().goNext(GOTOMAP);
+	    	 Context.getReference().goNext("logic.view.ViewMap");
 
 		 }
 	 
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
- 		Context.getReference().goNext(GOTOFLOW);
+ 		Context.getReference().goNext("logic.view.ViewFlow");
 
  		 actionCancel.setText("");
 	     actionCancel.setText("pagina aggiornata");
