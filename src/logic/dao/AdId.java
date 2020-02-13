@@ -1,14 +1,9 @@
-package logic.entity;
+package logic.dao;
 
 public class AdId{
 
-//	private String name;
 	private int lastId;
 	private String type;
-	
-//	public AdId() {
-//		this.name = this.getClass().getSimpleName();
-//	}
 	
 	public void setType(String val) {
 		this.type = val;
@@ -18,10 +13,6 @@ public class AdId{
 		this.lastId = id;
 	}
 	
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-	
 	public String getType() {
 		return this.type;
 	}
@@ -29,8 +20,4 @@ public class AdId{
 	public int getLastId() {
 		return this.lastId;
 	}
-	
-//	public String getName() {
-//		return this.name;
-//	}
 }

@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import logic.entity.Ad;
-import logic.entity.AdId;
 import logic.misc.ReflectionMiscellaneous;
 
 public class DAOAdSerialize extends DAOSerialize implements DAOAd{
