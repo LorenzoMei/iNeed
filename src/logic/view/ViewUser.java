@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.entity.User;
 
 
 
@@ -19,39 +20,57 @@ public class ViewUser extends View implements Initializable {
 	
 	public ViewUser() {
 		this.setFXMLPath("fxml_user.fxml");
+		activeUser = getActiveUser();
+		System.out.println("in constructor view user, activeUser is: " + activeUser);
+		
+
 	}
-	
+	 @FXML private Text nameText;
+	 @FXML private Text cityText;
+	 @FXML private Text surnameText;
+	 @FXML private Text emailText;
 	 String formError = "FORM ERROR!";
 	 @FXML private Text actionPrinter;
 	 @FXML private GridPane grid;
 
+	 private final static String GOTOLOGIN = "logic.view.ViewLogin";
+	 private final static String GOTOUSER = "logic.view.ViewUser";
+	 private final static String GOTOMAP = "logic.view.ViewMap";
+	 private final static String GOTOFLOW = "logic.view.ViewFlow";
+	 private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
 	 Logger logger = Logger.getLogger(this.getClass().getName());
-	 
+
 	 public void initialize(URL location, ResourceBundle resources) {
+		 logger.log(Level.SEVERE, "QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ");
+
+//		 nameText.setText(activeUser.getname());
+//		 cityText.setText(activeUser.getCity());
+//		 surnameText.setText(activeUser.getSurName());
+//		 emailText.setText(activeUser.getEmail());
+		 //logger.log(Level.SEVERE, "QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " this.activeUser.getCity());
+
+		 nameText.setText("franco");
 		 String status = "My location " + location + " my resoursources: " + resources;
 		 logger.log(Level.SEVERE, status);
 		}
 
-	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
- 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su MakeAnOffer");
-
-	 } 
-	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
+	
+	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su MakeARequest");
+	     actionPrinter.setText("vado su MakeAnAd");
+	 	Context.getReference().goNext(GOTOMAKEANAD);
+
 			
 	 } 
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
 		 actionPrinter.setText("");
 	     actionPrinter.setText("vado su ViewFlow");
       	 logger.log(Level.SEVERE, "Print this when ViewFlow is clicked ");
-    	 Context.getReference().goNext("logic.view.ViewFlow");	
+    	 Context.getReference().goNext(GOTOFLOW);	
 	    }
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
 		 actionPrinter.setText("");
-	 		
 		 actionPrinter.setText("ValidateAFavor");
 	    }
 	 @FXML protected void handleSubmitButtonGallery(ActionEvent event) {
@@ -81,17 +100,17 @@ public class ViewUser extends View implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su User");
+	     actionPrinter.setText(GOTOUSER);
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewLogin");
+ 		Context.getReference().goNext(GOTOLOGIN);
 	    }
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinter.setText("");
 		     actionPrinter.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked ");
-	    	 Context.getReference().goNext("logic.view.ViewMap");
+	    	 Context.getReference().goNext(GOTOMAP);
 		 }
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {
 	        actionPrinter.setText("");

@@ -11,16 +11,20 @@ public abstract class View {
     
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	private User activeUser;
+	protected User activeUser;
 	private String next;
 	
 	
-	public User getactiveUser() {
+	public User getActiveUser() {
+    	logger.log(Level.INFO, "In View the user in getUser is: " + this.activeUser);
 		return this.activeUser;
 	}
 	
 	public void setactiveUser(User activeUser) {
 		this.activeUser = activeUser;
+    	logger.log(Level.INFO, "In View the user is: " + this.activeUser);
+    	logger.log(Level.INFO, "In View the user with getUser form geUser is: " + getActiveUser());
+
 	}
 	
 	public void setNext(String next) {

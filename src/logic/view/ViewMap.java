@@ -20,6 +20,11 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     //private double lat;
     //private double lon;
 	@FXML private Text tester;
+	private final static String GOTOLOGIN = "logic.view.ViewLogin";
+	private final static String GOTOUSER = "logic.view.ViewUser";
+	private final static String GOTOMAP = "logic.view.ViewMap";
+	private final static String GOTOFLOW = "logic.view.ViewFlow";
+	private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
 
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;
@@ -35,7 +40,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     }
     
     @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
-   	 Context.getReference().goNext("logic.view.ViewFlow");
+   	 Context.getReference().goNext(GOTOFLOW);
     }
     
     @FXML protected void handleSubmitButtonUser(ActionEvent event) {
@@ -45,23 +50,27 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     }
 
     @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewUser");
+ 		Context.getReference().goNext(GOTOUSER);
 
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewLogin");
+ 		Context.getReference().goNext(GOTOLOGIN);
 
 	    }
+	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
+		 tester.setText("");
+	 	Context.getReference().goNext(GOTOMAP);
+
+		}
 	 
-	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
-		 tester.setText("MakeAnOffer");
+	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
+		 tester.setText("MakeAnAd");
+		 Context.getReference().goNext(GOTOMAKEANAD);
 
 	 }
 	 
-	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
-		 tester.setText("MakeARequest");
-	 }
+
 	 
 	
 	 

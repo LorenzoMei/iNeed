@@ -26,23 +26,18 @@
                         <Image url="@../../../media/iNeed.png" />
                      </image>
                   </ImageView>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="20.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="40.0">
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                            <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnOffer" prefHeight="31.0" prefWidth="154.0" text="Make An Offer" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                            </children>
                            <effect>
                               <DropShadow />
                            </effect>
-                        </HBox>
-                        <HBox alignment="CENTER">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeARequest" prefHeight="31.0" prefWidth="179.0" text="Make A Request" />
-                           </children>
-                           <effect>
-                              <DropShadow />
-                           </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
@@ -51,6 +46,9 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
@@ -62,14 +60,23 @@
                                     <InnerShadow />
                                  </input></DropShadow>
                            </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" text="Validate A Favor" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" text="Validate A Favor">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></Button>
                            </children>
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
@@ -83,6 +90,9 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                      </children>
                   </HBox>

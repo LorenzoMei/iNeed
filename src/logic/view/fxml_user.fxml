@@ -25,31 +25,37 @@
                         <Image url="@../../../media/iNeed.png" />
                      </image>
                   </ImageView>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="20.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="40.0">
                      <children>
                         <HBox alignment="CENTER">
-                           <children>
-                            <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnOffer" prefHeight="31.0" prefWidth="154.0" text="Make An Offer" />
-                           </children>
                            <effect>
                               <DropShadow />
                            </effect>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeARequest" prefHeight="31.0" prefWidth="179.0" text="Make A Request" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                            </children>
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin></Button>
                            </children>
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
@@ -58,6 +64,9 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                            <children>
@@ -66,6 +75,9 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
@@ -79,6 +91,9 @@
                            <effect>
                               <DropShadow />
                            </effect>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
                         </HBox>
                      </children>
                   </HBox>
@@ -89,7 +104,7 @@
             </ToolBar>
          </children>
       </HBox>
-      <AnchorPane fx:id="cityText" layoutX="34.0" layoutY="130.0" prefHeight="661.0" prefWidth="1034.0" style="-fx-background-color: #d5e8f5; -fx-border-color: #011c2e;">
+      <AnchorPane layoutX="34.0" layoutY="130.0" prefHeight="661.0" prefWidth="1034.0" style="-fx-background-color: #d5e8f5; -fx-border-color: #011c2e;">
          <effect>
             <DropShadow height="51.0" radius="25.0" width="51.0" />
          </effect>

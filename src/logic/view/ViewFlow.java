@@ -33,6 +33,8 @@ public class ViewFlow extends View implements Initializable {
 	 private final static String GOTOUSER = "logic.view.ViewUser";
 	 private final static String GOTOMAP = "logic.view.ViewMap";
 	 private final static String GOTOFLOW = "logic.view.ViewFlow";
+	 private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
+
 
 
      private List<TextInputControl> textInputFields;
@@ -70,30 +72,33 @@ public class ViewFlow extends View implements Initializable {
  		actionCancel.setText("new search!");
 	 }
 	 
-	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
-	 		actionCancel.setText("MakeAnOffer");
-
-	 }
 	 
-	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
-	 		actionCancel.setText("MakeARequest");
+	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
+	 		actionCancel.setText("");
+	 		actionCancel.setText("MakeAnAd");
+		 	Context.getReference().goNext(GOTOMAKEANAD);
+
 
 	 }
 	 
 	
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
+	 		actionCancel.setText("");
+
 	 		actionCancel.setText("ValidateAFavor");
 			
 	 }
 	
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
+	 		actionCancel.setText("");
 	 		Context.getReference().goNext(GOTOUSER);
 
 	 }
 		 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext(GOTOLOGIN);
+	 		actionCancel.setText("");
+	 		Context.getReference().goNext(GOTOLOGIN);
 
 	    }
 	 
