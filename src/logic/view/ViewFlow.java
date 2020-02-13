@@ -28,17 +28,17 @@ public class ViewFlow extends View implements Initializable {
 		activeUser = View.getActiveUser();
 	}
 	
-	 String formError = "FORM ERROR!";
+	 String formError = MSGError.ERROR_FORM.getMsg();
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 private User activeUser;
-	 private static final String GOTOLOGIN = "logic.view.ViewLogin";
-	 private static final String GOTOUSER = "logic.view.ViewUser";
-	 private static final String GOTOMAP = "logic.view.ViewMap";
-	 private static final String GOTOFLOW = "logic.view.ViewFlow";
-	 private static final String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
+//	 private static final String GOTOLOGIN = "logic.view.ViewLogin";
+//	 private static final String GOTOUSER = "logic.view.ViewUser";
+//	 private static final String GOTOMAP = "logic.view.ViewMap";
+//	 private static final String GOTOFLOW = "logic.view.ViewFlow";
+//	 private static final String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
 
 
 
@@ -82,7 +82,7 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 	 		actionCancel.setText("");
 	 		actionCancel.setText("MakeAnAd");
-		 	Context.getReference().goNext(GOTOMAKEANAD);
+		 	Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
 
 
 	 }
@@ -98,13 +98,13 @@ public class ViewFlow extends View implements Initializable {
 	
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
 	 		actionCancel.setText("");
-	 		Context.getReference().goNext(GOTOUSER);
+	 		Context.getReference().goNext(GoNextTargets.VIEW_USER.getStateName());
 
 	 }
 		 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
 	 		actionCancel.setText("");
-	 		Context.getReference().goNext(GOTOLOGIN);
+	 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }
 	 
@@ -112,12 +112,12 @@ public class ViewFlow extends View implements Initializable {
 	 		 actionCancel.setText("");
 		     actionCancel.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
-	    	 Context.getReference().goNext(GOTOMAP);
+	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 
 		 }
 	 
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
- 		Context.getReference().goNext(GOTOFLOW);
+ 		Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());
 
  		 actionCancel.setText("");
 	     actionCancel.setText("pagina aggiornata");

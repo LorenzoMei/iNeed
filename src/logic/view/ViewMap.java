@@ -24,11 +24,6 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     //private double lon;
 	
 	@FXML private Text tester;
-	private final static String GOTOLOGIN = "logic.view.ViewLogin";
-	private final static String GOTOUSER = "logic.view.ViewUser";
-	private final static String GOTOMAP = "logic.view.ViewMap";
-	private final static String GOTOFLOW = "logic.view.ViewFlow";
-	private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
 	@FXML private MenuItem profileName;
 	private User activeUser;
 	
@@ -50,7 +45,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     }
     
     @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
-   	 Context.getReference().goNext(GOTOFLOW);
+   	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());
     }
     
     @FXML protected void handleSubmitButtonUser(ActionEvent event) {
@@ -60,23 +55,23 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     }
 
     @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
- 		Context.getReference().goNext(GOTOUSER);
+ 		Context.getReference().goNext(GoNextTargets.VIEW_USER.getStateName());
 
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext(GOTOLOGIN);
+ 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 		 tester.setText("");
-	 	Context.getReference().goNext(GOTOMAP);
+	 	Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 
 		}
 	 
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 		 tester.setText("MakeAnAd");
-		 Context.getReference().goNext(GOTOMAKEANAD);
+		 Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
 
 	 }
 	 

@@ -33,11 +33,6 @@ public class ViewUser extends View implements Initializable {
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 private User activeUser;
-	 private final static String GOTOLOGIN = "logic.view.ViewLogin";
-	 private final static String GOTOUSER = "logic.view.ViewUser";
-	 private final static String GOTOMAP = "logic.view.ViewMap";
-	 private final static String GOTOFLOW = "logic.view.ViewFlow";
-	 private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
 	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -48,22 +43,22 @@ public class ViewUser extends View implements Initializable {
 		 emailText.setText(activeUser.getEmail());
 		 profileName.setText(activeUser.getUsername());
 		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
-		 logger.log(Level.SEVERE, status);
+		 logger.log(Level.INFO, status);
 		}
 
 	
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 		 actionPrinter.setText("");
 	     actionPrinter.setText("vado su MakeAnAd");
-	 	Context.getReference().goNext(GOTOMAKEANAD);
+	 	Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
 
 			
 	 } 
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
 		 actionPrinter.setText("");
 	     actionPrinter.setText("vado su ViewFlow");
-      	 logger.log(Level.SEVERE, "Print this when ViewFlow is clicked ");
-    	 Context.getReference().goNext(GOTOFLOW);	
+      	 logger.log(Level.INFO, "Print this when ViewFlow is clicked ");
+    	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());	
 	    }
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
@@ -97,17 +92,17 @@ public class ViewUser extends View implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText(GOTOUSER);
+	     actionPrinter.setText(GoNextTargets.VIEW_USER.getStateName());
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext(GOTOLOGIN);
+ 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 	    }
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinter.setText("");
 		     actionPrinter.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked ");
-	    	 Context.getReference().goNext(GOTOMAP);
+	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 		 }
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {
 	        actionPrinter.setText("");

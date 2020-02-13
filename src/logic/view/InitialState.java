@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class InitialState extends View{
 
-	public static final String INITIAL_STATE_TARGET = "logic.view.ViewSignUp";
+	public static final String INITIAL_STATE_TARGET = GoNextTargets.VIEW_SIGNUP.getStateName();
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@Override

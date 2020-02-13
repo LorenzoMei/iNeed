@@ -67,8 +67,8 @@ public class Context {
 
 			String error = "I'M ON CONTEXT MY CURRENT VIEW IS: " + currentView.getClass().getSimpleName();
 			String error2 = "I'M ON CONTEXT MY CURRENT VIEW fxmlPath IS: " + currentView.getFXMLPath();
-			logger.log(Level.SEVERE, error);
-			logger.log(Level.SEVERE, error2);
+			logger.log(Level.INFO, error);
+			logger.log(Level.INFO, error2);
 
 			Parent root = this.loadScreen(currentView.getFXMLPath());
 			stage.setScene(new Scene(root));
