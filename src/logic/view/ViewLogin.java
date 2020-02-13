@@ -122,6 +122,11 @@ public class ViewLogin extends View implements Initializable {
 
     			}                    	
         		
+        		setactiveUser(data.getUser());
+        		
+            	logger.log(Level.SEVERE, "In the login username is: " + data.getUsername());
+
+        		
         		actionLogIn.setText("Logged in, welcome back " + username);
    	    	    Context.getReference().goNext(gotoFlow);
 
