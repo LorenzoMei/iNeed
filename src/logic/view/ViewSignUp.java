@@ -27,7 +27,9 @@ import logic.signup.UsernameAlreadyTakenException;
  
 public class ViewSignUp extends View implements Initializable{
 	
-	String formError = "FORM ERROR!";
+	private static final String MSG_FORM_ERROR = "FORM ERROR!";
+    private static final String GONEXT_LOGIN = "logic.view.ViewLogin";
+
     @FXML private Text actionSignIn;
     @FXML private Text actionCancel;
     @FXML private TextField nameTextField;
@@ -41,7 +43,6 @@ public class ViewSignUp extends View implements Initializable{
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
     @FXML private GridPane grid;
-    private final static String gotoLogin = "logic.view.ViewLogin";
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -98,7 +99,7 @@ public class ViewSignUp extends View implements Initializable{
         
 	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
 		
-		Context.getReference().goNext(gotoLogin);
+		Context.getReference().goNext(GONEXT_LOGIN);
 		actionSignIn.setText("");
 
     }
@@ -147,7 +148,7 @@ public class ViewSignUp extends View implements Initializable{
         LocalDate bDate = datePickerTextField.getValue();        
         
         if(bDate == null) {
-        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Insert a Date please!");
+        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSG_FORM_ERROR, "Insert a Date please!");
             return;
     
         }
@@ -177,13 +178,13 @@ public class ViewSignUp extends View implements Initializable{
 
 		
     	if((difference) < 18 || (bYear > todayYear) ) {
-			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Invalid date, you're too young check regulations ");
+			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSG_FORM_ERROR, "Invalid date, you're too young check regulations ");
 
     	}
 		
         
         if(passw.compareTo(vPsw) != 0) {
-            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),formError, "Your password doesn't match!");
+            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),MSG_FORM_ERROR, "Your password doesn't match!");
             return;
     }
     
@@ -215,7 +216,7 @@ public class ViewSignUp extends View implements Initializable{
 				}
 	    		actionSignIn.setText("Signed in, welcome " + username);
 
-	    		Context.getReference().goNext(gotoLogin);
+	    		Context.getReference().goNext(GONEXT_LOGIN);
 	    		
 	    	}
         

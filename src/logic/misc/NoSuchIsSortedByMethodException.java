@@ -2,6 +2,10 @@ package logic.misc;
 
 public class NoSuchIsSortedByMethodException extends Exception {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final Order order;
 	
 	public NoSuchIsSortedByMethodException(Order order) {

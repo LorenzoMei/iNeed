@@ -18,9 +18,11 @@ import java.util.logging.Logger;
 
 public class ViewMap  extends View implements Initializable, MapComponentInitializedListener {
 
-	//will gonna be used when a position will be inserted
-    //private double lat;
+	//TODO : will gonna be used when a position will be inserted
+    
+	//private double lat;
     //private double lon;
+	
 	@FXML private Text tester;
 	private final static String GOTOLOGIN = "logic.view.ViewLogin";
 	private final static String GOTOUSER = "logic.view.ViewUser";

@@ -4,6 +4,10 @@ import java.io.FileNotFoundException;
 
 public class ElementInDBNotFoundException extends Exception {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6963788673942381902L;
 	private final String path;
 	
 	public ElementInDBNotFoundException(String path, FileNotFoundException cause) {

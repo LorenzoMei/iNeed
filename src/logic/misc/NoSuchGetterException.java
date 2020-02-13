@@ -2,6 +2,10 @@ package logic.misc;
 
 public class NoSuchGetterException extends Exception{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String attrName;
 	
 	public NoSuchGetterException(String attrName) {
