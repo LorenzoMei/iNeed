@@ -45,7 +45,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 					this.storeLastId(zeroId);
 				}
 			} catch (IllegalArgumentException | IllegalAccessException e) {
-				logger.log(Level.SEVERE, e.toString() + "unable to initialiaze DAOAd");
+				logger.log(Level.SEVERE, e.toString() + "unable to initialize DAOAd");
 			}
 		}
 	}
@@ -71,8 +71,8 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		try {
 			this.load(ad, primaryKeyValues);
 		} catch (ElementInDBNotFoundException e) {
-			logger.log(Level.SEVERE, "file" + e.getPath() + " not found");
-			throw new AdNotFoundException();
+			logger.log(Level.WARNING, e.getMessage());
+			throw new AdNotFoundException(e);
 		} catch (IOException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
 			logger.log(Level.SEVERE, e.toString());
 		} 
@@ -150,7 +150,6 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	private void loadLastId(AdId id, String type) {
 		
 		List <String> primaryKeyValues = new ArrayList <>();
-//		primaryKeyValues.add(id.getName());
 		primaryKeyValues.add(type);
 		
 		try {

@@ -164,7 +164,7 @@ public abstract class DAOSerialize {
 			this.serializableToEntity(obj, buffer);
 		}
 		catch (FileNotFoundException e) {
-			throw new ElementInDBNotFoundException(this.getPathToLoadFrom(obj, primaryKeyValues));
+			throw new ElementInDBNotFoundException(this.getPathToLoadFrom(obj, primaryKeyValues), e);
 		}
 	}
 }
