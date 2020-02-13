@@ -35,7 +35,7 @@
                      <children>
                         <HBox alignment="CENTER">
                            <children>
-                            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" text="Make An Offer" />
+                            <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnOffer" prefHeight="31.0" prefWidth="154.0" text="Make An Offer" />
                            </children>
                            <effect>
                               <DropShadow />
@@ -43,7 +43,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="179.0" text="Make A Request" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeARequest" prefHeight="31.0" prefWidth="179.0" text="Make A Request" />
                            </children>
                            <effect>
                               <DropShadow />
@@ -70,7 +70,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Validate A Favor" />
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" text="Validate A Favor" />
                            </children>
                            <effect>
                               <DropShadow />
@@ -80,8 +80,8 @@
                            <children>
                               <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                  <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
+                                  <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="Exit" />
                                 </items>
                               </MenuButton>
                            </children>

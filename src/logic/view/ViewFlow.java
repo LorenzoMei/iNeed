@@ -61,11 +61,33 @@ public class ViewFlow extends View implements Initializable {
 		        	}
 		}
  		actionCancel.setText("new search!");
-
-      	 
+	 }
+	 
+	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
+	 		
 
 	 }
+	 
+	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
+			
+	 }
+	 
 	
+	 
+	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
+			
+	 }
+	
+	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
+	 		Context.getReference().goNext("logic.view.ViewUser");
+
+	 }
+		 
+	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
+ 		Context.getReference().goNext("logic.view.ViewLogin");
+
+	    }
+	 
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionCancel.setText("");
 		     actionCancel.setText("vado su map");

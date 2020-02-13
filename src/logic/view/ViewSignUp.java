@@ -97,12 +97,9 @@ public class ViewSignUp extends View implements Initializable{
         
 	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
 		
-//		p
-		System.out.println("I'm "+this.getClass().getSimpleName()+", setting next to " + this.getNext());
-		System.out.println("ViewSignup: next state set to: "+this.getNext());
 		Context.getReference().goNext("logic.view.ViewLogin");
-//		actionSignIn.setText("");
-//        actionCancel.setText("Ciao");
+		actionSignIn.setText("");
+
     }
 	
     @FXML protected void handleSubmitButtonCancel(ActionEvent event) {
@@ -215,8 +212,6 @@ public class ViewSignUp extends View implements Initializable{
 	    		
 	    		
 	    		this.setNext("logic.view.ViewLogin");
-//	    		p
-	    		System.out.println("I'm "+this.getClass().getSimpleName()+", setting next to " + this.getNext());
 	    		Context.getReference().goNext("logic.view.ViewLogin");
 	    		
 	    	}
