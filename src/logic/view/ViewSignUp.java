@@ -21,7 +21,6 @@ import java.util.Calendar.Builder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ResourceBundle;
-import javafx.stage.Window;
 import logic.beans.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
@@ -56,6 +55,8 @@ public class ViewSignUp extends View implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		logger.log(Level.SEVERE,"My location " + location + " my resoursources: " + resources);
+
 		nameTextField.setPromptText("*Es. Mario");
         surNameTextField.setPromptText("*Es. Rossi");
         userNameTextField.setPromptText("*Es. Rossi.Mario25");
@@ -222,35 +223,5 @@ public class ViewSignUp extends View implements Initializable{
         
 
     }
-    
-    
-    private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
-    }
-
-
-	@Override
-	public void goNext(String viewName) {
-		View nextView;
-		try {
-//			p
-			System.out.println("ViewSignup: attempting to set nextState as "+viewName);
-			nextView = (View) Class.forName(viewName).newInstance();
-//			p
-			System.out.println("ViewSignUp: nextView is "+nextView.getClass().getSimpleName());
-			nextView.setPrevious(this);
-			
-			Context.getReference().setCurrentView(nextView);
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			logger.log(Level.SEVERE, e.toString() + " Error in goNext");
-
-		}
-
-	}
 
 }

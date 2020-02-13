@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextInputControl;
-import logic.misc.GetGetterOrSetter;
 import logic.misc.NoSuchGetterException;
+import logic.misc.ReflectionMiscellaneous;
 
 public class CheckEmptyField {
 	Logger logger = Logger.getLogger(this.getClass().getName());
@@ -29,7 +29,7 @@ public class CheckEmptyField {
 
 
 	public void populateTextInputFields(Object obj){
-		logger.log(Level.INFO, "Startingpopulation: ");
+		logger.log(Level.INFO, "Starting population: ");
 		Field[] fieldArrayAttributes = obj.getClass().getDeclaredFields();
 		Class<FXML> classAnnotation = javafx.fxml.FXML.class; 
 		logger.log(Level.INFO, "Annotazione: " + classAnnotation.getName());
@@ -40,14 +40,15 @@ public class CheckEmptyField {
 						&& !fieldArrayAttributes[i].isSynthetic() 
 						&& fieldArrayAttributes[i].getAnnotation(classAnnotation) != null 
 						&& fieldArrayAttributes[i].getType().getSimpleName().contains("Field") ) {
-					try {
-						textInputFields.add((TextInputControl)GetGetterOrSetter.getGetter( fieldArrayAttributes[i].getName(), obj).invoke(obj, (Object[]) null));
-					} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
-							| NoSuchGetterException e) {
-						
-						logger.log(Level.SEVERE, e.toString() + " Fail in CheckEMptyFields, Set/get not found");
+					
+						try {
+							textInputFields.add((TextInputControl)ReflectionMiscellaneous.getGetter( fieldArrayAttributes[i].getName(), obj).invoke(obj, (Object[]) null));
+						} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+								| NoSuchGetterException e) {
+							logger.log(Level.SEVERE, e.toString() + " Fail in CheckEMptyFields, Set/get not found");
 
-					}
+						}
+
 				}
 		}
 	}

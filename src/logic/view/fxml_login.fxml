@@ -86,7 +86,7 @@
             <DropShadow />
          </effect>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleSubmitButtonLogIn" text="LogIn" />
+            <Button mnemonicParsing="false" onAction="#handleSubmitButtonLogIn" onKeyPressed="#handleSubmitButtonLogIn" text="LogIn" />
          </children>
       </HBox>
       <HBox layoutX="320.0" layoutY="623.0" style="-fx-background-color: white;">

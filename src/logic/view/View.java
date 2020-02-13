@@ -1,8 +1,15 @@
 package logic.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javafx.scene.control.Alert;
+import javafx.stage.Window;
 
 public abstract class View {
     
+	 Logger logger = Logger.getLogger(this.getClass().getName());
+
 	private String next;
 	
 	public void setNext(String next) {
@@ -35,8 +42,28 @@ public abstract class View {
 		return this.previous;
 	}
 	
+	 protected void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+	        Alert alert = new Alert(alertType);
+	        alert.setTitle(title);
+	        alert.setHeaderText(null);
+	        alert.setContentText(message);
+	        alert.initOwner(owner);
+	        alert.show();
+	    }
 	
-    //This method will allow the injection of the Parent ScreenPane
-    public abstract void goNext(String viewName);
+		public void goNext(String viewName) {
+			View nextView;
+			try {
+
+				nextView = (View) Class.forName(viewName).newInstance();
+				nextView.setPrevious(this);
+				
+				Context.getReference().setCurrentView(nextView);
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+				logger.log(Level.SEVERE, e.toString() + " Error in goNext");
+
+			}
+
+		}
 }
 

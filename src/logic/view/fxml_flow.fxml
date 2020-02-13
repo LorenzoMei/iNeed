@@ -130,7 +130,7 @@
                   <Image url="@../../../media/flow.png" />
                </image>
             </ImageView>
-            <Button layoutX="20.0" layoutY="66.0" mnemonicParsing="false" text="Search" />
+            <Button layoutX="20.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleSubmitButtonSearch" text="Search" />
             <TextField fx:id="searchTextField" layoutX="81.0" layoutY="66.0" prefHeight="31.0" prefWidth="607.0" />
             <MenuButton layoutX="686.0" layoutY="66.0" mnemonicParsing="false" text="Filter">
               <items>

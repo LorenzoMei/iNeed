@@ -17,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Window;
 import logic.beans.CredentialsBean;
 import logic.dao.UserNotFoundException;
 import logic.login.LoginController;
@@ -53,7 +52,8 @@ public class ViewLogin extends View implements Initializable {
 	
 	 
 	public void initialize(URL location, ResourceBundle resources) {
-	        userNameTextField.setPromptText("*Es. Rossi.Mario25");
+		logger.log(Level.SEVERE,"My location " + location + " my resoursources: " + resources);
+        userNameTextField.setPromptText("*Es. Rossi.Mario25");
 
 	}
 	 
@@ -61,6 +61,8 @@ public class ViewLogin extends View implements Initializable {
 	@FXML protected void handleSubmitButtonSignUp(ActionEvent event) {
 	        actionCancel.setText("");
 	        actionLogIn.setText("");
+	    	Context.getReference().goNext("logic.view.ViewSignUp");
+
 	}
     
     @FXML protected void handleSubmitButtonCancel(ActionEvent event) {
@@ -125,34 +127,5 @@ public class ViewLogin extends View implements Initializable {
         }
 
     }
-    
-    
-    private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
-    }
-
-	@Override
-	public void goNext(String viewName) {
-		View nextView;
-		try {
-//			p
-			System.out.println("ViewLogin: attempting to set nextState as "+viewName);
-			nextView = (View) Class.forName(viewName).newInstance();
-//			p
-			System.out.println("ViewLogin: nextView is "+nextView.getClass().getSimpleName());
-			nextView.setPrevious(this);
-			
-			Context.getReference().setCurrentView(nextView);
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			logger.log(Level.SEVERE, e.toString() + " Error in goNext");
-
-		}
-
-	}
   
 }
