@@ -32,8 +32,8 @@ public class ViewLogin extends View implements Initializable {
 	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
 	 @FXML private Hyperlink facebookHyperLink;
-	 private final String gotoFlow = "logic.view.ViewFlow";
-	 private final String gotoSigUp = "logic.view.ViewSignUp";
+	 private final static String gotoFlow = "logic.view.ViewFlow";
+	 private final static String gotoSigUp = "logic.view.ViewSignUp";
 	 private List<TextInputControl> textInputFields;
   	 Logger logger = Logger.getLogger(this.getClass().getName());
 

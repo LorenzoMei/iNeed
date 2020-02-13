@@ -41,7 +41,7 @@ public class ViewSignUp extends View implements Initializable{
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
     @FXML private GridPane grid;
-    private final String gotoLogin = "logic.view.ViewLogin";
+    private final static String gotoLogin = "logic.view.ViewLogin";
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -193,7 +193,8 @@ public class ViewSignUp extends View implements Initializable{
 		            return;
 		        }
 		        else {
-		        	
+		    		logger.log(Level.INFO, "0 Empty Fields");
+
 		        }
 			        SignUpBean usersBean = new SignUpBean();
 		    		usersBean.setUsername(username);

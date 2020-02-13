@@ -22,7 +22,5 @@ public class InitialState extends View{
 			
 			e.printStackTrace();
 		}
-		
-//		p
 	}
 }

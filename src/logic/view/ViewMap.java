@@ -7,6 +7,8 @@ import com.lynden.gmapsfx.javascript.object.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -14,9 +16,11 @@ import java.util.logging.Logger;
 
 public class ViewMap  extends View implements Initializable, MapComponentInitializedListener {
 
-    private GoogleMap map;
+	//will gonna be used when a position will be inserted
     //private double lat;
     //private double lon;
+	@FXML private Text tester;
+
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;
 
@@ -34,6 +38,8 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     }
     
     @FXML protected void handleSubmitButtonUser(ActionEvent event) {
+    	tester.setText("User");
+
 		
     }
 
@@ -48,22 +54,23 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	    }
 	 
 	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
- 		
+		 tester.setText("MakeAnOffer");
 
 	 }
 	 
 	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
-			
+		 tester.setText("MakeARequest");
 	 }
 	 
 	
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
-			
+		 tester.setText("ValidateAFavor");
 	    }
 	 
     @Override
     public void mapInitialized() {
+        GoogleMap map;
 		logger.log(Level.SEVERE,"Load the map" );
         LatLong latLong = new LatLong(41.9102415, 12.3959136);
         MapOptions mapOptions = new MapOptions();

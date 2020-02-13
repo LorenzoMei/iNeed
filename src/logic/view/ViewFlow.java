@@ -28,13 +28,14 @@ public class ViewFlow extends View implements Initializable {
 	 String formError = "FORM ERROR!";
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
-//	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
      private List<TextInputControl> textInputFields;
 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
 	 public void initialize(URL location, ResourceBundle resources) {
+		 String status = "My location " + location + " my resoursources: " + resources;
+		 logger.log(Level.SEVERE, status);
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		}
 	 
@@ -64,17 +65,19 @@ public class ViewFlow extends View implements Initializable {
 	 }
 	 
 	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
-	 		
+	 		actionCancel.setText("MakeAnOffer");
 
 	 }
 	 
 	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
-			
+	 		actionCancel.setText("MakeARequest");
+
 	 }
 	 
 	
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
+	 		actionCancel.setText("ValidateAFavor");
 			
 	 }
 	
