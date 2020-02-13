@@ -29,6 +29,12 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
+	 private final static String GOTOLOGIN = "logic.view.ViewLogin";
+	 private final static String GOTOUSER = "logic.view.ViewUser";
+	 private final static String GOTOMAP = "logic.view.ViewMap";
+	 private final static String GOTOFLOW = "logic.view.ViewFlow";
+
+
      private List<TextInputControl> textInputFields;
 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
@@ -82,12 +88,12 @@ public class ViewFlow extends View implements Initializable {
 	 }
 	
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
-	 		Context.getReference().goNext("logic.view.ViewUser");
+	 		Context.getReference().goNext(GOTOUSER);
 
 	 }
 		 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewLogin");
+ 		Context.getReference().goNext(GOTOLOGIN);
 
 	    }
 	 
@@ -95,12 +101,12 @@ public class ViewFlow extends View implements Initializable {
 	 		 actionCancel.setText("");
 		     actionCancel.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
-	    	 Context.getReference().goNext("logic.view.ViewMap");
+	    	 Context.getReference().goNext(GOTOMAP);
 
 		 }
 	 
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewFlow");
+ 		Context.getReference().goNext(GOTOFLOW);
 
  		 actionCancel.setText("");
 	     actionCancel.setText("pagina aggiornata");

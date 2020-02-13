@@ -30,6 +30,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    	
         mapView.addMapInializedListener(this);
     }
     

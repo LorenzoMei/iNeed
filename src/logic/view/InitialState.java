@@ -20,7 +20,7 @@ public class InitialState extends View{
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			
-			e.printStackTrace();
+			logger.log(Level.INFO, e.toString());;
 		}
 	}
 }
