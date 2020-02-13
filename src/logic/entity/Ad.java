@@ -1,6 +1,7 @@
 package logic.entity;
 
 import java.util.Calendar;
+import java.util.List;
 
 public abstract class Ad {
 	protected int id = -1;
@@ -8,6 +9,7 @@ public abstract class Ad {
 	protected String title = "";
 	protected String body = "";
 	protected Calendar data = null;
+	List<String> answersList = null;
 	
 	public void setId(int id) {
 		this.id = id;
@@ -29,6 +31,10 @@ public abstract class Ad {
 		this.data = data;
 	}
 	
+	public void setAnswersList(List<String> answersList) {
+		this.answersList = answersList;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -47,5 +53,9 @@ public abstract class Ad {
 	
 	public Calendar getData() {
 		return this.data;
+	}
+	
+	public List<String> getAnswersList(){
+		return this.answersList;
 	}
 }

@@ -122,5 +122,10 @@
             <DropShadow height="51.0" radius="25.0" width="51.0" />
          </effect>
       </AnchorPane>
+      <Text fx:id="tester" layoutX="509.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.6708984375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

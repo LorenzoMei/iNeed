@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 public class ViewMap  extends View implements Initializable, MapComponentInitializedListener {
 
-    private GoogleMap map;
+	//will gonna be used when a position will be inserted
     //private double lat;
     //private double lon;
 	@FXML private Text tester;
@@ -52,6 +52,8 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     }
     
     @FXML protected void handleSubmitButtonUser(ActionEvent event) {
+    	tester.setText("User");
+
 		
     }
 
@@ -81,11 +83,12 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
-			
+		 tester.setText("ValidateAFavor");
 	    }
 	 
     @Override
     public void mapInitialized() {
+        GoogleMap map;
 		logger.log(Level.SEVERE,"Load the map" );
         LatLong latLong = new LatLong(41.9102415, 12.3959136);
         MapOptions mapOptions = new MapOptions();

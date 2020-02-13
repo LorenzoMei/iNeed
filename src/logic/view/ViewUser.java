@@ -2,8 +2,7 @@ package logic.view;
 
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +20,6 @@ import logic.entity.User;
 public class ViewUser extends View implements Initializable {
 	
 	public ViewUser() {
-		this.textInputFields = new ArrayList<>();		
 		this.setFXMLPath("fxml_user.fxml");
 		activeUser = View.getActiveUser();		
 	}
@@ -31,8 +29,7 @@ public class ViewUser extends View implements Initializable {
 	 @FXML private Text surnameText;
 	 @FXML private Text emailText;
 	 String formError = "FORM ERROR!";
-	 @FXML private Text actionCancel;
-	 @FXML private TextField searchTextField;
+	 @FXML private Text actionPrinter;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 private User activeUser;
@@ -53,18 +50,6 @@ public class ViewUser extends View implements Initializable {
 		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
 		 logger.log(Level.SEVERE, status);
 		}
-	 
-	 public TextField getSearchTextField() {
-			return searchTextField;
-		}
-		
-	 
-	 @FXML protected void handleSubmitButtonSearch(ActionEvent event) {
- 		actionCancel.setText("");
- 		CheckEmptyField check = new CheckEmptyField();
-    	check.populateTextInputFields(this);
-    	this.textInputFields = check.getTextInputFields();
-    	logger.log(Level.INFO, "Sieze is " + textInputFields.size());
 
 	
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
@@ -73,9 +58,7 @@ public class ViewUser extends View implements Initializable {
 	 	Context.getReference().goNext(GOTOMAKEANAD);
 
 			
-			
-	 }
-	 
+	 } 
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
 		 actionPrinter.setText("");
 	     actionPrinter.setText("vado su ViewFlow");
@@ -87,24 +70,29 @@ public class ViewUser extends View implements Initializable {
 		 actionPrinter.setText("");
 		 actionPrinter.setText("ValidateAFavor");
 	    }
-	 
 	 @FXML protected void handleSubmitButtonGallery(ActionEvent event) {
+		 actionPrinter.setText("");
+	     actionPrinter.setText("vado su Gallery");
 			
 	    }
 	 @FXML protected void handleSubmitButtonCurriculum(ActionEvent event) {
-			
+		 actionPrinter.setText("");
+	     actionPrinter.setText("vado su Curriculum");	
 	    }
 	 
 	 @FXML protected void handleSubmitButtonFavorites(ActionEvent event) {
-			
+		 actionPrinter.setText("");
+	     actionPrinter.setText("vado su Favorites");
 	    }
 	 
 	 @FXML protected void handleSubmitButtonRaitings(ActionEvent event) {
-			
+		 actionPrinter.setText("");
+	     actionPrinter.setText("vado su Raitings");
 	    }
 	 
 	 @FXML protected void handleSubmitButtonWallet(ActionEvent event) {
-			
+		 actionPrinter.setText("");
+	     actionPrinter.setText("vado su Wallet");
 	    }
 	 
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
@@ -114,29 +102,15 @@ public class ViewUser extends View implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
  		Context.getReference().goNext(GOTOLOGIN);
-
 	    }
-	 
-	
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
-	 		 actionCancel.setText("");
-		     actionCancel.setText("vado su map");
-          	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
+	 		 actionPrinter.setText("");
+		     actionPrinter.setText("vado su map");
+          	 logger.log(Level.SEVERE, "Print this when viewMap is clicked ");
 	    	 Context.getReference().goNext(GOTOMAP);
-
 		 }
-	 
-	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewFlow");
-
- 		 actionCancel.setText("");
-	     actionCancel.setText("pagina aggiornata");
-	 }
-
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {
-	        actionCancel.setText("");
-	        actionCancel.setText("Utente");
-	        
-	}
-    
+	        actionPrinter.setText("");
+	        actionPrinter.setText("Utente");        
+	} 
 }

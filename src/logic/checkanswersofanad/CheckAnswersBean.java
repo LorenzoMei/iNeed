@@ -1,27 +1,20 @@
 package logic.checkanswersofanad;
 
+import logic.entity.Ad;
+
 public class CheckAnswersBean {
 	
-	private static CheckAnswersBean instance;
-	private int id;
-	
-	public static CheckAnswersBean getInstance() {
-		if(instance == null)
-			instance = new CheckAnswersBean();
-		return instance;
-	}
+	private Ad ad;
 	
 	private CheckAnswersBean() {	
-		this.id = -1;
+		this.ad = null;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setAd(Ad ad) {
+		this.ad = ad;
 	}
 	
-	public int getId() {
-		return this.id;
-	}
-	
-	
+	public Ad getAd() {
+		return this.ad;
+	}	
 }
