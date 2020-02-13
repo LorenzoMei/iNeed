@@ -34,6 +34,6 @@ public class CheckAnswersController implements CheckAnswersControllerInterface{
 			type = "OfferAd";
 		
 		daoAnswers.loadAnswers(ad.getId(), type, answersList);
-		ad.setAnswersList(answersList);
+		answersBean.setAnswersList(answersList);
 	}
 }

@@ -32,12 +32,13 @@ public class DAOAnswersSerialize extends DAOSerialize implements DAOAnswers{
 		List<String> primaryKeyValues = new ArrayList<>();
 		primaryKeyValues.add(Integer.toString(id));
 		
-		File folder = new File("db/serialized/Answers/" + type);
+		File folder = new File("db/serialized/Answer");
 		File[] listOfFiles = folder.listFiles();
 		
 		for (int i = 0; i < listOfFiles.length; i++) {
-		  if (listOfFiles[i].getName().contains(Integer.toString(id))) {
-			  primaryKeyValues.add(listOfFiles[i].getName().substring(Integer.toString(id).length() + this.PRIMARY_KEY_VALUES_SEPARATOR.length()));
+		  if (listOfFiles[i].getName().contains(Integer.toString(id)) && listOfFiles[i].getName().contains(type)) {
+			  String secondValueOfPrimaryKey = listOfFiles[i].getName().substring(Integer.toString(id).length() + PRIMARY_KEY_VALUES_SEPARATOR.length(), listOfFiles[i].getName().length() - PRIMARY_KEY_VALUES_SEPARATOR.length() - SERIALIZED_EXTENSION.length());
+			  primaryKeyValues.add(secondValueOfPrimaryKey);
 			  
 			  Answer answers = new Answer();
 			  try {
@@ -50,8 +51,23 @@ public class DAOAnswersSerialize extends DAOSerialize implements DAOAnswers{
 			  } 
 			  
 			  answersList.add(answers.getUsername());
-			  primaryKeyValues.remove(listOfFiles[i].getName().substring(Integer.toString(id).length() + this.PRIMARY_KEY_VALUES_SEPARATOR.length()));
+			  primaryKeyValues.remove(secondValueOfPrimaryKey);
 		  }
 		}
+	}
+	
+	public void storeAnswers(Answer answers) {
+		
+		List<String> primaryKeyNames = new ArrayList<>();
+		primaryKeyNames.add("id");
+		primaryKeyNames.add("username");
+		primaryKeyNames.add("type");
+		
+		try {
+			this.store(answers, primaryKeyNames);
+			
+		} catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException | InvocationTargetException | NoSuchMethodException e) {
+			logger.log(Level.SEVERE, e.toString());
+		}		
 	}
 }

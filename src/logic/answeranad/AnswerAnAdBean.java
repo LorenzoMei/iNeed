@@ -1,9 +1,16 @@
-package logic.entity;
+package logic.answeranad;
 
-public class Answer {
+public class AnswerAnAdBean {
+	
 	private int id;
 	private String username;
 	private String type;
+	
+	public AnswerAnAdBean() {
+		this.id = -1;
+		this.username = "";
+		this.type = "";
+	}
 	
 	public void setId(int id) {
 		this.id = id;
