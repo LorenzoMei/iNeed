@@ -8,10 +8,12 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.entity.User;
 
 
 
@@ -20,6 +22,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 	
 	public ViewMakeAnAd() {
 		this.setFXMLPath("fxml_makeanad.fxml");
+		activeUser = View.getActiveUser();
 	}
 	
 	 @FXML private TextField typeTextField;
@@ -29,6 +32,8 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 String formError = "FORM ERROR!";
 	 @FXML private Text actionPrinte;
 	 @FXML private GridPane grid;
+	 @FXML private MenuItem profileName;
+	 private User activeUser;
 	 private final static String GOTOLOGIN = "logic.view.ViewLogin";
 	 private final static String GOTOUSER = "logic.view.ViewUser";
 	 private final static String GOTOMAP = "logic.view.ViewMap";
@@ -38,9 +43,9 @@ public class ViewMakeAnAd extends View implements Initializable {
 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
-	 public void initialize(URL location, ResourceBundle resources) {
-
-		 String status = "My location " + location + " my resoursources: " + resources;
+	 public void initialize(URL locationAd, ResourceBundle resourcesAD) {
+		 profileName.setText(activeUser.getUsername());
+		 String status = "My location " + locationAd + " my resoursources: " + resourcesAD;
 		 logger.log(Level.SEVERE, status);
 		}
 

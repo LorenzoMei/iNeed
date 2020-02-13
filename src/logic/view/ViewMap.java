@@ -7,7 +7,9 @@ import com.lynden.gmapsfx.javascript.object.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
+import logic.entity.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,18 +27,24 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	private final static String GOTOMAP = "logic.view.ViewMap";
 	private final static String GOTOFLOW = "logic.view.ViewFlow";
 	private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
-
+	@FXML private MenuItem profileName;
+	private User activeUser;
+	
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;
 
 	public  ViewMap() {	    	
 	    	this.setFXMLPath("fxml_map.fxml");
+	    	activeUser = View.getActiveUser();
+
 	    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	
-        mapView.addMapInializedListener(this);
+		 profileName.setText(activeUser.getUsername());
+		 String status = "My location " + url + " my resoursources: " + resourceBundle;
+		 logger.log(Level.SEVERE, status);
+         mapView.addMapInializedListener(this);
     }
     
     @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {

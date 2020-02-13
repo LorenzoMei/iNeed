@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import logic.entity.User;
@@ -20,11 +21,9 @@ public class ViewUser extends View implements Initializable {
 	
 	public ViewUser() {
 		this.setFXMLPath("fxml_user.fxml");
-		activeUser = getActiveUser();
-		System.out.println("in constructor view user, activeUser is: " + activeUser);
-		
-
+		activeUser = View.getActiveUser();		
 	}
+	
 	 @FXML private Text nameText;
 	 @FXML private Text cityText;
 	 @FXML private Text surnameText;
@@ -32,25 +31,23 @@ public class ViewUser extends View implements Initializable {
 	 String formError = "FORM ERROR!";
 	 @FXML private Text actionPrinter;
 	 @FXML private GridPane grid;
-
+	 @FXML private MenuItem profileName;
+	 private User activeUser;
 	 private final static String GOTOLOGIN = "logic.view.ViewLogin";
 	 private final static String GOTOUSER = "logic.view.ViewUser";
 	 private final static String GOTOMAP = "logic.view.ViewMap";
 	 private final static String GOTOFLOW = "logic.view.ViewFlow";
 	 private final static String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
+	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
-	 public void initialize(URL location, ResourceBundle resources) {
-		 logger.log(Level.SEVERE, "QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ");
-
-//		 nameText.setText(activeUser.getname());
-//		 cityText.setText(activeUser.getCity());
-//		 surnameText.setText(activeUser.getSurName());
-//		 emailText.setText(activeUser.getEmail());
-		 //logger.log(Level.SEVERE, "QUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " this.activeUser.getCity());
-
-		 nameText.setText("franco");
-		 String status = "My location " + location + " my resoursources: " + resources;
+	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
+		 nameText.setText(activeUser.getname());
+		 cityText.setText(activeUser.getCity());
+		 surnameText.setText(activeUser.getSurName());
+		 emailText.setText(activeUser.getEmail());
+		 profileName.setText(activeUser.getUsername());
+		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
 		 logger.log(Level.SEVERE, status);
 		}
 

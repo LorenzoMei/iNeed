@@ -10,10 +10,12 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.entity.User;
 
 
 
@@ -23,12 +25,15 @@ public class ViewFlow extends View implements Initializable {
 	public ViewFlow() {
 		this.textInputFields = new ArrayList<>();		
 		this.setFXMLPath("fxml_flow.fxml");
+		activeUser = View.getActiveUser();
 	}
 	
 	 String formError = "FORM ERROR!";
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
+	 @FXML private MenuItem profileName;
+	 private User activeUser;
 	 private final static String GOTOLOGIN = "logic.view.ViewLogin";
 	 private final static String GOTOUSER = "logic.view.ViewUser";
 	 private final static String GOTOMAP = "logic.view.ViewMap";
@@ -41,9 +46,10 @@ public class ViewFlow extends View implements Initializable {
 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
-	 public void initialize(URL location, ResourceBundle resources) {
-		 String status = "My location " + location + " my resoursources: " + resources;
+	 public void initialize(URL locationflow, ResourceBundle resourcesflow) {
+		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
 		 logger.log(Level.SEVERE, status);
+		 profileName.setText(activeUser.getUsername());
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		}
 	 
