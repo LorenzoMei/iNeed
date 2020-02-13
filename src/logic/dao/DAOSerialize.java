@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,8 +29,8 @@ public abstract class DAOSerialize {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	private String dBPath = readDBPath();
 	
-	protected final String PRIMARY_KEY_VALUES_SEPARATOR = "#";
-	protected final String SERIALIZED_EXTENSION = ".ser";
+	protected final static String PRIMARY_KEY_VALUES_SEPARATOR = "#";
+	protected final static String SERIALIZED_EXTENSION = ".ser";
 	
 	protected String readDBPath() {
 //		TODO: stub
@@ -37,13 +38,9 @@ public abstract class DAOSerialize {
 	}
 	
 	private void buildAttributes(Class<?> currentClass, List<Field> attributes){
-		
-		Class<?> superClass = (Class<?>) currentClass.getGenericSuperclass();
-				
+		Class<?> superClass = (Class<?>) currentClass.getGenericSuperclass();		
 		Field [] currentAttributes = currentClass.getDeclaredFields();
-		for (int i = 0; i < currentAttributes.length; i++) {
-			attributes.add(currentAttributes[i]);
-		}
+		Collections.addAll(attributes, currentAttributes);
 		if (superClass != Object.class) {
 			this.buildAttributes(superClass, attributes);			
 		}
@@ -53,10 +50,10 @@ public abstract class DAOSerialize {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
 		for (int k = 0; k < primaryKeyValues.size(); k ++) {
-			stringBuilder.append(primaryKeyValues.get(k).toString());
-			stringBuilder.append(this.PRIMARY_KEY_VALUES_SEPARATOR);
+			stringBuilder.append(primaryKeyValues.get(k));
+			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 		}
-		stringBuilder.append(this.SERIALIZED_EXTENSION);
+		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
 
@@ -70,13 +67,13 @@ public abstract class DAOSerialize {
 		try{
 			for (int k = 0; k < primaryKeyNames.size(); k ++) {
 				stringBuilder.append(ReflectionMiscellaneous.getGetter(primaryKeyNames.get(k), obj).invoke(obj, (Object[])null).toString());
-				stringBuilder.append(this.PRIMARY_KEY_VALUES_SEPARATOR);
+				stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 			}	
 		}
 		catch(NoSuchGetterException e) {
 			logger.log(Level.SEVERE, "No such get method for attribute " + e.getAttrName());
 		}
-		stringBuilder.append(this.SERIALIZED_EXTENSION);
+		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
 	

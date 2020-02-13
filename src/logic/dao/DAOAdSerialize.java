@@ -14,18 +14,16 @@ import logic.misc.ReflectionMiscellaneous;
 
 public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
-//	public final String LASTID_TYPE_OFFER;
-//	public final String LASTID_TYPE_REQUEST;
-	
 	public static final String LASTID_TYPE_OFFER = "OfferAd";
 	public static final String LASTID_TYPE_REQUEST  = "RequestAd";
+	public static final int LASTID_ZEROID = 0;
 	
 	Logger logger = Logger.getLogger(DAOAdSerialize.class.getName());
 	private static DAOAdSerialize ref = null;
 	
 	private DAOAdSerialize() {
 //		p
-		System.out.println("initializing " + this.getClass().getSimpleName());
+		logger.log(Level.INFO, "initializing " + this.getClass().getSimpleName());
 		
 		List<Field> supportedAds = ReflectionMiscellaneous.getSupported(this, "LASTID_TYPE");
 		
@@ -33,13 +31,13 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 			try {
 				String pathLastId = this.readDBPath() + "AdId" + File.separator + supportedAds.get(i).get(null).toString();
 //				p
-				System.out.println("checking if " + pathLastId);
+				logger.log(Level.INFO, "checking if " + pathLastId + " directory exists");
 				File lastIdFile = new File(pathLastId);
 				if (!lastIdFile.exists()) {
 //					p
-					System.out.println(pathLastId + " does not exists, creating it");
+					logger.log(Level.INFO, pathLastId + " does not exists, creating it");
 					AdId zeroId = new AdId();
-					zeroId.setLastId(0);
+					zeroId.setLastId(LASTID_ZEROID);
 					zeroId.setType(supportedAds.get(i).get(null).toString());
 					this.storeLastId(zeroId);
 				}
@@ -54,7 +52,6 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		if (ref == null) {
 			ref = new DAOAdSerialize();
 		}
-		
 		return ref;
 	}
 	
@@ -70,7 +67,6 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		try {
 			this.load(ad, primaryKeyValues);
 		} catch (ElementInDBNotFoundException e) {
-			logger.log(Level.WARNING, e.getMessage());
 			throw new AdNotFoundException(e);
 		} catch (IOException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
 			logger.log(Level.SEVERE, e.toString());
@@ -78,14 +74,15 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	}
 	
 	@Override
-	public void storeNewAd(Ad ad) {
+	public int storeNewAd(Ad ad) {
 		AdId id = new AdId();
 		this.updateLastId(ad.getClass().getSimpleName());
 		this.loadLastId(id, ad.getClass().getSimpleName());
 		ad.setId(id.getLastId());
 //		p
-		System.out.println("ad " + ad + " id set to " + ad.getId());
+		logger.log(Level.INFO, "ad " + ad + " id set to " + ad.getId());
 		this.storeAd(ad);
+		return ad.getId();
 	}
 	
 	@Override
@@ -94,8 +91,6 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		primaryKeyNames.add("id");
 		try {
 			this.store(ad, primaryKeyNames);
-			
-			
 		} catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException | InvocationTargetException | NoSuchMethodException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}		 
@@ -113,27 +108,19 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
 	private int updateLastId(String type) {
 		
-		int oldVal, newVal;
+		int oldVal;
+		int newVal;
 		AdId lastId = new AdId();
 		
 		this.loadLastId(lastId, type);
 //		p
-		System.out.println("old lastId is " + lastId.getLastId());
+		logger.log(Level.INFO, "old lastId is " + lastId.getLastId());
 		oldVal = lastId.getLastId();
 		newVal = ++ oldVal ;
 		lastId.setLastId(newVal);
 //		p
-		System.out.println("storing new val of lastId: " + lastId.getLastId());
+		logger.log(Level.INFO, "storing new val of lastId: " + lastId.getLastId());
 		this.storeLastId(lastId);
-		
-//		List<String> primaryKeyNames = new ArrayList<>();
-////		primaryKeyNames.add("name");
-//		primaryKeyNames.add("type");
-//		try {
-//			this.store(lastId, primaryKeyNames);
-//		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | IOException e) {
-//			logger.log(Level.SEVERE, e.toString());
-//		}
 		
 		return newVal;
 	}
@@ -165,6 +152,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	public int getLastRequestId() {
 		AdId lastRequestId = new AdId();
 		this.loadLastRequestId(lastRequestId);
+		
 		return lastRequestId.getLastId();
 	}
 
@@ -172,6 +160,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	public int getLastOfferId() {
 		AdId lastOfferId = new AdId();
 		this.loadLastOfferId(lastOfferId);
+		
 		return lastOfferId.getLastId();
 	}
 }

@@ -3,7 +3,7 @@ package logic.entity;
 import java.util.Calendar;
 
 public abstract class Ad {
-	protected int id = -1;
+	protected int id;
 	protected User user = null;
 	protected String title = "";
 	protected String body = "";

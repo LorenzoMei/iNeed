@@ -33,7 +33,8 @@ public class PublishAnAdController implements PublishAnAdInterface{
 		for(int i = 0; i < methodsBean.length; i++) {
 			if(methodsBean[i].getName().contains("get")) {
 				for(int j = 0; j < methodsEntity.length; j++) {
-					if(methodsEntity[j].getName().contains("set" + methodsBean[i].getName().substring(3, 4).toUpperCase() + methodsBean[i].getName().substring(4))) {
+					if(methodsEntity[j].getName().contains("set" + methodsBean[i].getName().substring(3, 4).toUpperCase() + methodsBean[i].getName().substring(4))
+							&& !(methodsEntity[j].isSynthetic() || methodsBean[i].isSynthetic())) {
 						Object value = methodsBean[i].invoke(publishAdBean, (Object[]) null);
 						methodsEntity[j].invoke(ad, value);
 					}
@@ -44,8 +45,8 @@ public class PublishAnAdController implements PublishAnAdInterface{
 		Data data = new Data();
 		ad.setData(data.buildDate());	
 		
-		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
-		dao.storeAd(ad);
+		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference(DAOFactory.ENTITYNAME_AD);
+		dao.storeNewAd(ad);
 		return ad;
 	}
 }

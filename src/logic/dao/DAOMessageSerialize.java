@@ -27,19 +27,20 @@ public class DAOMessageSerialize extends DAOSerialize implements DAOMessage{
 	
 	private DAOMessageSerialize() {}
 	
-	public void loadMessage(String sender, String reciver, List<Message> messagesList) throws MessageNotFoundException {
+	public void loadMessage(String sender, String receiver, List<Message> messagesList) throws MessageNotFoundException {
 		
 		List <String> primaryKeyValues = new ArrayList <>();
 		primaryKeyValues.add(sender);
-		primaryKeyValues.add(reciver);
+		primaryKeyValues.add(receiver);
 		
-		File folder = new File("db/serialized/Message");
+		File folder = new File(this.readDBPath() + Message.class.getSimpleName());
 		File[] listOfFiles = folder.listFiles();
 		
 		for (int i = 0; i < listOfFiles.length; i++) {
-			 System.out.println(sender + this.PRIMARY_KEY_VALUES_SEPARATOR + reciver);
-		  if (listOfFiles[i].getName().contains(sender + this.PRIMARY_KEY_VALUES_SEPARATOR + reciver)) {
-			  primaryKeyValues.add(listOfFiles[i].getName().substring(sender.length() + this.PRIMARY_KEY_VALUES_SEPARATOR.length() + reciver.length() + this.PRIMARY_KEY_VALUES_SEPARATOR.length(), listOfFiles[i].getName().length() - this.SERIALIZED_EXTENSION.length() - this.PRIMARY_KEY_VALUES_SEPARATOR.length()));
+//			p
+			logger.log(Level.INFO, sender + DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR + receiver);
+		  if (listOfFiles[i].getName().contains(sender + DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR + receiver)) {
+			  primaryKeyValues.add(listOfFiles[i].getName().substring(sender.length() + DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR.length() + receiver.length() + DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR.length(), listOfFiles[i].getName().length() - DAOSerialize.SERIALIZED_EXTENSION.length() - DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR.length()));
 			  
 			  Message newMessage = new Message();
 			  try {
@@ -52,7 +53,7 @@ public class DAOMessageSerialize extends DAOSerialize implements DAOMessage{
 			  } 
 			  
 			  messagesList.add(newMessage);
-			  primaryKeyValues.remove(listOfFiles[i].getName().substring(sender.length() + PRIMARY_KEY_VALUES_SEPARATOR.length() + reciver.length() + PRIMARY_KEY_VALUES_SEPARATOR.length(), listOfFiles[i].getName().length() - SERIALIZED_EXTENSION.length() - PRIMARY_KEY_VALUES_SEPARATOR.length()));
+			  primaryKeyValues.remove(listOfFiles[i].getName().substring(sender.length() + PRIMARY_KEY_VALUES_SEPARATOR.length() + receiver.length() + PRIMARY_KEY_VALUES_SEPARATOR.length(), listOfFiles[i].getName().length() - SERIALIZED_EXTENSION.length() - PRIMARY_KEY_VALUES_SEPARATOR.length()));
 		  }
 		}
 	}
