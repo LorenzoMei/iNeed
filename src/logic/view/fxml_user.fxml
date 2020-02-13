@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewUser">
+   <children>
+      <HBox prefHeight="53.0" prefWidth="1100.0" spacing="75.0" style="-fx-background-color: #011c2e;">
+         <children>
+            <ToolBar maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="1100.0">
+              <items>
+                  <ImageView fitHeight="31.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/iNeed.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                            <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnOffer" prefHeight="31.0" prefWidth="154.0" text="Make An Offer" />
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeARequest" prefHeight="31.0" prefWidth="179.0" text="Make A Request" />
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" text="Validate A Favor" />
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
+                                  <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="Exit" />
+                                </items>
+                              </MenuButton>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </HBox>
+                     </children>
+                  </HBox>
+              </items>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </ToolBar>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="cityText" layoutX="34.0" layoutY="130.0" prefHeight="661.0" prefWidth="1034.0" style="-fx-background-color: #d5e8f5; -fx-border-color: #011c2e;">
+         <effect>
+            <DropShadow height="51.0" radius="25.0" width="51.0" />
+         </effect>
+         <children>
+            <HBox layoutX="29.0" layoutY="37.0" prefHeight="100.0" prefWidth="968.0" style="-fx-border-color: #011c2e;">
+               <children>
+                  <ImageView fx:id="coverPic" fitHeight="118.0" fitWidth="968.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/provacoverpic.jpg" />
+                     </image></ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="440.0" layoutY="98.0" prefHeight="118.0" prefWidth="114.0" style="-fx-border-color: #050580;">
+               <children>
+                  <ImageView fx:id="profilePic" fitHeight="125.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/provaprofilepic.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Pane layoutX="29.0" layoutY="242.0" prefHeight="200.0" prefWidth="977.0" style="-fx-border-color: #050580; -fx-background-color: white;">
+               <children>
+                  <Text layoutX="27.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="General Infos:">
+                     <font>
+                        <Font name="AR JULIAN" size="28.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" layoutX="89.0" layoutY="65.0" prefHeight="31.0" prefWidth="353.0" style="-fx-border-color: #050580;">
+                     <children>
+                        <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="349.6708984375" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="87.0" layoutY="137.0" prefHeight="31.0" prefWidth="353.0" style="-fx-border-color: #050580;">
+                     <children>
+                        <Text fx:id="surnameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="343.6708984375" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="539.0" layoutY="65.0" prefHeight="31.0" prefWidth="353.0" style="-fx-border-color: #050580;">
+                     <children>
+                        <Text fx:id="cityText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="343.6708984375" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="539.0" layoutY="137.0" prefHeight="31.0" prefWidth="353.0" style="-fx-border-color: #050580;">
+                     <children>
+                        <Text fx:id="emailText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="347.6708984375" />
+                     </children>
+                  </HBox>
+                  <Text layoutX="89.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+                     <font>
+                        <Font name="AR JULIAN" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="87.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Surname:">
+                     <font>
+                        <Font name="AR JULIAN" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="539.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
+                     <font>
+                        <Font name="AR JULIAN" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="539.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                     <font>
+                        <Font name="AR JULIAN" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+            <HBox layoutX="29.0" layoutY="473.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonGallery" prefHeight="45.0" prefWidth="138.0" text="Gallery" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <HBox layoutX="868.0" layoutY="469.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonCurriculum" prefHeight="45.0" prefWidth="138.0" text="Curriculum" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <HBox layoutX="29.0" layoutY="556.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonFavorites" prefHeight="45.0" prefWidth="138.0" text="Favorites" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <HBox layoutX="868.0" layoutY="556.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonRaitings" prefHeight="45.0" prefWidth="138.0" text="Raitings" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <HBox layoutX="430.0" layoutY="507.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonWallet" prefHeight="53.0" prefWidth="174.0" text="Wallet" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
