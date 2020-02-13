@@ -38,10 +38,11 @@ public class Context {
 		if (currentView == null) {
 			currentView = new InitialState();
 		}
-		System.out.println("Context: currentState is "+currentView.getClass().getSimpleName());
+		
+		logger.log(Level.SEVERE,"Context: currentState is " + currentView.getClass().getSimpleName());
 		currentView.goNext(viewName);
-//		p
-		System.out.println("Context: currentState changed to "+currentView.getClass().getSimpleName());
+		logger.log(Level.SEVERE,"Context: currentState changed to " + currentView.getClass().getSimpleName());
+
 
 		this.draw(Client.getStage());
 	}

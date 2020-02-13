@@ -41,6 +41,7 @@ public class ViewSignUp extends View implements Initializable{
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
     @FXML private GridPane grid;
+    private final String gotoLogin = "logic.view.ViewLogin";
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -50,12 +51,12 @@ public class ViewSignUp extends View implements Initializable{
     	
     	this.textInputFields = new ArrayList<>();
     	this.setFXMLPath("fxml_signup.fxml");
-//    	this.setNext("logic.view.ViewLogin");
     }
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		logger.log(Level.SEVERE,"My location " + location + " my resoursources: " + resources);
+		String status = "My location " + location + " my resoursources: " + resources;
+		logger.log(Level.SEVERE, status);
 
 		nameTextField.setPromptText("*Es. Mario");
         surNameTextField.setPromptText("*Es. Rossi");
@@ -97,7 +98,7 @@ public class ViewSignUp extends View implements Initializable{
         
 	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
 		
-		Context.getReference().goNext("logic.view.ViewLogin");
+		Context.getReference().goNext(gotoLogin);
 		actionSignIn.setText("");
 
     }
@@ -150,14 +151,18 @@ public class ViewSignUp extends View implements Initializable{
     
         }
         
-    	logger.log(Level.SEVERE, "bdate: " + bDate );
+        
 
         
 		int bDay = bDate.get(ChronoField.DAY_OF_MONTH);
 		int bMonth = bDate.get(ChronoField.MONTH_OF_YEAR);
 		int bYear = bDate.get(ChronoField.YEAR);
 		
-    	logger.log(Level.SEVERE, "day: " + bDay );
+		final String birthDate = "bdate: " + bDate;
+		final String birthDay = "day: " + bDay;
+        
+    	logger.log(Level.SEVERE, birthDate);
+    	logger.log(Level.SEVERE, birthDay);
 
 		
 		calendarBuilder.setDate(bYear, bMonth, bDay);
@@ -207,12 +212,9 @@ public class ViewSignUp extends View implements Initializable{
 					return;
 				}
 	    		
-	    		
 	    		actionSignIn.setText("Signed in, welcome " + username);
-	    		
-	    		
-	    		this.setNext("logic.view.ViewLogin");
-	    		Context.getReference().goNext("logic.view.ViewLogin");
+
+	    		Context.getReference().goNext(gotoLogin);
 	    		
 	    	}
         
