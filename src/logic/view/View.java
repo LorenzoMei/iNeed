@@ -16,14 +16,11 @@ public abstract class View {
 	
 	
 	public static User getActiveUser() {
-//    	logger.log(Level.INFO, "In View the user in getUser is: " + View.activeUser);
 		return View.activeUser;
 	}
 	
 	public static void setactiveUser(User activeUser) {
 		View.activeUser = activeUser;
-//    	logger.log(Level.INFO, "In View the user is: " + View.activeUser);
-//    	logger.log(Level.INFO, "In View the user with getUser form geUser is: " + getActiveUser());
 
 	}
 	

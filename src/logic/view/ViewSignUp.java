@@ -141,6 +141,7 @@ public class ViewSignUp extends View implements Initializable{
         String email = emailTextField.getText();
         String name = nameTextField.getText();
         String surName = surNameTextField.getText();
+        System.out.println("Name is: " + name + " surname is: " + surName);
         Calendar  today = Calendar.getInstance();   
         Builder calendarBuilder  = new Calendar.Builder();
         LocalDate bDate = datePickerTextField.getValue();        
@@ -212,7 +213,6 @@ public class ViewSignUp extends View implements Initializable{
 					actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
 					return;
 				}
-	    		
 	    		actionSignIn.setText("Signed in, welcome " + username);
 
 	    		Context.getReference().goNext(gotoLogin);

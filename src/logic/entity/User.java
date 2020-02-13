@@ -82,7 +82,7 @@ public class User {
 		return this.surName;
 	}
 	
-	public String getname() {
+	public String getName() {
 		return this.name;
 	}
 	

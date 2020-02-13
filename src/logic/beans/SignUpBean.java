@@ -75,7 +75,7 @@ public class SignUpBean {
 		return this.surName;
 	}
 	
-	public String getname() {
+	public String getName() {
 		return this.name;
 	}
 	

@@ -42,7 +42,7 @@ public class ViewUser extends View implements Initializable {
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
-		 nameText.setText(activeUser.getname());
+		 nameText.setText(activeUser.getName());
 		 cityText.setText(activeUser.getCity());
 		 surnameText.setText(activeUser.getSurName());
 		 emailText.setText(activeUser.getEmail());

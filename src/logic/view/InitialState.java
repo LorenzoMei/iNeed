@@ -19,8 +19,7 @@ public class InitialState extends View{
 			logger.log(Level.SEVERE, status);
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			
-			logger.log(Level.INFO, e.toString());;
+			logger.log(Level.INFO, e.toString());
 		}
 	}
 }
