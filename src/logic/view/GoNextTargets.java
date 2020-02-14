@@ -7,7 +7,8 @@ public enum GoNextTargets {
 	VIEW_LOGIN(ViewLogin.class.getName()),
 	VIEW_MAKEANAD(ViewMakeAnAd.class.getName()),
 	VIEW_MAP(ViewMap.class.getName()),
-	VIEW_USER(ViewUser.class.getName())
+	VIEW_USER(ViewUser.class.getName()),
+	VIEW_REGULATIONS(ViewRegulations.class.getName())
 	;
 	
 	private final String stateName;

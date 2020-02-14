@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
@@ -74,20 +73,22 @@ public class ViewMakeAnAd extends View implements Initializable {
 	     adBean.setBody(bodyTextArea.getText());
 	     adBean.setUsername(View.getProfileName());
 	     
-	     try {
-			controller.createAd(adBean);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
+	    
+			try {
+				controller.createAd(adBean);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				logger.log(Level.SEVERE, e.toString() + " Error in ViewMakeAnAd");
+			}
+		
 	     
 	     actionPrinte.setText("Ad Posted!");
 	 }
 	 
 	 @FXML protected void handleSubmitButtonRegulations(ActionEvent event) {
 		 actionPrinte.setText("");
-	     actionPrinte.setText("vado su Regulations");	
+	     actionPrinte.setText("vado su Regulations");
+	     Context.getReference().goNext(GoNextTargets.VIEW_REGULATIONS.getStateName());
+	     
 	 }
 	 
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
