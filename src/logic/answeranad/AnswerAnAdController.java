@@ -1,14 +1,22 @@
 package logic.answeranad;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.EnumSet;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import logic.beans.AnswerAnAdBean;
+import logic.beans.KeyAnswersAnAdBean;
 import logic.dao.DAOAnswers;
 import logic.dao.DAOFactory;
 import logic.entity.Answer;
+import logic.misc.NoSuchSetterException;
+import logic.misc.ReflectionMiscellaneous;
 
-public class AnswerAnAdController implements AnswerAnAdControllerInterface{
+public class AnswerAnAdController implements AnswerAnAdControllerInterface {
 
+	Logger logger = Logger.getLogger(this.getClass().getName());
 	private static AnswerAnAdController reference = null;
 	
 	public static AnswerAnAdController getInstance() {
@@ -20,21 +28,17 @@ public class AnswerAnAdController implements AnswerAnAdControllerInterface{
 	private AnswerAnAdController() {};
 	
 	public void candidate(AnswerAnAdBean answerAnAdBean) throws IllegalAccessException, InvocationTargetException {
+		
 		Answer answers = new Answer();
 		
-		Method[] methodsBean = answerAnAdBean.getClass().getMethods();
-		Method[] methodsEntity = answers.getClass().getMethods();
-		
-		for(int i = 0; i < methodsBean.length; i++) {
-			if(methodsBean[i].getName().contains("get")) {
-				for(int j = 0; j < methodsEntity.length; j++) {
-					if(methodsEntity[j].getName().contains("set" + methodsBean[i].getName().substring(3, 4).toUpperCase() + methodsBean[i].getName().substring(4))) {
-						Object value = methodsBean[i].invoke(answerAnAdBean, (Object[]) null);
-						methodsEntity[j].invoke(answers, value);
-					}
-				}
+		EnumSet.allOf(KeyAnswersAnAdBean.class).forEach(key ->{
+			try {
+				ReflectionMiscellaneous.getSetter(key.getKeyName(), answers).invoke(answers, answerAnAdBean.getAttributes().get((Object) key));
+			} catch (NoSuchSetterException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				logger.log(Level.SEVERE, e.toString());
 			}
-		}
+			;
+		});
 		
 		DAOAnswers dao = (DAOAnswers) DAOFactory.getReference().getDAOReference("Answers");
 		dao.storeAnswers(answers);
