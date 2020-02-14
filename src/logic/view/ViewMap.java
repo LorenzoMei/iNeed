@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 import logic.beans.ViewProfileBean;
-import logic.viewprofile.VIewProfileController;
+import logic.viewprofile.ViewProfileController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +27,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	@FXML private Text tester;
 	@FXML private MenuItem profileName;
 	ViewProfileBean pBean = new ViewProfileBean();
- 	VIewProfileController pController = new VIewProfileController();
+ 	ViewProfileController pController = ViewProfileController.getInstance();
 	
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;

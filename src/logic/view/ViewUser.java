@@ -13,7 +13,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import logic.beans.ViewProfileBean;
-import logic.viewprofile.VIewProfileController;
+import logic.viewprofile.ViewProfileController;
 
 
 
@@ -35,7 +35,7 @@ public class ViewUser extends View implements Initializable {
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 ViewProfileBean pBean = new ViewProfileBean();
-	 VIewProfileController viewProfileController = new VIewProfileController();
+	 ViewProfileController viewProfileController = ViewProfileController.getInstance();
 	 
 
 	 
