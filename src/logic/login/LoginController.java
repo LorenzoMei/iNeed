@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import logic.beans.CredentialsBean;
+import logic.beans.LogoutBean;
 import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;
 import logic.entity.User;
@@ -35,5 +36,9 @@ public class LoginController {
 				throw new WrongPasswordException();
 			}
 		}
+	}
+	
+	public void logout(LogoutBean bean) {
+		this.userLoggedList.remove(bean.getUsername());
 	}
 }
