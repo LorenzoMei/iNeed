@@ -27,7 +27,6 @@ import logic.signup.UsernameAlreadyTakenException;
  
 public class ViewSignUp extends View implements Initializable{
 	
-	String formError = "FORM ERROR!";
     @FXML private Text actionSignIn;
     @FXML private Text actionCancel;
     @FXML private TextField nameTextField;
@@ -41,7 +40,6 @@ public class ViewSignUp extends View implements Initializable{
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
     @FXML private GridPane grid;
-    private final String gotoLogin = "logic.view.ViewLogin";
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -98,7 +96,7 @@ public class ViewSignUp extends View implements Initializable{
         
 	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
 		
-		Context.getReference().goNext(gotoLogin);
+		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 		actionSignIn.setText("");
 
     }
@@ -121,17 +119,17 @@ public class ViewSignUp extends View implements Initializable{
     @FXML protected void handleSubmitButtonSignUp(ActionEvent event) {
         actionCancel.setText("");        
         
-    	logger.log(Level.SEVERE, "populating textInputFields in viewLogin");
+    	logger.log(Level.INFO, "populating textInputFields in viewLogin");
     	
     	CheckEmptyField check = new CheckEmptyField();
     	
     	check.populateTextInputFields(this);
     	
-    	logger.log(Level.SEVERE, "Signup after populating");
+    	logger.log(Level.INFO, "Signup after populating");
     	
         this.textInputFields = check.getTextInputFields();
         
-    	logger.log(Level.SEVERE, "Signup Populated the textInputFields");
+    	logger.log(Level.INFO, "Signup Populated the textInputFields");
 
 
         String username = userNameTextField.getText();
@@ -141,12 +139,13 @@ public class ViewSignUp extends View implements Initializable{
         String email = emailTextField.getText();
         String name = nameTextField.getText();
         String surName = surNameTextField.getText();
+        System.out.println("Name is: " + name + " surname is: " + surName);
         Calendar  today = Calendar.getInstance();   
         Builder calendarBuilder  = new Calendar.Builder();
         LocalDate bDate = datePickerTextField.getValue();        
         
         if(bDate == null) {
-        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Insert a Date please!");
+        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSGError.ERROR_FORM.getMsg(), "Insert a Date please!");
             return;
     
         }
@@ -161,8 +160,8 @@ public class ViewSignUp extends View implements Initializable{
 		final String birthDate = "bdate: " + bDate;
 		final String birthDay = "day: " + bDay;
         
-    	logger.log(Level.SEVERE, birthDate);
-    	logger.log(Level.SEVERE, birthDay);
+    	logger.log(Level.INFO, birthDate);
+    	logger.log(Level.INFO, birthDay);
 
 		
 		calendarBuilder.setDate(bYear, bMonth, bDay);
@@ -176,24 +175,25 @@ public class ViewSignUp extends View implements Initializable{
 
 		
     	if((difference) < 18 || (bYear > todayYear) ) {
-			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Invalid date, you're too young check regulations ");
-
+			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSGError.ERROR_FORM.getMsg(), "Invalid date, you're too young check regulations ");
+			 return;
     	}
 		
         
         if(passw.compareTo(vPsw) != 0) {
-            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),formError, "Your password doesn't match!");
+            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),MSGError.ERROR_FORM.getMsg(), "Your password doesn't match!");
             return;
     }
     
 		for(int i = 0; i < textInputFields.size(); i++) {
-		        logger.log(Level.SEVERE, textInputFields.get(i).getClass().getSimpleName());
+		        logger.log(Level.INFO, textInputFields.get(i).getClass().getSimpleName());
 		        if(textInputFields.get(i).getText().isEmpty()) {
 		        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Service field Error!", "Empty Fields, complete all the obligatoryFileds");
 		            return;
 		        }
 		        else {
-		        	
+		    		logger.log(Level.INFO, "0 Empty Fields");
+
 		        }
 			        SignUpBean usersBean = new SignUpBean();
 		    		usersBean.setUsername(username);
@@ -211,10 +211,9 @@ public class ViewSignUp extends View implements Initializable{
 					actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
 					return;
 				}
-	    		
 	    		actionSignIn.setText("Signed in, welcome " + username);
 
-	    		Context.getReference().goNext(gotoLogin);
+	    		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 	    		
 	    	}
         

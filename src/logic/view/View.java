@@ -5,17 +5,30 @@ import java.util.logging.Logger;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
+import logic.entity.User;
 
 public abstract class View {
     
 	 Logger logger = Logger.getLogger(this.getClass().getName());
-
+	
+	private static User activeUser;
 	private String next;
+	
+	
+	public static User getActiveUser() {
+		return View.activeUser;
+	}
+	
+	public static void setactiveUser(User activeUser) {
+		View.activeUser = activeUser;
+
+	}
 	
 	public void setNext(String next) {
 		this.next = next;
 	}
 	
+
 	public String getNext() {
 		return this.next;
 	}

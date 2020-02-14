@@ -10,10 +10,12 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.entity.User;
 
 
 
@@ -23,18 +25,31 @@ public class ViewFlow extends View implements Initializable {
 	public ViewFlow() {
 		this.textInputFields = new ArrayList<>();		
 		this.setFXMLPath("fxml_flow.fxml");
+		activeUser = View.getActiveUser();
 	}
 	
-	 String formError = "FORM ERROR!";
+	 String formError = MSGError.ERROR_FORM.getMsg();
 	 @FXML private Text actionCancel;
 	 @FXML private TextField searchTextField;
-//	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
+	 @FXML private MenuItem profileName;
+	 private User activeUser;
+//	 private static final String GOTOLOGIN = "logic.view.ViewLogin";
+//	 private static final String GOTOUSER = "logic.view.ViewUser";
+//	 private static final String GOTOMAP = "logic.view.ViewMap";
+//	 private static final String GOTOFLOW = "logic.view.ViewFlow";
+//	 private static final String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
+
+
+
      private List<TextInputControl> textInputFields;
 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
-	 public void initialize(URL location, ResourceBundle resources) {
+	 public void initialize(URL locationflow, ResourceBundle resourcesflow) {
+		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
+		 logger.log(Level.SEVERE, status);
+		 profileName.setText(activeUser.getUsername());
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		}
 	 
@@ -63,28 +78,33 @@ public class ViewFlow extends View implements Initializable {
  		actionCancel.setText("new search!");
 	 }
 	 
-	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
-	 		
-
-	 }
 	 
-	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
-			
+	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
+	 		actionCancel.setText("");
+	 		actionCancel.setText("MakeAnAd");
+		 	Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
+
+
 	 }
 	 
 	
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
+	 		actionCancel.setText("");
+
+	 		actionCancel.setText("ValidateAFavor");
 			
 	 }
 	
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
-	 		Context.getReference().goNext("logic.view.ViewUser");
+	 		actionCancel.setText("");
+	 		Context.getReference().goNext(GoNextTargets.VIEW_USER.getStateName());
 
 	 }
 		 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewLogin");
+	 		actionCancel.setText("");
+	 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }
 	 
@@ -92,12 +112,12 @@ public class ViewFlow extends View implements Initializable {
 	 		 actionCancel.setText("");
 		     actionCancel.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
-	    	 Context.getReference().goNext("logic.view.ViewMap");
+	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 
 		 }
 	 
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
- 		Context.getReference().goNext("logic.view.ViewFlow");
+ 		Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());
 
  		 actionCancel.setText("");
 	     actionCancel.setText("pagina aggiornata");
