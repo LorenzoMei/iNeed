@@ -13,7 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import logic.entity.User;
+import logic.beans.ViewProfileBean;
 
 
 
@@ -22,7 +22,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 	
 	public ViewMakeAnAd() {
 		this.setFXMLPath("fxml_makeanad.fxml");
-		activeUser = View.getActiveUser();
+		pBean.setRequestedUsername(View.getProfileName());
 	}
 	
 	 @FXML private TextField typeTextField;
@@ -33,12 +33,12 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 @FXML private Text actionPrinte;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
-	 private User activeUser;
-
+	 ViewProfileBean pBean = new ViewProfileBean();
+	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationAd, ResourceBundle resourcesAD) {
-		 profileName.setText(activeUser.getUsername());
+		 profileName.setText(View.getProfileName());
 		 String status = "My location " + locationAd + " my resoursources: " + resourcesAD;
 		 logger.log(Level.SEVERE, status);
 		}

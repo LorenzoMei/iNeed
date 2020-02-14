@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import logic.entity.User;
+import logic.beans.ViewProfileBean;
+import logic.viewprofile.VIewProfileController;
+
 
 
 
@@ -21,27 +23,36 @@ public class ViewUser extends View implements Initializable {
 	
 	public ViewUser() {
 		this.setFXMLPath("fxml_user.fxml");
-		activeUser = View.getActiveUser();		
+		pBean.setRequestedUsername(View.getProfileName());
+		viewProfileController.loadProfile(pBean);
 	}
 	
 	 @FXML private Text nameText;
 	 @FXML private Text cityText;
 	 @FXML private Text surnameText;
 	 @FXML private Text emailText;
-	 String formError = "FORM ERROR!";
 	 @FXML private Text actionPrinter;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
-	 private User activeUser;
+	 ViewProfileBean pBean = new ViewProfileBean();
+	 VIewProfileController viewProfileController = new VIewProfileController();
+	 
+
 	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
-		 nameText.setText(activeUser.getName());
-		 cityText.setText(activeUser.getCity());
-		 surnameText.setText(activeUser.getSurName());
-		 emailText.setText(activeUser.getEmail());
-		 profileName.setText(activeUser.getUsername());
+		 
+		 String name = pBean.getName();
+		 String city = pBean.getCity();
+		 String surname = pBean.getSurName();
+		 String email = pBean.getEmail();
+		 
+		 nameText.setText(name);
+		 cityText.setText(city);
+		 surnameText.setText(surname);
+		 emailText.setText(email);
+		 profileName.setText(View.getProfileName());
 		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
 		 logger.log(Level.INFO, status);
 		}
@@ -67,8 +78,7 @@ public class ViewUser extends View implements Initializable {
 	    }
 	 @FXML protected void handleSubmitButtonGallery(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Gallery");
-			
+	     actionPrinter.setText("vado su Gallery");			
 	    }
 	 @FXML protected void handleSubmitButtonCurriculum(ActionEvent event) {
 		 actionPrinter.setText("");

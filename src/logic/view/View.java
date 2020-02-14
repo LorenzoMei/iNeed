@@ -5,22 +5,21 @@ import java.util.logging.Logger;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
-import logic.entity.User;
 
 public abstract class View {
     
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	private static User activeUser;
+	private static String profileName;
 	private String next;
 	
 	
-	public static User getActiveUser() {
-		return View.activeUser;
+	public static String getProfileName() {
+		return View.profileName;
 	}
 	
-	public static void setactiveUser(User activeUser) {
-		View.activeUser = activeUser;
+	public static void setProfileName(String username) {
+		View.profileName = username;
 
 	}
 	

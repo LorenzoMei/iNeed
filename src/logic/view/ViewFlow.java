@@ -15,7 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import logic.entity.User;
+import logic.beans.ViewProfileBean;
+
 
 
 
@@ -24,8 +25,8 @@ public class ViewFlow extends View implements Initializable {
 	
 	public ViewFlow() {
 		this.textInputFields = new ArrayList<>();		
-		this.setFXMLPath("fxml_flow.fxml");
-		activeUser = View.getActiveUser();
+		this.setFXMLPath("fxml_flow.fxml");	
+		pBean.setRequestedUsername(View.getProfileName());
 	}
 	
 	 String formError = MSGError.ERROR_FORM.getMsg();
@@ -33,7 +34,7 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
-	 private User activeUser;
+	 ViewProfileBean pBean = new ViewProfileBean();
 
      private List<TextInputControl> textInputFields;
 
@@ -42,7 +43,7 @@ public class ViewFlow extends View implements Initializable {
 	 public void initialize(URL locationflow, ResourceBundle resourcesflow) {
 		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
 		 logger.log(Level.SEVERE, status);
-		 profileName.setText(activeUser.getUsername());
+		 profileName.setText(View.getProfileName());
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		}
 	 

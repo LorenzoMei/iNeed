@@ -9,7 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
-import logic.entity.User;
+import logic.beans.ViewProfileBean;
+import logic.viewprofile.VIewProfileController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,20 +26,22 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	
 	@FXML private Text tester;
 	@FXML private MenuItem profileName;
-	private User activeUser;
+	ViewProfileBean pBean = new ViewProfileBean();
+ 	VIewProfileController pController = new VIewProfileController();
 	
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;
 
 	public  ViewMap() {	    	
 	    	this.setFXMLPath("fxml_map.fxml");
-	    	activeUser = View.getActiveUser();
+	    	pBean.setRequestedUsername(View.getProfileName());
+			pController.loadProfile(pBean);
 
 	    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-		 profileName.setText(activeUser.getUsername());
+		 profileName.setText(View.getProfileName());
 		 String status = "My location " + url + " my resoursources: " + resourceBundle;
 		 logger.log(Level.SEVERE, status);
          mapView.addMapInializedListener(this);
