@@ -82,7 +82,8 @@ public class ViewUser extends View implements Initializable {
 	    }
 	 @FXML protected void handleSubmitButtonCurriculum(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Curriculum");	
+	     actionPrinter.setText("vado su Curriculum");
+	     Context.getReference().goNext(GoNextTargets.VIEW_CURRICULIMMAIN.getStateName());
 	    }
 	 
 	 @FXML protected void handleSubmitButtonFavorites(ActionEvent event) {

@@ -31,7 +31,7 @@ public class ViewRegulations  extends View implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//		 profileName.setText(View.getProfileName());
+		 profileName.setText(View.getProfileName());
 		 String status = "My location " + url + " my resoursources: " + resourceBundle;
 		 logger.log(Level.INFO, status);
     }
