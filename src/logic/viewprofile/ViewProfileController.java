@@ -24,11 +24,11 @@ private static ViewProfileController instance;
 	@Override
 	public void loadProfile(ViewProfileBean profile)  {
 		
-		logger.log(Level.INFO, "requested profile data of username " + profile.getUsername());
+		logger.log(Level.INFO, "requested profile data of username " + profile.getRequestedUsername());
 		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference("User");  
 		User user = new User();
 		try {
-			daoRef.loadUser(user, profile.getUsername());
+			daoRef.loadUser(user, profile.getRequestedUsername());
 		} catch (UserNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString() + " Error on loading the profile");
 		}

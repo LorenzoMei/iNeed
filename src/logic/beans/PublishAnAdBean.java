@@ -1,4 +1,4 @@
-package logic.publishanad;
+package logic.beans;
 
 
 public class PublishAnAdBean {

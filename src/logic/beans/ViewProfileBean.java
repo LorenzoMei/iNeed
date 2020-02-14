@@ -18,16 +18,12 @@ public class ViewProfileBean {
 		public void setRequesteUser(User requestedUser) {
 			this.requestedUser = requestedUser;
 		}
-		
-		
 	
 	//all the gets on attributes
 
-		public String getUsername() {
+		public String getRequestedUsername() {
 			return this.requestedUsername;
 		}
-		
-
 		
 		public String getEmail() {
 			return this.requestedUser.getEmail();

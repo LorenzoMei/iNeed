@@ -41,7 +41,7 @@ public class TestDaoAd {
 		String body = "Cerco qualcuno disponibile ad offrire un posto letto per il 17/02/2020";
 
 		Ad storedAd = new RequestAd();
-		storedAd.setUser(user);
+		storedAd.setOwnerUsername(user.getUsername());
 		storedAd.setTitle(title);
 		storedAd.setBody(body);
 		storedAd.setId(100);
@@ -52,6 +52,6 @@ public class TestDaoAd {
 		Ad loadedAd = new RequestAd();
 		daoAd.loadAd(loadedAd, storedId);
 		
-		Assert.assertEquals(storedAd.getUser().getUsername(), loadedAd.getUser().getUsername());
+		Assert.assertEquals(storedAd.getOwnerUsername(), loadedAd.getOwnerUsername());
 	}
 }

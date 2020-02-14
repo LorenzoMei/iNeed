@@ -17,7 +17,7 @@ import logic.misc.EntityComparator;
 import logic.misc.NoSuchIsSortedByMethodException;
 import logic.misc.Order;
 
-public class ViewAnAdController implements ViewAnAdControllerInterface{
+public class ViewAnAdController {
 
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	private static ViewAnAdController ref;
@@ -74,7 +74,6 @@ public class ViewAnAdController implements ViewAnAdControllerInterface{
 		return allAds;
 	}
 
-	@Override
 	public void listAllAds(OrderedAdsBean bean) {
 		List<Ad> allAds = getAllAds();
 		if (bean.getOrder() != Order.UNSORTED) {

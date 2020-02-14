@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public abstract class Ad {
 	protected int id;
-	protected String username = "";
+	protected String ownerUsername = "";
 	protected String title = "";
 	protected String body = "";
 	protected Calendar data = null;
@@ -13,8 +13,8 @@ public abstract class Ad {
 		this.id = id;
 	}
 	
-	public void setUsername(String user) {
-		this.username = user;
+	public void setOwnerUsername(String user) {
+		this.ownerUsername = user;
 	}
 	
 	public void setTitle(String title) {
@@ -33,8 +33,8 @@ public abstract class Ad {
 		return id;
 	}
 	
-	public String getUsername() {
-		return this.username;
+	public String getOwnerUsername() {
+		return this.ownerUsername;
 	}
 	
 	public String getTitle() {

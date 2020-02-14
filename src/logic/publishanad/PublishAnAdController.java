@@ -8,6 +8,7 @@ import logic.entity.Data;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import logic.beans.PublishAnAdBean;
 import logic.dao.DAOAd;
 
 public class PublishAnAdController implements PublishAnAdInterface{

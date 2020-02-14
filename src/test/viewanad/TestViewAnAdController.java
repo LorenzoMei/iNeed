@@ -55,8 +55,8 @@ public class TestViewAnAdController {
 		ViewAnAdController.getReference().listAllAds(bean);
 		
 		Boolean isOrdered = true;
-		for (int i = 0; i < bean.getAds().size() - 1; i ++) {
-			if (bean.getAds().get(i).getData().compareTo(bean.getAds().get(i + 1).getData()) < 0) {
+		for (int i = 0; i < bean.getAllDatesOfPublication().size() - 1; i ++) {
+			if (bean.getAllDatesOfPublication().get(i).compareTo(bean.getAllDatesOfPublication().get(i + 1)) < 0) {
 				isOrdered = false;
 			}
 		}

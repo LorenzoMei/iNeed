@@ -6,9 +6,9 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import logic.answeranad.AnswerAnAdBean;
 import logic.answeranad.AnswerAnAdController;
 import logic.answeranad.AnswerAnAdControllerInterface;
+import logic.beans.AnswerAnAdBean;
 import logic.checkanswersofanad.CheckAnswersBean;
 import logic.checkanswersofanad.CheckAnswersController;
 import logic.checkanswersofanad.CheckAnswersControllerInterface;
