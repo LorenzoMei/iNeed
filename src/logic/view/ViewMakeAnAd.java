@@ -1,5 +1,6 @@
 package logic.view;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
 import java.util.ResourceBundle;
@@ -14,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import logic.beans.ViewProfileBean;
+import logic.publishanad.PublishAnAdBean;
+import logic.publishanad.PublishAnAdController;
 
 
 
@@ -46,6 +49,21 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonSend(ActionEvent event) {
 		 actionPrinte.setText("");
 	     actionPrinte.setText("I'm sending");
+	     PublishAnAdBean adBean = new PublishAnAdBean();
+	     PublishAnAdController controller = PublishAnAdController.getInstance();
+	     
+	     adBean.setType(typeTextField.getText());
+	     adBean.setTitle(titleTextField.getText());
+	     adBean.setBody(bodyTextArea.getText());
+	     adBean.setUsername(View.getProfileName());
+	     
+	     try {
+			controller.createAd(adBean);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 	 }
 	 
 	 @FXML protected void handleSubmitButtonRegulations(ActionEvent event) {
@@ -82,6 +100,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
  		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 	    }
+	 
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinte.setText("");
 		     actionPrinte.setText("vado su map");

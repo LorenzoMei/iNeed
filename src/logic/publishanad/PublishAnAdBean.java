@@ -1,22 +1,21 @@
 package logic.publishanad;
 
-import logic.entity.User;
 
 public class PublishAnAdBean {
-	private User user;
+	private String username;
 	private String title;
 	private String body;
 	private String type;
 	
 	public PublishAnAdBean() {
-		this.user = null;
+		this.username = "";
 		this.title = "";
 		this.body = "";
 		this.type = "";
 	}
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsername(String user) {
+		this.username = user;
 	}
 	
 	public void setTitle(String title) {
@@ -31,8 +30,8 @@ public class PublishAnAdBean {
 		this.type = type;
 	}
 	
-	public User getUser() {
-		return this.user;
+	public String getUsername() {
+		return this.username;
 	}
 	
 	public String getTitle() {

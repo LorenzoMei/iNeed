@@ -35,7 +35,7 @@ public class ViewUser extends View implements Initializable {
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 ViewProfileBean pBean = new ViewProfileBean();
-	 ViewProfileController viewProfileController = ViewProfileController.getInstance();
+	 ViewProfileController viewProfileController =  ViewProfileController.getInstance();
 	 
 
 	 

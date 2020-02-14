@@ -27,7 +27,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	@FXML private Text tester;
 	@FXML private MenuItem profileName;
 	ViewProfileBean pBean = new ViewProfileBean();
- 	ViewProfileController pController = ViewProfileController.getInstance();
+ 	ViewProfileController pController =  ViewProfileController.getInstance();
 	
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;
