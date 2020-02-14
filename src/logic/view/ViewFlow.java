@@ -34,13 +34,6 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 private User activeUser;
-//	 private static final String GOTOLOGIN = "logic.view.ViewLogin";
-//	 private static final String GOTOUSER = "logic.view.ViewUser";
-//	 private static final String GOTOMAP = "logic.view.ViewMap";
-//	 private static final String GOTOFLOW = "logic.view.ViewFlow";
-//	 private static final String GOTOMAKEANAD = "logic.view.ViewMakeAnAd";
-
-
 
      private List<TextInputControl> textInputFields;
 

@@ -124,8 +124,8 @@ public class ViewLogin extends View implements Initializable {
 
         		View.setactiveUser(data.getUser());
         		
-            	logger.log(Level.SEVERE, "In the login username is: " + data.getUser());
-            	logger.log(Level.SEVERE, "In the login username is: " + View.getActiveUser());
+            	logger.log(Level.SEVERE, "In the login user is: " + data.getUser());
+            	logger.log(Level.SEVERE, "In the login username from view is: " + View.getActiveUser());
             	logger.log(Level.SEVERE, "In the login username is: " + data.getUsername());
 
         		
