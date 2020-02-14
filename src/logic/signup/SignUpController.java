@@ -26,7 +26,7 @@ public class SignUpController implements SignUpControllerInterface{
 		String passw = bean.getPassword();
 		String email = bean.getEmail();
 		String city = bean.getCity();
-		String name = bean.getName();
+		String name = bean.getSurName();
 		String surName = bean.getSurName();
 		Calendar bDate = bean.getBirthDate();
 		
@@ -45,8 +45,8 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setName(name);
 			userTemp.setSurName(surName);
 			userTemp.setBDate(bDate);
-			dao.storeUser(userTemp);		
-			System.out.println("Name is on the Controller: " + userTemp.getName() + " surname is on the Controller: " + userTemp.getSurName());
+			dao.storeUser(userTemp);
+			
 			return;
 		}
 		

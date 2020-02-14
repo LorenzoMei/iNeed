@@ -25,14 +25,15 @@ import logic.login.WrongPasswordException;
 
 public class ViewLogin extends View implements Initializable {
 	
-	 String formError = MSGError.ERROR_FORM.getMsg();
+	 String formError = "FORM ERROR!";
 	 @FXML private Text actionLogIn;
 	 @FXML private Text actionCancel;
 	 @FXML private TextField userNameTextField;
 	 @FXML private PasswordField passwordTextField;
 	 @FXML private GridPane grid;
 	 @FXML private Hyperlink facebookHyperLink;
-
+	 private final String gotoFlow = "logic.view.ViewFlow";
+	 private final String gotoSigUp = "logic.view.ViewSignUp";
 	 private List<TextInputControl> textInputFields;
   	 Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -63,7 +64,7 @@ public class ViewLogin extends View implements Initializable {
 	@FXML protected void handleSubmitButtonSignUp(ActionEvent event) {
 	        actionCancel.setText("");
 	        actionLogIn.setText("");
-	    	Context.getReference().goNext(GoNextTargets.VIEW_SIGNUP.getStateName());
+	    	Context.getReference().goNext(gotoSigUp);
 
 	}
     
@@ -121,16 +122,8 @@ public class ViewLogin extends View implements Initializable {
 
     			}                    	
         		
-
-        		View.setactiveUser(data.getUser());
-        		
-            	logger.log(Level.SEVERE, "In the login username is: " + data.getUser());
-            	logger.log(Level.SEVERE, "In the login username is: " + View.getActiveUser());
-            	logger.log(Level.SEVERE, "In the login username is: " + data.getUsername());
-
-        		
         		actionLogIn.setText("Logged in, welcome back " + username);
-   	    	    Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());
+   	    	    Context.getReference().goNext(gotoFlow);
 
             }
 

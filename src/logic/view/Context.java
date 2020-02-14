@@ -39,12 +39,9 @@ public class Context {
 			currentView = new InitialState();
 		}
 		
-		String error = "Context: currentState is " + currentView.getClass().getSimpleName();
-		logger.log(Level.SEVERE, error);
+		logger.log(Level.SEVERE,"Context: currentState is " + currentView.getClass().getSimpleName());
 		currentView.goNext(viewName);
-		
-		String error1 = "Context: currentState changed to " + currentView.getClass().getSimpleName();
-		logger.log(Level.SEVERE, error1);
+		logger.log(Level.SEVERE,"Context: currentState changed to " + currentView.getClass().getSimpleName());
 
 
 		this.draw(Client.getStage());
@@ -64,11 +61,9 @@ public class Context {
 	public void draw(Stage stage) {
 		
 		try {
-
-			String error = "I'M ON CONTEXT MY CURRENT VIEW IS: " + currentView.getClass().getSimpleName();
-			String error2 = "I'M ON CONTEXT MY CURRENT VIEW fxmlPath IS: " + currentView.getFXMLPath();
-			logger.log(Level.INFO, error);
-			logger.log(Level.INFO, error2);
+//			p
+			logger.log(Level.SEVERE, "I'M ON CONTEXT MY CURRENT VIEW IS: " + currentView.getClass().getSimpleName());
+			logger.log(Level.SEVERE, "I'M ON CONTEXT MY CURRENT VIEW fxmlPath IS: " + currentView.getFXMLPath());
 
 			Parent root = this.loadScreen(currentView.getFXMLPath());
 			stage.setScene(new Scene(root));

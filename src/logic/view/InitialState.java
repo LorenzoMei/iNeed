@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class InitialState extends View{
 
-	public static final String INITIAL_STATE_TARGET = GoNextTargets.VIEW_SIGNUP.getStateName();
+	public static final String INITIAL_STATE_TARGET = "logic.view.ViewSignUp";
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@Override
@@ -19,7 +19,10 @@ public class InitialState extends View{
 			logger.log(Level.SEVERE, status);
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			logger.log(Level.INFO, e.toString());
+			
+			e.printStackTrace();
 		}
+		
+//		p
 	}
 }

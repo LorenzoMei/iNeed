@@ -9,10 +9,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import logic.entity.User;
 
 
 
@@ -21,91 +19,88 @@ public class ViewUser extends View implements Initializable {
 	
 	public ViewUser() {
 		this.setFXMLPath("fxml_user.fxml");
-		activeUser = View.getActiveUser();		
 	}
 	
-	 @FXML private Text nameText;
-	 @FXML private Text cityText;
-	 @FXML private Text surnameText;
-	 @FXML private Text emailText;
 	 String formError = "FORM ERROR!";
-	 @FXML private Text actionPrinter;
+	 @FXML private Text actionCancel;
 	 @FXML private GridPane grid;
-	 @FXML private MenuItem profileName;
-	 private User activeUser;
-	 
+
 	 Logger logger = Logger.getLogger(this.getClass().getName());
-
-	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
-		 nameText.setText(activeUser.getName());
-		 cityText.setText(activeUser.getCity());
-		 surnameText.setText(activeUser.getSurName());
-		 emailText.setText(activeUser.getEmail());
-		 profileName.setText(activeUser.getUsername());
-		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
-		 logger.log(Level.INFO, status);
+	 
+	 public void initialize(URL location, ResourceBundle resources) {
+			logger.log(Level.SEVERE,"My location:  '" + location + "' my resoursources:  '" + resources + "'");
 		}
+	 
+		
+	 
 
-	
-	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su MakeAnAd");
-	 	Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
+	 @FXML protected void handleSubmitButtonMakeAnOffer(ActionEvent event) {
+ 		 actionCancel.setText("");
+	     actionCancel.setText("vado su MakeAnOffer");
 
+	 }
+	 
+	 @FXML protected void handleSubmitButtonMakeARequest(ActionEvent event) {
 			
-	 } 
+	 }
+	 
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su ViewFlow");
-      	 logger.log(Level.INFO, "Print this when ViewFlow is clicked ");
-    	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());	
+		 actionCancel.setText("");
+	     actionCancel.setText("vado su ViewFlow");
+      	 logger.log(Level.SEVERE, "Print this when ViewFlow is clicked ");
+    	 Context.getReference().goNext("logic.view.ViewFlow");
+			
 	    }
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
-		 actionPrinter.setText("");
-		 actionPrinter.setText("ValidateAFavor");
+		 actionCancel.setText("");
+	 		
+		 actionCancel.setText("ValidateAFavor");
 	    }
+	 
 	 @FXML protected void handleSubmitButtonGallery(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Gallery");
 			
 	    }
 	 @FXML protected void handleSubmitButtonCurriculum(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Curriculum");	
+			
 	    }
 	 
 	 @FXML protected void handleSubmitButtonFavorites(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Favorites");
+			
 	    }
 	 
 	 @FXML protected void handleSubmitButtonRaitings(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Raitings");
+			
 	    }
 	 
 	 @FXML protected void handleSubmitButtonWallet(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Wallet");
+			
 	    }
 	 
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
-		 actionPrinter.setText("");
-	     actionPrinter.setText(GoNextTargets.VIEW_USER.getStateName());
+ 		//Context.getReference().goNext("logic.view.ViewUser");
+
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
- 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
+ 		Context.getReference().goNext("logic.view.ViewLogin");
+
 	    }
+	 
+	
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
-	 		 actionPrinter.setText("");
-		     actionPrinter.setText("vado su map");
+	 		 actionCancel.setText("");
+		     actionCancel.setText("vado su map");
           	 logger.log(Level.SEVERE, "Print this when viewMap is clicked ");
-	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
+	    	 Context.getReference().goNext("logic.view.ViewMap");
+
 		 }
+	 
+
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {
-	        actionPrinter.setText("");
-	        actionPrinter.setText("Utente");        
-	} 
+	        actionCancel.setText("");
+	        actionCancel.setText("Utente");
+	        
+	}
+    
 }
