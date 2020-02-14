@@ -16,8 +16,12 @@ public class TestDAOUser {
 		
 		User stored = new User();
 		User loaded = new User();
-		stored.setUsername("Daniele");
+		stored.setUsername("torkin");
 		stored.setPassw("galeone879");
+		stored.setName("Daniele");
+		stored.setSurname("La Prova");
+		stored.setCity("roma");
+		stored.setEmail("a@b.com");
 		
 		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
 		dao.storeUser(stored);
@@ -35,6 +39,14 @@ public class TestDAOUser {
 		
 		stored.setUsername("Daniele");
 		stored.setPassw("galeone879");
+		
+		
+		Builder builder = new Builder();
+		builder.setDate(1998, 6, 13);
+		Calendar val = builder.build();
+		
+		stored.setBDate(val);
+		
 		stored.setFriend(friend);
 		
 		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");

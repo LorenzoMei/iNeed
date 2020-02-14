@@ -9,20 +9,20 @@ public class User {
 	private String city;
 	private String email;
 	private String name;
-	private String surName;
+	private String surname;
 	private User friend;
 	private Calendar bDate;
 
 	
-	public User() {
-		this.username = "";
-		this.passw = "";
-		this.city = "";
-		this.email = "";
-		this.name = "";
-		this.surName = "";
-		this.bDate = null;
-	}
+//	public User() {
+//		this.username = "";
+//		this.passw = "";
+//		this.city = "";
+//		this.email = "";
+//		this.name = "";
+//		this.surName = "";
+//		this.bDate = null;
+//	}
 	
 	//all the sets on attributes
 	
@@ -54,8 +54,8 @@ public class User {
 		this.name = name;
 	}
 	
-	public void setSurName(String surName) {
-		this.surName = surName;
+	public void setSurname(String surName) {
+		this.surname = surName;
 	}
 	
 	//all the gets on attributes
@@ -78,8 +78,8 @@ public class User {
 	public String getPassw() {
 		return this.passw;
 	}
-	public String getSurName() {
-		return this.surName;
+	public String getSurname() {
+		return this.surname;
 	}
 	
 	public String getName() {

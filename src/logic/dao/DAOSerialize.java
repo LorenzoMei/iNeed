@@ -101,6 +101,7 @@ public abstract class DAOSerialize {
 					logger.log(Level.SEVERE, "No such get method for attribute " + e.getAttrName());
 				}
 				finally {
+					logger.log(Level.INFO, "adding to buffer: "+attributes[i].getName()+"="+attrVal);
 					buffer.getAttributes().put(attributes[i].getName(), (Serializable) attrVal);
 				}
 			}
@@ -123,6 +124,7 @@ public abstract class DAOSerialize {
 				if ((Modifier.isPrivate(attributes[j].getModifiers()) || Modifier.isProtected(attributes[j].getModifiers())) && !attributes[j].isSynthetic() && !EntitySerializable.class.isInstance(buffVal)){		
 						try{
 							ReflectionMiscellaneous.getSetter(attributes[j].getName(), obj).invoke(obj, buffVal);
+							logger.log(Level.INFO, "loaded value : " + buffVal);
 						}
 						catch(NoSuchSetterException e) {
 							logger.log(Level.SEVERE, "No such set method for attribute " + e.getAttrName());

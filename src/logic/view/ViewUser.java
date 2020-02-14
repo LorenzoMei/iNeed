@@ -16,15 +16,10 @@ import logic.beans.ViewProfileBean;
 import logic.viewprofile.ViewProfileController;
 
 
-
-
-
 public class ViewUser extends View implements Initializable {
 	
 	public ViewUser() {
 		this.setFXMLPath("fxml_user.fxml");
-		pBean.setRequestedUsername(View.getProfileName());
-		viewProfileController.loadProfile(pBean);
 	}
 	
 	 @FXML private Text nameText;
@@ -36,13 +31,17 @@ public class ViewUser extends View implements Initializable {
 	 @FXML private MenuItem profileName;
 	 ViewProfileBean pBean = new ViewProfileBean();
 	 ViewProfileController viewProfileController =  ViewProfileController.getInstance();
-	 
-
-	 
+	 	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
 		 
+		 pBean.setRequestedUsername(View.getProfileName());
+		 logger.log(Level.INFO, "initializing " + this.getClass().getSimpleName());
+//		 pBean.setRequestedUsername("torkin");
+		 
+		 viewProfileController.loadProfile(pBean);
+		 logger.log(Level.INFO, "user in bean is " + pBean.getName());
 		 String name = pBean.getName();
 		 String city = pBean.getCity();
 		 String surname = pBean.getSurName();
@@ -53,8 +52,6 @@ public class ViewUser extends View implements Initializable {
 		 surnameText.setText(surname);
 		 emailText.setText(email);
 		 profileName.setText(View.getProfileName());
-		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
-		 logger.log(Level.INFO, status);
 		}
 
 	

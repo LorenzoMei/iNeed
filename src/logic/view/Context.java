@@ -40,11 +40,11 @@ public class Context {
 		}
 		
 		String error = "Context: currentState is " + currentView.getClass().getSimpleName();
-		logger.log(Level.SEVERE, error);
+		logger.log(Level.INFO, error);
 		currentView.goNext(viewName);
 		
 		String error1 = "Context: currentState changed to " + currentView.getClass().getSimpleName();
-		logger.log(Level.SEVERE, error1);
+		logger.log(Level.INFO, error1);
 
 
 		this.draw(Client.getStage());

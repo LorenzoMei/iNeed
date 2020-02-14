@@ -17,10 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import logic.beans.ViewProfileBean;
 
-
-
-
-
 public class ViewFlow extends View implements Initializable {
 	
 	public ViewFlow() {

@@ -43,10 +43,10 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setCity(city);
 			userTemp.setEmail(email);
 			userTemp.setName(name);
-			userTemp.setSurName(surName);
+			userTemp.setSurname(surName);
 			userTemp.setBDate(bDate);
 			dao.storeUser(userTemp);		
-			System.out.println("Name is on the Controller: " + userTemp.getName() + " surname is on the Controller: " + userTemp.getSurName());
+			System.out.println("Name is on the Controller: " + userTemp.getName() + " surname is on the Controller: " + userTemp.getSurname());
 			return;
 		}
 		

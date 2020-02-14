@@ -38,7 +38,10 @@ public class ReflectionMiscellaneous {
 		Method[] methods = obj.getClass().getMethods();
 		logger.log(Level.INFO, "Searching method " + getOrSet + " for: " + attrName);
 		for (int j = 0; j < methods.length; j ++) {
-			if (methods[j].getName().contains(getOrSet) && methods[j].getName().contains(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) && !methods[j].isSynthetic()) {
+			if (methods[j].getName().contains(getOrSet)
+//					&& methods[j].getName().contains() 
+					&& methods[j].getName().substring(3).compareTo(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) == 0
+					&& !methods[j].isSynthetic()) {
 				logger.log(Level.INFO, methods[j].getName());
 				return methods[j];
 			}

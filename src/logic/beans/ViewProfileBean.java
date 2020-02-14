@@ -38,7 +38,7 @@ public class ViewProfileBean {
 		}
 		
 		public String getSurName() {
-			return this.requestedUser.getSurName();
+			return this.requestedUser.getSurname();
 		}
 		
 		public String getName() {
