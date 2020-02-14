@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -31,12 +33,17 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 @FXML private TextField typeTextField;
 	 @FXML private TextField categoryTextField;
 	 @FXML private TextField titleTextField;
+	 @FXML private MenuButton typeButton;
 	 @FXML private TextArea bodyTextArea;
 	 String formError = MSGError.ERROR_FORM.getMsg();
 	 @FXML private Text actionPrinte;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 ViewProfileBean pBean = new ViewProfileBean();
+     PublishAnAdBean adBean = new PublishAnAdBean();
+     PublishAnAdController controller = PublishAnAdController.getInstance();
+     private static String type;
+
 	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -46,13 +53,23 @@ public class ViewMakeAnAd extends View implements Initializable {
 		 logger.log(Level.SEVERE, status);
 		}
 
+	 @FXML protected void handleSubmitButtonRequest(ActionEvent event) {
+		 type = "Richiesta";
+		 typeButton.setText("Request");
+	 }
+	 
+	 @FXML protected void handleSubmitButtonOffer(ActionEvent event) {
+		 type = "Offerta";
+		 typeButton.setText("Offer");
+
+	 }
+	 
 	 @FXML protected void handleSubmitButtonSend(ActionEvent event) {
 		 actionPrinte.setText("");
-	     actionPrinte.setText("I'm sending");
-	     PublishAnAdBean adBean = new PublishAnAdBean();
-	     PublishAnAdController controller = PublishAnAdController.getInstance();
 	     
-	     adBean.setType(typeTextField.getText());
+	     
+	     
+	     adBean.setType(type);
 	     adBean.setTitle(titleTextField.getText());
 	     adBean.setBody(bodyTextArea.getText());
 	     adBean.setUsername(View.getProfileName());
@@ -64,6 +81,8 @@ public class ViewMakeAnAd extends View implements Initializable {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
+	     
+	     actionPrinte.setText("Ad Posted!");
 	 }
 	 
 	 @FXML protected void handleSubmitButtonRegulations(ActionEvent event) {
@@ -80,7 +99,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
 		 actionPrinte.setText("");
 	     actionPrinte.setText("vado su ViewFlow");
-      	 logger.log(Level.SEVERE, "Print this when ViewFlow is clicked ");
+      	 logger.log(Level.INFO, "Print this when ViewFlow is clicked ");
     	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());	
 	    }
 	 
@@ -104,7 +123,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinte.setText("");
 		     actionPrinte.setText("vado su map");
-          	 logger.log(Level.SEVERE, "Print this when viewMap is clicked ");
+          	 logger.log(Level.INFO, "Print this when viewMap is clicked ");
 	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 		 }
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {

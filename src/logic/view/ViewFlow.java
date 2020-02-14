@@ -42,7 +42,7 @@ public class ViewFlow extends View implements Initializable {
 	 
 	 public void initialize(URL locationflow, ResourceBundle resourcesflow) {
 		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
-		 logger.log(Level.SEVERE, status);
+		 logger.log(Level.INFO, status);
 		 profileName.setText(View.getProfileName());
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		}
@@ -105,7 +105,7 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionCancel.setText("");
 		     actionCancel.setText("vado su map");
-          	 logger.log(Level.SEVERE, "Print this when viewMap is clicked " + getNext());
+          	 logger.log(Level.INFO, "Print this when viewMap is clicked " + getNext());
 	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 
 		 }

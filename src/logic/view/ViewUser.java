@@ -111,7 +111,7 @@ public class ViewUser extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinter.setText("");
 		     actionPrinter.setText("vado su map");
-          	 logger.log(Level.SEVERE, "Print this when viewMap is clicked ");
+          	 logger.log(Level.INFO, "Print this when viewMap is clicked ");
 	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 		 }
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {

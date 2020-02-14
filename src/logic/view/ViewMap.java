@@ -43,7 +43,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
     public void initialize(URL url, ResourceBundle resourceBundle) {
 		 profileName.setText(View.getProfileName());
 		 String status = "My location " + url + " my resoursources: " + resourceBundle;
-		 logger.log(Level.SEVERE, status);
+		 logger.log(Level.INFO, status);
          mapView.addMapInializedListener(this);
     }
     

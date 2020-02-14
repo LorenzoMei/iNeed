@@ -54,7 +54,7 @@ public class ViewLogin extends View implements Initializable {
 	 
 	public void initialize(URL location, ResourceBundle resources) {
 		String status = "My location " + location + " my resoursources: " + resources;
-		logger.log(Level.SEVERE, status);
+		logger.log(Level.INFO, status);
 		userNameTextField.setPromptText("*Es. Rossi.Mario25");
 
 	}
@@ -77,14 +77,14 @@ public class ViewLogin extends View implements Initializable {
     
     @FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
     	
-    	logger.log(Level.SEVERE, "populating textInputFields in viewLogin");
+    	logger.log(Level.INFO, "populating textInputFields in viewLogin");
     	
     	CheckEmptyField check = new CheckEmptyField();
     	
     	check.populateTextInputFields(this);
     	
     	
-    	logger.log(Level.SEVERE, "canceling text");
+    	logger.log(Level.INFO, "canceling text");
 
     	actionCancel.setText("");
     	
@@ -94,12 +94,12 @@ public class ViewLogin extends View implements Initializable {
         String username = userNameTextField.getText();
         String passw = passwordTextField.getText();
         
-    	logger.log(Level.SEVERE, "starting iteration on textInputFields of " + textInputFields.size() + " elements" + textInputFields.get(0));
+    	logger.log(Level.INFO, "starting iteration on textInputFields of " + textInputFields.size() + " elements" + textInputFields.get(0));
 
             	
     	for(int i = 0; i < textInputFields.size(); i++) {
         	
-        	logger.log(Level.SEVERE, textInputFields.get(i).getClass().getSimpleName());
+        	logger.log(Level.INFO, textInputFields.get(i).getClass().getSimpleName());
         	if(textInputFields.get(i).getText().isEmpty()) {
         		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Empty Fields");
                 return;
@@ -116,6 +116,7 @@ public class ViewLogin extends View implements Initializable {
             		return;
             		
     			} catch (UserNotFoundException e1) {
+                	logger.log(Level.WARNING, e1.toString());
     				actionLogIn.setText("Sorry the user doesn't exist! ");
             		return;
 
@@ -124,9 +125,9 @@ public class ViewLogin extends View implements Initializable {
 
         		View.setProfileName(username);
         		
-            	logger.log(Level.SEVERE, "In the login user is: " + data.getUser());
-            	logger.log(Level.SEVERE, "In the login username from view is: " + View.getProfileName());
-            	logger.log(Level.SEVERE, "In the login username is: " + data.getUsername());
+            	logger.log(Level.INFO, "In the login user is: " + data.getUser());
+            	logger.log(Level.INFO, "In the login username from view is: " + View.getProfileName());
+            	logger.log(Level.INFO, "In the login username is: " + data.getUsername());
 
         		
         		actionLogIn.setText("Logged in, welcome back " + username);

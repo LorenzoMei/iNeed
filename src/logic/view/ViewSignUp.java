@@ -54,7 +54,7 @@ public class ViewSignUp extends View implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String status = "My location " + location + " my resoursources: " + resources;
-		logger.log(Level.SEVERE, status);
+		logger.log(Level.INFO, status);
 
 		nameTextField.setPromptText("*Es. Mario");
         surNameTextField.setPromptText("*Es. Rossi");
@@ -206,7 +206,7 @@ public class ViewSignUp extends View implements Initializable{
 	    		try {
 					SignUpController.getInstance().signUp(usersBean);
 				} catch (UsernameAlreadyTakenException e1) {
-					e1.printStackTrace();
+                	logger.log(Level.WARNING, e1.toString());
 					actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
 					return;
 				}
