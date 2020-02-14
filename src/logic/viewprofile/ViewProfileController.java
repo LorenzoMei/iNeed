@@ -8,8 +8,17 @@ import logic.dao.DAOFactory;
 import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;
 import logic.entity.User;
+public class ViewProfileController implements ViewProfileControllerInterface{
+	
+private static ViewProfileController instance;
+	
+	public static ViewProfileController getInstance() {
+		if(instance == null) 
+			instance = new ViewProfileController();
+		return instance;
+	}
 
-public class VIewProfileController implements ViewProfileControllerInterface{
+	private ViewProfileController() {}
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@Override
