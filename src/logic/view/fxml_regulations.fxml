@@ -25,7 +25,7 @@
                     <items>
                         <ImageView fitHeight="31.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../media/iNeed.png" />
+                              <Image url="@../../../media/logo.png" />
                            </image>
                         </ImageView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="40.0">
@@ -82,7 +82,7 @@
                                     <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
                                         <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="LogOut" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="Exit" />
                                       </items>
                                     </MenuButton>
                                  </children>
@@ -140,6 +140,11 @@
                         <DropShadow />
                      </effect>
                   </HBox>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="261.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/Red-Logomark.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Text fx:id="tester" fill="#348638" layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="184.89453125">
