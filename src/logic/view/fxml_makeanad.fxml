@@ -20,7 +20,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewMakeAnAd">
    <content>
-      <AnchorPane id="AnchorPane" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
+      <AnchorPane id="AnchorPane" fx:id="grid" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
          <children>
             <HBox prefHeight="53.0" prefWidth="1100.0" spacing="40.0" style="-fx-background-color: #011c2e;">
                <children>
@@ -35,7 +35,7 @@
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
-                                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
+                                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAdAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                                  </children>
                                  <effect>
                                     <DropShadow>
@@ -50,7 +50,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlowAd" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -61,7 +61,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapAd" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -72,7 +72,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="151.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor">
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorAd" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin></Button>
@@ -86,10 +86,10 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
+                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUserAd" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
-                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                  		<MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="LogOut" />
+                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfileAd" text="ViewProfile" />
+                                  		<MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExitAd" text="LogOut" />
                                       </items>
                                     </MenuButton>
                                  </children>
@@ -114,12 +114,12 @@
                   <DropShadow height="50.0" radius="24.5" width="50.0" />
                </effect>
                <children>
-                  <Text layoutX="30.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" />
-                  <TextField fx:id="categoryTextField" layoutX="165.0" layoutY="124.0" prefHeight="31.0" prefWidth="412.0" />
-                  <Text layoutX="29.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
-                  <TextField fx:id="titleTextField" layoutX="166.0" layoutY="190.0" prefHeight="31.0" prefWidth="412.0" />
-                  <Text layoutX="30.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Body:" />
-                  <TextArea fx:id="bodyTextArea" layoutX="166.0" layoutY="258.0" prefHeight="384.0" prefWidth="412.0" />
+                  <Text layoutX="34.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" />
+                  <TextField fx:id="othersTextField" layoutX="165.0" layoutY="210.0" prefHeight="31.0" prefWidth="412.0" />
+                  <Text layoutX="33.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
+                  <TextField fx:id="titleTextField" layoutX="165.0" layoutY="269.0" prefHeight="31.0" prefWidth="412.0" />
+                  <Text layoutX="39.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Body:" />
+                  <TextArea fx:id="bodyTextArea" layoutX="165.0" layoutY="311.0" prefHeight="331.0" prefWidth="412.0" />
                   <HBox layoutX="280.0" layoutY="651.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#handleSubmitButtonSend" prefHeight="31.0" prefWidth="182.0" text="Send" />
@@ -133,6 +133,17 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonRequest" text="Request" />
                       <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonOffer" text="Offer" />
+                    </items>
+                  </MenuButton>
+                  <Text layoutX="32.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Other" />
+                  <MenuButton fx:id="categoryButton" layoutX="165.0" layoutY="136.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="411.0" text="...">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonElectronics" text="Electronics" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonHydraulic" text="Hydraulics" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonGardering" text="Gardering" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonInformatic" text="Informatic" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonBed" text="Bed sharing" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonOther" text="Other..." />
                     </items>
                   </MenuButton>
                </children>

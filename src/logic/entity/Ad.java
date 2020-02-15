@@ -7,12 +7,14 @@ public abstract class Ad {
 	protected String ownerUsername = "";
 	protected String title = "";
 	protected String body = "";
+	protected String category = "";
 	protected Calendar data = null;
 	
 	public void setId(int id) {
 		this.id = id;
 	}
 	
+	//all the sets
 	public void setOwnerUsername(String user) {
 		this.ownerUsername = user;
 	}
@@ -29,6 +31,12 @@ public abstract class Ad {
 		this.data = data;
 	}
 	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	
+	//all the gets
 	public int getId() {
 		return id;
 	}
@@ -47,5 +55,9 @@ public abstract class Ad {
 	
 	public Calendar getData() {
 		return this.data;
+	}
+	
+	public String getCategory() {
+		return this.category;
 	}
 }

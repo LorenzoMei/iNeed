@@ -209,7 +209,7 @@
                   </HBox>
                   <HBox layoutX="868.0" layoutY="556.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonRaitings" prefHeight="45.0" prefWidth="138.0" text="Raitings" />
+                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonRaitings" prefHeight="45.0" prefWidth="138.0" text="Ratings" />
                      </children>
                      <effect>
                         <DropShadow />
