@@ -74,6 +74,10 @@ public class ViewLogin extends View implements Initializable {
         actionCancel.setText("Canceled");
     }
     
+    @FXML protected void handleSubmitButtonHelp(ActionEvent event) {
+		 actionCancel.setText("");
+	     actionCancel.setText("Help Page!");
+	 }
     
     @FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
     	

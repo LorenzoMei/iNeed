@@ -25,7 +25,7 @@
                     <items>
                         <ImageView fitHeight="31.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../media/iNeed.png" />
+                              <Image url="@../../../media/logo.png" />
                            </image>
                         </ImageView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="40.0">
@@ -215,7 +215,7 @@
                         <DropShadow />
                      </effect>
                   </HBox>
-                  <HBox layoutX="430.0" layoutY="507.0">
+                  <HBox layoutX="412.0" layoutY="514.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#handleSubmitButtonWallet" prefHeight="53.0" prefWidth="174.0" text="Wallet" />
                      </children>
@@ -226,6 +226,11 @@
                </children>
             </AnchorPane>
             <Text fx:id="actionPrinter" layoutX="436.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="298.6708984375" />
+            <ImageView fitHeight="79.0" fitWidth="83.0" layoutX="499.0" layoutY="796.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../media/Red-Logomark.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>

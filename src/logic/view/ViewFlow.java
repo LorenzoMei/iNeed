@@ -118,6 +118,11 @@ public class ViewFlow extends View implements Initializable {
  		 actionCancel.setText("");
 	     actionCancel.setText("pagina aggiornata");
 	 }
+	 
+	 @FXML protected void handleSubmitButtonHelp(ActionEvent event) {
+	 		 actionCancel.setText("");
+		     actionCancel.setText("Help Page!");
+		 }
 
 	@FXML protected void handleSubmitButtonUser(ActionEvent event) {
 	        actionCancel.setText("");

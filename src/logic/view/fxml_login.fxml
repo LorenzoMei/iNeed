@@ -10,6 +10,8 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,7 +19,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewLogin">
    <content>
@@ -109,6 +110,11 @@
                         <DropShadow />
                      </effect>
                   </HBox>
+                  <ImageView fitHeight="30.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/logo.png" />
+                     </image>
+                  </ImageView>
               </items>
             </ToolBar>
             <Text fx:id="actionCancel" fill="#eaff00" layoutX="219.0" layoutY="707.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="693.6708984375">
@@ -121,12 +127,31 @@
                   <Font size="21.0" />
                </font>
             </Text>
-            <Hyperlink fx:id="helpHyperLink" layoutX="520.0" layoutY="823.0" text="Help" underline="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Hyperlink>
-          <Button layoutX="504.0" layoutY="765.0" mnemonicParsing="false" onAction="#handleSubmitButtonSignUp" text="SignUp" />
+            <HBox layoutX="516.0" layoutY="765.0" style="-fx-background-color: white;">
+               <children>
+                <Button mnemonicParsing="false" onAction="#handleSubmitButtonSignUp" text="SignUp" />
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <HBox layoutX="527.0" layoutY="811.0" style="-fx-background-color: white;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonHelp" prefHeight="25.0" prefWidth="49.0" text="Help!">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </HBox>
+            <ImageView fitHeight="67.0" fitWidth="77.0" layoutX="513.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../media/Red-Logomark.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </content>

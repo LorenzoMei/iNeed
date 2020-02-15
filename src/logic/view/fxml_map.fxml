@@ -26,7 +26,7 @@
                     <items>
                         <ImageView fitHeight="31.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../media/iNeed.png" />
+                              <Image url="@../../../media/logo.png" />
                            </image>
                         </ImageView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="40.0">
@@ -132,6 +132,11 @@
                   <Font size="21.0" />
                </font>
             </Text>
+            <ImageView fitHeight="73.0" fitWidth="96.0" layoutX="523.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../media/Red-Logomark.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>

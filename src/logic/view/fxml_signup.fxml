@@ -10,6 +10,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,7 +19,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewSignUp">
    <content>
@@ -28,7 +29,7 @@
                   <DropShadow height="69.0" radius="34.0" width="69.0" />
                </effect>
                <children>
-                  <HBox prefHeight="441.0" prefWidth="695.0">
+                  <HBox prefHeight="371.0" prefWidth="796.0">
                      <children>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill the form to signUp!" textAlignment="CENTER" wrappingWidth="883.6708984375">
                            <font>
@@ -40,10 +41,10 @@
                </children>
             </HBox>
             <HBox layoutX="482.0" layoutY="65.0" prefHeight="25.0" prefWidth="137.0" />
-            <Separator layoutX="172.0" layoutY="264.0" prefHeight="0.0" prefWidth="356.0" />
-            <Text layoutX="549.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" />
-            <Separator layoutX="580.0" layoutY="265.0" prefHeight="0.0" prefWidth="356.0" />
-            <HBox alignment="CENTER" layoutX="451.0" layoutY="158.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: #160aa1;">
+            <Separator layoutX="172.0" layoutY="238.0" prefHeight="0.0" prefWidth="356.0" />
+            <Text layoutX="549.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" />
+            <Separator layoutX="580.0" layoutY="237.0" prefHeight="0.0" prefWidth="356.0" />
+            <HBox alignment="CENTER" layoutX="449.0" layoutY="143.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: #160aa1;">
                <children>
                   <Hyperlink fx:id="facebookHyperLink" text="facebook" textFill="WHITE">
                      <font>
@@ -75,7 +76,7 @@
                   <Label contentDisplay="TOP" prefHeight="21.0" prefWidth="138.0" text="Password:" textAlignment="RIGHT" textFill="WHITE" GridPane.rowIndex="3" />
                   <TextField fx:id="nameTextField" GridPane.columnIndex="1" />
                   <TextField fx:id="surNameTextField" prefHeight="31.0" prefWidth="203.0" GridPane.columnIndex="3" />
-                  <DatePicker fx:id="datePickerTextField" prefHeight="31.0" prefWidth="256.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="datePickerTextField" prefHeight="31.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="emailTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <TextField fx:id="cityTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="userNameTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
@@ -105,7 +106,7 @@
                   <DropShadow />
                </effect>
             </HBox>
-            <HBox layoutX="525.0" layoutY="791.0" style="-fx-background-color: white;">
+            <HBox layoutX="175.0" layoutY="656.0" style="-fx-background-color: white;">
                <children>
                   <Button mnemonicParsing="false" onAction="#handleSubmitButtonCancel" text="Cancel" />
                </children>
@@ -118,9 +119,25 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Text>
-            <ToolBar prefHeight="40.0" prefWidth="1100.0" />
-            <Hyperlink fx:id="helpHyperLink" layoutX="537.0" layoutY="847.0" text="help" underline="true" />
-          <Button layoutX="518.0" layoutY="729.0" mnemonicParsing="false" onAction="#handleSubmitButtonLogIn" text="Or LogIn" />
+            <ToolBar prefHeight="40.0" prefWidth="1100.0">
+               <items>
+                  <ImageView fitHeight="30.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/logo.png" />
+                     </image>
+                  </ImageView>
+               </items></ToolBar>
+          <Button layoutX="885.0" layoutY="666.0" mnemonicParsing="false" onAction="#handleSubmitButtonLogIn" text="logIn" />
+            <Button layoutX="539.0" layoutY="820.0" mnemonicParsing="false" text="Help!">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="70.0" fitWidth="82.0" layoutX="523.0" layoutY="733.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../media/Red-Logomark.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </content>
