@@ -37,7 +37,7 @@ public class ViewAnAdController {
 			int minPos = i;
 			for (int j = i ; j < allAds.size(); j ++) {
 				try {
-					if (((Boolean) EntityComparator.getIsSortedByMethod(order).invoke(this, allAds.get(minPos), allAds.get(j))) == false) {
+					if (!((Boolean) EntityComparator.getIsSortedByMethod(order).invoke(this, allAds.get(minPos), allAds.get(j)))) {
 						minPos = j;
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {

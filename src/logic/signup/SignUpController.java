@@ -12,7 +12,7 @@ import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;
 import logic.entity.User;
 
-public class SignUpController implements SignUpControllerInterface{
+public class SignUpController{
 	
 	private static SignUpController instance;
 	
