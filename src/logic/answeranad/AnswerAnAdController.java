@@ -15,7 +15,7 @@ import logic.entity.Answer;
 import logic.misc.NoSuchSetterException;
 import logic.misc.ReflectionMiscellaneous;
 
-public class AnswerAnAdController {
+public class AnswerAnAdController implements AnswerAnAdControllerInterface {
 
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	private static AnswerAnAdController reference = null;
@@ -26,7 +26,7 @@ public class AnswerAnAdController {
 		return reference;
 	}
 	
-	private AnswerAnAdController() {}
+	private AnswerAnAdController() {};
 	
 	public void candidate(AnswerAnAdBean answerAnAdBean) throws IllegalAccessException, InvocationTargetException {
 		
@@ -38,7 +38,6 @@ public class AnswerAnAdController {
 			} catch (NoSuchSetterException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				logger.log(Level.SEVERE, e.toString());
 			}
-			;
 		});
 		
 		DAOAnswer dao = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
