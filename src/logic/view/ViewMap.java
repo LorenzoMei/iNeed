@@ -9,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
+import logic.beans.LogoutBean;
 import logic.beans.ViewProfileBean;
+import logic.login.LoginController;
 import logic.viewprofile.ViewProfileController;
 
 import java.net.URL;
@@ -28,6 +30,8 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	@FXML private MenuItem profileName;
 	ViewProfileBean pBean = new ViewProfileBean();
  	ViewProfileController pController =  ViewProfileController.getInstance();
+ 	LoginController loginController =  LoginController.getInstance();
+	LogoutBean lBean = new LogoutBean();
 	
  	Logger logger = Logger.getLogger(this.getClass().getName());
     @FXML private GoogleMapView mapView;
@@ -63,6 +67,9 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
+		tester.setText("LoggingOut");
+		lBean.setUsername(View.getProfileName());
+	 	loginController.logout(lBean);
  		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }
@@ -78,9 +85,6 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 
 	 }
 	 
-
-	 
-	
 	 
 	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
 		 tester.setText("ValidateAFavor");

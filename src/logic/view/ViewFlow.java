@@ -15,7 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.beans.LogoutBean;
 import logic.beans.ViewProfileBean;
+import logic.login.LoginController;
 
 public class ViewFlow extends View implements Initializable {
 	
@@ -31,6 +33,8 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
 	 ViewProfileBean pBean = new ViewProfileBean();
+	 LoginController loginController =  LoginController.getInstance();
+	 LogoutBean lBean = new LogoutBean();
 
      private List<TextInputControl> textInputFields;
 
@@ -93,7 +97,9 @@ public class ViewFlow extends View implements Initializable {
 	 }
 		 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
-	 		actionCancel.setText("");
+	 		actionCancel.setText("LoggingOut");
+	 		lBean.setUsername(View.getProfileName());
+	 		loginController.logout(lBean);
 	 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }

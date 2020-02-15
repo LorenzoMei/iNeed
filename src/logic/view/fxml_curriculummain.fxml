@@ -83,7 +83,7 @@
                                     <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
                                         <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="Exit" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="LogOut" />
                                       </items>
                                     </MenuButton>
                                  </children>

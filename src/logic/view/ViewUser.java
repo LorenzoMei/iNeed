@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.beans.LogoutBean;
 import logic.beans.ViewProfileBean;
+import logic.login.LoginController;
 import logic.viewprofile.ViewProfileController;
 
 
@@ -31,6 +33,8 @@ public class ViewUser extends View implements Initializable {
 	 @FXML private MenuItem profileName;
 	 ViewProfileBean pBean = new ViewProfileBean();
 	 ViewProfileController viewProfileController =  ViewProfileController.getInstance();
+	 LoginController loginController =  LoginController.getInstance();
+	 LogoutBean lBean = new LogoutBean();
 	 	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -38,7 +42,6 @@ public class ViewUser extends View implements Initializable {
 		 
 		 pBean.setRequestedUsername(View.getProfileName());
 		 logger.log(Level.INFO, "initializing " + this.getClass().getSimpleName());
-//		 pBean.setRequestedUsername("torkin");
 		 
 		 viewProfileController.loadProfile(pBean);
 		 logger.log(Level.INFO, "user in bean is " + pBean.getName());
@@ -57,14 +60,14 @@ public class ViewUser extends View implements Initializable {
 	
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su MakeAnAd");
+	     actionPrinter.setText("go toMakeAnAd");
 	 	Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
 
 			
 	 } 
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su ViewFlow");
+	     actionPrinter.setText("go to ViewFlow");
       	 logger.log(Level.INFO, "Print this when ViewFlow is clicked ");
     	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());	
 	    }
@@ -75,17 +78,17 @@ public class ViewUser extends View implements Initializable {
 	    }
 	 @FXML protected void handleSubmitButtonGallery(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Gallery");			
+	     actionPrinter.setText("go to Gallery");			
 	    }
 	 @FXML protected void handleSubmitButtonCurriculum(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Curriculum");
-	     Context.getReference().goNext(GoNextTargets.VIEW_CURRICULIMMAIN.getStateName());
+	     actionPrinter.setText("go to Curriculum");
+	     Context.getReference().goNext(GoNextTargets.VIEW_CURRICULUMMAIN.getStateName());
 	    }
 	 
 	 @FXML protected void handleSubmitButtonFavorites(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Favorites");
+	     actionPrinter.setText("go to Favorites");
 	    }
 	 
 	 @FXML protected void handleSubmitButtonRaitings(ActionEvent event) {
@@ -95,7 +98,7 @@ public class ViewUser extends View implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonWallet(ActionEvent event) {
 		 actionPrinter.setText("");
-	     actionPrinter.setText("vado su Wallet");
+	     actionPrinter.setText("go to Wallet");
 	    }
 	 
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
@@ -104,11 +107,13 @@ public class ViewUser extends View implements Initializable {
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
+		lBean.setUsername(View.getProfileName());
+	 	loginController.logout(lBean);
  		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 	    }
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinter.setText("");
-		     actionPrinter.setText("vado su map");
+		     actionPrinter.setText("go to map");
           	 logger.log(Level.INFO, "Print this when viewMap is clicked ");
 	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 		 }

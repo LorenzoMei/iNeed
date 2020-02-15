@@ -15,8 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.beans.LogoutBean;
 import logic.beans.PublishAnAdBean;
 import logic.beans.ViewProfileBean;
+import logic.login.LoginController;
 import logic.publishanad.PublishAnAdController;
 
 
@@ -41,6 +43,8 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 ViewProfileBean pBean = new ViewProfileBean();
      PublishAnAdBean adBean = new PublishAnAdBean();
      PublishAnAdController controller = PublishAnAdController.getInstance();
+     LoginController loginController =  LoginController.getInstance();
+	 LogoutBean lBean = new LogoutBean();
      private static String type;
 
 	 
@@ -86,20 +90,20 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonRegulations(ActionEvent event) {
 		 actionPrinte.setText("");
-	     actionPrinte.setText("vado su Regulations");
+	     actionPrinte.setText("go toRegulations");
 	     Context.getReference().goNext(GoNextTargets.VIEW_REGULATIONS.getStateName());
 	     
 	 }
 	 
 	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
 		 actionPrinte.setText("");
-	     actionPrinte.setText("vado su MakeAnAd");
+	     actionPrinte.setText("go to MakeAnAd");
     	 Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());	
 	 } 
 	 
 	 @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
 		 actionPrinte.setText("");
-	     actionPrinte.setText("vado su ViewFlow");
+	     actionPrinte.setText("go to ViewFlow");
       	 logger.log(Level.INFO, "Print this when ViewFlow is clicked ");
     	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());	
 	    }
@@ -112,18 +116,22 @@ public class ViewMakeAnAd extends View implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
 		 actionPrinte.setText("");
-	     actionPrinte.setText("vado su User");
+	     actionPrinte.setText("go to User");
 	 	Context.getReference().goNext(GoNextTargets.VIEW_USER.getStateName());
 
 	    }
 	 
 	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
+		actionPrinte.setText("");
+	    actionPrinte.setText("LoggingOut");
+		lBean.setUsername(View.getProfileName());
+	 	loginController.logout(lBean);
  		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 	    }
 	 
 	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
 	 		 actionPrinte.setText("");
-		     actionPrinte.setText("vado su map");
+		     actionPrinte.setText("go to map");
           	 logger.log(Level.INFO, "Print this when viewMap is clicked ");
 	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 		 }

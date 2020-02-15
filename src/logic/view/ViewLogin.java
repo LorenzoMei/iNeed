@@ -105,12 +105,20 @@ public class ViewLogin extends View implements Initializable {
                 return;
         	}
         	else {
+            	logger.log(Level.INFO, "Sono qui");
+
         		CredentialsBean data = new CredentialsBean();
+            	logger.log(Level.INFO, "Sono qui dopo la bean");
+
         		LoginController controller = LoginController.getInstance();
+            	logger.log(Level.INFO, "Sono qui dopo il controller");
+
         		data.setUsername(username);
         		data.setPassw(passw);
         		try {
     				controller.login(data);
+                	logger.log(Level.INFO, "Sono qui dopo il controller e ho passato i dati");
+
     			} catch (WrongPasswordException e1) {
     				actionLogIn.setText("Sorry username or password is wrong! ");
             		return;
@@ -124,8 +132,6 @@ public class ViewLogin extends View implements Initializable {
         		
 
         		View.setProfileName(username);
-        		
-            	logger.log(Level.INFO, "In the login user is: " + data.getUser());
             	logger.log(Level.INFO, "In the login username from view is: " + View.getProfileName());
             	logger.log(Level.INFO, "In the login username is: " + data.getUsername());
 

@@ -9,7 +9,9 @@ public enum GoNextTargets {
 	VIEW_MAP(ViewMap.class.getName()),
 	VIEW_USER(ViewUser.class.getName()),
 	VIEW_REGULATIONS(ViewRegulations.class.getName()),
-	VIEW_CURRICULIMMAIN(ViewCurriculumMainPage.class.getName())
+	VIEW_CURRICULUMMAIN(ViewCurriculumMainPage.class.getName()),
+	VIEW_CURRICULUM(ViewCurriculumMainPage.class.getName())
+	
 	;
 	
 	private final String stateName;
