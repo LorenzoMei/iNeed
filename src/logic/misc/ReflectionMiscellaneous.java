@@ -6,12 +6,11 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-
-import com.sun.istack.internal.logging.Logger;
+import java.util.logging.Logger;
 
 public class ReflectionMiscellaneous {
 	
-	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class);
+	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class.getName());
 	
 	private ReflectionMiscellaneous() {}
 		
@@ -39,7 +38,6 @@ public class ReflectionMiscellaneous {
 		logger.log(Level.INFO, "Searching method " + getOrSet + " for: " + attrName);
 		for (int j = 0; j < methods.length; j ++) {
 			if (methods[j].getName().contains(getOrSet)
-//					&& methods[j].getName().contains() 
 					&& methods[j].getName().substring(3).compareTo(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) == 0
 					&& !methods[j].isSynthetic()) {
 				logger.log(Level.INFO, methods[j].getName());
