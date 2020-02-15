@@ -19,8 +19,8 @@ public abstract class DAOSerialize {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	private String dBPath = readDBPath();
 	
-	protected final static String PRIMARY_KEY_VALUES_SEPARATOR = "#";
-	protected final static String SERIALIZED_EXTENSION = ".ser";
+	protected static final String PRIMARY_KEY_VALUES_SEPARATOR = "#";
+	protected static final String SERIALIZED_EXTENSION = ".ser";
 	
 	protected String readDBPath() {
 //		TODO: stub

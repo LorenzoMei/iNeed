@@ -31,11 +31,11 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 			try {
 				String pathLastId = this.readDBPath() + "AdId" + File.separator + supportedAds.get(i).get(null).toString();
 //				p
-				logger.log(Level.INFO, "checking if " + pathLastId + " directory exists");
+				logger.log(Level.INFO, String.format("checking if %s directory exists", pathLastId));
 				File lastIdFile = new File(pathLastId);
 				if (!lastIdFile.exists()) {
 //					p
-					logger.log(Level.INFO, pathLastId + " does not exists, creating it");
+					logger.log(Level.INFO, String.format("%s does not exists, creating it", pathLastId));
 					AdId zeroId = new AdId();
 					zeroId.setLastId(LASTID_ZEROID);
 					zeroId.setType(supportedAds.get(i).get(null).toString());
