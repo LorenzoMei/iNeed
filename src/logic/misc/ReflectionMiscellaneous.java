@@ -6,11 +6,12 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import com.sun.istack.internal.logging.Logger;
 
 public class ReflectionMiscellaneous {
 	
-	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class.getName());
+	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class);
 	
 	private ReflectionMiscellaneous() {}
 		
@@ -35,9 +36,11 @@ public class ReflectionMiscellaneous {
 	private static Method getGetterOrSetter(String getOrSet, String attrName, Object obj) throws NoSuchMethodException {
 		
 		Method[] methods = obj.getClass().getMethods();
-		logger.log(Level.INFO, "Searching method " + getOrSet + " for: " + attrName);
+		String setAttrName = "Searching method " + getOrSet + " for: " + attrName;
+		logger.log(Level.INFO, setAttrName);
 		for (int j = 0; j < methods.length; j ++) {
 			if (methods[j].getName().contains(getOrSet)
+//					&& methods[j].getName().contains() 
 					&& methods[j].getName().substring(3).compareTo(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) == 0
 					&& !methods[j].isSynthetic()) {
 				logger.log(Level.INFO, methods[j].getName());

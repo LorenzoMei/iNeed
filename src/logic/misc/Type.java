@@ -1,7 +1,7 @@
 package logic.misc;
 
 public enum Type {
-	Request ("Richiesta"), Offer ("Offerta");
+	REQUEST ("Richiesta"), OFFER ("Offerta");
 	
 	private Type(String value) {
 		this.value = value;

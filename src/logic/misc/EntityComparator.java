@@ -6,11 +6,9 @@ import java.util.Calendar;
 
 public class EntityComparator {
 	
-	private EntityComparator() {}
+	public final static String NAME_ENTITYCOMPARATOR_METHODS = "isSortedBy";
 	
-	public static final String NAME_ENTITYCOMPARATOR_METHODS = "isSortedBy";
-	
-	public static Boolean isSortedByTime(Calendar d1, Calendar d2){
+	public static Boolean IsSortedByTime(Calendar d1, Calendar d2){
 		
 		return d1.compareTo(d2) >= 0;
 	}
