@@ -26,7 +26,7 @@ public class AnswerAnAdController implements AnswerAnAdControllerInterface {
 		return reference;
 	}
 	
-	private AnswerAnAdController() {};
+	private AnswerAnAdController() {}
 	
 	public void candidate(AnswerAnAdBean answerAnAdBean) throws IllegalAccessException, InvocationTargetException {
 		

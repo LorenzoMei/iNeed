@@ -6,12 +6,11 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-
-import com.sun.istack.internal.logging.Logger;
+import java.util.logging.Logger;
 
 public class ReflectionMiscellaneous {
 	
-	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class);
+	private static Logger logger = Logger.getLogger(ReflectionMiscellaneous.class.getName());
 	
 	private ReflectionMiscellaneous() {}
 		
