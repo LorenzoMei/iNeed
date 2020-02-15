@@ -15,8 +15,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import logic.beans.PublishAnAdBean;
 import logic.beans.ViewProfileBean;
-import logic.publishanad.PublishAnAdBean;
 import logic.publishanad.PublishAnAdController;
 
 

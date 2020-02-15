@@ -9,8 +9,8 @@ public class TestDaoFactory {
 	@Test
 	public void testGetDaoReference() {
 		
-		String entity = "User";
-		String className = "logic.dao.DAOUserSerialize";
+		DAOSupportedEntities entity = DAOSupportedEntities.USER;
+		String className = DAOUserSerialize.class.getName();
 		
 		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference(entity);
 		Assert.assertEquals(className, daoRef.getClass().getName());

@@ -1,6 +1,7 @@
 package logic.login;
 
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class LoginController {
 	private LoginController() {}
 	
 	public void login(CredentialsBean credentials) throws WrongPasswordException, UserNotFoundException{
-		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference("User");  
+		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);  
 		User u = new User();
 		daoRef.loadUser(u, credentials.getUsername());
 		if (!this.userLoggedList.contains(credentials.getUsername())) {

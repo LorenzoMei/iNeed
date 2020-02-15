@@ -10,22 +10,22 @@ import java.util.logging.Logger;
 
 import logic.entity.Answer;
 
-public class DAOAnswersSerialize extends DAOSerialize implements DAOAnswers{
+public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 	
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	private static DAOAnswersSerialize ref = null;
+	private static DAOAnswerSerialize ref = null;
 	
-	public static DAOAnswersSerialize getReference() {
+	public static DAOAnswerSerialize getReference() {
 		
 		if (ref == null) {
-			ref = new DAOAnswersSerialize();
+			ref = new DAOAnswerSerialize();
 		}
 		
 		return ref;
 	}
 	
-	private DAOAnswersSerialize() {}
+	private DAOAnswerSerialize() {}
 	
 	public void loadAnswers(int id, String type, List<String> answersList) {
 		

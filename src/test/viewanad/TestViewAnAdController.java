@@ -9,6 +9,7 @@ import org.junit.Test;
 import logic.beans.OrderedAdsBean;
 import logic.dao.DAOAd;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.OfferAd;
 import logic.entity.RequestAd;
@@ -43,7 +44,7 @@ public class TestViewAnAdController {
 		ad4.setData(calendar4);
 
 		
-		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference(DAOFactory.ENTITYNAME_AD);
+		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		dao.storeNewAd(ad1);
 		dao.storeNewAd(ad2);
 		dao.storeNewAd(ad3);

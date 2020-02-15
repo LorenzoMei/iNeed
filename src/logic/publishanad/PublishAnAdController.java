@@ -1,6 +1,7 @@
 package logic.publishanad;
 
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.AdFactory;
 import logic.entity.Data;
@@ -46,7 +47,7 @@ public class PublishAnAdController implements PublishAnAdInterface{
 		Data data = new Data();
 		ad.setData(data.buildDate());	
 		
-		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference(DAOFactory.ENTITYNAME_AD);
+		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		dao.storeNewAd(ad);
 		return ad;
 	}

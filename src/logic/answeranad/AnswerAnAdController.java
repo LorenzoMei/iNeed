@@ -8,8 +8,9 @@ import java.util.logging.Logger;
 
 import logic.beans.AnswerAnAdBean;
 import logic.beans.KeyAnswersAnAdBean;
-import logic.dao.DAOAnswers;
+import logic.dao.DAOAnswer;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Answer;
 import logic.misc.NoSuchSetterException;
 import logic.misc.ReflectionMiscellaneous;
@@ -40,7 +41,7 @@ public class AnswerAnAdController implements AnswerAnAdControllerInterface {
 			;
 		});
 		
-		DAOAnswers dao = (DAOAnswers) DAOFactory.getReference().getDAOReference("Answers");
+		DAOAnswer dao = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 		dao.storeAnswers(answers);
 	}
 }

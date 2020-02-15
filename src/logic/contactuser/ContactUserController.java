@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import logic.dao.DAOFactory;
 import logic.dao.DAOMessage;
+import logic.dao.DAOSupportedEntities;
 import logic.dao.MessageNotFoundException;
 import logic.entity.Data;
 import logic.entity.Message;
@@ -49,13 +50,13 @@ public class ContactUserController implements ContactUserInterface{
 			}
 		}
 		
-		DAOMessage dao = (DAOMessage) DAOFactory.getReference().getDAOReference("Message");
+		DAOMessage dao = (DAOMessage) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.MESSAGE);
 		dao.storeMessage(message);
 	}
 	
 	public List<Message> readMessages(ContactUserBean contactBean) throws IllegalAccessException, InvocationTargetException {
 		
-		DAOMessage dao = (DAOMessage) DAOFactory.getReference().getDAOReference("Message");
+		DAOMessage dao = (DAOMessage) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.MESSAGE);
 		List<Message> messagesList = new ArrayList<>();
 		
 		try{

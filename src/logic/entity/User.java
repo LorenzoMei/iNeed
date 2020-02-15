@@ -10,29 +10,19 @@ public class User {
 	private String email;
 	private String name;
 	private String surname;
-	private User friend;
 	private Calendar bDate;
-
-	
-//	public User() {
-//		this.username = "";
-//		this.passw = "";
-//		this.city = "";
-//		this.email = "";
-//		this.name = "";
-//		this.surName = "";
-//		this.bDate = null;
-//	}
+	private int tokens;
 	
 	//all the sets on attributes
+	
+	public void setTokens(int val) {
+		this.tokens = val;
+	}
 	
 	public void setBDate(Calendar val) {
 		this.bDate = val;		
 	}
 	
-	public void setFriend(User val) {
-		this.friend = val;
-	}
 	
 	public void setUsername(String username) {
 		this.username = username;
@@ -59,8 +49,9 @@ public class User {
 	}
 	
 	//all the gets on attributes
-	public User getFriend() {
-		return this.friend;
+	
+	public int getTokens() {
+		return this.tokens;
 	}
 	
 	public String getEmail() {
@@ -90,4 +81,12 @@ public class User {
 		return this.bDate;
 	}
 	
+//	other methods
+	
+	public int gainAToken() {
+		return ++ this.tokens;
+	}
+	public int payAToken() {
+		return -- this.tokens;
+	}
 }

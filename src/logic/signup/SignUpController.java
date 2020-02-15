@@ -2,8 +2,12 @@ package logic.signup;
 
 
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import logic.beans.SignUpBean;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;
 import logic.entity.User;
@@ -11,6 +15,8 @@ import logic.entity.User;
 public class SignUpController implements SignUpControllerInterface{
 	
 	private static SignUpController instance;
+	
+	Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	public static SignUpController getInstance() {
 		if(instance == null) 
@@ -32,12 +38,12 @@ public class SignUpController implements SignUpControllerInterface{
 		
 		User userTemp = new User();
 		
-		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference("User");
+		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
 		
 		try {
 			dao.loadUser(userTemp, username);
 		} catch (UserNotFoundException e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, e.getMessage());
 			userTemp.setUsername(username);
 			userTemp.setPassw(passw);
 			userTemp.setCity(city);
@@ -46,7 +52,6 @@ public class SignUpController implements SignUpControllerInterface{
 			userTemp.setSurname(surName);
 			userTemp.setBDate(bDate);
 			dao.storeUser(userTemp);		
-			System.out.println("Name is on the Controller: " + userTemp.getName() + " surname is on the Controller: " + userTemp.getSurname());
 			return;
 		}
 		

@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import logic.beans.ViewProfileBean;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.dao.DAOUser;
 import logic.dao.UserNotFoundException;
 import logic.entity.User;
@@ -25,7 +26,7 @@ private static ViewProfileController instance;
 	public void loadProfile(ViewProfileBean profile)  {
 		
 		logger.log(Level.INFO, "requested profile data of username " + profile.getRequestedUsername());
-		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference("User");  
+		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);  
 		User user = new User();
 		try {
 			daoRef.loadUser(user, profile.getRequestedUsername());

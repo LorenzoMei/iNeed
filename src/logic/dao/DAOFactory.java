@@ -12,11 +12,6 @@ public class DAOFactory {
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
 	private static DAOFactory ref = null;
-	public static final String ENTITYNAME_AD = "Ad";
-	public static final String ENTITYNAME_USER = "User";
-	public static final String ENTITYNAME_MESSAGE = "Message";
-	public static final String ENTITYNAME_ANSWERS = "Answers";
-	
 	private DAOFactory() {}
 	
 	public static DAOFactory getReference() {
@@ -34,12 +29,12 @@ public class DAOFactory {
 		return "Serialize";
 	}
 	
-	public Object getDAOReference(String entity) {
+	public Object getDAOReference(DAOSupportedEntities entity) {
 		
 //		@ return : reference to DAOUSer object
 		
 		try {
-			return Class.forName(this.getClass().getPackage().getName() + "." + "DAO" + entity + this.readDBType()).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[])null);
+			return Class.forName(this.getClass().getPackage().getName() + "." + "DAO" + entity.getEntityName() + this.readDBType()).getMethod("getReference", (Class<?>[]) null).invoke((Object) null, (Object[])null);
 		} 
 		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException | ClassNotFoundException e) {

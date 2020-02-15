@@ -3,8 +3,9 @@ package logic.checkanswersofanad;
 import java.util.ArrayList;
 import java.util.List;
 
-import logic.dao.DAOAnswers;
+import logic.dao.DAOAnswer;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.OfferAd;
 
@@ -28,7 +29,7 @@ public class CheckAnswersController implements CheckAnswersControllerInterface{
 		
 		List <String> answersList = new ArrayList<>();
 		
-		DAOAnswers daoAnswers= (DAOAnswers) DAOFactory.getReference().getDAOReference("Answers");
+		DAOAnswer daoAnswers= (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 		
 		if(ad instanceof OfferAd) 
 			type = "OfferAd";

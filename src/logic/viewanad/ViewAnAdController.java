@@ -10,6 +10,7 @@ import logic.beans.OrderedAdsBean;
 import logic.dao.AdNotFoundException;
 import logic.dao.DAOAd;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.OfferAd;
 import logic.entity.RequestAd;
@@ -53,7 +54,7 @@ public class ViewAnAdController {
 	
 	private List<Ad> getAllAds() {
 		List<Ad> allAds = new ArrayList<>();
-		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOFactory.ENTITYNAME_AD);
+		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		int numberOfRequests = daoAd.getLastRequestId();
 		int numberOfOffers = daoAd.getLastOfferId();
 		try {	
@@ -83,6 +84,7 @@ public class ViewAnAdController {
 			catch (NoSuchIsSortedByMethodException e) {
 				logger.log(Level.WARNING, e.getMessage());
 				logger.log(Level.WARNING, "setting list order as " + Order.UNSORTED.getValue());
+				bean.setOrderUnsorted();
 			}
 			finally {
 				bean.setAds(allAds);		

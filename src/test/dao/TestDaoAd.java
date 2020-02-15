@@ -6,6 +6,7 @@ import org.junit.Test;
 import logic.dao.AdNotFoundException;
 import logic.dao.DAOAd;
 import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.RequestAd;
 import logic.entity.User;
@@ -46,7 +47,7 @@ public class TestDaoAd {
 		storedAd.setBody(body);
 		storedAd.setId(100);
 		
-		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference("Ad");
+		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		
 		int storedId = daoAd.storeNewAd(storedAd);
 		Ad loadedAd = new RequestAd();
