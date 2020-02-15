@@ -26,7 +26,7 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
 	//private double lat;
     //private double lon;
 	
-	@FXML private Text tester;
+	@FXML private Text testerMap;
 	@FXML private MenuItem profileName;
 	ViewProfileBean pBean = new ViewProfileBean();
  	ViewProfileController pController =  ViewProfileController.getInstance();
@@ -51,43 +51,42 @@ public class ViewMap  extends View implements Initializable, MapComponentInitial
          mapView.addMapInializedListener(this);
     }
     
-    @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
+    @FXML protected void handleSubmitButtonViewFlowM(ActionEvent event) {
    	 Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());
     }
     
-    @FXML protected void handleSubmitButtonUser(ActionEvent event) {
-    	tester.setText("User");
+    @FXML protected void handleSubmitButtonUserM(ActionEvent event) {
+    	testerMap.setText("User");
 
 		
     }
 
-    @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
+    @FXML protected void handleSubmitButtonViewProfileM(ActionEvent event) {
  		Context.getReference().goNext(GoNextTargets.VIEW_USER.getStateName());
 
 	    }
 	 
-	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
-		tester.setText("LoggingOut");
+	 @FXML protected void handleSubmitButtonExitM(ActionEvent event) {
+		testerMap.setText("LoggingOut");
 		lBean.setUsername(View.getProfileName());
 	 	loginController.logout(lBean);
  		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }
-	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
-		 tester.setText("");
+	 @FXML protected void handleSubmitButtonViewMapM(ActionEvent event) {
+		 testerMap.setText("");
 	 	Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 
 		}
 	 
-	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
-		 tester.setText("MakeAnAd");
+	 @FXML protected void handleSubmitButtonMakeAnAdM(ActionEvent event) {
+		 testerMap.setText("MakeAnAd");
 		 Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
 
 	 }
-	 
-	 
-	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
-		 tester.setText("ValidateAFavor");
+	 	 
+	 @FXML protected void handleSubmitButtonValidateAFavorM(ActionEvent event) {
+		 testerMap.setText("ValidateAFavor");
 	    }
 	 
     @Override

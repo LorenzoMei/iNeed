@@ -37,7 +37,7 @@
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAdF" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -63,7 +63,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapF" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -74,7 +74,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorF" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -85,10 +85,10 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
+                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUserF" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
-                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="LogOut" />
+                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfileF" text="ViewProfile" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExitF" text="LogOut" />
                                       </items>
                                     </MenuButton>
                                  </children>
@@ -151,13 +151,13 @@
                   <Button layoutX="758.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleSubmitButtonUpdate" text="Update" />
                   <HBox layoutX="369.0" layoutY="20.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" text="View on Map" />
+                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapF" text="View on Map" />
                      </children>
                      <effect>
                         <DropShadow color="#fcfcfc" />
                      </effect>
                   </HBox>
-                  <Text fx:id="actionCancel" fill="WHITE" layoutX="626.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Text fx:id="actionCancelFlow" fill="WHITE" layoutX="626.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="25.0" />
                      </font>

@@ -28,7 +28,7 @@ public class ViewFlow extends View implements Initializable {
 	}
 	
 	 String formError = MSGError.ERROR_FORM.getMsg();
-	 @FXML private Text actionCancel;
+	 @FXML private Text actionCancelFlow;
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
 	 @FXML private MenuItem profileName;
@@ -53,7 +53,7 @@ public class ViewFlow extends View implements Initializable {
 		
 	 
 	 @FXML protected void handleSubmitButtonSearch(ActionEvent event) {
- 		actionCancel.setText("");
+ 		actionCancelFlow.setText("");
  		CheckEmptyField check = new CheckEmptyField();
     	check.populateTextInputFields(this);
     	this.textInputFields = check.getTextInputFields();
@@ -64,18 +64,18 @@ public class ViewFlow extends View implements Initializable {
 		        	logger.log(Level.INFO, textInputFields.get(i).getClass().getSimpleName());
 		        	if(textInputFields.get(i).getText().isEmpty()) {
 			        	logger.log(Level.INFO, "textfield is : '" + textInputFields.get(i).getText() + "'");
-			     		actionCancel.setText("No text Inserted, try again");
+			     		actionCancelFlow.setText("No text Inserted, try again");
 			            return;			        	
 		
 		        	}
 		}
- 		actionCancel.setText("new search!");
+ 		actionCancelFlow.setText("new search!");
 	 }
 	 
 	 
-	 @FXML protected void handleSubmitButtonMakeAnAd(ActionEvent event) {
-	 		actionCancel.setText("");
-	 		actionCancel.setText("MakeAnAd");
+	 @FXML protected void handleSubmitButtonMakeAnAdF(ActionEvent event) {
+	 		actionCancelFlow.setText("");
+	 		actionCancelFlow.setText("MakeAnAd");
 		 	Context.getReference().goNext(GoNextTargets.VIEW_MAKEANAD.getStateName());
 
 
@@ -83,30 +83,30 @@ public class ViewFlow extends View implements Initializable {
 	 
 	
 	 
-	 @FXML protected void handleSubmitButtonValidateAFavor(ActionEvent event) {
-	 		actionCancel.setText("");
+	 @FXML protected void handleSubmitButtonValidateAFavorF(ActionEvent event) {
+	 		actionCancelFlow.setText("");
 
-	 		actionCancel.setText("ValidateAFavor");
+	 		actionCancelFlow.setText("ValidateAFavor");
 			
 	 }
 	
-	 @FXML protected void handleSubmitButtonViewProfile(ActionEvent event) {
-	 		actionCancel.setText("");
+	 @FXML protected void handleSubmitButtonViewProfileF(ActionEvent event) {
+	 		actionCancelFlow.setText("");
 	 		Context.getReference().goNext(GoNextTargets.VIEW_USER.getStateName());
 
 	 }
 		 
-	 @FXML protected void handleSubmitButtonExit(ActionEvent event) {
-	 		actionCancel.setText("LoggingOut");
+	 @FXML protected void handleSubmitButtonExitF(ActionEvent event) {
+	 		actionCancelFlow.setText("LoggingOut");
 	 		lBean.setUsername(View.getProfileName());
 	 		loginController.logout(lBean);
 	 		Context.getReference().goNext(GoNextTargets.VIEW_LOGIN.getStateName());
 
 	    }
 	 
-	 @FXML protected void handleSubmitButtonViewMap(ActionEvent event) {
-	 		 actionCancel.setText("");
-		     actionCancel.setText("vado su map");
+	 @FXML protected void handleSubmitButtonViewMapF(ActionEvent event) {
+	 		 actionCancelFlow.setText("");
+		     actionCancelFlow.setText("vado su map");
           	 logger.log(Level.INFO, "Print this when viewMap is clicked " + getNext());
 	    	 Context.getReference().goNext(GoNextTargets.VIEW_MAP.getStateName());
 
@@ -115,18 +115,18 @@ public class ViewFlow extends View implements Initializable {
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
  		Context.getReference().goNext(GoNextTargets.VIEW_FLOW.getStateName());
 
- 		 actionCancel.setText("");
-	     actionCancel.setText("pagina aggiornata");
+ 		 actionCancelFlow.setText("");
+	     actionCancelFlow.setText("pagina aggiornata");
 	 }
 	 
 	 @FXML protected void handleSubmitButtonHelp(ActionEvent event) {
-	 		 actionCancel.setText("");
-		     actionCancel.setText("Help Page!");
+	 		 actionCancelFlow.setText("");
+		     actionCancelFlow.setText("Help Page!");
 		 }
 
-	@FXML protected void handleSubmitButtonUser(ActionEvent event) {
-	        actionCancel.setText("");
-	        actionCancel.setText("Utente");
+	@FXML protected void handleSubmitButtonUserF(ActionEvent event) {
+	        actionCancelFlow.setText("");
+	        actionCancelFlow.setText("Utente");
 	        
 	}
     

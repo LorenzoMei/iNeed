@@ -33,7 +33,7 @@
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAdM" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -44,7 +44,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlowM" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -55,7 +55,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapM" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
                                  </children>
                                  <effect>
                                     <DropShadow>
@@ -70,7 +70,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" text="Validate A Favor">
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorM" text="Validate A Favor">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -85,10 +85,10 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
+                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUserM" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
-                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="LogOut" />
+                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfileM" text="ViewProfile" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExitM" text="LogOut" />
                                       </items>
                                     </MenuButton>
                                  </children>

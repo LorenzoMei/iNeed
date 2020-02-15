@@ -28,7 +28,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 		this.setFXMLPath("fxml_makeanad.fxml");
 		pBean.setRequestedUsername(View.getProfileName());
 	}
-	
+	 
 	 @FXML private TextField typeTextField;
 	 @FXML private TextField othersTextField;
 	 @FXML private TextField titleTextField;

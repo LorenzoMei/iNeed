@@ -37,7 +37,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAdU" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -48,7 +48,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow">
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlowU" prefHeight="31.0" prefWidth="160.0" text="ViewFlow">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
@@ -63,7 +63,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapU" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -74,7 +74,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" text="Validate A Favor" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorU" text="Validate A Favor" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -85,10 +85,10 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
+                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUserU" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
-                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="LogOut" />
+                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfileU" text="ViewProfile" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExitU" text="LogOut" />
                                       </items>
                                     </MenuButton>
                                  </children>
@@ -209,7 +209,7 @@
                   </HBox>
                   <HBox layoutX="868.0" layoutY="556.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonRaitings" prefHeight="45.0" prefWidth="138.0" text="Ratings" />
+                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonRatings" prefHeight="45.0" prefWidth="138.0" text="Ratings" />
                      </children>
                      <effect>
                         <DropShadow />

@@ -32,7 +32,7 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="179.0">
                                  <children>
-                                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
+                                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAdR" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -43,7 +43,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlow" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlowR" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -54,7 +54,7 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMap" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapR" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
                                  </children>
                                  <effect>
                                     <DropShadow />
@@ -65,7 +65,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="45.0" prefWidth="151.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavor" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor">
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorR" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin></Button>
@@ -79,10 +79,10 @@
                               </HBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUser" prefHeight="31.0" prefWidth="84.0" text="User">
+                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUserR" prefHeight="31.0" prefWidth="84.0" text="User">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonViewProfile" text="ViewProfile" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExit" text="Exit" />
+                                        <MenuItem fx:id="profileNameR" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfileR" text="ViewProfile" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExitR" text="Exit" />
                                       </items>
                                     </MenuButton>
                                  </children>
@@ -147,7 +147,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Text fx:id="tester" fill="#348638" layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="184.89453125">
+            <Text fx:id="testerR" fill="#348638" layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="184.89453125">
                <font>
                   <Font size="20.0" />
                </font>
