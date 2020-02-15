@@ -40,6 +40,8 @@ public class ViewUser extends View implements Initializable {
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
 		 
+		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
+		 logger.log(Level.INFO, status);
 		 
 		 pBean.setRequestedUsername(View.getProfileName());
 		 logger.log(Level.INFO, "initializing " + this.getClass().getSimpleName());
