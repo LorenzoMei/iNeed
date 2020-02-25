@@ -3,7 +3,7 @@ package test.publishanad;
 import java.lang.reflect.InvocationTargetException;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import logic.beans.PublishAnAdBean;
 import logic.entity.Ad;

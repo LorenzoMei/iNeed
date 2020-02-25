@@ -3,7 +3,7 @@ package test.contactuser;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.Assert;
 
 import logic.contactuser.ContactUserBean;

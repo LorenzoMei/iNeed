@@ -4,10 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import logic.answeranad.AnswerAnAdController;
-import logic.answeranad.AnswerAnAdControllerInterface;
 import logic.beans.AnswerAnAdBean;
 import logic.checkanswersofanad.CheckAnswersBean;
 import logic.checkanswersofanad.CheckAnswersController;
@@ -28,7 +27,7 @@ class TestAnswers {
 		answerAnAdBean.setId(1);
 		answerAnAdBean.setType("RequestAd");
 		
-		AnswerAnAdControllerInterface controller = AnswerAnAdController.getInstance();	
+		AnswerAnAdController controller = AnswerAnAdController.getInstance();	
 		
 		for(int i = 0; i < 3; i++) {
 			answerAnAdBean.setUsername(candidati[i]);
