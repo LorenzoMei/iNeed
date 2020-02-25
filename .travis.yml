@@ -17,9 +17,9 @@ notifications:
 
 before-install:
         - sudo apt-get update -q
-        - sudo apt-get install openjfx -y
+        - sudo apt-get install ant-optional openjfx -y
 script:
-        - ant build
+        - ant -v build test
         - sonar-scanner
 
 

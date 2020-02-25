@@ -10,27 +10,20 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <path id="JUnit 5.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.opentest4j_1.1.1.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.apiguardian_1.0.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
-    </path>
+    <import file="runAllTests.xml"/>
     <path id="iNeed.classpath">
-        <path refid="JUnit 5.libraryclasspath"/>
         <pathelement location="bin"/>
         <pathelement location="External libraries/GMapsFX-2.10.0.jar"/>
         <pathelement location="External libraries/json-simple-1.1.1.jar"/>
+        <pathelement location="Testing Libraries/hamcrest-core-1.3.jar"/>
+        <pathelement location="Testing Libraries/junit-4.12.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/jacocoagent.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/jacocoant.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/jacococli.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.agent-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.ant-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.core-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.report-0.8.5.201910111838.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -78,14 +71,27 @@
             <classpath refid="iNeed.classpath"/>
         </junit>
     </target>
+    <target name="TestViewAnAdController">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.viewanad.TestViewAnAdController" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="iNeed.classpath"/>
+        </junit>
+    </target>
     <target name="iNeed">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
+            <test name="test.answers.TestAnswers" todir="${junit.output.dir}"/>
+            <test name="test.contactuser.TestContactUserController" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
             <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
+            <test name="test.publishanad.TestPublishAnAdController" todir="${junit.output.dir}"/>
+            <test name="test.viewanad.TestViewAnAdController" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
@@ -155,10 +161,14 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
+            <test name="test.answers.TestAnswers" todir="${junit.output.dir}"/>
+            <test name="test.contactuser.TestContactUserController" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
             <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
+            <test name="test.publishanad.TestPublishAnAdController" todir="${junit.output.dir}"/>
+            <test name="test.viewanad.TestViewAnAdController" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
@@ -230,6 +240,15 @@
         <java classname="tesview.Signup" failonerror="true" fork="yes">
             <classpath refid="iNeed.classpath"/>
         </java>
+    </target>
+    <target name="TestContactUserController">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.contactuser.TestContactUserController" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="iNeed.classpath"/>
+        </junit>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
