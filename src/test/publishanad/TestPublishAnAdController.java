@@ -11,7 +11,7 @@ import logic.entity.User;
 import logic.publishanad.PublishAnAdInterface;
 import logic.publishanad.PublishAnAdController;
 
-class TestPublishAnAdController {
+public class TestPublishAnAdController {
 
 	@Test
 	public void testPublishAnAdController() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {

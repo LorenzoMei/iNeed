@@ -3,8 +3,8 @@ package test.answers;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Assert;
 
 import logic.answeranad.AnswerAnAdController;
 import logic.beans.AnswerAnAdBean;
@@ -14,10 +14,10 @@ import logic.checkanswersofanad.CheckAnswersControllerInterface;
 import logic.entity.Ad;
 import logic.entity.RequestAd;
 
-class TestAnswers {
+public class TestAnswers {
 
 	@Test
-	void testAnswers() throws IllegalAccessException, InvocationTargetException {
+	public void testAnswers() throws IllegalAccessException, InvocationTargetException {
 		String[] candidati = new String[3];
 		candidati[0] = "Pippo";
 		candidati[1] = "Pluto";

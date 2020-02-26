@@ -12,7 +12,7 @@ import logic.contactuser.ContactUserInterface;
 import logic.entity.Message;
 import logic.entity.User;
 
-class TestContactUserController {
+public class TestContactUserController {
 
 	@Test
 	public void testMessageEntity() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
