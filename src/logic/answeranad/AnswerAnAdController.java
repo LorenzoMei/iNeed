@@ -15,7 +15,7 @@ import logic.entity.Answer;
 import logic.misc.NoSuchSetterException;
 import logic.misc.ReflectionMiscellaneous;
 
-public class AnswerAnAdController implements AnswerAnAdControllerInterface {
+public class AnswerAnAdController {
 
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	private static AnswerAnAdController reference = null;
