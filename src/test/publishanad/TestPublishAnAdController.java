@@ -26,7 +26,7 @@ public class TestPublishAnAdController {
 		String body = "Cerco qualcuno disponibile ad offrire un posto letto per il 17/02/2020";
 		
 		PublishAnAdBean publishAdBean = new PublishAnAdBean();
-		publishAdBean.setUsername(user.getUsername());
+		publishAdBean.setOwnerUsername(user.getUsername());
 		publishAdBean.setTitle(title);
 		publishAdBean.setBody(body);
 		publishAdBean.setType("Richiesta");
@@ -34,7 +34,7 @@ public class TestPublishAnAdController {
 		PublishAnAdInterface controller = PublishAnAdController.getInstance();
 		Ad ad = controller.createAd(publishAdBean);
 		
-		Assert.assertSame(publishAdBean.getUsername(), ad.getOwnerUsername());
+		Assert.assertSame(publishAdBean.getOwnerUsername(), ad.getOwnerUsername());
 		Assert.assertEquals(publishAdBean.getTitle(), ad.getTitle());
 		Assert.assertEquals(publishAdBean.getBody(), ad.getBody());
 	}

@@ -2,22 +2,22 @@ package logic.beans;
 
 
 public class PublishAnAdBean {
-	private String username;
+	private String ownerUsername;
 	private String title;
 	private String body;
 	private String type;
 	private String category;
 	
 	public PublishAnAdBean() {
-		this.username = "";
+		this.ownerUsername = "";
 		this.title = "";
 		this.body = "";
 		this.type = "";
 		this.category = "";
 	}
 	 //sets
-	public void setUsername(String user) {
-		this.username = user;
+	public void setOwnerUsername(String user) {
+		this.ownerUsername = user;
 	}
 	
 	public void setTitle(String title) {
@@ -37,8 +37,8 @@ public class PublishAnAdBean {
 	}
 	
 	//get
-	public String getUsername() {
-		return this.username;
+	public String getOwnerUsername() {
+		return this.ownerUsername;
 	}
 	
 	public String getTitle() {

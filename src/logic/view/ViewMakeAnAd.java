@@ -166,7 +166,7 @@ public class ViewMakeAnAd extends View implements Initializable {
 		     adBean.setType(ViewMakeAnAd.getType());
 		     adBean.setTitle(titleTextField.getText());
 		     adBean.setBody(bodyTextArea.getText());
-		     adBean.setUsername(View.getProfileName());
+		     adBean.setOwnerUsername(View.getProfileName());
 		     
 		    
 				try {
