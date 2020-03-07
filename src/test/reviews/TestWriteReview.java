@@ -3,13 +3,13 @@ package test.reviews;
 import java.io.File;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import logic.beans.KeyReviewsBean;
 import logic.beans.ReviewsBean;
 import logic.reviews.ReviewsController;
 
-class TestWriteReview {
+public class TestWriteReview {
 
 	@Test
 	public void WriteReviewController() {

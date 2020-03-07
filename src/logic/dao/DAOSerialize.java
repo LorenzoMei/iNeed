@@ -47,8 +47,10 @@ public abstract class DAOSerialize {
 		}
 		try{
 			for (int k = 0; k < primaryKeyNames.size(); k ++) {
+				logger.log(Level.SEVERE, "primaryKeyNames size is: " + primaryKeyNames.size());
 				stringBuilder.append(ReflectionMiscellaneous.getGetter(primaryKeyNames.get(k), obj).invoke(obj, (Object[])null).toString());
 				stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
+				logger.log(Level.INFO, "path to store in is: " + stringBuilder.toString());
 			}	
 		}
 		catch(NoSuchGetterException e) {

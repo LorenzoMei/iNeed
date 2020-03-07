@@ -1,14 +1,15 @@
-package logic.contactuser;
+package logic.beans;
 
-public class ContactUserBean {
+public class WriteMessageBean {
+	
 	private String userSenderUsername;
-	private String userReciverUsername;
+	private String userReceiverUsername;
 	private String text;
 	private Object image;
 	
-	public ContactUserBean() {
+	public WriteMessageBean() {
 		this.userSenderUsername = null;
-		this.userReciverUsername = null;
+		this.userReceiverUsername = null;
 		this.text = "";
 		this.image = null;
 	}
@@ -17,8 +18,8 @@ public class ContactUserBean {
 		this.userSenderUsername = userSender;
 	}
 	
-	public void setUserReciverUsername(String userReciver) {
-		this.userReciverUsername = userReciver;
+	public void setUserReceiverUsername(String userReciver) {
+		this.userReceiverUsername = userReciver;
 	}
 	
 	public void setText(String text) {
@@ -33,8 +34,8 @@ public class ContactUserBean {
 		return this.userSenderUsername;
 	}
 	
-	public String getUserReciverUsername() {
-		return this.userReciverUsername;
+	public String getUserReceiverUsername() {
+		return this.userReceiverUsername;
 	}
 	
 	public String getText() {

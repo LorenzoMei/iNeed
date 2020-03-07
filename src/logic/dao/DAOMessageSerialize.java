@@ -62,7 +62,7 @@ public class DAOMessageSerialize extends DAOSerialize implements DAOMessage{
 		
 		List<String> primaryKeyNames = new ArrayList<>();
 		primaryKeyNames.add("userSenderUsername");
-		primaryKeyNames.add("userReciverUsername");
+		primaryKeyNames.add("userReceiverUsername");
 		primaryKeyNames.add("data");
 		
 		try {

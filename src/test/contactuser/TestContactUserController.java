@@ -1,15 +1,14 @@
 package test.contactuser;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.Assert;
 
-import logic.contactuser.ContactUserBean;
+import logic.beans.MessageInfos;
+import logic.beans.ReadMessagesBean;
+import logic.beans.WriteMessageBean;
 import logic.contactuser.ContactUserController;
-import logic.contactuser.ContactUserInterface;
-import logic.entity.Message;
 import logic.entity.User;
 
 public class TestContactUserController {
@@ -31,25 +30,29 @@ public class TestContactUserController {
 		
 		String text = "Ciao, ti contatto per metterci d'accordo sul favore che ti dovevo fare";
 		
-		ContactUserBean contactBean = new ContactUserBean();
+		WriteMessageBean contactBean = new WriteMessageBean();
 		
 		contactBean.setUserSenderUsername(userSender.getUsername());
-		contactBean.setUserReciverUsername(userReciver.getUsername());
+		contactBean.setUserReceiverUsername(userReciver.getUsername());
 		contactBean.setText(text);
 		
-		ContactUserInterface controller = ContactUserController.getInstance();
+		ContactUserController controller = ContactUserController.getInstance();
 		controller.writeMessage(contactBean);
 		
-		List<Message> message = controller.readMessages(contactBean);
+		ReadMessagesBean rmBean = new ReadMessagesBean();
+		rmBean.setUserReceiverUsername(userReciver.getUsername());
+		rmBean.setUserSenderUsername(userSender.getUsername());
+		
+		controller.readMessages(rmBean);
 				
-		for(int i = 0; i < message.size(); i++) {
-			System.out.println("SENDER: " +message.get(i).getUserSenderUsername());
-			System.out.println("RECIVER: " +message.get(i).getUserReciverUsername());
-			System.out.println("TEXT: " +message.get(i).getText());
-			System.out.println("DATA: " +message.get(i).getData());
-			Assert.assertEquals(contactBean.getUserSenderUsername(), message.get(i).getUserSenderUsername());
-			Assert.assertEquals(contactBean.getUserReciverUsername(), message.get(i).getUserReciverUsername());
-			Assert.assertEquals(contactBean.getText(), message.get(i).getText());
+		for(int i = 0; i < rmBean.getNumberOfMessages(); i++) {
+//			System.out.println("SENDER: " +message.get(i).getUserSenderUsername());
+//			System.out.println("RECIVER: " +message.get(i).getUserReceiverUsername());
+//			System.out.println("TEXT: " +message.get(i).getText());
+//			System.out.println("DATA: " +message.get(i).getData());
+//			Assert.assertEquals(contactBean.getUserSenderUsername(), rmBean.getMessageInfo(i, MessageInfos.SENDER));
+//			Assert.assertEquals(contactBean.getUserReceiverUsername(), rmBean.getMessageInfo(i, MessageInfos.RECEIVER));
+			Assert.assertEquals(contactBean.getText(), rmBean.getMessageInfo(i, MessageInfos.BODY));
 		}
 	}
 

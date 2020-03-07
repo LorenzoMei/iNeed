@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import logic.beans.ReadMessagesBean;
+import logic.beans.WriteMessageBean;
 import logic.dao.DAOFactory;
 import logic.dao.DAOMessage;
 import logic.dao.DAOSupportedEntities;
@@ -15,7 +17,7 @@ import logic.dao.MessageNotFoundException;
 import logic.entity.Data;
 import logic.entity.Message;
 
-public class ContactUserController implements ContactUserInterface{
+public class ContactUserController{
 	
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	private static ContactUserController instance = null;
@@ -29,7 +31,7 @@ public class ContactUserController implements ContactUserInterface{
 	private ContactUserController() {		
 	}
 	
-	public void writeMessage(ContactUserBean contactBean) throws IllegalAccessException, InvocationTargetException {
+	public void writeMessage(WriteMessageBean contactBean) throws IllegalAccessException, InvocationTargetException {
 		
 		Message message = new Message();
 		Data data = new Data();
@@ -54,13 +56,13 @@ public class ContactUserController implements ContactUserInterface{
 		dao.storeMessage(message);
 	}
 	
-	public List<Message> readMessages(ContactUserBean contactBean) throws IllegalAccessException, InvocationTargetException {
+	public void readMessages(ReadMessagesBean contactBean) throws IllegalAccessException, InvocationTargetException {
 		
 		DAOMessage dao = (DAOMessage) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.MESSAGE);
 		List<Message> messagesList = new ArrayList<>();
 		
 		try{
-			dao.loadMessage(contactBean.getUserSenderUsername(), contactBean.getUserReciverUsername(), messagesList);
+			dao.loadMessage(contactBean.getUserSenderUsername(), contactBean.getUserReceiverUsername(), messagesList);
 		}
 		catch(MessageNotFoundException e) {
 			logger.log(Level.SEVERE, "Message not found");
@@ -71,7 +73,7 @@ public class ContactUserController implements ContactUserInterface{
 		this.selectionSortMessage(messageArray);
 		messagesList = Arrays.asList(messageArray);
 		
-		return messagesList;
+		contactBean.setAllMessages(messagesList);
 		
 	}
 	

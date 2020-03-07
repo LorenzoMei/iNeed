@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import logic.beans.PublishAnAdBean;
 import logic.dao.DAOAd;
 
-public class PublishAnAdController implements PublishAnAdInterface{
+public class PublishAnAdController {
 	
 	private static PublishAnAdController instance;
 	
@@ -25,7 +25,7 @@ public class PublishAnAdController implements PublishAnAdInterface{
 	private PublishAnAdController() {
 	}
 	
-	public Ad createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, InvocationTargetException {
+	public int createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, InvocationTargetException {
 		
 		Ad ad = AdFactory.getReference().typePost(publishAdBean.getType());
 		
@@ -48,8 +48,7 @@ public class PublishAnAdController implements PublishAnAdInterface{
 		ad.setData(data.buildDate());	
 		
 		DAOAd dao = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
-		dao.storeNewAd(ad);
-		return ad;
+		return dao.storeNewAd(ad);
 	}
 }
 

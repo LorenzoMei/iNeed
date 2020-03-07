@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Message {
 	private String userSenderUsername;
-	private String userReciverUsername;
+	private String userReceiverUsername;
 	private String text;
 	private Object image;
 	private Date data;
 
 	public Message() {
 		this.userSenderUsername = "";
-		this.userReciverUsername = "";
+		this.userReceiverUsername = "";
 		this.text = "";
 		this.image = null;
 		this.data = null;
@@ -21,8 +21,8 @@ public class Message {
 		this.userSenderUsername = userSender;
 	}
 	
-	public void setUserReciverUsername(String userReciver) {
-		this.userReciverUsername = userReciver;
+	public void setUserReceiverUsername(String userReciver) {
+		this.userReceiverUsername = userReciver;
 	}
 	
 	public void setText(String text) {
@@ -41,8 +41,8 @@ public class Message {
 		return this.userSenderUsername;
 	}
 	
-	public String getUserReciverUsername() {
-		return this.userReciverUsername;
+	public String getUserReceiverUsername() {
+		return this.userReceiverUsername;
 	}
 	
 	public String getText() {

@@ -6,15 +6,19 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import logic.beans.PublishAnAdBean;
+import logic.dao.AdNotFoundException;
+import logic.dao.DAOAd;
+import logic.dao.DAOFactory;
+import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
+import logic.entity.RequestAd;
 import logic.entity.User;
-import logic.publishanad.PublishAnAdInterface;
 import logic.publishanad.PublishAnAdController;
 
 public class TestPublishAnAdController {
 
 	@Test
-	public void testPublishAnAdController() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void testPublishAnAdController() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, AdNotFoundException {
 		
 		User user = new User();
 		user.setUsername("Pippo");
@@ -31,10 +35,16 @@ public class TestPublishAnAdController {
 		publishAdBean.setBody(body);
 		publishAdBean.setType("Richiesta");
 		
-		PublishAnAdInterface controller = PublishAnAdController.getInstance();
-		Ad ad = controller.createAd(publishAdBean);
+		PublishAnAdController controller = PublishAnAdController.getInstance();
+		int id = controller.createAd(publishAdBean);
 		
-		Assert.assertSame(publishAdBean.getOwnerUsername(), ad.getOwnerUsername());
+		Ad ad = new RequestAd();
+		
+		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
+		daoAd.loadAd(ad, id);
+		
+		
+		Assert.assertEquals(publishAdBean.getOwnerUsername(), ad.getOwnerUsername());
 		Assert.assertEquals(publishAdBean.getTitle(), ad.getTitle());
 		Assert.assertEquals(publishAdBean.getBody(), ad.getBody());
 	}

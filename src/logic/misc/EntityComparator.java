@@ -1,7 +1,6 @@
 package logic.misc;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.Calendar;
 
 public class EntityComparator {
@@ -15,8 +14,7 @@ public class EntityComparator {
 	public static Method getIsSortedByMethod(Order order) throws NoSuchIsSortedByMethodException{
 		Method[] allMethods = EntityComparator.class.getDeclaredMethods();
 		for (int i = 0; i < allMethods.length; i ++) {
-			if (Modifier.isPrivate(allMethods[i].getModifiers()) 
-					&& allMethods[i].getName().contains(NAME_ENTITYCOMPARATOR_METHODS + order.getValue())
+			if (allMethods[i].getName().contains(NAME_ENTITYCOMPARATOR_METHODS + order.getValue())
 					&& !allMethods[i].isSynthetic()) {
 				return allMethods[i];
 			}
