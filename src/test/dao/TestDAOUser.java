@@ -16,10 +16,10 @@ public class TestDAOUser {
 		
 		User stored = new User();
 		User loaded = new User();
-		stored.setUsername("torkin");
-		stored.setPassw("galeone879");
-		stored.setName("Daniele");
-		stored.setSurname("La Prova");
+		stored.setUsername("amedeo");
+		stored.setPassw("qwerty");
+		stored.setName("Danielo");
+		stored.setSurname("Le Provi");
 		stored.setCity("roma");
 		stored.setEmail("a@b.com");
 		
