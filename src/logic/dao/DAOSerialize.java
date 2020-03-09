@@ -8,11 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import logic.misc.ReflectionMiscellaneous;
-import logic.misc.NoSuchGetterException;
 
 public abstract class DAOSerialize {
 
@@ -27,9 +23,24 @@ public abstract class DAOSerialize {
 		return "db" + File.separator + "serialized" + File.separator;
 	}
 	
-	private String getPathToLoadFrom(Object obj, List <String> primaryKeyValues) {
+//	private String getPathToLoadFrom(Object obj, List <String> primaryKeyValues) {
+//		StringBuilder stringBuilder = new StringBuilder();
+//		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
+//		for (int k = 0; k < primaryKeyValues.size(); k ++) {
+//			stringBuilder.append(primaryKeyValues.get(k));
+//			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
+//		}
+//		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
+//		return stringBuilder.toString();
+//	}
+
+	private String getPath(Object obj, List <String> primaryKeyValues) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
+		File test = new File(stringBuilder.toString());
+		if (!test.exists()) {
+			test.mkdirs();
+		}
 		for (int k = 0; k < primaryKeyValues.size(); k ++) {
 			stringBuilder.append(primaryKeyValues.get(k));
 			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
@@ -37,32 +48,10 @@ public abstract class DAOSerialize {
 		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
 		return stringBuilder.toString();
 	}
-
-	private String getPathToStoreIn(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
-		File test = new File(stringBuilder.toString());
-		if (!test.exists()) {
-			test.mkdirs();
-		}
-		try{
-			for (int k = 0; k < primaryKeyNames.size(); k ++) {
-				logger.log(Level.SEVERE, "primaryKeyNames size is: " + primaryKeyNames.size());
-				stringBuilder.append(ReflectionMiscellaneous.getGetter(primaryKeyNames.get(k), obj).invoke(obj, (Object[])null).toString());
-				stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
-				logger.log(Level.INFO, "path to store in is: " + stringBuilder.toString());
-			}	
-		}
-		catch(NoSuchGetterException e) {
-			logger.log(Level.SEVERE, "No such get method for attribute " + e.getAttrName());
-		}
-		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
-		return stringBuilder.toString();
-	}
 	
 	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
 		try (
-				FileOutputStream dest = new FileOutputStream(this.getPathToStoreIn(obj, primaryKeyNames));
+				FileOutputStream dest = new FileOutputStream(this.getPath(obj, primaryKeyNames));
 				DAOSerializeOOS writer = new DAOSerializeOOS(dest);){
 			writer.writeObject(obj);
 		}
@@ -73,12 +62,12 @@ public abstract class DAOSerialize {
 //		@ return User if retrieved, null otherwise
 		
 		try (
-				FileInputStream src = new FileInputStream(this.getPathToLoadFrom(obj, primaryKeyValues));
+				FileInputStream src = new FileInputStream(this.getPath(obj, primaryKeyValues));
 				DAOSerializeOIS reader = new DAOSerializeOIS(src, obj);){
 			reader.readObject();
 		}
 		catch (FileNotFoundException e) {
-			throw new ElementInDBNotFoundException(this.getPathToLoadFrom(obj, primaryKeyValues), e);
+			throw new ElementInDBNotFoundException(this.getPath(obj, primaryKeyValues), e);
 		}
 	}
 }

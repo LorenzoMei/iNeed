@@ -58,13 +58,13 @@ public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 	
 	public void storeAnswers(Answer answers) {
 		
-		List<String> primaryKeyNames = new ArrayList<>();
-		primaryKeyNames.add("id");
-		primaryKeyNames.add("username");
-		primaryKeyNames.add("type");
+		List<String> primaryKeyValues = new ArrayList<>();
+		primaryKeyValues.add(String.format("%d", answers.getId()));
+		primaryKeyValues.add(answers.getUsername());
+		primaryKeyValues.add(answers.getType());
 		
 		try {
-			this.store(answers, primaryKeyNames);
+			this.store(answers, primaryKeyValues);
 			
 		} catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException | InvocationTargetException | NoSuchMethodException e) {
 			logger.log(Level.SEVERE, e.toString());

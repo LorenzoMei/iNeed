@@ -51,7 +51,7 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 //		It stores user data in a JSON array, coping values of all User attributes using reflection
 		
 		List<String> primaryKeyNames = new ArrayList<>();
-		primaryKeyNames.add("username");
+		primaryKeyNames.add(user.getUsername());
 		try {
 			this.store(user, primaryKeyNames);
 			

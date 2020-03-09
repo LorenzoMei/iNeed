@@ -87,10 +87,10 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
 	@Override
 	public void storeAd(Ad ad) {
-		List<String> primaryKeyNames = new ArrayList<>();
-		primaryKeyNames.add("id");
+		List<String> primaryKeyValues = new ArrayList<>();
+		primaryKeyValues.add(String.format("%d", ad.getId()));
 		try {
-			this.store(ad, primaryKeyNames);
+			this.store(ad, primaryKeyValues);
 		} catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException | InvocationTargetException | NoSuchMethodException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}		 
@@ -98,7 +98,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
 	private void storeLastId(AdId id) {
 		List<String> primaryKeyNames = new ArrayList<>();
-		primaryKeyNames.add("type");
+		primaryKeyNames.add(id.getType());
 		try {
 			this.store(id, primaryKeyNames);
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | IOException e) {

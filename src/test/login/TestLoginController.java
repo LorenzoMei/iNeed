@@ -3,18 +3,25 @@ package test.login;
 //import org.junit.Assert;
 import org.junit.Test;
 import logic.login.*;
+import logic.signup.SignUpController;
+import logic.signup.UsernameAlreadyTakenException;
 import logic.beans.*;
 import logic.dao.UserNotFoundException;
 
 public class TestLoginController {
 	
 	@Test
-	public void testLogin() throws WrongPasswordException, UserNotFoundException {
+	public void testLogin() throws WrongPasswordException, UserNotFoundException, UsernameAlreadyTakenException {
 		
 		String username = "torkin";
 		String passw = "galeone879";
 		
 		CredentialsBean bean = new CredentialsBean();
+		SignUpBean signupBean = new SignUpBean();
+		signupBean.setUsername(username);
+		signupBean.setPassword(passw);
+		
+		SignUpController.getInstance().signUp(signupBean);
 		bean.setUsername(username);
 		bean.setPassw(passw);
 		

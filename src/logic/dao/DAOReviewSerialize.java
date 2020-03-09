@@ -29,8 +29,8 @@ public class DAOReviewSerialize extends DAOSerialize implements DAOReviews{
 	public void storeReview(Review review) {
 		
 		List<String> primaryKeyNames = new ArrayList<>();
-		primaryKeyNames.add("usernameToReview");
-		primaryKeyNames.add("usernameWriter");
+		primaryKeyNames.add(review.getUsernameToReview());
+		primaryKeyNames.add(review.getUsernameWriter());
 		
 		try {
 			this.store(review, primaryKeyNames);
