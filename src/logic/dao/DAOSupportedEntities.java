@@ -4,8 +4,8 @@ import logic.entity.Ad;
 import logic.entity.User;
 import logic.entity.Message;
 import logic.entity.Answer;
-import logic.entity.Review;;
-//import logic.entity.Favor;
+import logic.entity.Review;
+import logic.entity.Favor;
 
 
 public enum DAOSupportedEntities {
@@ -13,8 +13,8 @@ public enum DAOSupportedEntities {
 	USER (User.class.getSimpleName()),
 	MESSAGE (Message.class.getSimpleName()),
 	ANSWER (Answer.class.getSimpleName()),
-	REVIEW (Review.class.getSimpleName())
-	//FAVOR (Favor.class.getSimpleName()),
+	REVIEW (Review.class.getSimpleName()),
+	FAVOR (Favor.class.getSimpleName()),
 	;
 	
 	private String entityName;

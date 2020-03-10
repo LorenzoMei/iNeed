@@ -8,35 +8,34 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class DAOSerialize {
 
 	Logger logger = Logger.getLogger(this.getClass().getName());
-	private String dBPath = readDBPath();
 	
 	protected static final String PRIMARY_KEY_VALUES_SEPARATOR = "#";
 	protected static final String SERIALIZED_EXTENSION = ".ser";
+	protected static final String DATE_TIME_FORMAT_STANDARD = "YYYY-MM-dd-HH-mm-ss";
+	protected static final String DATE_TIME_SEPARATOR = "-";
+	
+	protected String[] tokenize(File stored){
+		return this.tokenize(stored.getName());
+	}
+	
+	protected String[] tokenize(String storedName){
+		return storedName.split(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
+	}
 	
 	protected String readDBPath() {
 //		TODO: stub
 		return "db" + File.separator + "serialized" + File.separator;
 	}
-	
-//	private String getPathToLoadFrom(Object obj, List <String> primaryKeyValues) {
-//		StringBuilder stringBuilder = new StringBuilder();
-//		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
-//		for (int k = 0; k < primaryKeyValues.size(); k ++) {
-//			stringBuilder.append(primaryKeyValues.get(k));
-//			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
-//		}
-//		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
-//		return stringBuilder.toString();
-//	}
 
 	private String getPath(Object obj, List <String> primaryKeyValues) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(dBPath + obj.getClass().getSimpleName() + File.separator);
+		stringBuilder.append(this.readDBPath() + obj.getClass().getSimpleName() + File.separator);
 		File test = new File(stringBuilder.toString());
 		if (!test.exists()) {
 			test.mkdirs();
@@ -49,10 +48,12 @@ public abstract class DAOSerialize {
 		return stringBuilder.toString();
 	}
 	
-	protected void store(Object obj, List <String> primaryKeyNames) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+	protected void store(Object obj, List <String> primaryKeyValues) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException, IOException {
+		logger.log(Level.INFO, this.getPath(obj, primaryKeyValues));
 		try (
-				FileOutputStream dest = new FileOutputStream(this.getPath(obj, primaryKeyNames));
+				FileOutputStream dest = new FileOutputStream(this.getPath(obj, primaryKeyValues));
 				DAOSerializeOOS writer = new DAOSerializeOOS(dest);){
+			logger.log(Level.INFO, dest.toString());
 			writer.writeObject(obj);
 		}
 	}

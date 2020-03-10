@@ -22,10 +22,12 @@ public class TestDAOUser {
 		stored.setSurname("Le Provi");
 		stored.setCity("roma");
 		stored.setEmail("a@b.com");
+		stored.setBDate(Calendar.getInstance());
 		
 		DAOUser dao = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
 		dao.storeUser(stored);
 		dao.loadUser(loaded, stored.getUsername());
+		System.out.println(loaded.getBDate());
 		Assert.assertEquals(stored.getUsername(), loaded.getUsername());
 	}
 	

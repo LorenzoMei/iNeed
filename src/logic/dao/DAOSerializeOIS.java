@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import logic.misc.NoSuchGetterException;
 import logic.misc.NoSuchSetterException;
 import logic.misc.ReflectionMiscellaneous;
 
