@@ -57,9 +57,9 @@ public class TestReview {
 		List<Integer> allVote = reviewsBean.getAllVote();
 		
 		for(int i = 0; i < allText.size(); i++) {
-			Assert.assertEquals(usernameWriter[i], allUsername.get(i));
-			Assert.assertEquals(vote[i], allVote.get(i));
-			Assert.assertEquals(text[i], allText.get(i));
+			Assert.assertTrue(allUsername.contains(usernameWriter[i]));
+			Assert.assertTrue(allVote.contains(vote[i]));
+			Assert.assertTrue(allText.contains(text[i]));
 		}
 	}
 
