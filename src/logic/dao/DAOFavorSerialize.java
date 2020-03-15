@@ -47,7 +47,15 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	}
 
 	@Override
-	public List<Favor> loadFavors(User offerer, User requester, Calendar dateOfRequest) {
+	public List<Favor> loadFavors(User requester, User offerer, Calendar dateOfRequest) {
+		
+		if (offerer == null) {
+			return this.loadFavors(requester);
+		}
+		else if (dateOfRequest == null) {
+			return this.loadFavors(requester, offerer);
+		}
+		
 		List<Favor> favors = new ArrayList<Favor>();
 		File storeFolder = new File(this.STORE_FOLDER);
 		String[] fileNames = storeFolder.list();
@@ -80,7 +88,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		return favors;
 	}
 	
-	public List<Favor> loadFavors(User offerer, User requester){
+	private List<Favor> loadFavors(User requester, User offerer){
 		List<Favor> favors = new ArrayList<Favor>();
 		File storeFolder = new File(this.STORE_FOLDER);
 		String[] fileNames = storeFolder.list();
@@ -103,7 +111,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		return favors;
 	}
 	
-	public List<Favor> loadFavors(User requester){
+	private List<Favor> loadFavors(User requester){
 		List<Favor> favors = new ArrayList<Favor>();
 		File storeFolder = new File(this.STORE_FOLDER);
 		String[] fileNames = storeFolder.list();

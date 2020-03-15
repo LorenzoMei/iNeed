@@ -16,7 +16,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
 	public static final String LASTID_TYPE_OFFER = "OfferAd";
 	public static final String LASTID_TYPE_REQUEST  = "RequestAd";
-	public static final int LASTID_ZEROID = 0;
+	public static final int LASTID_ZEROID = -1;
 	
 	Logger logger = Logger.getLogger(DAOAdSerialize.class.getName());
 	private static DAOAdSerialize ref = null;

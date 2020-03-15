@@ -1,7 +1,10 @@
 package test.viewanad;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Calendar.Builder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,11 +24,11 @@ public class TestViewAnAdController {
 	public void testGetAllAdsSortedByTime() {
 	
 		Builder cBuilder = new Calendar.Builder();
-		cBuilder.setDate(2020, 0, 13);
+		cBuilder.setDate(2018, 0, 13);
 		Calendar calendar1 = cBuilder.build();
-		cBuilder.setDate(2020, 3, 5);
+		cBuilder.setDate(2019, 3, 5);
 		Calendar calendar2 = cBuilder.build();
-		cBuilder.setDate(2019, 11, 2);
+		cBuilder.setDate(2020, 11, 2);
 		Calendar calendar3 = cBuilder.build();
 		cBuilder.setDate(2021, 11, 2);
 		Calendar calendar4 = cBuilder.build();
@@ -35,11 +38,8 @@ public class TestViewAnAdController {
 		Ad ad3 = new OfferAd();
 		Ad ad4 = new OfferAd();
 		
-//		ad1.setId(24);
 		ad1.setData(calendar1);
-//		ad2.setId(3);
 		ad2.setData(calendar2);
-//		ad3.setId(8);
 		ad3.setData(calendar3);
 		ad4.setData(calendar4);
 
@@ -56,8 +56,10 @@ public class TestViewAnAdController {
 		ViewAnAdController.getReference().listAllAds(bean);
 		
 		Boolean isOrdered = true;
+		Logger.getLogger(this.getClass().getName()).log(Level.INFO,"getAllDatesOfPublication size is: " + bean.getAllDatesOfPublication().size());
 		for (int i = 0; i < bean.getAllDatesOfPublication().size() - 1; i ++) {
-			if (bean.getAllDatesOfPublication().get(i).compareTo(bean.getAllDatesOfPublication().get(i + 1)) < 0) {
+			Logger.getLogger(this.getClass().getName()).log(Level.INFO, "asserting couple: (" + i + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(bean.getAllDatesOfPublication().get(i).getTime()) + "), (" + Integer.valueOf(i+1) + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(bean.getAllDatesOfPublication().get(i+1).getTime()) + ")");
+			if (bean.getAllDatesOfPublication().get(i).compareTo(bean.getAllDatesOfPublication().get(i + 1)) <= 0) {
 				isOrdered = false;
 			}
 		}

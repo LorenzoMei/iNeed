@@ -1,6 +1,7 @@
 package logic.viewanad;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,11 +34,12 @@ public class ViewAnAdController {
 	private ViewAnAdController() {}
 	
 	private void sortAds(List<Ad> allAds, Order order) throws NoSuchIsSortedByMethodException {
+		logger.log(Level.INFO, "size of allAds to be ordered is: " + allAds.size());
 		for (int i = 0; i < allAds.size(); i ++) {
 			int minPos = i;
 			for (int j = i ; j < allAds.size(); j ++) {
 				try {
-					if (Boolean.TRUE.equals(((Boolean) EntityComparator.getIsSortedByMethod(order).invoke(this, allAds.get(minPos), allAds.get(j))) == false)) {
+					if (Boolean.TRUE.equals(((Boolean) EntityComparator.getIsSortedByMethod(order).invoke(this, allAds.get(minPos).getData(), allAds.get(j).getData())) == false)) {
 						minPos = j;
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -47,31 +49,38 @@ public class ViewAnAdController {
 				}
 			}
 			Ad temp = allAds.get(i);
+			logger.log(Level.INFO, "before swapping: (" + i + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(minPos).getData().getTime()) + ")");
 			allAds.set(i, allAds.get(minPos));
 			allAds.set(minPos, temp);
+			logger.log(Level.INFO, "after swapping: (" + i + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(minPos).getData().getTime()) + ")");
 		}
 	}
 	
 	private List<Ad> getAllAds() {
 		List<Ad> allAds = new ArrayList<>();
 		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
-		int numberOfRequests = daoAd.getLastRequestId();
-		int numberOfOffers = daoAd.getLastOfferId();
+		int numberOfRequests = daoAd.getLastRequestId() + 1;
+		logger.log(Level.INFO, "numberOfRequests is: " + numberOfRequests);
+		int numberOfOffers = daoAd.getLastOfferId() + 1;
+		logger.log(Level.INFO, "numberOfOffers is: " + numberOfOffers);
 		try {	
 			for(int i = 0; i < numberOfRequests; i ++) {
 				Ad request = new RequestAd();
 				daoAd.loadAd(request, i);
+				logger.log(Level.INFO, "adding request with id: " + request.getId());
 				allAds.add(request);
 			}
 			for(int i = 0; i < numberOfOffers; i ++) {
 				Ad offer = new OfferAd();
 				daoAd.loadAd(offer, i);
+				logger.log(Level.INFO, "adding offer with id: " + offer.getId());
 				allAds.add(offer);
 			}
 			
 		} catch (AdNotFoundException e) {
 			this.logger.log(Level.WARNING, e.getMessage());
 		}
+		logger.log(Level.INFO, "size of allAds retrieved is: " + allAds.size());
 		return allAds;
 	}
 
