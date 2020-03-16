@@ -9,4 +9,5 @@ import logic.entity.User;
 public interface DAOFavor {
 	public void storeFavor(Favor favor);
 	public List<Favor> loadFavors(User offerer, User requester, Calendar dateOfRequest);
+	public void loadFavor (Favor favor, User offerer, User requester, Calendar dateOfRequest) throws FavorNotFoundException;
 }
