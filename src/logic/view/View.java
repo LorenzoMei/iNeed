@@ -1,30 +1,24 @@
 package logic.view;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.Scene;
 
+import javafx.scene.control.Alert;
+import javafx.stage.Window;
 
 public abstract class View {
     
-	 Logger loggerView = Logger.getLogger(this.getClass().getName());
+	 Logger logger = Logger.getLogger(this.getClass().getName());
 	
-	
-	protected static String profileName;
+	private static String profileName;
 	private String next;
-    private View previous;
-    protected GoNextTargets goNextTarget;
-    protected View nextView;
-	 
-	public abstract Scene buildScene();
 	
-	public  String getProfileName() {
-		loggerView.log(Level.INFO, "Hi i'm View and this is the profileName: " + View.profileName);
+	
+	public static String getProfileName() {
 		return View.profileName;
 	}
 	
-	public  void setProfileName(String username) {
+	public static void setProfileName(String username) {
 		View.profileName = username;
 
 	}
@@ -38,7 +32,20 @@ public abstract class View {
 		return this.next;
 	}
 		
+	
+    private String fxmlpath;
+    
+    public String getFXMLPath() {
+    	return this.fxmlpath;
+    }
+    
+    public void setFXMLPath(String fxmlpath) {
+    	this.fxmlpath = fxmlpath;
+    }
 
+	
+    private View previous;
+	
 	public void setPrevious(View previous) {
 		this.previous = previous;
 	}
@@ -47,41 +54,28 @@ public abstract class View {
 		return this.previous;
 	}
 	
+	 protected void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+	        Alert alert = new Alert(alertType);
+	        alert.setTitle(title);
+	        alert.setHeaderText(null);
+	        alert.setContentText(message);
+	        alert.initOwner(owner);
+	        alert.show();
+	    }
 	
-	
-	 public View getNextView() {
-		 return this.nextView;
-	 }
-	 
-	 public void setNextView(View nextView) {
-		 
-		 this.nextView = nextView;
-	 }
-	 
-	 public void goNext() {
-		 
-		 this.goNext(this.getNextView());
+		public void goNext(String viewName) {
+			View nextView;
+			try {
 
-	}
-	 
-	 public void goNext(View nextState) {
-		 nextState.setPrevious(this);
-			
-			Context.getReference().setCurrentView(nextState);
-//			View nextView;
-//			try {
-//
-//				nextView = (View) Class.forName(nextState).newInstance();
-//				nextState.setPrevious(this);
-//				
-//				Context.getReference().setCurrentView(nextState);
-//			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-//				logger.log(Level.SEVERE, e.toString() + " Error in goNext");
-//
-//			}
-//
+				nextView = (View) Class.forName(viewName).newInstance();
+				nextView.setPrevious(this);
+				
+				Context.getReference().setCurrentView(nextView);
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+				logger.log(Level.SEVERE, e.toString() + " Error in goNext");
+
+			}
+
 		}
 }
-
-
 

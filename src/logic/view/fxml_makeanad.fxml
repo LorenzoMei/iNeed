@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,11 +18,97 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewMakeAnAdController">
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewMakeAnAd">
    <content>
       <AnchorPane id="AnchorPane" fx:id="grid" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
          <children>
-            <HBox prefHeight="9.0" prefWidth="1100.0" spacing="40.0" style="-fx-background-color: #011c2e;" />
+            <HBox prefHeight="53.0" prefWidth="1100.0" spacing="40.0" style="-fx-background-color: #011c2e;">
+               <children>
+                  <ToolBar maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="1100.0">
+                    <items>
+                        <ImageView fitHeight="31.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../media/logo.png" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1012.0" spacing="40.0">
+                           <children>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                  <Button mnemonicParsing="false" onAction="#handleSubmitButtonMakeAnAdAd" prefHeight="31.0" prefWidth="179.0" text="Make An Ad" />
+                                 </children>
+                                 <effect>
+                                    <DropShadow>
+                                       <input>
+                                          <InnerShadow />
+                                       </input>
+                                    </DropShadow>
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewFlowAd" prefHeight="31.0" prefWidth="160.0" text="ViewFlow" />
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonViewMapAd" prefHeight="31.0" prefWidth="174.0" text="ViewMap" />
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="45.0" prefWidth="151.0" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorAd" prefHeight="31.0" prefWidth="128.0" text="Validate A Favor">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin></Button>
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="9.0" />
+                                 </HBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <MenuButton mnemonicParsing="false" onAction="#handleSubmitButtonUserAd" prefHeight="31.0" prefWidth="84.0" text="User">
+                                      <items>
+                                        <MenuItem fx:id="profileName" mnemonicParsing="false" onAction="#handleSubmitButtonViewProfileAd" text="ViewProfile" />
+                                  		<MenuItem mnemonicParsing="false" onAction="#handleSubmitButtonExitAd" text="LogOut" />
+                                      </items>
+                                    </MenuButton>
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </HBox>
+                           </children>
+                        </HBox>
+                    </items>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </ToolBar>
+               </children>
+            </HBox>
             <Pane layoutX="370.0" layoutY="149.0" prefHeight="706.0" prefWidth="672.0" style="-fx-background-color: #d5e8f5;">
                <effect>
                   <DropShadow height="50.0" radius="24.5" width="50.0" />
@@ -83,11 +172,12 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="514.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="73.0" fitWidth="96.0" layoutX="523.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/media/Red-Logomark.png" />
-               </image></ImageView>
+                  <Image url="@../../../media/Red-Logomark.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>
-</fx:root>
+</ScrollPane>

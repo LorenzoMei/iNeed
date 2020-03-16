@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -19,9 +20,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewLoginController">
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewLogin">
    <content>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;" stylesheets="@media/style.css">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;" stylesheets="@../../../css/style.css">
          <children>
             <HBox layoutX="281.0" layoutY="350.0" prefHeight="387.0" prefWidth="539.0" style="-fx-background-color: #011c2e;">
                <effect>
@@ -102,6 +103,20 @@
                   <DropShadow height="24.11" radius="12.3325" width="27.22" />
                </effect>
             </HBox>
+            <ToolBar blendMode="MULTIPLY" prefHeight="45.0" prefWidth="1100.0">
+              <items>
+                  <HBox>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </HBox>
+                  <ImageView fitHeight="30.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../media/logo.png" />
+                     </image>
+                  </ImageView>
+              </items>
+            </ToolBar>
             <Text fx:id="actionCancel" fill="#eaff00" layoutX="219.0" layoutY="707.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="693.6708984375">
                <font>
                   <Font size="21.0" />
@@ -134,17 +149,10 @@
             </HBox>
             <ImageView fitHeight="67.0" fitWidth="77.0" layoutX="513.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="media/Red-Logomark.png" />
-               </image></ImageView>
-            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="1100.0" style="-fx-background-color: #bfcdd6;">
-               <children>
-                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="media/iNeed_Color.png" />
-                     </image>
-                  </ImageView>
-               </children></HBox>
+                  <Image url="@../../../media/Red-Logomark.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </content>
-</fx:root>
+</ScrollPane>
