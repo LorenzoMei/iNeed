@@ -1,12 +1,8 @@
 package logic.view;
 
-import java.io.IOException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Context {
@@ -28,20 +24,25 @@ public class Context {
 		this.currentView = currentView;
 	}
 	
+	public View getCurrentView() {
+		return this.currentView;
+	}
+	
 	public void goFirstState() {
+		currentView = new InitialState();
 		
-		this.goNext(InitialState.INITIAL_STATE_TARGET);
+		currentView.goNext(InitialState.nextView);
+//		this.goNext(InitialState.INITIAL_STATE_TARGET);
+
+		this.draw(Client.getStage());
 
 	}
 	
-	public void goNext(String viewName) {
-		if (currentView == null) {
-			currentView = new InitialState();
-		}
+	public void goNext() {
 		
 		String error = "Context: currentState is " + currentView.getClass().getSimpleName();
 		logger.log(Level.INFO, error);
-		currentView.goNext(viewName);
+		currentView.goNext();
 		
 		String error1 = "Context: currentState changed to " + currentView.getClass().getSimpleName();
 		logger.log(Level.INFO, error1);
@@ -50,41 +51,17 @@ public class Context {
 		this.draw(Client.getStage());
 	}
 	
-	public Parent loadScreen(String resource) throws FXMLNotFoundException {
-       
-            try {
-				return FXMLLoader.load(getClass().getResource(resource));
-			} catch (IOException e) {
-				throw new FXMLNotFoundException();				
-			}
-        
-
-	}
-	
 	public void draw(Stage stage) {
 		
-		try {
+		stage.setScene(currentView.buildScene());
+		String error = "I'M ON CONTEXT MY CURRENT VIEW IS: " + currentView.getClass().getSimpleName();
+		logger.log(Level.INFO, error);
+		stage.show();
 
-			String error = "I'M ON CONTEXT MY CURRENT VIEW IS: " + currentView.getClass().getSimpleName();
-			String error2 = "I'M ON CONTEXT MY CURRENT VIEW fxmlPath IS: " + currentView.getFXMLPath();
-			logger.log(Level.INFO, error);
-			logger.log(Level.INFO, error2);
 
-			Parent root = this.loadScreen(currentView.getFXMLPath());
-			stage.setScene(new Scene(root));
-			stage.show();
-
-			
-		} catch (FXMLNotFoundException e) {
-			logger.log(Level.SEVERE, e.toString());
-			
-		}
 		
 	}
 	
-	public View getCurrentView() {
-		return this.currentView;
-	}
 	
 	
 	

@@ -38,7 +38,7 @@ public class DAOUserSerialize extends DAOSerialize implements DAOUser{
 			this.load(user, primaryKeyValues);
 		} catch (ElementInDBNotFoundException e) {
 			logger.log(Level.SEVERE, "file" + e.getPath() + " not found");
-			throw new UserNotFoundException(username);
+			throw new UserNotFoundException();
 		} 
 		
 		catch (IOException | IllegalArgumentException | ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {

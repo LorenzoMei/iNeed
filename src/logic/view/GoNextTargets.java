@@ -1,17 +1,17 @@
 package logic.view;
 
 public enum GoNextTargets {
-	INITIALSTATE(InitialState.class.getName()),
-	VIEW_SIGNUP(ViewSignUp.class.getName()),
-	VIEW_FLOW(ViewFlow.class.getName()),
-	VIEW_LOGIN(ViewLogin.class.getName()),
-	VIEW_MAKEANAD(ViewMakeAnAd.class.getName()),
-	VIEW_MAP(ViewMap.class.getName()),
-	VIEW_USER(ViewUser.class.getName()),
-	VIEW_REGULATIONS(ViewRegulations.class.getName()),
-	VIEW_CURRICULUMMAIN(ViewCurriculumMainPage.class.getName()),
-	VIEW_CURRICULUM(ViewCurriculumMainPage.class.getName())
-	
+	INITIALSTATE(InitialState.class.getSimpleName()),
+	VIEW_SIGNUP(ViewSignUp.class.getSimpleName()),
+	VIEW_FLOW(ViewFlow.class.getSimpleName()),
+	VIEW_LOGIN(ViewLogin.class.getSimpleName()),
+	VIEW_MAKEANAD(ViewMakeAnAd.class.getSimpleName()),
+	VIEW_MAP(ViewMap.class.getSimpleName()),
+	VIEW_USER(ViewUser.class.getSimpleName()),
+	VIEW_REGULATIONS(ViewRegulations.class.getSimpleName()),
+	VIEW_CURRICULUMMAIN(ViewCurriculumMainPage.class.getSimpleName()),
+	VIEW_CURRICULUM(ViewCurriculumMainPage.class.getSimpleName())
+//	VIEW_VALIDATEAFAVOR(ViewValidateAFavor.class.getName())
 	;
 	
 	private final String stateName;

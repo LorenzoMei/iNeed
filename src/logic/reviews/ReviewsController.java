@@ -1,7 +1,9 @@
 package logic.reviews;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,6 +43,16 @@ public class ReviewsController {
 		
 		DAOReviews dao = (DAOReviews) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.REVIEW);
 		dao.storeReview(review);
+	}
+	
+	public void readReview(ReviewsBean reviewsBean) {
+
+		List<Review> reviewsList = new ArrayList<>();
+		
+		DAOReviews dao = (DAOReviews) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.REVIEW);
+		dao.loadReview(reviewsList, reviewsBean.getAttributes().get(KeyReviewsBean.REVIEWSBEAN_USERNAMETOREVIEW).toString());
+	
+		reviewsBean.setReviewsList(reviewsList);
 	}
 	
 	
