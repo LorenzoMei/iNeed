@@ -34,7 +34,7 @@ public class TestDaoFavor {
 		
 		DAOFavor dao = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
 		dao.storeFavor(favor);
-		List<Favor> favors = dao.loadFavors(requester, offerer, dateOfRequest);
+		List<Favor> favors = dao.loadFavors(offerer, requester, dateOfRequest);
 		
 		Assert.assertEquals(offerer.getUsername(), favors.get(0).getOfferer().getUsername());
 		Assert.assertEquals(requester.getUsername(), favors.get(0).getRequester().getUsername());

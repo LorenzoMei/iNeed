@@ -47,19 +47,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	}
 
 	@Override
-	public List<Favor> loadFavors(User requester, User offerer, Calendar dateOfRequest) {
-		
-		logger.log(Level.INFO, "requester username is: " + requester.getUsername());
-		logger.log(Level.INFO, "offerer username is: " + offerer.getUsername());
-		logger.log(Level.INFO, "dateOfRequest is: " + dateOfRequest);
-		
-		if (offerer.getUsername() == null) {
-			return this.loadFavors(requester);
-		}
-		else if (dateOfRequest == null) {
-			return this.loadFavors(requester, offerer);
-		}
-		
+	public List<Favor> loadFavors(User offerer, User requester, Calendar dateOfRequest) {
 		List<Favor> favors = new ArrayList<Favor>();
 		File storeFolder = new File(this.STORE_FOLDER);
 		String[] fileNames = storeFolder.list();
@@ -92,7 +80,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		return favors;
 	}
 	
-	private List<Favor> loadFavors(User requester, User offerer){
+	public List<Favor> loadFavors(User offerer, User requester){
 		List<Favor> favors = new ArrayList<Favor>();
 		File storeFolder = new File(this.STORE_FOLDER);
 		String[] fileNames = storeFolder.list();
@@ -115,7 +103,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		return favors;
 	}
 	
-	private List<Favor> loadFavors(User requester){
+	public List<Favor> loadFavors(User requester){
 		List<Favor> favors = new ArrayList<Favor>();
 		File storeFolder = new File(this.STORE_FOLDER);
 		String[] fileNames = storeFolder.list();
@@ -135,25 +123,6 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 			}
 		}
 		return favors;
-	}
-
-	@Override
-	public void loadFavor(Favor favor, User offerer, User requester, Calendar dateOfRequest) throws FavorNotFoundException {
-		DateFormat dateFormatter = new SimpleDateFormat(DAOSerialize.DATE_TIME_FORMAT_STANDARD);
-		List <String> primaryKeyValues = new ArrayList<>();
-		primaryKeyValues.add(offerer.getUsername());
-		primaryKeyValues.add(requester.getUsername());
-		primaryKeyValues.add(dateFormatter.format(dateOfRequest.getTime()));
-		
-		try {
-			this.load(favor, primaryKeyValues);
-		} catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException
-				| InstantiationException | IOException e) {
-			logger.log(Level.SEVERE, e.getMessage());
-		} catch (ElementInDBNotFoundException e) {
-			throw new FavorNotFoundException(e.getPath(), e.getCause());
-		}
-		
 	}
 
 }
