@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import logic.misc.NoSuchGetterException;
 import logic.misc.NoSuchSetterException;
 import logic.misc.ReflectionMiscellaneous;
 
@@ -96,7 +95,7 @@ public class DAOSerializeOIS implements ObjectInput {
 
 	@Override
 	public String readLine() throws IOException {
-		return this.reader.readLine();
+		return null;
 	}
 
 	@Override
@@ -172,7 +171,8 @@ public class DAOSerializeOIS implements ObjectInput {
 				if ((Modifier.isPrivate(attributes[j].getModifiers()) || Modifier.isProtected(attributes[j].getModifiers())) && !attributes[j].isSynthetic() && !EntitySerializable.class.isInstance(buffVal)){		
 						try{
 							ReflectionMiscellaneous.getSetter(attributes[j].getName(), obj).invoke(obj, buffVal);
-							logger.log(Level.INFO, "loaded value : " + buffVal);
+							String toLog = String.format("loaded value : %s", buffVal);
+							logger.log(Level.INFO, toLog);
 						}
 						catch(NoSuchSetterException e) {
 							logger.log(Level.SEVERE, "No such set method for attribute " + e.getAttrName());
