@@ -165,7 +165,7 @@ public class DAOSerializeOOS implements ObjectOutput {
 					logger.log(Level.SEVERE, "No such get method for attribute " + e.getAttrName());
 				}
 				finally {
-					String toLog = String.format("adding to buffer: %s=%s", attributes[i].getName(), attrVal.toString());
+					String toLog = String.format("adding to buffer: %s=%s", attributes[i].getName(), String.valueOf(attrVal));
 					logger.log(Level.INFO, toLog);
 					buffer.getAttributes().put(attributes[i].getName(), (Serializable) attrVal);
 				}
