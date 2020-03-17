@@ -1,4 +1,4 @@
-package logic.viewcomponents;
+package logic.view.components;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class ToolBarComponent extends ViewComponent {
 		FXMLLoader toolBarLoader = new FXMLLoader();
 		ToolBar toolBar = new ToolBar();
 		toolBarLoader.setRoot(toolBar);
-		try (FileInputStream src = new FileInputStream("src/logic/viewcomponents/fxml_toolbar.fxml")){
+		try (FileInputStream src = new FileInputStream("src/logic/view/components/fxml_toolbar.fxml")){
 			toolBarLoader.load(src);
 		} catch (IOException e) {
         	logger.log(Level.SEVERE,"In ToolbarComponenet " + e.toString());

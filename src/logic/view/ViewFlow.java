@@ -9,8 +9,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.ToolBarComponent;
-import logic.viewcomponents.ViewFlowComponent;
+import logic.view.components.ToolBarComponent;
+import logic.view.components.ViewFlowComponent;
 
 public class ViewFlow extends View  {
 	

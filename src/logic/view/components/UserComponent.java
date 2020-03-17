@@ -1,4 +1,4 @@
-package logic.viewcomponents;
+package logic.view.components;
 
 import java.io.FileInputStream;
 import java.io.IOException;

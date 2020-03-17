@@ -7,8 +7,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.ToolBarComponent;
-import logic.viewcomponents.ViewMapComponent;
+import logic.view.components.ToolBarComponent;
+import logic.view.components.ViewMapComponent;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

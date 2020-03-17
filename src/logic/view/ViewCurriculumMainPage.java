@@ -7,8 +7,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.CurriculumMainPageCompononent;
-import logic.viewcomponents.ToolBarComponent;
+import logic.view.components.CurriculumMainPageCompononent;
+import logic.view.components.ToolBarComponent;
 
 
 public class ViewCurriculumMainPage extends View {

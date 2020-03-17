@@ -8,8 +8,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.ToolBarComponent;
-import logic.viewcomponents.ViewValidateAFavorComponent;
+import logic.view.components.ToolBarComponent;
+import logic.view.components.ViewValidateAFavorComponent;
 
 
 

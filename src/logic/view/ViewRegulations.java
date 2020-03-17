@@ -7,8 +7,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.RegulationsComponent;
-import logic.viewcomponents.ToolBarComponent;
+import logic.view.components.RegulationsComponent;
+import logic.view.components.ToolBarComponent;
+
 import java.util.logging.Logger;
 
 public class ViewRegulations  extends View  {

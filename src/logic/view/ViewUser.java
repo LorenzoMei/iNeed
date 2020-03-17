@@ -10,8 +10,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.ToolBarComponent;
-import logic.viewcomponents.UserComponent;
+import logic.view.components.ToolBarComponent;
+import logic.view.components.UserComponent;
 
 
 public class ViewUser extends View{

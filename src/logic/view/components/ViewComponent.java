@@ -1,4 +1,4 @@
-package logic.viewcomponents;
+package logic.view.components;
 
 import javafx.scene.Node;
 

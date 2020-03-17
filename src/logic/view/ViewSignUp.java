@@ -4,7 +4,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.viewcomponents.SignUpComponent;
+import logic.view.components.SignUpComponent;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
