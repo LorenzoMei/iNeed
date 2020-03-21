@@ -49,7 +49,8 @@ public class ViewMakeAnAdController implements Initializable {
 
 	 public void initialize(URL locationAd, ResourceBundle resourcesAD) {
 		 titleTextField.setPromptText("*Es. I need a bed this weekend...");
-		 othersTextField.setPromptText("Write Here only if you chose 'Other' above...");
+		 bodyTextArea.setPromptText("*Es. I need a bed this weekend after 3 pm, It's good even if room is shared... ");
+		 othersTextField.setPromptText("If you choose 'Other' above, you can specifie here...");
 		 othersTextField.setEditable(false);
 		 String status = "My location " + locationAd + " my resoursources: " + resourcesAD;
 		 logger.log(Level.SEVERE, status);
@@ -145,14 +146,14 @@ public class ViewMakeAnAdController implements Initializable {
 		 String printThat = "il titolo e': " + ViewMakeAnAdController.getType();
 		 logger.log(Level.INFO,  printThat );
 		 
-		 if(ViewMakeAnAdController.getType() == null || titleTextField.getText().isEmpty()) {
+		 if(ViewMakeAnAdController.getType() == null || ViewMakeAnAdController.getCategory() == null) {
 				logger.log(Level.INFO,  "Eh si sono proprio un null " );
-	     		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "insert a type please!");
+	     		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "insert a type and category please!");
 	            return;
 	     }
 
-		 else if(titleTextField.getText().isEmpty()) {
-     		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Insert a title please!");
+		 else if(titleTextField.getText().isEmpty() || bodyTextArea.getText().isEmpty()) {
+     		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Insert a title and body please!");
             return;
      	}
 		
