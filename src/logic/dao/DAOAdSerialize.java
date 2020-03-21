@@ -23,7 +23,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	
 	private DAOAdSerialize() {
 //		p
-		logger.log(Level.INFO, "initializing " + this.getClass().getSimpleName());
+		logger.log(Level.INFO, "initializing {0}", this.getClass().getSimpleName());
 		
 		List<Field> supportedAds = ReflectionMiscellaneous.getSupported(this, "LASTID_TYPE");
 		
@@ -44,7 +44,8 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 					this.storeLastId(zeroId);
 				}
 			} catch (IllegalArgumentException | IllegalAccessException e) {
-				logger.log(Level.SEVERE, e.toString() + "unable to initialize DAOAd");
+				String message = String.format("{0} unable to initialize DAOAd ", e);
+				logger.log(Level.SEVERE, message);
 			}
 		}
 	}

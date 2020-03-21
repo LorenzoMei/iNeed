@@ -33,7 +33,7 @@ public abstract class DAOSerialize {
 		return "db" + File.separator + "serialized" + File.separator;
 	}
 
-	private String getPath(Object obj, List <String> primaryKeyValues) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+	private String getPath(Object obj, List <String> primaryKeyValues){
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(this.readDBPath() + obj.getClass().getSimpleName() + File.separator);
 		File test = new File(stringBuilder.toString());

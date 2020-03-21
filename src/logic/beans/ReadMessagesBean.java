@@ -21,7 +21,8 @@ private Logger logger = Logger.getLogger(this.getClass().getName());
 			info = (String) Message.class.getMethod(what.getGetterName(), (Class<?>[]) null).invoke(this.allMessages.get(i), (Object[]) null);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException
 				| SecurityException e) {
-			logger.log(Level.SEVERE, e.toString() + ": " + e.getMessage());
+			String message = String.format("{0} : {1}", e, e.getMessage());
+			logger.log(Level.SEVERE, message);
 		}
 		return info;
 	}
