@@ -137,7 +137,7 @@ public class ViewLoginController implements Initializable {
     			}                    	
         		
         		nextViewL = (View) new ViewFlow();
-        		nextViewL.setProfileName(username);
+        		View.setProfileName(username);
 
             	logger.log(Level.INFO, "In the login username from view is: " + nextViewL.getProfileName());
             	logger.log(Level.INFO, "In the login username is: " + data.getUsername());

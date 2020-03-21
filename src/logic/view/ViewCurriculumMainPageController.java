@@ -25,16 +25,9 @@ public class ViewCurriculumMainPageController implements Initializable{
 	
  	Logger logger = Logger.getLogger(this.getClass().getName());
 
-	public  ViewCurriculumMainPageController() {	    	
-//	    	this.setFXMLPath("fxml_curriculummain.fxml");
-//	    	pBean.setRequestedUsername(View.getProfileName());
-//			pController.loadProfile(pBean);
-
-	    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//		 profileName.setText(View.getProfileName());
 		 String status = "My location " + url + " my resoursources: " + resourceBundle;
 		 logger.log(Level.INFO, status);
     }

@@ -35,7 +35,7 @@ public class CheckEmptyField {
 		logger.log(Level.INFO, "Annotazione: " + classAnnotation.getName());
 		for(int i = 0; i < fieldArrayAttributes.length; i++ ) {
 			
-				logger.log(Level.INFO, "file attributes: " + fieldArrayAttributes[i].getName());
+				logger.log(Level.INFO, String.format("file attributes: %s ", fieldArrayAttributes[i].getName())  );
 				if(Modifier.isPrivate(fieldArrayAttributes[i].getModifiers()) 
 						&& !fieldArrayAttributes[i].isSynthetic() 
 						&& fieldArrayAttributes[i].getAnnotation(classAnnotation) != null 
@@ -45,7 +45,7 @@ public class CheckEmptyField {
 							textInputFields.add((TextInputControl)ReflectionMiscellaneous.getGetter( fieldArrayAttributes[i].getName(), obj).invoke(obj, (Object[]) null));
 						} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
 								| NoSuchGetterException e) {
-							logger.log(Level.SEVERE, e.toString() + " Fail in CheckEMptyFields, Set/get not found");
+							logger.log(Level.SEVERE, String.format(" %s  Fail in CheckEMptyFields, Set/get not found",  e.toString()) );
 
 						}
 

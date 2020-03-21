@@ -19,19 +19,6 @@ public class InitialState extends View{
 		String status = "InitialState : nextView set to " + nextView.getClass().getSimpleName();
 		logger.log(Level.INFO, status);
 		
-//		View nextView;
-//		try {
-//			
-//			
-//			nextView = (View) Class.forName(viewName).newInstance();
-//			nextView.setPrevious(this);
-//			Context.getReference().setCurrentView(nextView);
-//			String status = "InitialState : nextView set to " + nextView.getClass().getSimpleName();
-//			logger.log(Level.INFO, status);
-//
-//		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-//			logger.log(Level.INFO, e.toString());
-//		}
 	}
 
 	@Override

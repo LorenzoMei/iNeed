@@ -20,11 +20,11 @@ public abstract class View {
 	public abstract Scene buildScene();
 	
 	public  String getProfileName() {
-		loggerView.log(Level.INFO, "Hi i'm View and this is the profileName: " + View.profileName);
+		loggerView.log(Level.INFO, String.format("Hi i'm View and this is the profileName: %s ", View.profileName));
 		return View.profileName;
 	}
 	
-	public  void setProfileName(String username) {
+	public static void setProfileName(String username) {
 		View.profileName = username;
 
 	}
@@ -68,18 +68,6 @@ public abstract class View {
 		 nextState.setPrevious(this);
 			
 			Context.getReference().setCurrentView(nextState);
-//			View nextView;
-//			try {
-//
-//				nextView = (View) Class.forName(nextState).newInstance();
-//				nextState.setPrevious(this);
-//				
-//				Context.getReference().setCurrentView(nextState);
-//			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-//				logger.log(Level.SEVERE, e.toString() + " Error in goNext");
-//
-//			}
-//
 		}
 }
 

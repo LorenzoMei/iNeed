@@ -29,11 +29,8 @@ public class Context {
 	}
 	
 	public void goFirstState() {
-		currentView = new InitialState();
-		
+		currentView = new InitialState();		
 		currentView.goNext(InitialState.nextView);
-//		this.goNext(InitialState.INITIAL_STATE_TARGET);
-
 		this.draw(Client.getStage());
 
 	}
