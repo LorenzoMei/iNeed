@@ -49,6 +49,7 @@ public class ViewMakeAnAdController implements Initializable {
 
 	 public void initialize(URL locationAd, ResourceBundle resourcesAD) {
 		 titleTextField.setPromptText("*Es. I need a bed this weekend...");
+		 othersTextField.setPromptText("Write Here only if you chose 'Other' above...");
 		 othersTextField.setEditable(false);
 		 String status = "My location " + locationAd + " my resoursources: " + resourcesAD;
 		 logger.log(Level.SEVERE, status);
@@ -83,11 +84,15 @@ public class ViewMakeAnAdController implements Initializable {
 	     public static String getCategory() {
 	     	 return ViewMakeAnAdController.category;
 	    }
-	 
+	     public void  setOtherField() {
+	    	 othersTextField.setText("");
+			 othersTextField.setEditable(false);
+	     }
 
 	 @FXML protected void handleSubmitButtonRequest(ActionEvent event) {
 		 ViewMakeAnAdController.setType("Richiesta");
 		 typeButton.setText("Request");
+		 
 	 }
 	 
 	 @FXML protected void handleSubmitButtonOffer(ActionEvent event) {
@@ -99,26 +104,32 @@ public class ViewMakeAnAdController implements Initializable {
 	 @FXML protected void handleSubmitButtonElectronics(ActionEvent event) {
 		 ViewMakeAnAdController.setCategory("Electronics");
 		 categoryButton.setText("Electronics");
+		 setOtherField();
+
 	 }
 	 
 	 @FXML protected void handleSubmitButtonHydraulic(ActionEvent event) {
 		 ViewMakeAnAdController.setCategory("Hydraulic");
 		 categoryButton.setText("Hydraulic");
+		 setOtherField();
 	 }
 	 
 	 @FXML protected void handleSubmitButtonGardering(ActionEvent event) {
 		 ViewMakeAnAdController.setCategory("Gardering");
 		 categoryButton.setText("Gardering");
+		 setOtherField();
 	 }
 	 
 	 @FXML protected void handleSubmitButtonInformatic(ActionEvent event) {
 		 ViewMakeAnAdController.setCategory("Informatic");
 		 categoryButton.setText("Informatic");
+		 setOtherField();
 	 }
 	 
 	 @FXML protected void handleSubmitButtonBed(ActionEvent event) {
 		 ViewMakeAnAdController.setCategory("Bed sharing");
 		 categoryButton.setText("Bed sharing");
+		 setOtherField();
 
 	 }
 	 
