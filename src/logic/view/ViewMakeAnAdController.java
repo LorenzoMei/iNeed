@@ -166,14 +166,25 @@ public class ViewMakeAnAdController implements Initializable {
 		     else {
 		    	 adBean.setCategory(othersTextField.getText());
 		     }
-			 	String printThat2 = "il titolo e': " + ViewMakeAnAdController.getType();
-				logger.log(Level.INFO,  printThat2 );
+			 	
+			 String printThat2 = "il titolo e': " + ViewMakeAnAdController.getType();
+			 logger.log(Level.INFO,  printThat2 );
 	
 		     
 		     adBean.setType(ViewMakeAnAdController.getType());
+			 logger.log(Level.INFO,  "Dopo setType" );
+
 		     adBean.setTitle(titleTextField.getText());
+			 logger.log(Level.INFO,  "Dopo setTitle" );
+
 		     adBean.setBody(bodyTextArea.getText());
+			 logger.log(Level.INFO,  "Dopo setBody" );
+
+		     nextViewM = (View) new ViewMakeAnAd();
+
 		     adBean.setOwnerUsername(nextViewM.getProfileName());
+			 logger.log(Level.INFO,  "Dopo setOwnerUsername" );
+
 		     
 		    
 				try {
