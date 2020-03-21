@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
-public class SignUpComponent extends ViewComponent{
+public class SignUpComponent implements ViewComponent{
 	Logger loggerS = Logger.getLogger(this.getClass().getName());
 
 	

@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
-public class MakeAnAdComponent extends ViewComponent {
+public class MakeAnAdComponent implements ViewComponent {
 
 	 Logger loggerMAA = Logger.getLogger(this.getClass().getName());
 

@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 
-public class FrameComponent extends ViewComponent{
+public class FrameComponent implements ViewComponent{
 	
  	 Logger logger = Logger.getLogger(this.getClass().getName());
 

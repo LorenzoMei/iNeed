@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
-public class ViewMapComponent extends ViewComponent {
+public class ViewMapComponent implements ViewComponent {
 	Logger loggerM = Logger.getLogger(this.getClass().getName());
 
 	

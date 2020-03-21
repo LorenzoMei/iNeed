@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 
 
-public class ToolBarComponent extends ViewComponent {
+public class ToolBarComponent implements ViewComponent {
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@Override

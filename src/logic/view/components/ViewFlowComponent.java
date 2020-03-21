@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
 
-public class ViewFlowComponent extends ViewComponent {
+public class ViewFlowComponent implements ViewComponent {
 
 	 Logger loggerF = Logger.getLogger(this.getClass().getName());
 

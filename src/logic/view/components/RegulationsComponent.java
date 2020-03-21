@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
-public class RegulationsComponent extends ViewComponent{
+public class RegulationsComponent implements ViewComponent{
 	 Logger loggerR = Logger.getLogger(this.getClass().getName());
 
 		

@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
-public class ViewValidateAFavorComponent extends ViewComponent {
+public class ViewValidateAFavorComponent implements ViewComponent {
 	 Logger loggerV = Logger.getLogger(this.getClass().getName());
 
 		
