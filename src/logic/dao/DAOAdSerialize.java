@@ -44,7 +44,7 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 					this.storeLastId(zeroId);
 				}
 			} catch (IllegalArgumentException | IllegalAccessException e) {
-				String message = String.format("{0} unable to initialize DAOAd ", e);
+				String message = String.format("%s unable to initialize DAOAd ", e);
 				logger.log(Level.SEVERE, message);
 			}
 		}

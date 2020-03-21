@@ -53,7 +53,7 @@ public abstract class DAOSerialize {
 		try (
 				FileOutputStream dest = new FileOutputStream(this.getPath(obj, primaryKeyValues));
 				DAOSerializeOOS writer = new DAOSerializeOOS(dest);){
-			logger.log(Level.INFO, dest.toString());
+			logger.log(Level.INFO, "Destination: {0}", dest.toString());
 			writer.writeObject(obj);
 		}
 	}

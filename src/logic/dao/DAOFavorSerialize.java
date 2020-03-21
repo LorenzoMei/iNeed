@@ -17,7 +17,7 @@ import logic.entity.User;
 
 public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 
-	private final String STOREFOLDER = super.readDBPath() + Favor.class.getSimpleName() + File.separator;
+	private final String storeFolder = super.readDBPath() + Favor.class.getSimpleName() + File.separator;
 	
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	private static DAOFavorSerialize ref = null;
@@ -61,7 +61,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		}
 		
 		List<Favor> favors = new ArrayList<>();
-		File storeFolder = new File(this.STOREFOLDER);
+		File storeFolder = new File(this.storeFolder);
 		String[] fileNames = storeFolder.list();
 		
 		for (int i = 0; i < fileNames.length; i ++) {
@@ -74,7 +74,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 					storedCalendarBuilder.setDate(Integer.valueOf(dateParts[0]), Integer.valueOf(dateParts[1]) - 1, Integer.valueOf(dateParts[2]));
 					storedCalendarBuilder.setTimeOfDay(Integer.valueOf(dateParts[3]), Integer.valueOf(dateParts[4]), Integer.valueOf(dateParts[5]));
 					Calendar storedCalendar = storedCalendarBuilder.build();
-					String message = String.format("storedCalendar year is {0} while dateOfRequest year is {1}", storedCalendar.get(Calendar.YEAR), dateOfRequest.get(Calendar.YEAR));
+					String message = String.format("storedCalendar year is %d while dateOfRequest year is %d", storedCalendar.get(Calendar.YEAR), dateOfRequest.get(Calendar.YEAR));
 					logger.log(Level.INFO, message);
 					if (storedCalendar.get(Calendar.YEAR) == dateOfRequest.get(Calendar.YEAR)
 							&& storedCalendar.get(Calendar.MONTH) == dateOfRequest.get(Calendar.MONTH)
@@ -95,7 +95,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	
 	private List<Favor> loadFavors(User requester, User offerer){
 		List<Favor> favors = new ArrayList<>();
-		File storeFolder = new File(this.STOREFOLDER);
+		File storeFolder = new File(this.storeFolder);
 		String[] fileNames = storeFolder.list();
 		
 		for (int i = 0; i < fileNames.length; i ++) {
@@ -118,7 +118,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	
 	private List<Favor> loadFavors(User requester){
 		List<Favor> favors = new ArrayList<>();
-		File storeFolder = new File(this.STOREFOLDER);
+		File storeFolder = new File(this.storeFolder);
 		String[] fileNames = storeFolder.list();
 		
 		for (int i = 0; i < fileNames.length; i ++) {
