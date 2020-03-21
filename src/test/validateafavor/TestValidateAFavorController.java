@@ -54,7 +54,7 @@ public class TestValidateAFavorController {
 		validateAFavorBean.setRequesterUsername(offererThenRequester[1].getUsername());
 		validateAFavorBean.setDateOfRequest(listAllFavorsToValidateBean.getAllDatesOfRequest().get(0));
 		
-		ValidateAFavorController.getReference().ValidateAFavor(validateAFavorBean);
+		ValidateAFavorController.getReference().validateAFavor(validateAFavorBean);
 		
 		Favor favorValidated = new Favor();
 		daoFavor.loadFavor(favorValidated, offererThenRequester[0], offererThenRequester[1], validateAFavorBean.getDateOfRequest());

@@ -45,7 +45,7 @@ public class ViewAnAdController {
 						minPos = j;
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-					String message = MessageFormat.format("{0} : {1}", e.toString(), e.getMessage());
+					String message = MessageFormat.format("{0} : {1}", e, e.getMessage());
 					logger.log(Level.SEVERE, message);
 				} catch (NoSuchIsSortedByMethodException e) {
 					logger.log(Level.WARNING, e.getMessage());
