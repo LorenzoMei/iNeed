@@ -15,16 +15,18 @@ public class RegulationsComponent extends ViewComponent{
 		
 		@Override
 		public Node buildComponent() {
-		
+			String toPrintR = "In RegulationsComponenet";
+			String pathR = "src/logic/view/fxml_regulations.fxml";
 			FXMLLoader regulationsLoader = new FXMLLoader();
 			ScrollPane regulations = new ScrollPane();
 			
 			regulationsLoader.setRoot(regulations);
 			
-			try (FileInputStream src = new FileInputStream("src/logic/view/fxml_regulations.fxml")){
+			try (FileInputStream src = new FileInputStream(pathR)){
+				loggerR.log(Level.INFO, toPrintR + "I'm Openining "+ pathR);
 				regulationsLoader.load(src);
 			} catch (IOException e) {
-	        	loggerR.log(Level.SEVERE,"In RegulationsComponenet " + e.toString());
+	        	loggerR.log(Level.SEVERE, toPrintR + e.toString());
 
 				return null;
 			} 

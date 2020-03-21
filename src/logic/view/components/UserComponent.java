@@ -10,21 +10,23 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
 public class UserComponent extends ViewComponent{
-	 Logger loggerF = Logger.getLogger(this.getClass().getName());
+	 Logger loggerU = Logger.getLogger(this.getClass().getName());
 
 		
 	@Override
 	public Node buildComponent() {
-	
+		String toPrintU = "In ViewUserComponenet";
+		String pathU = "src/logic/view/fxml_user.fxml";
 		FXMLLoader viewUserLoader = new FXMLLoader();
 		ScrollPane viewUser = new ScrollPane();
 		
 		viewUserLoader.setRoot(viewUser);
 		
-		try (FileInputStream src = new FileInputStream("src/logic/view/fxml_user.fxml")){
+		try (FileInputStream src = new FileInputStream(pathU)){
+			loggerU.log(Level.INFO, toPrintU + "I'm Openining "+ pathU);
 			viewUserLoader.load(src);
 		} catch (IOException e) {
-       	loggerF.log(Level.SEVERE,"In ViewUserComponenet " + e.toString());
+       	loggerU.log(Level.SEVERE, toPrintU + e.toString());
 
 			return null;
 		} 

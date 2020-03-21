@@ -15,13 +15,16 @@ public class ToolBarComponent extends ViewComponent {
 
 	@Override
 	public Node buildComponent() {
+		String toPrintTB = "In ToolbarComponenet ";
+		String pathTB = "src/logic/view/components/fxml_toolbar.fxml";
 		FXMLLoader toolBarLoader = new FXMLLoader();
 		ToolBar toolBar = new ToolBar();
 		toolBarLoader.setRoot(toolBar);
-		try (FileInputStream src = new FileInputStream("src/logic/view/components/fxml_toolbar.fxml")){
+		try (FileInputStream src = new FileInputStream(pathTB)){
+			logger.log(Level.INFO, toPrintTB + "I'm Openining "+ pathTB);
 			toolBarLoader.load(src);
 		} catch (IOException e) {
-        	logger.log(Level.SEVERE,"In ToolbarComponenet " + e.toString());
+        	logger.log(Level.SEVERE, toPrintTB + e.toString());
 
 			return null;
 		} 

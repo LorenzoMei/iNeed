@@ -15,13 +15,17 @@ public class FrameComponent extends ViewComponent{
 
 	@Override
 	public Node buildComponent() {
+		String toPrintFrame = "In frame component ";
+		String pathFrame = "src/logic/viewcomponents/fxml_frame.fxml";
 		FXMLLoader frameLoader = new FXMLLoader();
 		BorderPane frame = new BorderPane();
 		frameLoader.setRoot(frame);
-		try (FileInputStream src = new FileInputStream("src/logic/viewcomponents/fxml_frame.fxml")){
+		try (FileInputStream src = new FileInputStream(pathFrame)){
+			logger.log(Level.INFO, toPrintFrame + "I'm Openining "+ pathFrame);
+
 			frameLoader.load(src);
 		} catch (IOException e) {
-        	logger.log(Level.SEVERE,"In frame component " + e.toString());
+        	logger.log(Level.SEVERE, toPrintFrame + e.toString());
 			return null;
 		} 
 		return frame;

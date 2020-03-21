@@ -11,21 +11,23 @@ import javafx.scene.control.ScrollPane;
 
 public class MakeAnAdComponent extends ViewComponent {
 
-	 Logger loggerF = Logger.getLogger(this.getClass().getName());
+	 Logger loggerMAA = Logger.getLogger(this.getClass().getName());
 
 		
 		@Override
 		public Node buildComponent() {
-		
+			String toPrintMAA = "In MakeAnAdComponenet " ;
+			String pathMAA = "src/logic/view/fxml_makeanad.fxml";
 			FXMLLoader makeAnAdLoader = new FXMLLoader();
 			ScrollPane makeAnAd = new ScrollPane();
 			
 			makeAnAdLoader.setRoot(makeAnAd);
 			
-			try (FileInputStream src = new FileInputStream("src/logic/view/fxml_makeanad.fxml")){
+			try (FileInputStream src = new FileInputStream(pathMAA)){
+				loggerMAA.log(Level.INFO, toPrintMAA + "I'm Openining "+ pathMAA);
 				makeAnAdLoader.load(src);
 			} catch (IOException e) {
-	        	loggerF.log(Level.SEVERE,"In MakeAnAdComponenet " + e.toString());
+	        	loggerMAA.log(Level.SEVERE, toPrintMAA + e.toString());
 
 				return null;
 			} 

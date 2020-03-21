@@ -33,11 +33,7 @@ public class ToolBarController implements Initializable {
 	 LoginController loginController =  LoginController.getInstance();
 	 LogoutBean lBean = new LogoutBean(); 
 	 public View nextView = (View) new ViewFlow();
-//	 DropShadow dropShadow = new DropShadow(10, 0, 0, Color.BLACK);
-//	 InnerShadow innerShadow = new InnerShadow(10, 0, 0, Color.BLACK);
 
-//	 @FXML private HBox validateAFavorHBox;
-//	 @FXML private HBox viewFlowHBox;
 	 @FXML private MenuItem profileName;
 	 @FXML ImageView logoTB;
 	 
@@ -96,7 +92,8 @@ public class ToolBarController implements Initializable {
 	    	 Context.getReference().goNext();
 		 }
 	@FXML protected void handleSubmitButtonUserU(ActionEvent event) {
-      
+     	 logger.log(Level.INFO, "User clicked ");
+
 	}
 	
 }

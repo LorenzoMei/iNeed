@@ -15,16 +15,18 @@ public class CurriculumMainPageCompononent extends ViewComponent{
 		
 		@Override
 		public Node buildComponent() {
-		
+		String toPrintCVM = "In curriculumMainPageComponenet ";
+		String pathCVM = "src/logic/view/fxml_curriculummain.fxml";
 			FXMLLoader curriculumMainPageLoader = new FXMLLoader();
 			ScrollPane curriculumMainPage = new ScrollPane();
 			
 			curriculumMainPageLoader.setRoot(curriculumMainPage);
 			
-			try (FileInputStream src = new FileInputStream("src/logic/view/fxml_curriculummain.fxml")){
+			try (FileInputStream src = new FileInputStream(pathCVM)){
+				loggerCMP.log(Level.INFO, toPrintCVM + "I'm Openining "+ pathCVM);
 				curriculumMainPageLoader.load(src);
 			} catch (IOException e) {
-				loggerCMP.log(Level.SEVERE,"In curriculumMainPageComponenet " + e.toString());
+				loggerCMP.log(Level.SEVERE, toPrintCVM + e.toString());
 
 				return null;
 			} 

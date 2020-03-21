@@ -17,16 +17,18 @@ public class ViewFlowComponent extends ViewComponent {
 	
 	@Override
 	public Node buildComponent() {
-	
+		String toPrintVF = "In ViewFlowComponenet";
+		String pathVF ="src/logic/view/fxml_flow.fxml";
 		FXMLLoader viewFlowLoader = new FXMLLoader();
 		ScrollPane viewFlow = new ScrollPane();
 		
 		viewFlowLoader.setRoot(viewFlow);
 		
-		try (FileInputStream src = new FileInputStream("src/logic/view/fxml_flow.fxml")){
+		try (FileInputStream src = new FileInputStream(pathVF)){
+			loggerF.log(Level.INFO, toPrintVF + "I'm Openining "+ pathVF);
 			viewFlowLoader.load(src);
 		} catch (IOException e) {
-        	loggerF.log(Level.SEVERE,"In ViewFlowComponenet " + e.toString());
+        	loggerF.log(Level.SEVERE, toPrintVF + e.toString());
 
 			return null;
 		} 

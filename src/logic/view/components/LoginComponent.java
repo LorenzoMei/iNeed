@@ -16,16 +16,18 @@ public class LoginComponent extends ViewComponent{
 	
 	@Override
 	public Node buildComponent() {
-	
+		String toPrintL = "In LoginComponenet ";
+		String pathL = "src/logic/view/fxml_login.fxml";
 		FXMLLoader loginLoader = new FXMLLoader();
 		ScrollPane login = new ScrollPane();
 		
 		loginLoader.setRoot(login);
 		
-		try (FileInputStream src = new FileInputStream("src/logic/view/fxml_login.fxml")){
+		try (FileInputStream src = new FileInputStream(pathL)){
+			loggerL.log(Level.INFO, toPrintL + "I'm Openining "+ pathL);
 			loginLoader.load(src);
 		} catch (IOException e) {
-        	loggerL.log(Level.SEVERE,"In LoginComponenet " + e.toString());
+        	loggerL.log(Level.SEVERE, toPrintL + e.toString());
 
 			return null;
 		} 

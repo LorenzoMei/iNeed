@@ -15,16 +15,18 @@ public class ViewValidateAFavorComponent extends ViewComponent {
 		
 	@Override
 	public Node buildComponent() {
-	
+		String toPrintV = "In ViewUserComponenet ";
+		String pathV = "src/logic/view/fxml_validateafavor.fxml";
 		FXMLLoader viewValidateAFavorLoader = new FXMLLoader();
 		ScrollPane viewValidateAFavor = new ScrollPane();
 		
 		viewValidateAFavorLoader.setRoot(viewValidateAFavor);
 		
-		try (FileInputStream src = new FileInputStream("src/logic/view/fxml_validateafavor.fxml")){
+		try (FileInputStream src = new FileInputStream(pathV)){
+			loggerV.log(Level.INFO, toPrintV + "I'm Openining "+ pathV);
 			viewValidateAFavorLoader.load(src);
 		} catch (IOException e) {
-      	loggerV.log(Level.SEVERE,"In ViewUserComponenet " + e.toString());
+      	loggerV.log(Level.SEVERE, toPrintV + e.toString());
 
 			return null;
 		} 
