@@ -50,7 +50,7 @@ public class ReflectionMiscellaneous {
 	}
 	
 	public static List<Field> getSupported(Object obj, String constantName) {
-		logger.log(Level.INFO, "getting all constants of " + obj.getClass().getSimpleName());
+		logger.log(Level.INFO, "getting all constants of {0}", obj.getClass().getSimpleName());
 		Field[] allFields = obj.getClass().getDeclaredFields();
 		List<Field> supported = new ArrayList<>();
 			for (int i = 0; i < allFields.length; i ++) {
@@ -58,7 +58,7 @@ public class ReflectionMiscellaneous {
 							&& Modifier.isStatic(allFields[i].getModifiers())
 							&& !allFields[i].isSynthetic()
 							&& allFields[i].getName().contains(constantName)) {
-					logger.log(Level.INFO, "adding " + allFields[i].getName());
+					logger.log(Level.INFO, "adding {0}", allFields[i].getName());
 					supported.add(allFields[i]);
 				}
 		}
