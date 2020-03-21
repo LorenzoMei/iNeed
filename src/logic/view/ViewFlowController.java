@@ -19,8 +19,7 @@ public class ViewFlowController implements Initializable{
 
 	public ViewFlowController() {
 		this.textInputFields = new ArrayList<>();
-//		nextViewF = (View) new ViewFlow();
-//		pBean.setRequestedUsername(View.getProfileName());
+
 	}
 	
 	 private View nextViewF;
@@ -29,10 +28,7 @@ public class ViewFlowController implements Initializable{
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
 	 
-//	 @FXML private MenuItem profileName;
-//	 ViewProfileBean pBean = new ViewProfileBean();
-//	 LoginController loginController =  LoginController.getInstance();
-//	 LogoutBean lBean = new LogoutBean();
+
 
      private List<TextInputControl> textInputFields;
 
@@ -43,7 +39,6 @@ public class ViewFlowController implements Initializable{
 		 logger.log(Level.INFO, status);
 	     nextViewF = (View) new ViewFlow();
 	     logger.log(Level.INFO, "In viewFlow the name of the user is: " + nextViewF.getProfileName());
-//		 profileName.setText(View.getProfileName());
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		}
 	 
@@ -74,7 +69,6 @@ public class ViewFlowController implements Initializable{
 	  
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {
 		
-//		public final View nextView = (View) new ViewFlow();
 		nextViewF = (View) new ViewFlow();
 		Context.getReference().getCurrentView().setNextView(nextViewF);
 		Context.getReference().goNext();

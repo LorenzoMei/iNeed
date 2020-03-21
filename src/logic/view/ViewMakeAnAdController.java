@@ -49,7 +49,6 @@ public class ViewMakeAnAdController implements Initializable {
 
 	 public void initialize(URL locationAd, ResourceBundle resourcesAD) {
 		 titleTextField.setPromptText("*Es. I need a bed this weekend...");
-//		 profileName.setText(View.getProfileName());
 		 othersTextField.setEditable(false);
 		 String status = "My location " + locationAd + " my resoursources: " + resourcesAD;
 		 logger.log(Level.SEVERE, status);
@@ -132,8 +131,8 @@ public class ViewMakeAnAdController implements Initializable {
 	 
 	 @FXML protected void handleSubmitButtonSend(ActionEvent event) {
 		 actionPrinte.setText("");
-		
-		 logger.log(Level.INFO,  "il titolo e': " + ViewMakeAnAdController.getType() );
+		 String printThat = "il titolo e': " + ViewMakeAnAdController.getType();
+		 logger.log(Level.INFO,  printThat );
 		 
 		 if(ViewMakeAnAdController.getType() == null || titleTextField.getText().isEmpty()) {
 				logger.log(Level.INFO,  "Eh si sono proprio un null " );
@@ -155,8 +154,8 @@ public class ViewMakeAnAdController implements Initializable {
 		     else {
 		    	 adBean.setCategory(othersTextField.getText());
 		     }
-			 
-				logger.log(Level.INFO,  "il titolo e': " + ViewMakeAnAdController.getType() );
+			 	String printThat2 = "il titolo e': " + ViewMakeAnAdController.getType();
+				logger.log(Level.INFO,  printThat2 );
 	
 		     
 		     adBean.setType(ViewMakeAnAdController.getType());
@@ -168,7 +167,8 @@ public class ViewMakeAnAdController implements Initializable {
 				try {
 					controller.createAd(adBean);
 				} catch (IllegalAccessException | InvocationTargetException e) {
-					logger.log(Level.SEVERE, e.toString() + " Error in ViewMakeAnAd");
+					
+					logger.log(Level.SEVERE, String.format(" %s  Error in ViewMakeAnAd", e.toString()) );
 				}
 		 }
 		

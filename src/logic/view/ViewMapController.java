@@ -29,9 +29,6 @@ public class ViewMapController implements Initializable, MapComponentInitialized
 		
 		@FXML private Text testerMap;
 		@FXML private MenuItem profileName;
-//		ViewProfileBean pBean = new ViewProfileBean();
-//	 	ViewProfileController pController =  ViewProfileController.getInstance();
-//	 	LoginController loginController =  LoginController.getInstance();
 		public View nextViewM;
 
 	 	Logger logger = Logger.getLogger(this.getClass().getName());

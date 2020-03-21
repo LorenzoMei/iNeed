@@ -15,10 +15,6 @@ public class ViewSignUp extends View {
     
     Logger logger = Logger.getLogger(this.getClass().getName());
 
-    public  ViewSignUp() {
-
-    }
-
 	@Override
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();

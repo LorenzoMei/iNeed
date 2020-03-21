@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import java.util.Calendar.Builder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,7 +46,7 @@ public class ViewSignupController implements Initializable {
 
 
  
-    public  void ViewSignUpController() {
+    public  void viewSignUpController() {
     	this.textInputFields = new ArrayList<>();
     }
     

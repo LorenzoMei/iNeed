@@ -41,7 +41,8 @@ public class ViewUserController  implements Initializable  {
 		 nextViewU = (View) new ViewUser();
 
 		 pBean.setRequestedUsername(nextViewU.getProfileName());
-		 logger.log(Level.INFO, "initializing " + this.getClass().getSimpleName());
+		 String NextClassName = "Initializing: " + this.getClass().getSimpleName();
+		 logger.log(Level.INFO, NextClassName );
 		 
 		 viewProfileController.loadProfile(pBean);
 		 logger.log(Level.INFO, "user in bean is " + pBean.getName());
