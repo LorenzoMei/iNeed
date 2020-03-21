@@ -17,7 +17,7 @@ import logic.entity.User;
 
 public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 
-	private final String STORE_FOLDER = super.readDBPath() + Favor.class.getSimpleName() + File.separator;
+	private final String storeFolderFromSuper = super.readDBPath() + Favor.class.getSimpleName() + File.separator;
 	
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	private static DAOFavorSerialize ref = null;
@@ -61,7 +61,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		}
 		
 		List<Favor> favors = new ArrayList<>();
-		File storeFolder = new File(this.STORE_FOLDER);
+		File storeFolder = new File(this.storeFolderFromSuper);
 		String[] fileNames = storeFolder.list();
 		
 		for (int i = 0; i < fileNames.length; i ++) {
@@ -95,7 +95,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	
 	private List<Favor> loadFavors(User requester, User offerer){
 		List<Favor> favors = new ArrayList<>();
-		File storeFolder = new File(this.STORE_FOLDER);
+		File storeFolder = new File(this.storeFolderFromSuper);
 		String[] fileNames = storeFolder.list();
 		
 		for (int i = 0; i < fileNames.length; i ++) {
@@ -118,7 +118,7 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	
 	private List<Favor> loadFavors(User requester){
 		List<Favor> favors = new ArrayList<>();
-		File storeFolder = new File(this.STORE_FOLDER);
+		File storeFolder = new File(this.storeFolderFromSuper);
 		String[] fileNames = storeFolder.list();
 		
 		for (int i = 0; i < fileNames.length; i ++) {

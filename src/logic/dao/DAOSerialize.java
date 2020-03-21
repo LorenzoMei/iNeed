@@ -28,7 +28,7 @@ public abstract class DAOSerialize {
 		return storedName.split(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 	}
 	
-	protected final String readDBPath() {
+	protected String readDBPath() {
 //		TODO: stub
 		return "db" + File.separator + "serialized" + File.separator;
 	}
