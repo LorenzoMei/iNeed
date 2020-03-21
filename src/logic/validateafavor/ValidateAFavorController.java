@@ -34,7 +34,7 @@ public class ValidateAFavorController {
 		return ref;
 	}
 	
-	public void ValidateAFavor(ValidateAFavorBean bean) throws FavorNotFoundException {
+	public void validateAFavor(ValidateAFavorBean bean) throws FavorNotFoundException {
 		DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
 		DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
 		User offerer = new User();

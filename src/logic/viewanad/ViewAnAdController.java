@@ -1,6 +1,7 @@
 package logic.viewanad;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,8 @@ import logic.misc.NoSuchIsSortedByMethodException;
 import logic.misc.Order;
 
 public class ViewAnAdController {
-
+	
+	String dateFormat = "YYYY-MM-dd-HH-mm-ss";
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	private static ViewAnAdController ref;
 	
@@ -43,16 +45,17 @@ public class ViewAnAdController {
 						minPos = j;
 					}
 				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-					logger.log(Level.SEVERE, e.toString() + ": " + e.getMessage());
+					String message = MessageFormat.format("{0} : {1}", e.toString(), e.getMessage());
+					logger.log(Level.SEVERE, message);
 				} catch (NoSuchIsSortedByMethodException e) {
 					logger.log(Level.WARNING, e.getMessage());
 				}
 			}
 			Ad temp = allAds.get(i);
-			logger.log(Level.INFO, "before swapping: (" + i + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(minPos).getData().getTime()) + ")");
+			logger.log(Level.INFO, "before swapping: (" + i + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(minPos).getData().getTime()) + ")");
 			allAds.set(i, allAds.get(minPos));
 			allAds.set(minPos, temp);
-			logger.log(Level.INFO, "after swapping: (" + i + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(allAds.get(minPos).getData().getTime()) + ")");
+			logger.log(Level.INFO, "after swapping: (" + i + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(minPos).getData().getTime()) + ")");
 		}
 	}
 	
@@ -60,9 +63,9 @@ public class ViewAnAdController {
 		List<Ad> allAds = new ArrayList<>();
 		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		int numberOfRequests = daoAd.getLastRequestId() + 1;
-		logger.log(Level.INFO, "numberOfRequests is: " + numberOfRequests);
+		logger.log(Level.INFO, "numberOfRequests is: {0}", numberOfRequests);
 		int numberOfOffers = daoAd.getLastOfferId() + 1;
-		logger.log(Level.INFO, "numberOfOffers is: " + numberOfOffers);
+		logger.log(Level.INFO, "numberOfOffers is: {0}", numberOfOffers);
 		try {	
 			for(int i = 0; i < numberOfRequests; i ++) {
 				Ad request = new RequestAd();
