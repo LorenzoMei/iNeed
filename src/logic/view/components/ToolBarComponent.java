@@ -17,14 +17,15 @@ public class ToolBarComponent extends ViewComponent {
 	public Node buildComponent() {
 		String toPrintTB = "In ToolbarComponenet ";
 		String pathTB = "src/logic/view/components/fxml_toolbar.fxml";
+		
 		FXMLLoader toolBarLoader = new FXMLLoader();
 		ToolBar toolBar = new ToolBar();
 		toolBarLoader.setRoot(toolBar);
 		try (FileInputStream src = new FileInputStream(pathTB)){
-			logger.log(Level.INFO, toPrintTB + "I'm Openining "+ pathTB);
+			logger.log(Level.INFO, String.format(" %s I'm Openining %s", toPrintTB, pathTB) );
 			toolBarLoader.load(src);
 		} catch (IOException e) {
-        	logger.log(Level.SEVERE, toPrintTB + e.toString());
+        	logger.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintTB, e.toString())  );
 
 			return null;
 		} 
