@@ -35,8 +35,8 @@ public class CheckEmptyField {
 		logger.log(Level.INFO, "Annotazione: " + classAnnotation.getName());
 		for(int i = 0; i < fieldArrayAttributes.length; i++ ) {
 			
-				String printThis = fieldArrayAttributes[i].getName();
-				logger.log(Level.INFO, String.format("file attributes: %s ", printThis )  );
+				String printThis = "file attributes:  " + fieldArrayAttributes[i].getName();
+				logger.log(Level.INFO, printThis);
 				if(Modifier.isPrivate(fieldArrayAttributes[i].getModifiers()) 
 						&& !fieldArrayAttributes[i].isSynthetic() 
 						&& fieldArrayAttributes[i].getAnnotation(classAnnotation) != null 

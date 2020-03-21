@@ -20,8 +20,8 @@ public abstract class View {
 	public abstract Scene buildScene();
 	
 	public  String getProfileName() {
-		String printThis = View.profileName;
-		loggerView.log(Level.INFO, String.format("Hi i'm View and this is the profileName: %s ", printThis));
+		String printThis = "Hi i'm View and this is the profileName: " + View.profileName;
+		loggerView.log(Level.INFO, printThis);
 		return View.profileName;
 	}
 	
