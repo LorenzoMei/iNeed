@@ -28,7 +28,7 @@ public abstract class DAOSerialize {
 		return storedName.split(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 	}
 	
-	protected String readDBPath() {
+	protected final String readDBPath() {
 //		TODO: stub
 		return "db" + File.separator + "serialized" + File.separator;
 	}
@@ -53,7 +53,7 @@ public abstract class DAOSerialize {
 		try (
 				FileOutputStream dest = new FileOutputStream(this.getPath(obj, primaryKeyValues));
 				DAOSerializeOOS writer = new DAOSerializeOOS(dest);){
-			logger.log(Level.INFO, "Destination: {0}", dest.toString());
+			logger.log(Level.INFO, "Destination: {0}", dest);
 			writer.writeObject(obj);
 		}
 	}
