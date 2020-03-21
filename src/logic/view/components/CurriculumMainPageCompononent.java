@@ -23,10 +23,9 @@ public class CurriculumMainPageCompononent extends ViewComponent{
 			curriculumMainPageLoader.setRoot(curriculumMainPage);
 			
 			try (FileInputStream src = new FileInputStream(pathCVM)){
-				loggerCMP.log(Level.INFO, toPrintCVM + "I'm Openining "+ pathCVM);
 				curriculumMainPageLoader.load(src);
 			} catch (IOException e) {
-				loggerCMP.log(Level.SEVERE, toPrintCVM + e.toString());
+				loggerCMP.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintCVM, e.toString()) );
 
 				return null;
 			} 

@@ -23,10 +23,9 @@ public class RegulationsComponent extends ViewComponent{
 			regulationsLoader.setRoot(regulations);
 			
 			try (FileInputStream src = new FileInputStream(pathR)){
-				loggerR.log(Level.INFO, toPrintR + "I'm Openining "+ pathR);
 				regulationsLoader.load(src);
 			} catch (IOException e) {
-	        	loggerR.log(Level.SEVERE, toPrintR + e.toString());
+	        	loggerR.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintR, e.toString()));
 
 				return null;
 			} 

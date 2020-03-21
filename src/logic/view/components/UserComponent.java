@@ -23,10 +23,9 @@ public class UserComponent extends ViewComponent{
 		viewUserLoader.setRoot(viewUser);
 		
 		try (FileInputStream src = new FileInputStream(pathU)){
-			loggerU.log(Level.INFO, toPrintU + "I'm Openining "+ pathU);
 			viewUserLoader.load(src);
 		} catch (IOException e) {
-       	loggerU.log(Level.SEVERE, toPrintU + e.toString());
+       	loggerU.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintU, e.toString()));
 
 			return null;
 		} 

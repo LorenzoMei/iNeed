@@ -23,10 +23,9 @@ public class SignUpComponent extends ViewComponent{
 		signupLoader.setRoot(signup);
 		
 		try (FileInputStream src = new FileInputStream(pathS)){
-			loggerS.log(Level.INFO, toPrintS + "I'm Openining "+ pathS);
 			signupLoader.load(src);
 		} catch (IOException e) {
-        	loggerS.log(Level.SEVERE, toPrintS + e.toString());
+        	loggerS.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintS, e.toString()));
 
 			return null;
 		} 

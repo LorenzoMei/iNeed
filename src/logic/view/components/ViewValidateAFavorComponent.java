@@ -23,10 +23,9 @@ public class ViewValidateAFavorComponent extends ViewComponent {
 		viewValidateAFavorLoader.setRoot(viewValidateAFavor);
 		
 		try (FileInputStream src = new FileInputStream(pathV)){
-			loggerV.log(Level.INFO, toPrintV + "I'm Openining "+ pathV);
 			viewValidateAFavorLoader.load(src);
 		} catch (IOException e) {
-      	loggerV.log(Level.SEVERE, toPrintV + e.toString());
+      	loggerV.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintV, e.toString()));
 
 			return null;
 		} 

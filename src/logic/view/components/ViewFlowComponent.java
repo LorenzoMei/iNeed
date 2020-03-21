@@ -25,10 +25,9 @@ public class ViewFlowComponent extends ViewComponent {
 		viewFlowLoader.setRoot(viewFlow);
 		
 		try (FileInputStream src = new FileInputStream(pathVF)){
-			loggerF.log(Level.INFO, toPrintVF + "I'm Openining "+ pathVF);
 			viewFlowLoader.load(src);
 		} catch (IOException e) {
-        	loggerF.log(Level.SEVERE, toPrintVF + e.toString());
+        	loggerF.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintVF, e.toString()));
 
 			return null;
 		} 

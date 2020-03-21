@@ -24,10 +24,9 @@ public class LoginComponent extends ViewComponent{
 		loginLoader.setRoot(login);
 		
 		try (FileInputStream src = new FileInputStream(pathL)){
-			loggerL.log(Level.INFO, toPrintL + "I'm Openining "+ pathL);
 			loginLoader.load(src);
 		} catch (IOException e) {
-        	loggerL.log(Level.SEVERE, toPrintL + e.toString());
+        	loggerL.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintL, e.toString()));
 
 			return null;
 		} 

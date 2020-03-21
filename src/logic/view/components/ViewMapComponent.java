@@ -23,10 +23,9 @@ public class ViewMapComponent extends ViewComponent {
 		viewMapwLoader.setRoot(viewMap);
 		
 		try (FileInputStream src = new FileInputStream(pathM)){
-			loggerM.log(Level.INFO, toPrintM + "I'm Openining "+ pathM);
 			viewMapwLoader.load(src);
 		} catch (IOException e) {
-        	loggerM.log(Level.SEVERE, toPrintM + e.toString());
+        	loggerM.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintM, e.toString()));
 
 			return null;
 		} 

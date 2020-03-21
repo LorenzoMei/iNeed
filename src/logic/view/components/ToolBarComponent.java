@@ -22,7 +22,6 @@ public class ToolBarComponent extends ViewComponent {
 		ToolBar toolBar = new ToolBar();
 		toolBarLoader.setRoot(toolBar);
 		try (FileInputStream src = new FileInputStream(pathTB)){
-			logger.log(Level.INFO, String.format(" %s I'm Openining %s", toPrintTB, pathTB) );
 			toolBarLoader.load(src);
 		} catch (IOException e) {
         	logger.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintTB, e.toString())  );

@@ -21,11 +21,9 @@ public class FrameComponent extends ViewComponent{
 		BorderPane frame = new BorderPane();
 		frameLoader.setRoot(frame);
 		try (FileInputStream src = new FileInputStream(pathFrame)){
-			logger.log(Level.INFO, toPrintFrame + "I'm Openining "+ pathFrame);
-
 			frameLoader.load(src);
 		} catch (IOException e) {
-        	logger.log(Level.SEVERE, toPrintFrame + e.toString());
+        	logger.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintFrame, e.toString()));
 			return null;
 		} 
 		return frame;

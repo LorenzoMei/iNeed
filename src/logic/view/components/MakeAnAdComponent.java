@@ -24,10 +24,9 @@ public class MakeAnAdComponent extends ViewComponent {
 			makeAnAdLoader.setRoot(makeAnAd);
 			
 			try (FileInputStream src = new FileInputStream(pathMAA)){
-				loggerMAA.log(Level.INFO, toPrintMAA + "I'm Openining "+ pathMAA);
 				makeAnAdLoader.load(src);
 			} catch (IOException e) {
-	        	loggerMAA.log(Level.SEVERE, toPrintMAA + e.toString());
+	        	loggerMAA.log(Level.SEVERE, String.format(" %s The erro says:  %s", toPrintMAA, e.toString()));
 
 				return null;
 			} 
