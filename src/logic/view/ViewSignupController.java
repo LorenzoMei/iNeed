@@ -10,18 +10,42 @@ import java.util.ResourceBundle;
 import java.util.Calendar.Builder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 import logic.beans.SignUpBean;
 import logic.signup.SignUpController;
 import logic.signup.UsernameAlreadyTakenException;
@@ -44,8 +68,7 @@ public class ViewSignupController implements Initializable {
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
-
- 
+    
     public  void viewSignUpController() {
     	this.textInputFields = new ArrayList<>();
     }
@@ -212,15 +235,124 @@ public class ViewSignupController implements Initializable {
 				}
 	    		actionSignIn.setText("Signed in, welcome " + username);
 
-	    		nextViewS = (View) new ViewLogin();
-	            Context.getReference().getCurrentView().setNextView(nextViewS);
-	        	Context.getReference().goNext();
+	    		displayDialog();
+	    		
+	    		
 	    		
 	    	}
         
 
     }
     
+	 public  void displayDialog() {
+		 
+		 	String style = "Tahoma";
+		 
+	        Stage stage = new Stage();
+	        
+	        GridPane gridNewWindow = new GridPane();
+	        gridNewWindow.setAlignment(Pos.CENTER);
+	        gridNewWindow.setHgap(10);
+	        gridNewWindow.setVgap(10);
+	        gridNewWindow.setPadding(new Insets(10, 10, 10, 10));
+
+	       
+	        
+	        stage.setTitle("Well Done!");
+
+	        Text textSuccess = new Text("Your're successfully entred in iNeed world!");
+	        textSuccess.setFont(Font.font("Tahoma", FontWeight.EXTRA_BOLD, 20));
+	        textSuccess.setFill(Color.CHARTREUSE);
+	        textSuccess.setStrokeWidth(0.5); 
+	        textSuccess.setStroke(Color.BLUE); 
+	        textSuccess.setTextAlignment(TextAlignment.CENTER);
+	        GridPane.setConstraints(textSuccess, 1, 0);
+	        GridPane.setHalignment(textSuccess, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textSuccess);
+	        
+	        Text textOr = new Text(userNameTextField.getText() );
+	        textOr.setTextAlignment(TextAlignment.CENTER);
+	        textOr.setFont(Font.font(style, FontWeight.EXTRA_BOLD, 18));
+	        GridPane.setConstraints(textOr, 1, 6);
+	        GridPane.setHalignment(textOr, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textOr);
+
+	        
+	        Text textVF = new Text("WELCOME");
+	        textVF.setFont(Font.font(style, FontWeight.BOLD, 14));
+	        textVF.setTextAlignment(TextAlignment.CENTER);
+	        GridPane.setConstraints(textVF, 1, 4);
+	        GridPane.setHalignment(textVF, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textVF);
+	        
+	        
+	        final Separator sepHoriz3 = new Separator();
+	        sepHoriz3.setOrientation(Orientation.HORIZONTAL);
+	        sepHoriz3.setValignment(VPos.CENTER);
+	        sepHoriz3.setPrefHeight(80);
+	        GridPane.setConstraints(sepHoriz3, 1, 6);
+	        GridPane.setRowSpan(sepHoriz3, 2);
+	        gridNewWindow.getChildren().add(sepHoriz3);
+	        
+	        final Separator sepHoriz4 = new Separator();
+	        sepHoriz4.setOrientation(Orientation.HORIZONTAL);
+	        sepHoriz4.setValignment(VPos.CENTER);
+	        sepHoriz4.setPrefHeight(80);
+	        GridPane.setConstraints(sepHoriz4, 1, 5);
+	        GridPane.setRowSpan(sepHoriz4, 2);
+	        gridNewWindow.getChildren().add(sepHoriz4);
+	        
+	        Image logo = new Image(getClass().getResourceAsStream("/media/Red-Logomark.png"));
+
+	        final ImageView logo1 = new ImageView(logo);
+	        logo1.setFitHeight(70);
+	        logo1.setFitWidth(70);
+	        VBox vBox = new VBox();
+			vBox.setMaxSize(30, 30);
+			vBox.getChildren().addAll(logo1);
+	        GridPane.setHalignment(vBox, HPos.CENTER);
+	        GridPane.setConstraints(vBox, 1, 13);
+	        gridNewWindow.getChildren().add(vBox);
+	        gridNewWindow.setStyle("-fx-background-color:  #d5e8f5");
+	        
+
+	        
+	        Text textR = new Text("You're going  redirected to login page...");
+	        textR.setFont(Font.font(style, FontWeight.LIGHT, 12));
+	        textR.setTextAlignment(TextAlignment.CENTER);
+	        GridPane.setConstraints(textR, 1, 8);
+	        GridPane.setHalignment(textR, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textR);
+	        
+	        ProgressBar progress = new ProgressBar();
+	        progress.setMinWidth(200);
+	        progress.setMaxWidth(Double.MAX_VALUE);
+	        IntegerProperty seconds = new SimpleIntegerProperty();
+	        progress.progressProperty().bind(seconds.divide(2.0));
+	        Timeline timeline = new Timeline(
+	            new KeyFrame(Duration.ZERO, new KeyValue(seconds, 0)),
+	            new KeyFrame(Duration.seconds(2), e-> {
+	            	
+	            	nextViewS = (View) new ViewLogin();
+		            Context.getReference().getCurrentView().setNextView(nextViewS);
+		        	Context.getReference().goNext();
+		        	logger.log(Level.INFO, "Time Expired");
+		        	stage.close();
+
+		        	
+	            }, new KeyValue(seconds, 2))   
+	        );
+	        timeline.setCycleCount(Animation.INDEFINITE);
+	        timeline.play();
+		    
+	        GridPane.setHalignment(progress, HPos.CENTER);
+	        GridPane.setConstraints(progress, 1, 9);
+	        gridNewWindow.getChildren().add(progress);
+	        
+		    Scene scene = new Scene(gridNewWindow, 500, 375);
+	        stage.setScene(scene);
+	        stage.show();
+		}
     protected void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
