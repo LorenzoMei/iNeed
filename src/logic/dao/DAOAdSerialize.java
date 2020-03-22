@@ -29,9 +29,9 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		
 		for (int i = 0; i < supportedAds.size(); i ++) {
 			try {
-				String pathLastId = this.readDBPath() + "AdId" + File.separator + supportedAds.get(i).get(null).toString();
+				String pathLastId = this.readDBPath() + "AdId" + File.separator + supportedAds.get(i).get(null).toString() + DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR + DAOSerialize.SERIALIZED_EXTENSION;
 //				p
-				String toLog = String.format("checking if %s directory exists", pathLastId);
+				String toLog = String.format("checking if %s exists", pathLastId);
 				logger.log(Level.INFO, toLog);
 				File lastIdFile = new File(pathLastId);
 				if (!lastIdFile.exists()) {
