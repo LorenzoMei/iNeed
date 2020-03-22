@@ -232,14 +232,15 @@ public class ViewMakeAnAdController implements Initializable {
 	    
 	 public  void displayDialog() {
 	 
+		 	String style = "Tahoma";
 		 
 	        Stage stage = new Stage();
 	        
-	        GridPane grid = new GridPane();
-	        grid.setAlignment(Pos.CENTER);
-	        grid.setHgap(10);
-	        grid.setVgap(10);
-	        grid.setPadding(new Insets(10, 10, 10, 10));
+	        GridPane gridNewWindow = new GridPane();
+	        gridNewWindow.setAlignment(Pos.CENTER);
+	        gridNewWindow.setHgap(10);
+	        gridNewWindow.setVgap(10);
+	        gridNewWindow.setPadding(new Insets(10, 10, 10, 10));
 
 	       
 	        
@@ -255,14 +256,14 @@ public class ViewMakeAnAdController implements Initializable {
 	        textSuccess.setTextAlignment(TextAlignment.CENTER);
 	        GridPane.setConstraints(textSuccess, 1, 0);
 	        GridPane.setHalignment(textSuccess, HPos.CENTER);
-	        grid.getChildren().add(textSuccess);
+	        gridNewWindow.getChildren().add(textSuccess);
 	        
 	        Text textOr = new Text("Or");
 	        textOr.setTextAlignment(TextAlignment.CENTER);
-	        textOr.setFont(Font.font("Tahoma", FontWeight.BOLD, 16));
+	        textOr.setFont(Font.font(style, FontWeight.BOLD, 16));
 	        GridPane.setConstraints(textOr, 1, 6);
 	        GridPane.setHalignment(textOr, HPos.CENTER);
-	        grid.getChildren().add(textOr);
+	        gridNewWindow.getChildren().add(textOr);
 
 	        final Separator sepHoriz1 = new Separator();
 	        sepHoriz1.setOrientation(Orientation.HORIZONTAL);
@@ -270,7 +271,7 @@ public class ViewMakeAnAdController implements Initializable {
 	        sepHoriz1.setPrefHeight(30);
 	        GridPane.setConstraints(sepHoriz1, 0, 6);
 	        GridPane.setRowSpan(sepHoriz1, 2);
-	        grid.getChildren().add(sepHoriz1);
+	        gridNewWindow.getChildren().add(sepHoriz1);
 	        
 	        final Separator sepHoriz2 = new Separator();
 	        sepHoriz2.setOrientation(Orientation.HORIZONTAL);
@@ -278,7 +279,7 @@ public class ViewMakeAnAdController implements Initializable {
 	        sepHoriz2.setPrefHeight(80);
 	        GridPane.setConstraints(sepHoriz2, 2, 6);
 	        GridPane.setRowSpan(sepHoriz2, 2);
-	        grid.getChildren().add(sepHoriz2);
+	        gridNewWindow.getChildren().add(sepHoriz2);
 	        
 	        final Separator sepHoriz3 = new Separator();
 	        sepHoriz3.setOrientation(Orientation.HORIZONTAL);
@@ -286,7 +287,7 @@ public class ViewMakeAnAdController implements Initializable {
 	        sepHoriz3.setPrefHeight(80);
 	        GridPane.setConstraints(sepHoriz3, 1, 6);
 	        GridPane.setRowSpan(sepHoriz3, 2);
-	        grid.getChildren().add(sepHoriz3);
+	        gridNewWindow.getChildren().add(sepHoriz3);
 	        
 	        final Separator sepHoriz4 = new Separator();
 	        sepHoriz4.setOrientation(Orientation.HORIZONTAL);
@@ -294,33 +295,33 @@ public class ViewMakeAnAdController implements Initializable {
 	        sepHoriz4.setPrefHeight(80);
 	        GridPane.setConstraints(sepHoriz4, 1, 5);
 	        GridPane.setRowSpan(sepHoriz4, 2);
-	        grid.getChildren().add(sepHoriz4);
+	        gridNewWindow.getChildren().add(sepHoriz4);
 	        
 
 	        Text textVF = new Text("Check Your ad! Click below!");
-	        textVF.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+	        textVF.setFont(Font.font(style, FontWeight.NORMAL, 14));
 	        textVF.setTextAlignment(TextAlignment.CENTER);
 	        vFBtn.setAlignment(Pos.CENTER);
 	        GridPane.setConstraints(textVF, 1, 4);
 	        GridPane.setHalignment(textVF, HPos.CENTER);
-	        grid.getChildren().add(textVF);
+	        gridNewWindow.getChildren().add(textVF);
 	        
 	        GridPane.setConstraints(vFBtn, 1, 5);
 	        GridPane.setHalignment(vFBtn, HPos.CENTER);
-	        grid.getChildren().add(vFBtn);
+	        gridNewWindow.getChildren().add(vFBtn);
 	        
 	        
 	        Text textMAA = new Text("If You want to create another one, go on!");
 	        textMAA.setTextAlignment(TextAlignment.CENTER);
-	        textMAA.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+	        textMAA.setFont(Font.font(style, FontWeight.NORMAL, 14));
 	        mAABtn.setAlignment(Pos.CENTER);
 	        GridPane.setConstraints(textMAA, 1, 7);
 	        GridPane.setHalignment(textMAA, HPos.CENTER);
-	        grid.getChildren().add(textMAA);
+	        gridNewWindow.getChildren().add(textMAA);
 	        
 	        GridPane.setConstraints(mAABtn, 1, 8);
 	        GridPane.setHalignment(mAABtn, HPos.CENTER);
-	        grid.getChildren().add(mAABtn);
+	        gridNewWindow.getChildren().add(mAABtn);
 	        
 	        final ImageView logo1 = new ImageView(logo);
 	        logo1.setFitHeight(70);
@@ -330,11 +331,11 @@ public class ViewMakeAnAdController implements Initializable {
 			vBox.getChildren().addAll(logo1);
 	        GridPane.setHalignment(vBox, HPos.CENTER);
 	        GridPane.setConstraints(vBox, 1, 10);
-	        grid.getChildren().add(vBox);
-	        grid.setStyle("-fx-background-color:  #d5e8f5");
+	        gridNewWindow.getChildren().add(vBox);
+	        gridNewWindow.setStyle("-fx-background-color:  #d5e8f5");
 	        
 	        EventHandler<ActionEvent> handlerViewFlow = evt -> {	                
-	            View nextView = (View) new ViewFlow();
+	            View nextView =  new ViewFlow();
 	            Context.getReference().getCurrentView().setNextView(nextView);
 	            Context.getReference().goNext();
 		        stage.close();
@@ -343,7 +344,7 @@ public class ViewMakeAnAdController implements Initializable {
 		    
 		    EventHandler<ActionEvent> handlerMakeAnAd = evt -> {
 
-                View nextView = (View) new ViewMakeAnAd();
+                View nextView =  new ViewMakeAnAd();
             	Context.getReference().getCurrentView().setNextView(nextView);
             	Context.getReference().goNext();
             	stage.close();
@@ -352,7 +353,7 @@ public class ViewMakeAnAdController implements Initializable {
 		    vFBtn.setOnAction(handlerViewFlow);
 		    mAABtn.setOnAction(handlerMakeAnAd);
 		    
-		    Scene scene = new Scene(grid, 500, 375);
+		    Scene scene = new Scene(gridNewWindow, 500, 375);
 	        stage.setScene(scene);
 	        stage.show();
 		}
