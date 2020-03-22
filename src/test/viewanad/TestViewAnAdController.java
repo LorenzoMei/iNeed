@@ -59,11 +59,9 @@ public class TestViewAnAdController {
 		Logger.getLogger(this.getClass().getName()).log(Level.INFO,"getAllDatesOfPublication size is: " + bean.getAllDatesOfPublication().size());
 		for (int i = 0; i < bean.getAllDatesOfPublication().size() - 1; i ++) {
 			Logger.getLogger(this.getClass().getName()).log(Level.INFO, "asserting couple: (" + i + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(bean.getAllDatesOfPublication().get(i).getTime()) + "), (" + Integer.valueOf(i+1) + ", " + (new SimpleDateFormat("YYYY-MM-dd-HH-mm-ss")).format(bean.getAllDatesOfPublication().get(i+1).getTime()) + ")");
-			Logger.getLogger(this.getClass().getName()).log(Level.INFO, String.format("%s, %s", bean.getAllDatesOfPublication().get(i).getTime(), bean.getAllDatesOfPublication().get(i + 1).getTime()));
-			if (bean.getAllDatesOfPublication().get(i).compareTo(bean.getAllDatesOfPublication().get(i + 1)) < 0) {
+			if (bean.getAllDatesOfPublication().get(i).compareTo(bean.getAllDatesOfPublication().get(i + 1)) <= 0) {
 				isOrdered = false;
 			}
-			Logger.getLogger(this.getClass().getName()).log(Level.INFO, "isOrdered set to: " + isOrdered.toString());
 		}
 		
 		Assert.assertEquals(true, isOrdered);
