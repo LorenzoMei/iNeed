@@ -15,6 +15,26 @@ public class OrderedAdsBean {
 		this.setOrderUnsorted();
 	}
 	
+	public String getTitle(int i) {
+		return this.ads.get(i).getTitle();
+	}
+	
+	public String getOwner(int i) {
+		return this.ads.get(i).getOwnerUsername();
+	}
+	
+	public String getType(int i) {
+		return this.ads.get(i).getClass().getSimpleName();
+	}
+	
+	public Calendar getDateOfPublication(int i) {
+		return this.ads.get(i).getData();
+	}
+	
+	public int getNumOfAds() {
+		return this.ads.size();
+	}
+	
 	public Order getOrder() {
 		return this.order;
 	}
