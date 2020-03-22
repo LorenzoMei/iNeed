@@ -234,7 +234,7 @@ public class ViewSignupController implements Initializable {
 				}
 	    		actionSignIn.setText("Signed in, welcome " + username);
 
-	    		displayDialog();
+	    		displayDialogS();
 	    		
 	    		
 	    		
@@ -243,7 +243,7 @@ public class ViewSignupController implements Initializable {
 
     }
     
-	 public  void displayDialog() {
+	 public  void displayDialogS() {
 		 
 		 	String style = "Tahoma";
 		 
@@ -258,40 +258,14 @@ public class ViewSignupController implements Initializable {
 	       
 	        
 	        stage.setTitle("Well Done!");
-
-	        Text textSuccess = new Text("Your're successfully entred in iNeed world!");
-	        textSuccess.setFont(Font.font("Tahoma", FontWeight.EXTRA_BOLD, 20));
-	        textSuccess.setFill(Color.CHARTREUSE);
-	        textSuccess.setStrokeWidth(0.5); 
-	        textSuccess.setStroke(Color.BLUE); 
-	        textSuccess.setTextAlignment(TextAlignment.CENTER);
-	        GridPane.setConstraints(textSuccess, 1, 0);
-	        GridPane.setHalignment(textSuccess, HPos.CENTER);
-	        gridNewWindow.getChildren().add(textSuccess);
 	        
-	        Text textOr = new Text(userNameTextField.getText() );
-	        textOr.setTextAlignment(TextAlignment.CENTER);
-	        textOr.setFont(Font.font(style, FontWeight.EXTRA_BOLD, 18));
-	        GridPane.setConstraints(textOr, 1, 6);
-	        GridPane.setHalignment(textOr, HPos.CENTER);
-	        gridNewWindow.getChildren().add(textOr);
-
-	        
-	        Text textVF = new Text("WELCOME");
-	        textVF.setFont(Font.font(style, FontWeight.BOLD, 14));
-	        textVF.setTextAlignment(TextAlignment.CENTER);
-	        GridPane.setConstraints(textVF, 1, 4);
-	        GridPane.setHalignment(textVF, HPos.CENTER);
-	        gridNewWindow.getChildren().add(textVF);
-	        
-	        
-	        final Separator sepHoriz3 = new Separator();
-	        sepHoriz3.setOrientation(Orientation.HORIZONTAL);
-	        sepHoriz3.setValignment(VPos.CENTER);
-	        sepHoriz3.setPrefHeight(80);
-	        GridPane.setConstraints(sepHoriz3, 1, 6);
-	        GridPane.setRowSpan(sepHoriz3, 2);
-	        gridNewWindow.getChildren().add(sepHoriz3);
+	        final Separator sepHorizo3 = new Separator();
+	        sepHorizo3.setOrientation(Orientation.HORIZONTAL);
+	        sepHorizo3.setValignment(VPos.CENTER);
+	        sepHorizo3.setPrefHeight(80);
+	        GridPane.setConstraints(sepHorizo3, 1, 6);
+	        GridPane.setRowSpan(sepHorizo3, 2);
+	        gridNewWindow.getChildren().add(sepHorizo3);
 	        
 	        final Separator sepHoriz4 = new Separator();
 	        sepHoriz4.setOrientation(Orientation.HORIZONTAL);
@@ -300,18 +274,46 @@ public class ViewSignupController implements Initializable {
 	        GridPane.setConstraints(sepHoriz4, 1, 5);
 	        GridPane.setRowSpan(sepHoriz4, 2);
 	        gridNewWindow.getChildren().add(sepHoriz4);
+
+	        Text textSignUpS = new Text("Your're successfully entred in iNeed world!");
+	        textSignUpS.setFont(Font.font("Tahoma", FontWeight.EXTRA_BOLD, 20));
+	        textSignUpS.setFill(Color.CHARTREUSE);
+	        textSignUpS.setStrokeWidth(0.5); 
+	        textSignUpS.setStroke(Color.BLUE); 
+	        textSignUpS.setTextAlignment(TextAlignment.CENTER);
+	        GridPane.setConstraints(textSignUpS, 1, 0);
+	        GridPane.setHalignment(textSignUpS, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textSignUpS);
+	        
+	        Text textName = new Text(userNameTextField.getText() );
+	        textName.setTextAlignment(TextAlignment.CENTER);
+	        textName.setFont(Font.font(style, FontWeight.EXTRA_BOLD, 18));
+	        GridPane.setConstraints(textName, 1, 6);
+	        GridPane.setHalignment(textName, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textName);
+
+	        
+	        Text textWlecome = new Text("WELCOME");
+	        textWlecome.setFont(Font.font(style, FontWeight.BOLD, 14));
+	        textWlecome.setTextAlignment(TextAlignment.CENTER);
+	        GridPane.setConstraints(textWlecome, 1, 4);
+	        GridPane.setHalignment(textWlecome, HPos.CENTER);
+	        gridNewWindow.getChildren().add(textWlecome);
+	        
+	        
+	        
 	        
 	        Image logo = new Image(getClass().getResourceAsStream("/media/Red-Logomark.png"));
 
 	        final ImageView logo1 = new ImageView(logo);
 	        logo1.setFitHeight(70);
 	        logo1.setFitWidth(70);
-	        VBox vBox = new VBox();
-			vBox.setMaxSize(30, 30);
-			vBox.getChildren().addAll(logo1);
-	        GridPane.setHalignment(vBox, HPos.CENTER);
-	        GridPane.setConstraints(vBox, 1, 13);
-	        gridNewWindow.getChildren().add(vBox);
+	        VBox vBoxSig = new VBox();
+			vBoxSig.setMaxSize(30, 30);
+			vBoxSig.getChildren().addAll(logo1);
+	        GridPane.setHalignment(vBoxSig, HPos.CENTER);
+	        GridPane.setConstraints(vBoxSig, 1, 13);
+	        gridNewWindow.getChildren().add(vBoxSig);
 	        gridNewWindow.setStyle("-fx-background-color:  #d5e8f5");
 	        
 
