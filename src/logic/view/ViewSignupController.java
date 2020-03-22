@@ -64,7 +64,6 @@ public class ViewSignupController implements Initializable {
     @FXML private Hyperlink logInHyperLink;
     @FXML private DatePicker datePickerTextField;
     @FXML private GridPane grid;
-	private View nextViewS;
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -118,7 +117,7 @@ public class ViewSignupController implements Initializable {
         
 	@FXML protected void handleSubmitButtonLogIn(ActionEvent event) {
 		
-		nextViewS = (View) new ViewLogin();
+		View nextViewS =  new ViewLogin();
         Context.getReference().getCurrentView().setNextView(nextViewS);
     	Context.getReference().goNext();
 
@@ -333,8 +332,8 @@ public class ViewSignupController implements Initializable {
 	            new KeyFrame(Duration.ZERO, new KeyValue(seconds, 0)),
 	            new KeyFrame(Duration.seconds(2), e-> {
 	            	
-	            	nextViewS = (View) new ViewLogin();
-		            Context.getReference().getCurrentView().setNextView(nextViewS);
+	            	View nextViewSS =  new ViewLogin();
+		            Context.getReference().getCurrentView().setNextView(nextViewSS);
 		        	Context.getReference().goNext();
 		        	logger.log(Level.INFO, "Time Expired");
 		        	stage.close();
