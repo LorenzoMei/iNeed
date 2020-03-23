@@ -92,7 +92,7 @@
                   <Font name="Britannic Bold" size="36.0" />
                </font>
             </Text>
-            <Text fx:id="actionCancel" fill="#fcfc1b" layoutX="444.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="225.6708984375" />
+            <Text fx:id="actionCancel" fill="#f5f50a" layoutX="264.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="609.6708984375" />
             <HBox layoutX="504.0" layoutY="650.0" style="-fx-background-color: white;">
                <children>
                   <Button mnemonicParsing="false" onAction="#handleSubmitButtonSignUp" text="SignUp">
@@ -113,7 +113,7 @@
                   <DropShadow />
                </effect>
             </HBox>
-            <Text fx:id="actionSignIn" fill="#0aff3d" layoutX="428.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="257.99998342990875">
+            <Text fx:id="actionSignIn" fill="#ff700a" layoutX="350.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="498.99998342990875">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

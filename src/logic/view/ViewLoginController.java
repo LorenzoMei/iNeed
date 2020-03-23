@@ -107,7 +107,7 @@ public class ViewLoginController implements Initializable {
         	
         	logger.log(Level.INFO, textInputFields.get(i).getClass().getSimpleName());
         	if(textInputFields.get(i).getText().isEmpty()) {
-        		showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Empty Fields");
+        		showAlertLogin(Alert.AlertType.ERROR, grid.getScene().getWindow(), formError, "Empty Fields");
                 return;
         	}
         	else {
@@ -123,7 +123,7 @@ public class ViewLoginController implements Initializable {
         		data.setPassw(passw);
         		try {
     				controller.login(data);
-                	logger.log(Level.INFO, "Sono qui dopo il controller e ho passato i dati");
+                	logger.log(Level.INFO, "I'm here after the bean controlelr and I send the data");
 
     			} catch (WrongPasswordException e1) {
     				actionLogIn.setText("Sorry username or password is wrong! ");
@@ -153,7 +153,7 @@ public class ViewLoginController implements Initializable {
         }
 
     }
-    protected void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+    protected void showAlertLogin(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);

@@ -114,7 +114,7 @@ public class ViewFlowController implements Initializable{
  		CheckEmptyField check = new CheckEmptyField();
     	check.populateTextInputFields(this);
     	this.textInputFields = check.getTextInputFields();
-    	logger.log(Level.INFO, "Sieze is " + textInputFields.size());
+    	logger.log(Level.INFO, "Size is " + textInputFields.size());
 
 		for(int i = 0; i < textInputFields.size(); i++) {
 		        	
@@ -136,11 +136,11 @@ public class ViewFlowController implements Initializable{
 		 ViewAnAdController.getReference().listAllAds(bean);
 		 for (int i = 0; i < bean.getNumOfAds(); i ++) {
 			 TvFlowRow currentRow = new TvFlowRow();
-			 logger.log(Level.INFO, String.format("author in TvFlowRow before: %s, author in bean before: %s", currentRow.getAuthor(), bean.getOwner(i)));
+			 logger.log(Level.INFO, String.format("Author in TvFlowRow before: %s, author in bean before: %s", currentRow.getAuthor(), bean.getOwner(i)));
 			 
 			 currentRow.setAuthor(bean.getOwner(i));
 			 
-			 logger.log(Level.INFO, String.format("author in TvFlowRow after: %s, author in bean after: %s", currentRow.getAuthor(), bean.getOwner(i)));
+			 logger.log(Level.INFO, String.format("Author in TvFlowRow after: %s, author in bean after: %s", currentRow.getAuthor(), bean.getOwner(i)));
 			 currentRow.setTitle(bean.getTitle(i));
 			 currentRow.setType(bean.getType(i));
 			 currentRow.setDate(DateFormat.getDateInstance().format(bean.getDateOfPublication(i).getTime()));
