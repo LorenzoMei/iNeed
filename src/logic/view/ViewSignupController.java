@@ -226,11 +226,9 @@ public class ViewSignupController implements Initializable {
 		    		usersBean.setSurName(surName);
 	    		
 	    		try {
-                	logger.log(Level.INFO, "I triend and it goes!aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAA");
 					SignUpController.getInstance().signUp(usersBean);
 				} catch (UsernameAlreadyTakenException e1) {
                 	logger.log(Level.WARNING, e1.toString());
-//                	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Registration Error!", "Username already taken, try " + username + "10");
 					actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
 					userNameTextField.setText("");
 					return;
