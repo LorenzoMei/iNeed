@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import java.util.Calendar.Builder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -67,6 +66,7 @@ public class ViewSignupController implements Initializable {
 	private List<TextInputControl> textInputFields;
     Logger logger = Logger.getLogger(this.getClass().getName());
 
+    Timeline timeline;
     
     public  void viewSignUpController() {
     	this.textInputFields = new ArrayList<>();
@@ -325,27 +325,31 @@ public class ViewSignupController implements Initializable {
 	        GridPane.setHalignment(textR, HPos.CENTER);
 	        gridNewWindow.getChildren().add(textR);
 	        
+	        
+	        
 	        ProgressBar progress = new ProgressBar();
 	        progress.setMinWidth(200);
 	        progress.setMaxWidth(Double.MAX_VALUE);
 	        IntegerProperty seconds = new SimpleIntegerProperty();
 	        progress.progressProperty().bind(seconds.divide(2.0));
-	        Timeline timeline = new Timeline(
+	        timeline = new Timeline(
 	            new KeyFrame(Duration.ZERO, new KeyValue(seconds, 0)),
 	            new KeyFrame(Duration.seconds(2), e-> {
 	            	
-	            	View nextViewSS =  new ViewLogin();
-		            Context.getReference().getCurrentView().setNextView(nextViewSS);
-		        	Context.getReference().goNext();
-		        	logger.log(Level.INFO, "Time Expired");
-		        	stage.close();
 
+		        	logger.log(Level.INFO, "Time Expired");
+		        	timeline.stop();
+		        	stopTime();
+		        	stage.close();
+		        	
+		        	
 		        	
 	            }, new KeyValue(seconds, 2))   
 	        );
 	        timeline.setCycleCount(Animation.INDEFINITE);
 	        timeline.play();
-		    
+	        
+    
 	        GridPane.setHalignment(progress, HPos.CENTER);
 	        GridPane.setConstraints(progress, 1, 9);
 	        gridNewWindow.getChildren().add(progress);
@@ -354,6 +358,11 @@ public class ViewSignupController implements Initializable {
 	        stage.setScene(scene);
 	        stage.show();
 		}
+	 private void stopTime() {
+     	View nextViewSS =  new ViewLogin();
+         Context.getReference().getCurrentView().setNextView(nextViewSS);
+     	Context.getReference().goNext();
+	 }
     protected void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
