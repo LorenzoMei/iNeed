@@ -32,15 +32,7 @@ public class ViewCurriculumMainPageController implements Initializable{
 		 logger.log(Level.INFO, status);
     }
     
-    @FXML protected void handleSubmitButtonViewFlow(ActionEvent event) {
-   	 Context.getReference().goNext();
-    }
-    
-    @FXML protected void handleSubmitButtonUser(ActionEvent event) {
-    	tester.setText("");
-    	tester.setText("User");
-	
-    }
+   
     
     @FXML protected void handleSubmitButtonViewCL(ActionEvent event) {
     	tester.setText("");

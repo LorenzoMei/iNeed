@@ -38,6 +38,25 @@ import logic.viewanad.ViewAnAdController;
 
 public class ViewFlowController implements Initializable{
 
+	
+	
+	 private View nextViewF;
+	 String formError = MSGError.ERROR_FORM.getMsg();
+	 @FXML private Text actionCancelFlow;
+	 @FXML private TextField searchTextField;
+	 @FXML private GridPane grid;
+	 @FXML private TableView<AdDetails> tvFlow;
+	 @FXML private TableColumn<AdDetails, String> tcType;
+	 @FXML private TableColumn<AdDetails, String> tcTitle;
+	 @FXML private TableColumn<AdDetails, String> tcAuthor;
+	 @FXML private TableColumn<AdDetails, String> tcDate;
+	 @FXML private TableColumn<AdDetails, Boolean> tcShowMoreDetails;
+	 @FXML private Button bUpdate;
+	 
+     private List<TextInputControl> textInputFields;
+
+	 Logger logger = Logger.getLogger(this.getClass().getName());
+	 
 	public class ShowMoreDetailsCell extends TableCell<AdDetails, Boolean>{
 		
 		public class BShowMoreDetailsHandler implements EventHandler<ActionEvent>{
@@ -45,7 +64,9 @@ public class ViewFlowController implements Initializable{
 			@Override
 			public void handle(ActionEvent event) {
 				
-				// Here will go code which opens view with details of ad
+				nextViewF = (View) new ViewAd();
+				Context.getReference().getCurrentView().setNextView(nextViewF);
+				Context.getReference().goNext();
 				
 				logger.log(Level.INFO, "button bShowMoreDetails clicked");
 				
@@ -135,22 +156,7 @@ public class ViewFlowController implements Initializable{
 
 	}
 	
-	 private View nextViewF;
-	 String formError = MSGError.ERROR_FORM.getMsg();
-	 @FXML private Text actionCancelFlow;
-	 @FXML private TextField searchTextField;
-	 @FXML private GridPane grid;
-	 @FXML private TableView<AdDetails> tvFlow;
-	 @FXML private TableColumn<AdDetails, String> tcType;
-	 @FXML private TableColumn<AdDetails, String> tcTitle;
-	 @FXML private TableColumn<AdDetails, String> tcAuthor;
-	 @FXML private TableColumn<AdDetails, String> tcDate;
-	 @FXML private TableColumn<AdDetails, Boolean> tcShowMoreDetails;
-	 @FXML private Button bUpdate;
 	 
-     private List<TextInputControl> textInputFields;
-
-	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
 	 public void initialize(URL locationflow, ResourceBundle resourcesflow) {
 		 tcType.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -216,6 +222,8 @@ public class ViewFlowController implements Initializable{
  		 actionCancelFlow.setText("");
 	     actionCancelFlow.setText("pagina aggiornata");
 	 }
+	 
+
 	 
 	 @FXML protected void handleSubmitButtonHelp(ActionEvent event) {
 	 		 actionCancelFlow.setText("");

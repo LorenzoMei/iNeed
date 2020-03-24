@@ -27,6 +27,11 @@ public class OrderedAdsBean {
 		return this.ads.get(i).getClass().getSimpleName();
 	}
 	
+	public String getBody(int i) {
+		return this.ads.get(i).getBody();
+
+	}
+	
 	public Calendar getDateOfPublication(int i) {
 		return this.ads.get(i).getData();
 	}
