@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewAdController">
+   <content>
+      <AnchorPane id="AnchorPane" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
+         <children>
+            <HBox prefHeight="9.0" prefWidth="1100.0" spacing="40.0" style="-fx-background-color: #011c2e;" />
+            <Pane layoutX="30.0" layoutY="77.0" prefHeight="750.0" prefWidth="1040.0" style="-fx-background-color: #d5e8f5;">
+               <effect>
+                  <DropShadow height="50.0" radius="24.5" width="50.0" />
+               </effect>
+               <children>
+                  <Text layoutX="30.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
+                  <Text layoutX="30.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desciption:" />
+                  <HBox alignment="CENTER" layoutX="180.0" layoutY="124.0" prefHeight="45.0" prefWidth="730.0" style="-fx-border-color: #011c2e; -fx-background-color: #d5e8f5;">
+                     <children>
+                        <Text fx:id="textTtile" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER" wrappingWidth="721.6708984375">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </HBox>
+                  <Hyperlink fx:id="hLAuthor" layoutX="177.0" layoutY="495.0" onAction="#handleSubmitHLAuthor" prefHeight="35.0" prefWidth="727.0" text="Author" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Hyperlink>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="482.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/media/Red-Logomark.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="107.0" fitWidth="150.0" layoutX="465.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/media/ad.png" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="TOP_CENTER" layoutX="180.0" layoutY="218.0" prefHeight="248.0" prefWidth="730.0" style="-fx-border-color: #011c2e; -fx-background-color: #d5e8f5;">
+                     <children>
+                        <Text fx:id="textBody" strokeType="OUTSIDE" strokeWidth="0.0" text="Ad&#10;desciption&#10;" textAlignment="JUSTIFY" wrappingWidth="721.6708984375">
+                           <font>
+                              <Font name="System Italic" size="19.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </HBox>
+                  <Text layoutX="30.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Made by:" />
+                  <Text fx:id="textDateStart" fill="#2a9027" layoutX="181.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="../../...." />
+                  <Text fill="#aabf08" layoutX="782.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expires:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textDateExpire" fill="#e11d1d" layoutX="837.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="../../...." textAlignment="RIGHT" wrappingWidth="69.6708984375" />
+                  <Text layoutX="391.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click below to candidate for the" />
+                  <Text fx:id="textType" layoutX="615.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Offer/Request" wrappingWidth="99.6708984375" />
+                  <HBox layoutX="490.0" layoutY="576.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonCandidate" text="Candidate" />
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </HBox>
+                  <HBox layoutX="180.0" layoutY="666.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Report" />
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </HBox>
+                  <HBox layoutX="852.0" layoutY="666.0" prefHeight="31.0" prefWidth="55.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Help" />
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </HBox>
+               </children>
+            </Pane>
+            <Text fx:id="actionPrinterAd" fill="#54dd64" layoutX="413.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="371.6708984375">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </content>
+</fx:root>
