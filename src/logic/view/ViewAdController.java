@@ -39,7 +39,7 @@ public class ViewAdController implements Initializable {
 		 ViewAnAdController.getReference().listAllAds(beanAd);
 
 		 
-		 logger.log(Level.INFO, "the Title is: " +  beanAd.getTitle(1));
+		 logger.log(Level.INFO, "the Title is: " +  beanAd.getTitle(0));
 
 		 textTtile.setText(beanAd.getTitle(0));
 		 textType.setText(beanAd.getType(0));

@@ -19,6 +19,10 @@ public class OrderedAdsBean {
 		return this.ads.get(i).getTitle();
 	}
 	
+	public String getCategory(int i) {
+		return this.ads.get(i).getCategory();
+	}
+	
 	public String getOwner(int i) {
 		return this.ads.get(i).getOwnerUsername();
 	}
@@ -43,6 +47,7 @@ public class OrderedAdsBean {
 	public Order getOrder() {
 		return this.order;
 	}
+	
 	
 	private void setOrder(Order order) {
 		this.order = order;

@@ -38,8 +38,7 @@ import logic.viewanad.ViewAnAdController;
 
 public class ViewFlowController implements Initializable{
 
-	
-	
+
 	 private View nextViewF;
 	 String formError = MSGError.ERROR_FORM.getMsg();
 	 @FXML private Text actionCancelFlow;
@@ -49,6 +48,7 @@ public class ViewFlowController implements Initializable{
 	 @FXML private TableColumn<AdDetails, String> tcType;
 	 @FXML private TableColumn<AdDetails, String> tcTitle;
 	 @FXML private TableColumn<AdDetails, String> tcAuthor;
+	 @FXML private TableColumn<AdDetails, String> tcCategory;
 	 @FXML private TableColumn<AdDetails, String> tcDate;
 	 @FXML private TableColumn<AdDetails, Boolean> tcShowMoreDetails;
 	 @FXML private Button bUpdate;
@@ -117,12 +117,16 @@ public class ViewFlowController implements Initializable{
 		private StringProperty title = new SimpleStringProperty(this, "title");
 		private StringProperty author = new SimpleStringProperty(this, "author");
 		private StringProperty date = new SimpleStringProperty(this, "date");
+		private StringProperty category = new SimpleStringProperty(this, "category");
+
 		
 		public AdDetails() {
 			this.setAuthor("N/A");
 			this.setDate("N/A");
 			this.setTitle("N/A");
 			this.setType("N/A");
+			this.setCategory("N/A");
+
 		}
 		
 		public String getType() {
@@ -133,6 +137,9 @@ public class ViewFlowController implements Initializable{
 		}
 		public String getAuthor() {
 			return this.author.getValue();
+		}
+		public String getCategory() {
+			return this.category.getValue();
 		}
 		public String getDate() {
 			return this.date.getValue();
@@ -146,9 +153,13 @@ public class ViewFlowController implements Initializable{
 		public void setAuthor(String author) {
 			this.author.setValue(author);
 		}
+		public void setCategory(String author) {
+			this.category.setValue(author);
+		}
 		public void setDate(String date) {
 			this.date.setValue(date);
 		}
+		
 	}
 	
 	public ViewFlowController() {
@@ -163,6 +174,7 @@ public class ViewFlowController implements Initializable{
 		 tcTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
 		 tcAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
 		 tcDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+		 tcCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
 		 tcShowMoreDetails.setCellValueFactory(new isRowEmptyCallback());
 		 tcShowMoreDetails.setCellFactory(new addButtonToRowCallback());
 		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
@@ -219,9 +231,13 @@ public class ViewFlowController implements Initializable{
 			 if (bean.getType(i)!= null){
 				 currentRow.setType(bean.getType(i));
 			 }
+			 if (bean.getCategory(i) != null) {
+				 currentRow.setCategory(bean.getCategory(i));
+			 }
 			 if (bean.getDateOfPublication(i) != null) {
 				 currentRow.setDate(DateFormat.getDateInstance().format(bean.getDateOfPublication(i).getTime()));
 			 }
+			
 			 rowsBuffer.add(currentRow);
 		 }
 		 ObservableList<AdDetails> rows = FXCollections.observableList(rowsBuffer);
