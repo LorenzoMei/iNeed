@@ -21,8 +21,8 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 	Logger logger = Logger.getLogger(DAOAdSerialize.class.getName());
 	private static DAOAdSerialize ref = null;
 	
-	private DAOAdSerialize() {
-//		p
+	private void initialize() {
+		
 		logger.log(Level.INFO, "initializing {0}", this.getClass().getSimpleName());
 		
 		List<Field> supportedAds = ReflectionMiscellaneous.getSupported(this, "LASTID_TYPE");
@@ -50,11 +50,19 @@ public class DAOAdSerialize extends DAOSerialize implements DAOAd{
 		}
 	}
 	
+	
+	
+	private DAOAdSerialize() {
+//		p
+	}
+	
 	public static DAOAdSerialize getReference() {
 		
 		if (ref == null) {
 			ref = new DAOAdSerialize();
 		}
+		
+		ref.initialize();
 		return ref;
 	}
 	
