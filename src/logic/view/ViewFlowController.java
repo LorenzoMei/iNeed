@@ -209,12 +209,19 @@ public class ViewFlowController implements Initializable{
 			 AdDetails currentRow = new AdDetails();
 			 logger.log(Level.INFO, String.format("Author in AdDetails before: %s, author in bean before: %s", currentRow.getAuthor(), bean.getOwner(i)));
 			 
-			 currentRow.setAuthor(bean.getOwner(i));
-			 
+			 if (bean.getOwner(i) != null) {
+				 currentRow.setAuthor(bean.getOwner(i));
+			 }
 			 logger.log(Level.INFO, String.format("Author in AdDetails after: %s, author in bean after: %s", currentRow.getAuthor(), bean.getOwner(i)));
-			 currentRow.setTitle(bean.getTitle(i));
-			 currentRow.setType(bean.getType(i));
-			 currentRow.setDate(DateFormat.getDateInstance().format(bean.getDateOfPublication(i).getTime()));
+			 if (bean.getOwner(i) != null) {
+				 currentRow.setTitle(bean.getTitle(i));
+			 }
+			 if (bean.getType(i)!= null){
+				 currentRow.setType(bean.getType(i));
+			 }
+			 if (bean.getDateOfPublication(i) != null) {
+				 currentRow.setDate(DateFormat.getDateInstance().format(bean.getDateOfPublication(i).getTime()));
+			 }
 			 rowsBuffer.add(currentRow);
 		 }
 		 ObservableList<AdDetails> rows = FXCollections.observableList(rowsBuffer);

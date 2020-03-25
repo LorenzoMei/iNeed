@@ -22,6 +22,7 @@ public class EntityComparator {
 	public static Method getIsSortedByMethod(Order order) throws NoSuchIsSortedByMethodException{
 		Method[] allMethods = EntityComparator.class.getDeclaredMethods();
 		for (int i = 0; i < allMethods.length; i ++) {
+			logger.log(Level.INFO, String.format("searching method with name: %s", NAME_ENTITYCOMPARATOR_METHODS + order.getValue()));
 			if (allMethods[i].getName().contains(NAME_ENTITYCOMPARATOR_METHODS + order.getValue())
 					&& !allMethods[i].isSynthetic()) {
 				return allMethods[i];

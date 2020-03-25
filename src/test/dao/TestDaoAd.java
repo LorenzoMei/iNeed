@@ -1,5 +1,7 @@
 package test.dao;
 
+import java.util.Calendar;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,7 +47,8 @@ public class TestDaoAd {
 		storedAd.setOwnerUsername(user.getUsername());
 		storedAd.setTitle(title);
 		storedAd.setBody(body);
-		storedAd.setId(100);
+//		storedAd.setData(Calendar.getInstance());
+//		storedAd.setId(100);
 		
 		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		

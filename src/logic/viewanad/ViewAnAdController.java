@@ -52,10 +52,10 @@ public class ViewAnAdController {
 				}
 			}
 			Ad temp = allAds.get(i);
-			logger.log(Level.INFO, "before swapping: (" + i + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(minPos).getData().getTime()) + ")");
+//			logger.log(Level.INFO, "before swapping: (" + i + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(minPos).getData().getTime()) + ")");
 			allAds.set(i, allAds.get(minPos));
 			allAds.set(minPos, temp);
-			logger.log(Level.INFO, "after swapping: (" + i + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(minPos).getData().getTime()) + ")");
+//			logger.log(Level.INFO, "after swapping: (" + i + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(i).getData().getTime()) + "), (" + minPos + ", " + (new SimpleDateFormat(dateFormat)).format(allAds.get(minPos).getData().getTime()) + ")");
 		}
 	}
 	
