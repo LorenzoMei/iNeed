@@ -9,8 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,7 +31,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import logic.beans.OrderedAdsBean;
+import logic.beans.ViewAdBean;
 import logic.viewanad.ViewAnAdController;
+import logic.beans.AdDetailsBean;
 
 
 public class ViewFlowController implements Initializable{
@@ -44,32 +44,51 @@ public class ViewFlowController implements Initializable{
 	 @FXML private Text actionCancelFlow;
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
-	 @FXML private TableView<AdDetails> tvFlow;
-	 @FXML private TableColumn<AdDetails, String> tcType;
-	 @FXML private TableColumn<AdDetails, String> tcTitle;
-	 @FXML private TableColumn<AdDetails, String> tcAuthor;
-	 @FXML private TableColumn<AdDetails, String> tcCategory;
-	 @FXML private TableColumn<AdDetails, String> tcDate;
-	 @FXML private TableColumn<AdDetails, Boolean> tcShowMoreDetails;
+	 @FXML private TableView<AdDetailsBean> tvFlow;
+	 @FXML private TableColumn<AdDetailsBean, String> tcType;
+	 @FXML private TableColumn<AdDetailsBean, String> tcTitle;
+	 @FXML private TableColumn<AdDetailsBean, String> tcAuthor;
+	 @FXML private TableColumn<AdDetailsBean, String> tcCategory;
+	 @FXML private TableColumn<AdDetailsBean, String> tcDate;
+	 @FXML private TableColumn<AdDetailsBean, Boolean> tcShowMoreDetails;
 	 @FXML private Button bUpdate;
 	 
      private List<TextInputControl> textInputFields;
 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
-	public class ShowMoreDetailsCell extends TableCell<AdDetails, Boolean>{
+	public class ShowMoreDetailsCell extends TableCell<AdDetailsBean, Boolean>{
 		
 		public class BShowMoreDetailsHandler implements EventHandler<ActionEvent>{
 
 			@Override
 			public void handle(ActionEvent event) {
-				
-				nextViewF = (View) new ViewAd();
+
+				logger.log(Level.INFO, "button bShowMoreDetails clicked");
+//				AdDetailsBean chosen = tvFlow.getItems().get(getIndex());
+				ViewFlow currentView = (ViewFlow) Context.getReference().getCurrentView();
+				logger.log(Level.INFO, 
+						String.format("clicked on ad in row %d with values: %s %s %s %s %s %s",
+								getIndex(),
+								currentView.getOrderedAdsBean().getOwner(getIndex()),
+								currentView.getOrderedAdsBean().getBody(getIndex()),
+								currentView.getOrderedAdsBean().getCategory(getIndex()),
+								currentView.getOrderedAdsBean().getDateOfPublication(getIndex()), 
+								currentView.getOrderedAdsBean().getTitle(getIndex()),
+								currentView.getOrderedAdsBean().getType(getIndex())
+						)
+				);
+				nextViewF = (View) new ViewAd(
+						new ViewAdBean(
+								currentView.getOrderedAdsBean().getTitle(getIndex()),
+								currentView.getOrderedAdsBean().getType(getIndex()),
+								currentView.getOrderedAdsBean().getDateOfPublication(getIndex()),
+								currentView.getOrderedAdsBean().getBody(getIndex()),
+								currentView.getOrderedAdsBean().getOwner(getIndex())
+						)
+				);
 				Context.getReference().getCurrentView().setNextView(nextViewF);
 				Context.getReference().goNext();
-				
-				logger.log(Level.INFO, "button bShowMoreDetails clicked");
-				
 			}
 		}
 		
@@ -96,71 +115,23 @@ public class ViewFlowController implements Initializable{
 		}
 		
 	}
-	public class isRowEmptyCallback implements Callback<TableColumn.CellDataFeatures<AdDetails, Boolean>, ObservableValue<Boolean>>{
+	public class isRowEmptyCallback implements Callback<TableColumn.CellDataFeatures<AdDetailsBean, Boolean>, ObservableValue<Boolean>>{
 
 		@Override
-		public ObservableValue<Boolean> call(CellDataFeatures<AdDetails, Boolean> features) {
+		public ObservableValue<Boolean> call(CellDataFeatures<AdDetailsBean, Boolean> features) {
 			return new SimpleBooleanProperty(features.getValue() != null);
 		}
 	 }
-	 public class addButtonToRowCallback implements Callback<TableColumn<AdDetails, Boolean>, TableCell<AdDetails, Boolean>>{
+	 public class addButtonToRowCallback implements Callback<TableColumn<AdDetailsBean, Boolean>, TableCell<AdDetailsBean, Boolean>>{
 
 		@Override
-		public TableCell<AdDetails, Boolean> call(TableColumn<AdDetails, Boolean> tvFlowRowBooleanTableColumn) {
+		public TableCell<AdDetailsBean, Boolean> call(TableColumn<AdDetailsBean, Boolean> tvFlowRowBooleanTableColumn) {
 			return new ShowMoreDetailsCell();
 		}
 		 
 	 }
 	
-	public class AdDetails{
-		private StringProperty type = new SimpleStringProperty(this, "type");
-		private StringProperty title = new SimpleStringProperty(this, "title");
-		private StringProperty author = new SimpleStringProperty(this, "author");
-		private StringProperty date = new SimpleStringProperty(this, "date");
-		private StringProperty category = new SimpleStringProperty(this, "category");
-
-		
-		public AdDetails() {
-			this.setAuthor("N/A");
-			this.setDate("N/A");
-			this.setTitle("N/A");
-			this.setType("N/A");
-			this.setCategory("N/A");
-
-		}
-		
-		public String getType() {
-			return this.type.getValue();
-		}
-		public String getTitle() {
-			return this.title.getValue();
-		}
-		public String getAuthor() {
-			return this.author.getValue();
-		}
-		public String getCategory() {
-			return this.category.getValue();
-		}
-		public String getDate() {
-			return this.date.getValue();
-		}
-		public void setType(String type) {
-			this.type.setValue(type);
-		}
-		public void setTitle(String title) {
-			this.title.setValue(title);
-		}
-		public void setAuthor(String author) {
-			this.author.setValue(author);
-		}
-		public void setCategory(String author) {
-			this.category.setValue(author);
-		}
-		public void setDate(String date) {
-			this.date.setValue(date);
-		}
-		
-	}
+	
 	
 	public ViewFlowController() {
 		this.textInputFields = new ArrayList<>();
@@ -213,34 +184,33 @@ public class ViewFlowController implements Initializable{
 	 }
 	  
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {		 		 
-		 List<AdDetails> rowsBuffer = new ArrayList<>();
-		 OrderedAdsBean bean = new OrderedAdsBean();
-		 bean.setOrderByTime();
-		 ViewAnAdController.getReference().listAllAds(bean);
-		 for (int i = 0; i < bean.getNumOfAds(); i ++) {
-			 AdDetails currentRow = new AdDetails();
-			 logger.log(Level.INFO, String.format("Author in AdDetails before: %s, author in bean before: %s", currentRow.getAuthor(), bean.getOwner(i)));
+		 List<AdDetailsBean> rowsBuffer = new ArrayList<>();
+		 ViewFlow currentView= (ViewFlow) Context.getReference().getCurrentView();
+		 currentView.setOrderedAdsBean(new OrderedAdsBean());
+		 currentView.getOrderedAdsBean().setOrderByTime();
+		 ViewAnAdController.getReference().listAllAds(currentView.getOrderedAdsBean());
+		 for (int i = 0; i < currentView.getOrderedAdsBean().getNumOfAds(); i ++) {
+			 AdDetailsBean currentRow = new AdDetailsBean();
 			 
-			 if (bean.getOwner(i) != null) {
-				 currentRow.setAuthor(bean.getOwner(i));
+			 if (currentView.getOrderedAdsBean().getOwner(i) != null) {
+				 currentRow.setAuthor(currentView.getOrderedAdsBean().getOwner(i));
 			 }
-			 logger.log(Level.INFO, String.format("Author in AdDetails after: %s, author in bean after: %s", currentRow.getAuthor(), bean.getOwner(i)));
-			 if (bean.getOwner(i) != null) {
-				 currentRow.setTitle(bean.getTitle(i));
+			 if (currentView.getOrderedAdsBean().getOwner(i) != null) {
+				 currentRow.setTitle(currentView.getOrderedAdsBean().getTitle(i));
 			 }
-			 if (bean.getType(i)!= null){
-				 currentRow.setType(bean.getType(i));
+			 if (currentView.getOrderedAdsBean().getType(i)!= null){
+				 currentRow.setType(currentView.getOrderedAdsBean().getType(i));
 			 }
-			 if (bean.getCategory(i) != null) {
-				 currentRow.setCategory(bean.getCategory(i));
+			 if (currentView.getOrderedAdsBean().getCategory(i) != null) {
+				 currentRow.setCategory(currentView.getOrderedAdsBean().getCategory(i));
 			 }
-			 if (bean.getDateOfPublication(i) != null) {
-				 currentRow.setDate(DateFormat.getDateInstance().format(bean.getDateOfPublication(i).getTime()));
+			 if (currentView.getOrderedAdsBean().getDateOfPublication(i) != null) {
+				 currentRow.setDate(DateFormat.getDateInstance().format(currentView.getOrderedAdsBean().getDateOfPublication(i).getTime()));
 			 }
 			
 			 rowsBuffer.add(currentRow);
 		 }
-		 ObservableList<AdDetails> rows = FXCollections.observableList(rowsBuffer);
+		 ObservableList<AdDetailsBean> rows = FXCollections.observableList(rowsBuffer);
 		 this.tvFlow.setItems(rows);
  		 actionCancelFlow.setText("");
 	     actionCancelFlow.setText("pagina aggiornata");

@@ -11,8 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.text.Text;
-import logic.beans.OrderedAdsBean;
-import logic.viewanad.ViewAnAdController;
+import logic.beans.ViewAdBean;
 
 public class ViewAdController implements Initializable {
 	
@@ -31,21 +30,18 @@ public class ViewAdController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	OrderedAdsBean beanAd = new OrderedAdsBean();
-
+    	 ViewAd currentView = (ViewAd) Context.getReference().getCurrentView();
+    	 ViewAdBean beanAd = currentView.getViewAdBean();
 		 String status = "My location " + url + " my resoursources: " + resourceBundle;
 		 logger.log(Level.INFO, status);
-		 beanAd.setOrderByTime();
-		 ViewAnAdController.getReference().listAllAds(beanAd);
-
 		 
-		 logger.log(Level.INFO, "the Title is: " +  beanAd.getTitle(0));
+		 logger.log(Level.INFO, "the Title is: " +  beanAd.getTitle());
 
-		 textTtile.setText(beanAd.getTitle(0));
-		 textType.setText(beanAd.getType(0));
-		 textDateStart.setText(DateFormat.getDateInstance().format(beanAd.getDateOfPublication(0).getTime()));
-		 textBody.setText(beanAd.getBody(0));
-		 hLAuthor.setText(beanAd.getOwner(0));
+		 textTtile.setText(beanAd.getTitle());
+		 textType.setText(beanAd.getType());
+		 textDateStart.setText(DateFormat.getDateInstance().format(beanAd.getDateOfPublication().getTime()));
+		 textBody.setText(beanAd.getBody());
+		 hLAuthor.setText(beanAd.getAuthor());
     }
     
     @FXML protected void handleSubmitButtonCandidate(ActionEvent event) {
