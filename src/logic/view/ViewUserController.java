@@ -30,7 +30,7 @@ public class ViewUserController  implements Initializable  {
 	 LogoutBean lBean = new LogoutBean();
 	 ViewProfileBean pBean = new ViewProfileBean();
 
-	 private View nextViewU;
+//	 private View nextViewU;
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
@@ -38,9 +38,9 @@ public class ViewUserController  implements Initializable  {
 		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
 		 logger.log(Level.INFO, status);
 	   
-		 nextViewU = (View) new ViewUser();
+//		 nextViewU = (View) new ViewUser();
 
-		 pBean.setRequestedUsername(nextViewU.getProfileName());
+		 pBean.setRequestedUsername(Context.getReference().getCurrentView().getProfileName());
 		 String nextClassName = "Initializing: " + this.getClass().getSimpleName();
 		 logger.log(Level.INFO, nextClassName );
 		 
@@ -67,7 +67,8 @@ public class ViewUserController  implements Initializable  {
 	 @FXML protected void handleSubmitButtonCurriculum(ActionEvent event) {
 			 actionPrinter.setText("");
 		     actionPrinter.setText("go to Curriculum");
-		     nextViewU = (View) new ViewCurriculumMainPage();
+		     View nextViewU = (View) new ViewCurriculumMainPage();
+		     nextViewU.setProfileName(Context.getReference().getCurrentView().getProfileName());
 			Context.getReference().getCurrentView().setNextView(nextViewU);
 			Context.getReference().goNext();
 

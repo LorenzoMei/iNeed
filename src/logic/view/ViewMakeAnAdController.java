@@ -53,11 +53,11 @@ public class ViewMakeAnAdController implements Initializable {
 	 @FXML private Text actionPrinte;
 	 @FXML private AnchorPane grid;
 	 @FXML private MenuItem profileName;
-	 ViewProfileBean pBean = new ViewProfileBean();
+//	 ViewProfileBean pBean = new ViewProfileBean();
      PublishAnAdBean adBean = new PublishAnAdBean();
      PublishAnAdController controller = PublishAnAdController.getInstance();
-     LoginController loginController =  LoginController.getInstance();
-	 LogoutBean lBean = new LogoutBean();
+//     LoginController loginController =  LoginController.getInstance();
+//	 LogoutBean lBean = new LogoutBean();
      private static String type;
      private static String category;
      private static boolean other = false;
@@ -202,9 +202,9 @@ public class ViewMakeAnAdController implements Initializable {
 		     adBean.setBody(bodyTextArea.getText());
 			 logger.log(Level.INFO,  "Dopo setBody" );
 
-		     nextViewM = (View) new ViewMakeAnAd();
+//		     nextViewM = (View) new ViewMakeAnAd();
 
-		     adBean.setOwnerUsername(nextViewM.getProfileName());
+		     adBean.setOwnerUsername(Context.getReference().getCurrentView().getProfileName());
 			 logger.log(Level.INFO,  "Dopo setOwnerUsername" );
 
 		    
@@ -336,6 +336,7 @@ public class ViewMakeAnAdController implements Initializable {
 	        
 	        EventHandler<ActionEvent> handlerViewFlow = evt -> {	                
 	            View nextView =  new ViewFlow();
+	            nextView.setProfileName(Context.getReference().getCurrentView().getProfileName());
 	            Context.getReference().getCurrentView().setNextView(nextView);
 	            Context.getReference().goNext();
 		        stage.close();
@@ -346,6 +347,7 @@ public class ViewMakeAnAdController implements Initializable {
 
                 View nextView =  new ViewMakeAnAd();
             	Context.getReference().getCurrentView().setNextView(nextView);
+	            nextView.setProfileName(Context.getReference().getCurrentView().getProfileName());
             	Context.getReference().goNext();
             	stage.close();
 
@@ -364,6 +366,7 @@ public class ViewMakeAnAdController implements Initializable {
 		 actionPrinte.setText("");
 	     actionPrinte.setText("go toRegulations");
 	     nextViewM = (View) new ViewRegulations();
+         nextViewM.setProfileName(Context.getReference().getCurrentView().getProfileName());
         Context.getReference().getCurrentView().setNextView(nextViewM);
     	Context.getReference().goNext();
 	     

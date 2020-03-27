@@ -150,8 +150,7 @@ public class ViewFlowController implements Initializable{
 		 tcShowMoreDetails.setCellFactory(new addButtonToRowCallback());
 		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
 		 logger.log(Level.INFO, status);
-	     nextViewF = (View) new ViewFlow();
-	     logger.log(Level.INFO, "In viewFlow the name of the user is: " + nextViewF.getProfileName());
+	     logger.log(Level.INFO, "In viewFlow the name of the user is: " + Context.getReference().getCurrentView().getProfileName());
 		 searchTextField.setPromptText("*Es. Meccanico auto");
 		 this.bUpdate.fire();
 		}
