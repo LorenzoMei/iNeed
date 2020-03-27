@@ -9,7 +9,7 @@ import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.OfferAd;
 
-public class CheckAnswersController implements CheckAnswersControllerInterface{
+public class CheckAnswersController {
 	
 	private static CheckAnswersController instance;
 	

@@ -10,7 +10,6 @@ import logic.answeranad.AnswerAnAdController;
 import logic.beans.AnswerAnAdBean;
 import logic.checkanswersofanad.CheckAnswersBean;
 import logic.checkanswersofanad.CheckAnswersController;
-import logic.checkanswersofanad.CheckAnswersControllerInterface;
 import logic.entity.Ad;
 import logic.entity.RequestAd;
 
@@ -42,7 +41,7 @@ public class TestAnswers {
 		CheckAnswersBean checkAnswersBean = new CheckAnswersBean();
 		checkAnswersBean.setAd(ad);
 		
-		CheckAnswersControllerInterface controllerAnswers = CheckAnswersController.getInstance();
+		CheckAnswersController controllerAnswers = CheckAnswersController.getInstance();
 		controllerAnswers.answersList(checkAnswersBean);
 		
 		List<String> answers = checkAnswersBean.getAnswersList();

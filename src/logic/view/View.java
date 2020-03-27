@@ -11,7 +11,7 @@ public abstract class View {
 	 Logger loggerView = Logger.getLogger(this.getClass().getName());
 	
 	
-	protected static String profileName;
+	protected String profileName;
 	private String next;
     private View previous;
     protected GoNextTargets goNextTarget;
@@ -20,13 +20,13 @@ public abstract class View {
 	public abstract Scene buildScene();
 	
 	public  String getProfileName() {
-		String printThis = "Hi i'm View and this is the profileName: " + View.profileName;
+		String printThis = "Hi i'm View and this is the profileName: " + this.profileName;
 		loggerView.log(Level.INFO, printThis);
-		return View.profileName;
+		return this.profileName;
 	}
 	
-	public static void setProfileName(String username) {
-		View.profileName = username;
+	public void setProfileName(String username) {
+		this.profileName = username;
 
 	}
 	
