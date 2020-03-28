@@ -2,6 +2,7 @@ package logic.view;
 
 public enum MSGError {
 	ERROR_FORM ("FORM ERROR!"),
+	ERROR_ALREADY_ANSWERED("ERROR: Already Answered")
 	;
 	
 	private final String msg;

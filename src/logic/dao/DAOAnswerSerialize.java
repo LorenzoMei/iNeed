@@ -27,7 +27,8 @@ public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 	
 	private DAOAnswerSerialize() {}
 	
-	public void loadAnswers(int id, String type, List<String> answersList) {
+	@Override
+	public void loadAnswers(int id, String type, List<Answer> answersList) {
 		
 		List<String> primaryKeyValues = new ArrayList<>();
 		primaryKeyValues.add(Integer.toString(id));
@@ -40,9 +41,9 @@ public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 			  String secondValueOfPrimaryKey = listOfFiles[i].getName().substring(Integer.toString(id).length() + PRIMARY_KEY_VALUES_SEPARATOR.length(), listOfFiles[i].getName().length() - PRIMARY_KEY_VALUES_SEPARATOR.length() - SERIALIZED_EXTENSION.length());
 			  primaryKeyValues.add(secondValueOfPrimaryKey);
 			  
-			  Answer answers = new Answer();
+			  Answer answer = new Answer();
 			  try {
-				  this.load(answers, primaryKeyValues);
+				  this.load(answer, primaryKeyValues);
 			  } catch (ElementInDBNotFoundException e) {
 				  logger.log(Level.SEVERE, "file" + e.getPath() + " not found");
 			  	} 
@@ -50,24 +51,43 @@ public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 					logger.log(Level.SEVERE, e.toString());
 			  } 
 			  
-			  answersList.add(answers.getUsername());
+			  answersList.add(answer);
 			  primaryKeyValues.remove(secondValueOfPrimaryKey);
 		  }
 		}
 	}
 	
-	public void storeAnswers(Answer answers) {
+	public void storeAnswer(Answer answer) {
 		
 		List<String> primaryKeyValues = new ArrayList<>();
-		primaryKeyValues.add(String.format("%d", answers.getId()));
-		primaryKeyValues.add(answers.getUsername());
-		primaryKeyValues.add(answers.getType());
+		primaryKeyValues.add(String.format("%d", answer.getId()));
+		primaryKeyValues.add(answer.getUsername());
+		primaryKeyValues.add(answer.getType());
 		
 		try {
-			this.store(answers, primaryKeyValues);
+			this.store(answer, primaryKeyValues);
 			
 		} catch (IOException | IllegalAccessException | IllegalArgumentException | SecurityException | InvocationTargetException | NoSuchMethodException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}		
 	}
+
+	@Override
+	public void loadAnswer(int id, String type, String username, Answer answer) throws AnswerNotFoundException {
+		List<String> primaryKeyValues = new ArrayList<>();
+		primaryKeyValues.add(String.format("%d", id));
+		primaryKeyValues.add(username);
+		primaryKeyValues.add(type);
+		
+		try {
+			this.load(answer, primaryKeyValues);
+		} catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException
+				| InstantiationException | IOException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (ElementInDBNotFoundException e) {
+			throw new AnswerNotFoundException(e);
+		}
+		
+	}
+	
 }

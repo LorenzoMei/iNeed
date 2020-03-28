@@ -1,10 +1,21 @@
 package logic.entity;
 
+import java.util.Calendar;
+
 public class Answer {
 	private int id;
 	private String username;
 	private String type;
+	private Calendar date;
 	
+	public Calendar getDate() {
+		return date;
+	}
+
+	public void setDate(Calendar date) {
+		this.date = date;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

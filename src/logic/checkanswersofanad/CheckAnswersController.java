@@ -7,6 +7,7 @@ import logic.dao.DAOAnswer;
 import logic.dao.DAOFactory;
 import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
+import logic.entity.Answer;
 import logic.entity.OfferAd;
 
 public class CheckAnswersController {
@@ -27,7 +28,7 @@ public class CheckAnswersController {
 		Ad ad = answersBean.getAd();
 		String type = "RequestAd";
 		
-		List <String> answersList = new ArrayList<>();
+		List <Answer> answersList = new ArrayList<>();
 		
 		DAOAnswer daoAnswers= (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 		

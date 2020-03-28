@@ -1,22 +1,28 @@
 package test.answers;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.Assert;
 
 import logic.answeranad.AnswerAnAdController;
+import logic.answeranad.UserAlreadyAnsweredException;
 import logic.beans.AnswerAnAdBean;
 import logic.checkanswersofanad.CheckAnswersBean;
 import logic.checkanswersofanad.CheckAnswersController;
 import logic.entity.Ad;
+import logic.entity.Answer;
 import logic.entity.RequestAd;
+
 
 public class TestAnswers {
 
 	@Test
-	public void testAnswers() throws IllegalAccessException, InvocationTargetException {
+	public void testAnswers() throws IllegalAccessException, UserAlreadyAnsweredException {
 		String[] candidati = new String[3];
 		candidati[0] = "Pippo";
 		candidati[1] = "Pluto";
@@ -30,7 +36,7 @@ public class TestAnswers {
 		
 		for(int i = 0; i < 3; i++) {
 			answerAnAdBean.setUsername(candidati[i]);
-			controller.candidate(answerAnAdBean);
+			controller.answer(answerAnAdBean);
 		}
 		
 		Ad ad = new RequestAd();
@@ -44,12 +50,14 @@ public class TestAnswers {
 		CheckAnswersController controllerAnswers = CheckAnswersController.getInstance();
 		controllerAnswers.answersList(checkAnswersBean);
 		
-		List<String> answers = checkAnswersBean.getAnswersList();
+		List<Answer> answers = checkAnswersBean.getAnswersList();
 		
+		List<String> storedUsernames = new ArrayList<>();
 		for(int i = 0; i < answers.size(); i++) {
-			System.out.println("CANDIDATO " + i + " : " + answers.get(i));
-			Assert.assertTrue(answers.contains(candidati[i]));	
+			System.out.println("CANDIDATO " + i + " : " + answers.get(i).getUsername());
+			storedUsernames.add(answers.get(i).getUsername());
 		}
+		Assert.assertTrue(storedUsernames.containsAll(Arrays.asList(candidati)));
  	}
 
 }

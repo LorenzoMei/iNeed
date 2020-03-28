@@ -3,11 +3,12 @@ package logic.checkanswersofanad;
 import java.util.List;
 
 import logic.entity.Ad;
+import logic.entity.Answer;
 
 public class CheckAnswersBean {
 	
 	private Ad ad;
-	private List<String> answersList;
+	private List<Answer> answersList;
 	
 	public CheckAnswersBean() {	
 		this.ad = null;
@@ -17,7 +18,7 @@ public class CheckAnswersBean {
 		this.ad = ad;
 	}
 	
-	public void setAnswersList(List<String> answersList) {
+	public void setAnswersList(List<Answer> answersList) {
 		this.answersList = answersList;
 	}
 	
@@ -25,7 +26,7 @@ public class CheckAnswersBean {
 		return this.ad;
 	}	
 
-	public List<String> getAnswersList(){
+	public List<Answer> getAnswersList(){
 		return this.answersList;
 	}
 }

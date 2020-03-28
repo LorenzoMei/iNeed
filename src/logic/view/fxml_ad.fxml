@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
@@ -14,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewAdController">
+<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewAdController">
    <content>
       <AnchorPane id="AnchorPane" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
          <children>
@@ -78,11 +85,11 @@
                      </font>
                   </Text>
                   <Text fx:id="textDateExpire" fill="#e11d1d" layoutX="837.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="../../...." textAlignment="RIGHT" wrappingWidth="69.6708984375" />
-                  <Text layoutX="391.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click below to candidate for the" />
+                  <Text fx:id="tAboveBActionOnAd" layoutX="391.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="click below to " />
                   <Text fx:id="textType" layoutX="615.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Offer/Request" wrappingWidth="99.6708984375" />
                   <HBox layoutX="490.0" layoutY="576.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleSubmitButtonCandidate" text="Candidate" />
+                        <Button fx:id="bActionOnAd" mnemonicParsing="false" onAction="#handleBActionOnAd" />
                      </children>
                      <effect>
                         <DropShadow />

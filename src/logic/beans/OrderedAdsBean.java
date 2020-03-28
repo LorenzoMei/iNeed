@@ -15,6 +15,10 @@ public class OrderedAdsBean {
 		this.setOrderUnsorted();
 	}
 	
+	public int getId(int i) {
+		return this.ads.get(i).getId();
+	}
+	
 	public String getTitle(int i) {
 		return this.ads.get(i).getTitle();
 	}

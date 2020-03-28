@@ -84,9 +84,11 @@ public class ViewFlowController implements Initializable{
 								currentView.getOrderedAdsBean().getType(getIndex()),
 								currentView.getOrderedAdsBean().getDateOfPublication(getIndex()),
 								currentView.getOrderedAdsBean().getBody(getIndex()),
-								currentView.getOrderedAdsBean().getOwner(getIndex())
+								currentView.getOrderedAdsBean().getOwner(getIndex()),
+								currentView.getOrderedAdsBean().getId(getIndex())
 						)
 				);
+				nextViewF.setProfileName(Context.getReference().getCurrentView().getProfileName());
 				Context.getReference().getCurrentView().setNextView(nextViewF);
 				Context.getReference().goNext();
 			}

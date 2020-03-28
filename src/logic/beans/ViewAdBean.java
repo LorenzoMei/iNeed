@@ -8,15 +8,27 @@ public class ViewAdBean {
 	private Calendar dateOfPublication;
 	private String body;
 	private String author;
+	private int id;
 	
-	public ViewAdBean(String title, String type, Calendar dateOfRequest, String body, String author) {
+	public ViewAdBean(String title, String type, Calendar dateOfRequest, String body, String author, int id) {
 		this.setTitle(title);
 		this.setType(type);
 		this.setDateOfPublication(dateOfRequest);
 		this.setBody(body);
 		this.setAuthor(author);
+		this.setId(id);
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return this.title;
 	}
