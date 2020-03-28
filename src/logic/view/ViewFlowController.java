@@ -196,7 +196,7 @@ public class ViewFlowController implements Initializable{
 			 if (currentView.getOrderedAdsBean().getOwner(i) != null) {
 				 currentRow.setAuthor(currentView.getOrderedAdsBean().getOwner(i));
 			 }
-			 if (currentView.getOrderedAdsBean().getOwner(i) != null) {
+			 if (currentView.getOrderedAdsBean().getTitle(i) != null) {
 				 currentRow.setTitle(currentView.getOrderedAdsBean().getTitle(i));
 			 }
 			 if (currentView.getOrderedAdsBean().getType(i)!= null){
