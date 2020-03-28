@@ -87,6 +87,10 @@ public class ViewUserController  implements Initializable  {
 	 @FXML protected void handleSubmitButtonWallet(ActionEvent event) {
 		 actionPrinter.setText("");
 	     actionPrinter.setText("go to Wallet");
+	     View nextViewU = (View) new ViewWallet();
+	     nextViewU.setProfileName(Context.getReference().getCurrentView().getProfileName());
+		 Context.getReference().getCurrentView().setNextView(nextViewU);
+		 Context.getReference().goNext();
 	    }
 	 
 	
