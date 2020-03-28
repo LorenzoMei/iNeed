@@ -44,5 +44,9 @@ public class ViewProfileBean {
 		public Calendar getBirthDate() {
 			return this.requestedUser.getBDate();
 		}
+		
+		public int getToken() {
+			return this.requestedUser.getTokens();
+		}
 	
 }
