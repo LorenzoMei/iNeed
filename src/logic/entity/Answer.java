@@ -3,6 +3,7 @@ package logic.entity;
 import java.util.Calendar;
 
 public class Answer {
+	private Boolean denied = false;
 	private int id;
 	private String username;
 	private String type;
@@ -38,5 +39,13 @@ public class Answer {
 	
 	public String getType() {
 		return this.type;
+	}
+
+	public Boolean isDenied() {
+		return denied;
+	}
+
+	public void setDenied(Boolean denied) {
+		this.denied = denied;
 	}
 }

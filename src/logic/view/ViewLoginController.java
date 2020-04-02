@@ -23,7 +23,7 @@ import logic.login.LoginController;
 import logic.login.WrongPasswordException;
 
 public class ViewLoginController implements Initializable {
-	 String formError = MSGError.ERROR_FORM.getMsg();
+	 String formError = MSG.ERROR_FORM.getMsg();
 	 @FXML private Text actionLogIn;
 	 @FXML private Text actionCancel;
 	 @FXML private TextField userNameTextField;

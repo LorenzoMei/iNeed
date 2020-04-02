@@ -166,7 +166,7 @@ public class ViewSignupController implements Initializable {
         LocalDate bDate = datePickerTextField.getValue();        
         
         if(bDate == null) {
-        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSGError.ERROR_FORM.getMsg(), "Insert a Date please!");
+        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSG.ERROR_FORM.getMsg(), "Insert a Date please!");
             return;
     
         }
@@ -196,13 +196,13 @@ public class ViewSignupController implements Initializable {
 
 		
     	if((difference) < 18 || (bYear > todayYear) ) {
-			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSGError.ERROR_FORM.getMsg(), "Invalid date, you're too young check regulations ");
+			 showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), MSG.ERROR_FORM.getMsg(), "Invalid date, you're too young check regulations ");
 			 return;
     	}
 		
         
         if(passw.compareTo(vPsw) != 0) {
-            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),MSGError.ERROR_FORM.getMsg(), "Your password doesn't match!");
+            showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(),MSG.ERROR_FORM.getMsg(), "Your password doesn't match!");
             return;
     }
     

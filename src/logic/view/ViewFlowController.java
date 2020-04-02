@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -33,14 +34,13 @@ import javafx.util.Callback;
 import logic.beans.OrderedAdsBean;
 import logic.beans.ViewAdBean;
 import logic.viewanad.ViewAnAdController;
-import logic.beans.AdDetailsBean;
 
 
 public class ViewFlowController implements Initializable{
 
 
 	 private View nextViewF;
-	 String formError = MSGError.ERROR_FORM.getMsg();
+	 String formError = MSG.ERROR_FORM.getMsg();
 	 @FXML private Text actionCancelFlow;
 	 @FXML private TextField searchTextField;
 	 @FXML private GridPane grid;
@@ -64,7 +64,7 @@ public class ViewFlowController implements Initializable{
 			@Override
 			public void handle(ActionEvent event) {
 
-				logger.log(Level.INFO, "button bShowMoreDetails clicked");
+				logger.log(Level.INFO, "button bContactUser clicked");
 //				AdDetailsBean chosen = tvFlow.getItems().get(getIndex());
 				ViewFlow currentView = (ViewFlow) Context.getReference().getCurrentView();
 				logger.log(Level.INFO, 
@@ -94,7 +94,7 @@ public class ViewFlowController implements Initializable{
 			}
 		}
 		
-		final Button bShowMoreDetails = new Button("Show More");
+		final Button bShowMoreDetails = new Button(BLabels.SHOWDETAILS.getLabel());
 		final StackPane spPaddedButton = new StackPane();
 		
 		ShowMoreDetailsCell(){
@@ -185,11 +185,11 @@ public class ViewFlowController implements Initializable{
 	 }
 	  
 	 @FXML protected void handleSubmitButtonUpdate(ActionEvent event) {		 		 
-		 List<AdDetailsBean> rowsBuffer = new ArrayList<>();
 		 ViewFlow currentView= (ViewFlow) Context.getReference().getCurrentView();
 		 currentView.setOrderedAdsBean(new OrderedAdsBean());
 		 currentView.getOrderedAdsBean().setOrderByTime();
 		 ViewAnAdController.getReference().listAllAds(currentView.getOrderedAdsBean());
+		 List<AdDetailsBean> rowsBuffer = new ArrayList<>();
 		 for (int i = 0; i < currentView.getOrderedAdsBean().getNumOfAds(); i ++) {
 			 AdDetailsBean currentRow = new AdDetailsBean();
 			 
@@ -223,5 +223,20 @@ public class ViewFlowController implements Initializable{
 	 		 actionCancelFlow.setText("");
 		     actionCancelFlow.setText("Help Page!");
 		 }
-    
+    @FXML protected void cmiShowOnlyMyAdsHandler(ActionEvent event){
+    	CheckMenuItem cmiShowOnlyMyAds = (CheckMenuItem) event.getSource();
+    	if (cmiShowOnlyMyAds.isSelected()) {
+    		ObservableList<AdDetailsBean> adsInTable = this.tvFlow.getItems();
+    		logger.log(Level.INFO, String.format("ads in table: %d", adsInTable.size()));
+    		for (int i = 0; i < adsInTable.size(); i ++) {
+    			if (adsInTable.get(i).getAuthor().compareTo(Context.getReference().getCurrentView().getProfileName()) != 0) {
+    				adsInTable.remove(i);
+    				i --;
+    			}
+    		}
+    	}
+    	else {
+    		this.bUpdate.fire();
+    	}
+    }
 }

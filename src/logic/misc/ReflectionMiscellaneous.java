@@ -19,7 +19,11 @@ public class ReflectionMiscellaneous {
 			return getGetterOrSetter("get", attrName, obj);
 		}
 		catch(NoSuchMethodException e) {
-			throw new NoSuchGetterException(attrName); 
+			try {
+				return getGetterOrSetter("is", attrName, obj);
+			} catch (NoSuchMethodException eNested) {
+				throw new NoSuchGetterException(attrName); 
+			}
 		}
 	}
 	

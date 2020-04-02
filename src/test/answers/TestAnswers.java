@@ -1,9 +1,7 @@
 package test.answers;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,10 +10,9 @@ import org.junit.Assert;
 import logic.answeranad.AnswerAnAdController;
 import logic.answeranad.UserAlreadyAnsweredException;
 import logic.beans.AnswerAnAdBean;
-import logic.checkanswersofanad.CheckAnswersBean;
+import logic.beans.CheckAnswersBean;
 import logic.checkanswersofanad.CheckAnswersController;
 import logic.entity.Ad;
-import logic.entity.Answer;
 import logic.entity.RequestAd;
 
 
@@ -45,17 +42,17 @@ public class TestAnswers {
 		ad.setBody("Devo andare in aeroporto domani mattina");
 		
 		CheckAnswersBean checkAnswersBean = new CheckAnswersBean();
-		checkAnswersBean.setAd(ad);
+		checkAnswersBean.setAdId(ad.getId());
+		checkAnswersBean.setAdType(ad.getClass().getSimpleName());
 		
 		CheckAnswersController controllerAnswers = CheckAnswersController.getInstance();
 		controllerAnswers.answersList(checkAnswersBean);
 		
-		List<Answer> answers = checkAnswersBean.getAnswersList();
 		
 		List<String> storedUsernames = new ArrayList<>();
-		for(int i = 0; i < answers.size(); i++) {
-			System.out.println("CANDIDATO " + i + " : " + answers.get(i).getUsername());
-			storedUsernames.add(answers.get(i).getUsername());
+		for(int i = 0; i < checkAnswersBean.getNumOfAnswers(); i++) {
+			System.out.println("CANDIDATO " + i + " : " + checkAnswersBean.getAnswerer(i));
+			storedUsernames.add(checkAnswersBean.getAnswerer(i));
 		}
 		Assert.assertTrue(storedUsernames.containsAll(Arrays.asList(candidati)));
  	}

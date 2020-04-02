@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -23,29 +24,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="875.0" prefWidth="1100.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewFlowController">
+<fx:root prefHeight="875.0" prefWidth="1100.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.ViewCheckAnswersController">
    <content>
       <AnchorPane id="AnchorPane" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
          <children>
             <HBox prefHeight="9.0" prefWidth="1100.0" spacing="75.0" style="-fx-background-color: #011c2e;" />
-            
-            <Text fill="#4646f8" layoutX="105.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flow" wrappingWidth="117.00001955032349">
-               <font>
-                  <Font name="Gabriola" size="63.0" />
-               </font>
-            </Text>
             <Pane layoutX="43.0" layoutY="154.0" prefHeight="484.0" prefWidth="1019.0" style="-fx-background-color: #011c2e;">
                <children>
-                  <ScrollPane layoutX="20.0" layoutY="97.0" prefHeight="324.0" prefWidth="975.0">
+                  <ScrollPane layoutX="95.0" layoutY="80.0" prefHeight="324.0" prefWidth="798.0">
                      <content>
-                        <TableView fx:id="tvFlow" prefHeight="409.0" prefWidth="976.0" tableMenuButtonVisible="true">
+                        <TableView fx:id="tvAnswers" prefHeight="409.0" prefWidth="773.0" tableMenuButtonVisible="true">
                           <columns>
-                            <TableColumn fx:id="tcType" prefWidth="103.0" text="Type" />
-                            <TableColumn fx:id="tcTitle" prefWidth="417.0" text="Title" />
-                              <TableColumn fx:id="tcAuthor" minWidth="0.0" prefWidth="169.0" text="Author" />
-                              <TableColumn fx:id="tcCategory" prefWidth="75.0" text="Category" />
-                              <TableColumn fx:id="tcDate" prefWidth="96.0" text="Date" />
-                              <TableColumn fx:id="tcShowMoreDetails" prefWidth="75.0" />
+                            <TableColumn fx:id="tcFrom" prefWidth="103.0" text="From" />
+                            <TableColumn fx:id="tcDate" prefWidth="417.0" text="Date" />
+                              <TableColumn fx:id="tcButton" minWidth="0.0" prefWidth="169.0" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -57,25 +49,14 @@
                      <image>
                         <Image url="media/flow.png" />
                      </image></ImageView>
-                  <Button layoutX="20.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleSubmitButtonSearch" text="Search" />
-                  <TextField fx:id="searchTextField" layoutX="81.0" layoutY="66.0" prefHeight="31.0" prefWidth="777.0" />
-                  <MenuButton layoutX="853.0" layoutY="66.0" mnemonicParsing="false" text="Filter">
-                     <items>
-                        <CheckMenuItem mnemonicParsing="false" onAction="#cmiShowOnlyMyAdsHandler" text="show only my ads" />
-                     </items>
-                  </MenuButton>
-                  <Button fx:id="bUpdate" layoutX="926.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleSubmitButtonUpdate" text="Update" />
+                  <Button fx:id="bUpdate" layoutX="827.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleSubmitButtonUpdate" text="Update" />
                   <HBox layoutX="369.0" layoutY="20.0">
                      
                            <effect>
                         <DropShadow color="#fcfcfc" />
                      </effect>
                   </HBox>
-                  <Text fx:id="actionCancelFlow" fill="WHITE" layoutX="626.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
+                  <Text fill="WHITE" layoutX="95.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can find all the answers to your ad in the table below" />
                </children>
                <effect>
                   <DropShadow height="32.0" radius="15.5" width="32.0" />
@@ -118,16 +99,12 @@
                   </HBox>
                </children>
             </Pane>
-            <ImageView fitHeight="56.0" fitWidth="54.0" layoutX="46.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="media/flow.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="514.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="media/Red-Logomark.png" />
                </image>
             </ImageView>
+            <Text layoutX="106.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answers" />
          </children>
       </AnchorPane>
    </content>

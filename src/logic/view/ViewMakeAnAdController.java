@@ -49,7 +49,7 @@ public class ViewMakeAnAdController implements Initializable {
 	 @FXML private MenuButton typeButton;
 	 @FXML private MenuButton categoryButton;
 	 @FXML private TextArea bodyTextArea;
-	 String formError = MSGError.ERROR_FORM.getMsg();
+	 String formError = MSG.ERROR_FORM.getMsg();
 	 @FXML private Text actionPrinte;
 	 @FXML private AnchorPane grid;
 	 @FXML private MenuItem profileName;
