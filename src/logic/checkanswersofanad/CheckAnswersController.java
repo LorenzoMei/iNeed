@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import logic.beans.ActionOnAnswerBean;
 import logic.beans.CheckAnswersBean;
 import logic.dao.AdNotFoundException;
+import logic.dao.AnswerNotFoundException;
 import logic.dao.DAOAd;
 import logic.dao.DAOAnswer;
 import logic.dao.DAOFactory;
@@ -39,6 +40,7 @@ public class CheckAnswersController {
 	private DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
 	private DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
 	private DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
+	private DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 	
 	private CheckAnswersController() {
 	}
@@ -48,12 +50,18 @@ public class CheckAnswersController {
 		
 		List <Answer> answersList = new ArrayList<>();
 		
-		DAOAnswer daoAnswers= (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
-		
 		if(answersBean.getAdType() == OfferAd.class.getSimpleName()) 
 			type = OfferAd.class.getSimpleName();
 		
 		daoAnswers.loadAnswers(answersBean.getAdId(), type, answersList);
+		
+		for(int i = 0; i < answersList.size(); i++){
+			if(answersList.get(i).isDenied()) {
+				System.out.println("Nome: " + answersList.get(i).getUsername());
+				answersList.remove(i);
+				i--;
+			}
+		}
 		answersBean.setAnswersList(answersList);
 	}
 	
@@ -137,7 +145,11 @@ public class CheckAnswersController {
 		this.daoFavor.storeFavor(favor);
 	}
 	
-	public void denyAnswer() {
-//		TODO: #224
+	public void denyAnswer(ActionOnAnswerBean bean) throws AnswerNotFoundException {
+		Answer answer = new Answer();
+		this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
+		logger.log(Level.INFO, answer.isDenied().toString());
+		answer.setDenied(true);
+		this.daoAnswers.storeAnswer(answer);
 	}
 }

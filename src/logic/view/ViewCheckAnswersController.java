@@ -37,6 +37,7 @@ import logic.beans.CheckAnswersBean;
 import logic.checkanswersofanad.AnswerAlreadyAcceptedException;
 import logic.checkanswersofanad.CheckAnswersController;
 import logic.checkanswersofanad.RequestAdHasAlreadyAnAnswerAcceptedException;
+import logic.dao.AnswerNotFoundException;
 
 public class ViewCheckAnswersController implements Initializable {
 
@@ -140,7 +141,33 @@ public class ViewCheckAnswersController implements Initializable {
 				
 			}
 			private void bDenyHandler(ActionEvent event) {
-				// TODO: Deny the answer #224
+				ViewCheckAnswers currentView = (ViewCheckAnswers) Context.getReference().getCurrentView();
+				ActionOnAnswerBean bean = new ActionOnAnswerBean();
+				bean.setAnswererUsername((tvAnswers.getItems().get(getIndex()).getAnswerer()));
+				bean.setAnsweredUsername(currentView.getProfileName());
+				bean.setAdId(currentView.getAdId());
+				bean.setAdType(currentView.getAdType());
+				
+				Alert dConfirm = new Alert(AlertType.CONFIRMATION);
+				dConfirm.setTitle(MSG.CONFIRM_DENIED_ANSWER_USER.getMsg());
+				dConfirm.setHeaderText("Are you sure you want denied this user?");
+				dConfirm.setContentText("By confirming you will no longer be able to see this user\nin the answers list. Are you sure?");
+				
+				ButtonType btnConfirm = new ButtonType("Confirm", ButtonData.YES);
+				ButtonType btnCancel = new ButtonType("Cancel", ButtonData.NO);
+				dConfirm.getButtonTypes().setAll(btnConfirm, btnCancel);
+				Optional<ButtonType> result = dConfirm.showAndWait();
+				
+				if (ButtonData.YES.equals(result.get().getButtonData())){
+					try {
+						CheckAnswersController.getInstance().denyAnswer(bean);
+					} catch (AnswerNotFoundException e) {
+						logger.log(Level.SEVERE, e.toString());
+					}
+				}
+				else {
+					return;
+				}
 			}
 		}
 		
