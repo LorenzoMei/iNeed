@@ -35,10 +35,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import logic.beans.LogoutBean;
 import logic.beans.PublishAnAdBean;
-import logic.beans.ViewProfileBean;
-import logic.login.LoginController;
 import logic.publishanad.PublishAnAdController;
 
 
@@ -53,11 +50,8 @@ public class ViewMakeAnAdController implements Initializable {
 	 @FXML private Text actionPrinte;
 	 @FXML private AnchorPane grid;
 	 @FXML private MenuItem profileName;
-//	 ViewProfileBean pBean = new ViewProfileBean();
      PublishAnAdBean adBean = new PublishAnAdBean();
      PublishAnAdController controller = PublishAnAdController.getInstance();
-//     LoginController loginController =  LoginController.getInstance();
-//	 LogoutBean lBean = new LogoutBean();
      private static String type;
      private static String category;
      private static boolean other = false;
@@ -193,7 +187,13 @@ public class ViewMakeAnAdController implements Initializable {
 			 logger.log(Level.INFO,  printThat2 );
 	
 		     
-		     adBean.setType(ViewMakeAnAdController.getType());
+		     if (ViewMakeAnAdController.getType().compareTo("Offerta") == 0) {
+				 adBean.setOfferType();
+
+		     }
+		     else if (ViewMakeAnAdController.getType().compareTo("Richiesta") == 0){
+				 adBean.setRequestType();
+		     }
 			 logger.log(Level.INFO,  "Dopo setType" );
 
 		     adBean.setTitle(titleTextField.getText());

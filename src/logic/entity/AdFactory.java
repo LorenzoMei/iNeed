@@ -12,10 +12,10 @@ public class AdFactory {
 	
 	private AdFactory() {}
 	
-	public Ad typePost (String type) {
-		switch (type) {
-			case "Richiesta" : return new RequestAd();
-			case "Offerta": return new OfferAd();
+	public Ad typePost (Ads adType) {
+		switch (adType) {
+			case REQUEST: return new RequestAd();
+			case OFFER: return new OfferAd();
 			default: return null;
 		}
 	}

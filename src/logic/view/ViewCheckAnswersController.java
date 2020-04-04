@@ -2,6 +2,7 @@ package logic.view;
 
 import java.net.URL;
 import java.text.DateFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,18 +19,24 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
+import logic.beans.ActionOnAnswerBean;
 import logic.beans.CheckAnswersBean;
+import logic.checkanswersofanad.AnswerAlreadyAcceptedException;
 import logic.checkanswersofanad.CheckAnswersController;
+import logic.checkanswersofanad.RequestAdHasAlreadyAnAnswerAcceptedException;
 
 public class ViewCheckAnswersController implements Initializable {
 
@@ -71,13 +78,69 @@ public class ViewCheckAnswersController implements Initializable {
 			}
 			
 			private void bContactUserHandler(ActionEvent event) {
-				// TODO: ContactUser UC
+				// TODO: ContactUser UC #226
 			}
 			private void bAcceptHandler(ActionEvent event) {
-				// TODO: Accept the answer
+				ViewCheckAnswers currentView = (ViewCheckAnswers) Context.getReference().getCurrentView();
+				ActionOnAnswerBean bean = new ActionOnAnswerBean();
+				bean.setAnswererUsername((tvAnswers.getItems().get(getIndex()).getAnswerer()));
+				bean.setAnsweredUsername(currentView.getProfileName());
+				bean.setAdId(currentView.getAdId());
+				bean.setAdType(currentView.getAdType());
+				try {
+					CheckAnswersController.getInstance().acceptAnswer(bean);
+					Alert aSuccess = new Alert(AlertType.INFORMATION);
+					aSuccess.setTitle(MSG.INFO_SUCCESS.getMsg());
+					aSuccess.setHeaderText("You succesfully accepted this answer, nice!");
+					aSuccess.setContentText(String.format(
+							"After %s has done the favor, don't forget to validate it\nin Validate a Favor section.",
+							bean.getAnswererUsername()
+							));
+					aSuccess.setGraphic(new ImageView(Media.DIALOG_INFO_COMPLETEDTASK.getPath()));
+					aSuccess.showAndWait();
+					
+				} catch (RequestAdHasAlreadyAnAnswerAcceptedException e) {
+					logger.log(Level.WARNING, e.toString());
+					Alert aConfirm = new Alert(AlertType.CONFIRMATION);
+					aConfirm.setTitle(MSG.CONFIRM_CHANGE_ANSWER_ACCEPTED.getMsg());
+					aConfirm.setHeaderText("You already accepted another answer for this Request Ad!");
+					aConfirm.setContentText(
+							String.format("You already accepted anwer from user %s in date %s,\nwould you like to accept this one instead?", 
+									e.getOfferer(), 
+									DateFormat.getDateInstance().format(e.getDate().getTime())
+									)
+							);
+					ButtonType btYes = new ButtonType("Yes", ButtonData.YES);
+					ButtonType btNo = new ButtonType("No", ButtonData.NO);
+					aConfirm.getButtonTypes().setAll(btYes, btNo);
+					Optional<ButtonType> result = aConfirm.showAndWait();
+					if (ButtonData.YES.equals(result.get().getButtonData())){
+						try {
+							bean.setConfirmed(true);
+							CheckAnswersController.getInstance().acceptAnswer(bean);
+						} catch (RequestAdHasAlreadyAnAnswerAcceptedException | AnswerAlreadyAcceptedException e1) {
+							logger.log(Level.SEVERE, e.toString());
+						}
+					}
+					else {
+						return;
+					}
+					
+				} catch (AnswerAlreadyAcceptedException e) {
+					logger.log(Level.WARNING, e.toString());
+					Alert aError = new Alert(AlertType.ERROR);
+					aError.setTitle(MSG.ERROR_ALREADY_ACCEPTED.getMsg());
+					aError.setHeaderText("You can't accept more than one time the same answer!");
+					aError.setContentText(String.format(
+							"You already accepted this answer in date: %s",
+							DateFormat.getDateInstance().format(e.getDateOfRequest().getTime())
+							));
+					aError.showAndWait();
+				}
+				
 			}
 			private void bDenyHandler(ActionEvent event) {
-				// TODO: Deny the answer
+				// TODO: Deny the answer #224
 			}
 		}
 		

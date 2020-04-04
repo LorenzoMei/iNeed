@@ -1,18 +1,18 @@
 package logic.beans;
 
+import logic.entity.Ads;
 
 public class PublishAnAdBean {
 	private String ownerUsername;
 	private String title;
 	private String body;
-	private String type;
+	private Ads type;
 	private String category;
 	
 	public PublishAnAdBean() {
 		this.ownerUsername = "";
 		this.title = "";
 		this.body = "";
-		this.type = "";
 		this.category = "";
 	}
 	 //sets
@@ -29,7 +29,11 @@ public class PublishAnAdBean {
 	}
 	
 	public void setType(String type) {
-		this.type = type;
+		for (Ads t : Ads.values()) {
+			if (t.getName().compareTo(type) == 0) {
+				this.type = t;
+			}
+		}
 	}
 	
 	public void setCategory(String category) {
@@ -50,11 +54,16 @@ public class PublishAnAdBean {
 	}
 	
 	public String getType() {
-		return this.type;
+		return this.type.getName();
 	}
 	
 	public String getCategory() {
 		return this.category;
 	}
-	
+	public void setRequestType() {
+		this.type = Ads.REQUEST;
+	}
+	public void setOfferType() {
+		this.type = Ads.OFFER;
+	}
 }

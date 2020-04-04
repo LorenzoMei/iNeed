@@ -4,6 +4,7 @@ import logic.dao.DAOFactory;
 import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
 import logic.entity.AdFactory;
+import logic.entity.Ads;
 import logic.entity.Data;
 
 import java.lang.reflect.InvocationTargetException;
@@ -27,7 +28,13 @@ public class PublishAnAdController {
 	
 	public int createAd(PublishAnAdBean publishAdBean) throws IllegalAccessException, InvocationTargetException {
 		
-		Ad ad = AdFactory.getReference().typePost(publishAdBean.getType());
+		Ad ad = null;
+		for (Ads t : Ads.values()) {
+			if (t.getName().compareTo(publishAdBean.getType()) == 0) {
+				ad = AdFactory.getReference().typePost(t);
+				break;
+			}
+		}
 		
 		Method[] methodsBean = publishAdBean.getClass().getMethods();
 		Method[] methodsEntity = ad.getClass().getMethods();

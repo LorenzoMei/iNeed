@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import logic.entity.Ad;
 import logic.entity.Favor;
 import logic.entity.User;
 
@@ -156,5 +157,26 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		}
 		
 	}
+	@Override
+	public List<Favor> loadFavorOfRequestAd(User requester, Ad ad){
+		List<Favor> favors = this.loadFavors(requester);
+		for (Favor f : favors) {
+			if (f.getAd().getClass().getSimpleName().compareTo(ad.getClass().getSimpleName()) != 0 
+					|| f.getAd().getId() != ad.getId()) {
+				favors.remove(f);
+			}
+		}
+		return favors;
+	}
 
+	@Override
+	public void deleteFavor(User offerer, User requester, Calendar dateOfRequest) {
+		DateFormat dateFormatter = new SimpleDateFormat(DAOSerialize.DATE_TIME_FORMAT_STANDARD);
+		List <String> primaryKeyValues = new ArrayList<>();
+		primaryKeyValues.add(offerer.getUsername());
+		primaryKeyValues.add(requester.getUsername());
+		primaryKeyValues.add(dateFormatter.format(dateOfRequest.getTime()));
+		this.delete(new Favor(), primaryKeyValues);
+		
+	}
 }

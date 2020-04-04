@@ -45,6 +45,7 @@ public abstract class DAOSerialize {
 			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 		}
 		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
+		logger.log(Level.INFO, stringBuilder.toString());
 		return stringBuilder.toString();
 	}
 	
@@ -70,5 +71,9 @@ public abstract class DAOSerialize {
 		catch (FileNotFoundException e) {
 			throw new ElementInDBNotFoundException(this.getPath(obj, primaryKeyValues), e);
 		}
+	}
+	protected void delete(Object obj, List <String> primaryKeyValues) {
+		File target = new File (this.getPath(obj, primaryKeyValues));
+		target.delete();			
 	}
 }

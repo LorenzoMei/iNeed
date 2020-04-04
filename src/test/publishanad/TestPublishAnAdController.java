@@ -11,6 +11,7 @@ import logic.dao.DAOAd;
 import logic.dao.DAOFactory;
 import logic.dao.DAOSupportedEntities;
 import logic.entity.Ad;
+import logic.entity.Ads;
 import logic.entity.RequestAd;
 import logic.entity.User;
 import logic.publishanad.PublishAnAdController;
@@ -33,7 +34,7 @@ public class TestPublishAnAdController {
 		publishAdBean.setOwnerUsername(user.getUsername());
 		publishAdBean.setTitle(title);
 		publishAdBean.setBody(body);
-		publishAdBean.setType("Richiesta");
+		publishAdBean.setType(Ads.REQUEST.getName());
 		
 		PublishAnAdController controller = PublishAnAdController.getInstance();
 		int id = controller.createAd(publishAdBean);
