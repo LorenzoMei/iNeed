@@ -42,10 +42,13 @@ public class ReflectionMiscellaneous {
 		String setAttrName = "Searching method " + getOrSet + " for: " + attrName;
 		logger.log(Level.INFO, setAttrName);
 		for (int j = 0; j < methods.length; j ++) {
-			if (methods[j].getName().contains(getOrSet)
+			if ((methods[j].getName().contains(getOrSet)
 //					&& methods[j].getName().contains() 
 					&& methods[j].getName().substring(3).compareTo(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) == 0
-					&& !methods[j].isSynthetic()) {
+					&& !methods[j].isSynthetic()) || (methods[j].getName().contains(getOrSet)
+							&& methods[j].getName().substring(2).compareTo(attrName.substring(0, 1).toUpperCase() + attrName.substring(1)) == 0
+							&& !methods[j].isSynthetic())
+					) {
 				logger.log(Level.INFO, methods[j].getName());
 				return methods[j];
 			}
