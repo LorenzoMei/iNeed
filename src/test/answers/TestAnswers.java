@@ -1,5 +1,6 @@
 package test.answers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,9 +26,18 @@ public class TestAnswers {
 		candidati[1] = "Pluto";
 		candidati[2] = "Paperino";
 		
+		int idAd = 1;  
+		String typeAd = "RequestAd";
+		
+		for(int i = 0; i < candidati.length; i++) {
+			File deliteFile =  new File("db/serialized/Answer/" + idAd + "#" + candidati[i] + "#" + typeAd + "#.ser");
+			deliteFile.delete();
+		}
+		
 		AnswerAnAdBean answerAnAdBean = new AnswerAnAdBean();
-		answerAnAdBean.setId(1);
-		answerAnAdBean.setType("RequestAd");
+		
+		answerAnAdBean.setId(idAd);
+		answerAnAdBean.setType(typeAd);
 		
 		AnswerAnAdController controller = AnswerAnAdController.getInstance();	
 		
