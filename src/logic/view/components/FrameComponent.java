@@ -16,7 +16,7 @@ public class FrameComponent implements ViewComponent{
 	@Override
 	public Node buildComponent() {
 		String toPrintFrame = "In frame component ";
-		String pathFrame = "src/logic/viewcomponents/fxml_frame.fxml";
+		String pathFrame = "bin/logic/viewcomponents/fxml_frame.fxml";
 		FXMLLoader frameLoader = new FXMLLoader();
 		BorderPane frame = new BorderPane();
 		frameLoader.setRoot(frame);

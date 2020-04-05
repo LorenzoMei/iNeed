@@ -18,7 +18,7 @@ public class ViewFlowComponent implements ViewComponent {
 	@Override
 	public Node buildComponent() {
 		String toPrintVF = "In ViewFlowComponenet";
-		String pathVF ="src/logic/view/fxml_flow.fxml";
+		String pathVF ="bin/logic/view/fxml_flow.fxml";
 		FXMLLoader viewFlowLoader = new FXMLLoader();
 		ScrollPane viewFlow = new ScrollPane();
 		

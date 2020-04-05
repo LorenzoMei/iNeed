@@ -16,7 +16,7 @@ public class UserComponent implements ViewComponent{
 	@Override
 	public Node buildComponent() {
 		String toPrintU = "In ViewUserComponenet";
-		String pathU = "src/logic/view/fxml_user.fxml";
+		String pathU = "bin/logic/view/fxml_user.fxml";
 		FXMLLoader viewUserLoader = new FXMLLoader();
 		ScrollPane viewUser = new ScrollPane();
 		

@@ -17,7 +17,7 @@ public class MakeAnAdComponent implements ViewComponent {
 		@Override
 		public Node buildComponent() {
 			String toPrintMAA = "In MakeAnAdComponenet " ;
-			String pathMAA = "src/logic/view/fxml_makeanad.fxml";
+			String pathMAA = "bin/logic/view/fxml_makeanad.fxml";
 			FXMLLoader makeAnAdLoader = new FXMLLoader();
 			ScrollPane makeAnAd = new ScrollPane();
 			

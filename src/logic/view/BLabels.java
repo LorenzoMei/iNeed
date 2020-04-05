@@ -4,11 +4,12 @@ package logic.view;
 public enum BLabels {
 		
 	ACCEPT ("Accept"),	
-	CONTACTUSER ("Contact User"),
-	DENY ("Deny"),
 	ANSWER("Answer"),
 	CHECKANSWERS("Check Answers"),
-	SHOWDETAILS ("Show More")
+	CONTACTUSER ("Contact User"),
+	DENY ("Deny"),
+	OK("Ok"),
+	SHOWDETAILS ("Show More"),
 	;
 	
 	

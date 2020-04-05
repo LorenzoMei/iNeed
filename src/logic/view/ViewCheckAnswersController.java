@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,21 +23,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import logic.beans.ActionOnAnswerBean;
 import logic.beans.CheckAnswersBean;
+import logic.beans.ContactInfo;
+import logic.beans.RetrieveContactInfoBean;
 import logic.checkanswersofanad.AnswerAlreadyAcceptedException;
 import logic.checkanswersofanad.CheckAnswersController;
 import logic.checkanswersofanad.RequestAdHasAlreadyAnAnswerAcceptedException;
+import logic.contactuser.ContactUserController;
 import logic.dao.AnswerNotFoundException;
 
 public class ViewCheckAnswersController implements Initializable {
@@ -79,7 +90,39 @@ public class ViewCheckAnswersController implements Initializable {
 			}
 			
 			private void bContactUserHandler(ActionEvent event) {
-				// TODO: ContactUser UC #226
+//				// TODO: ContactUser UC #226
+				AnswerDetailsBean selected = tvAnswers.getItems().get(getIndex());
+				RetrieveContactInfoBean retrieveContactInfoBean = new RetrieveContactInfoBean();
+				retrieveContactInfoBean.setUsername(selected.getAnswerer());
+				ContactUserController.getInstance().retrieveContactUserInfo(retrieveContactInfoBean);
+				ImageView iv = new ImageView();
+				iv.setImage(new Image(Media.DIALOG_INFO_CONTACTUSER.getPath()));
+//				TextInputDialog tidContactInfo= new TextInputDialog();
+//				tidContactInfo.setGraphic(iv);
+//				tidContactInfo.setTitle(MSG.INFO_CONTACTUSER.getMsg());
+//				tidContactInfo.setHeaderText("User Contact Info");
+//				tidContactInfo.setContentText(
+//				tidContactInfo.getEditor().setEditable(false);
+//				tidContactInfo.showAndWait();
+				Dialog<Boolean> dialog = new Dialog<>();
+				dialog.setGraphic(iv);
+				dialog.setTitle(MSG.INFO_CONTACTUSER.getMsg());
+				DialogPane dpContactUser = new DialogPane();
+				VBox vb = new VBox();
+				HBox hb = new HBox();
+				Label lContentText = new Label(String.format("You can contact %s using these info: ",
+						selected.getAnswerer()
+							));
+				TextField tfMailAddress = new TextField();
+				tfMailAddress.setText(retrieveContactInfoBean.getInfo(ContactInfo.MAIL));
+				tfMailAddress.setEditable(false);
+				vb.getChildren().addAll(lContentText, tfMailAddress);
+				hb.getChildren().addAll(vb, iv);
+				dpContactUser.setContent(hb);
+				dpContactUser.getButtonTypes().add(ButtonType.OK);
+				dialog.setDialogPane(dpContactUser);
+				dialog.showAndWait();
+				
 			}
 			private void bAcceptHandler(ActionEvent event) {
 				ViewCheckAnswers currentView = (ViewCheckAnswers) Context.getReference().getCurrentView();

@@ -16,7 +16,7 @@ public class CurriculumMainPageCompononent implements ViewComponent{
 		@Override
 		public Node buildComponent() {
 		String toPrintCVM = "In curriculumMainPageComponenet ";
-		String pathCVM = "src/logic/view/fxml_curriculummain.fxml";
+		String pathCVM = "bin/logic/view/fxml_curriculummain.fxml";
 			FXMLLoader curriculumMainPageLoader = new FXMLLoader();
 			ScrollPane curriculumMainPage = new ScrollPane();
 			

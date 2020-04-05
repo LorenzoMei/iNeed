@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import logic.beans.LogoutBean;
-import logic.beans.ViewProfileBean;
 import logic.login.LoginController;
 import logic.view.Context;
 import logic.view.View;
@@ -21,7 +20,6 @@ import logic.view.ViewMakeAnAd;
 import logic.view.ViewMap;
 import logic.view.ViewUser;
 import logic.view.ViewValidateAFavor;
-import logic.viewprofile.ViewProfileController;
 
 public class ToolBarController implements Initializable {
 

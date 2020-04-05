@@ -17,7 +17,7 @@ public class LoginComponent implements ViewComponent{
 	@Override
 	public Node buildComponent() {
 		String toPrintL = "In LoginComponenet ";
-		String pathL = "src/logic/view/fxml_login.fxml";
+		String pathL = "bin/logic/view/fxml_login.fxml";
 		FXMLLoader loginLoader = new FXMLLoader();
 		ScrollPane login = new ScrollPane();
 		

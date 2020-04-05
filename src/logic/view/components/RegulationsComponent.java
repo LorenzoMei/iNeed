@@ -16,7 +16,7 @@ public class RegulationsComponent implements ViewComponent{
 		@Override
 		public Node buildComponent() {
 			String toPrintR = "In RegulationsComponenet";
-			String pathR = "src/logic/view/fxml_regulations.fxml";
+			String pathR = "bin/logic/view/fxml_regulations.fxml";
 			FXMLLoader regulationsLoader = new FXMLLoader();
 			ScrollPane regulations = new ScrollPane();
 			

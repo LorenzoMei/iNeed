@@ -8,14 +8,19 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import logic.beans.ContactInfo;
 import logic.beans.ReadMessagesBean;
 import logic.beans.WriteMessageBean;
+import logic.beans.RetrieveContactInfoBean;
 import logic.dao.DAOFactory;
 import logic.dao.DAOMessage;
 import logic.dao.DAOSupportedEntities;
+import logic.dao.DAOUser;
 import logic.dao.MessageNotFoundException;
+import logic.dao.UserNotFoundException;
 import logic.entity.Data;
 import logic.entity.Message;
+import logic.entity.User;
 
 public class ContactUserController{
 	
@@ -29,6 +34,17 @@ public class ContactUserController{
 	}
 	
 	private ContactUserController() {		
+	}
+	
+	public void retrieveContactUserInfo(RetrieveContactInfoBean bean) {
+		try {
+			DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
+			User userToContact = new User();
+			daoUser.loadUser(userToContact, bean.getUsername());
+			bean.putInfo(ContactInfo.MAIL, userToContact.getEmail());
+		} catch (UserNotFoundException e) {
+			logger.log(Level.SEVERE, e.toString());
+		}
 	}
 	
 	public void writeMessage(WriteMessageBean contactBean) throws IllegalAccessException, InvocationTargetException {

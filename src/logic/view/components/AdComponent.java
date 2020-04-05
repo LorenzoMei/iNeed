@@ -16,7 +16,7 @@ Logger loggerAd = Logger.getLogger(this.getClass().getName());
 	@Override
 	public Node buildComponent() {
 		String toPrintAd = "In AdComponent ";
-		String pathAd = "src/logic/view/fxml_ad.fxml";
+		String pathAd = "bin/logic/view/fxml_ad.fxml";
 		FXMLLoader adLoader = new FXMLLoader();
 		ScrollPane ad = new ScrollPane();
 		

@@ -16,7 +16,7 @@ public class ViewMapComponent implements ViewComponent {
 	@Override
 	public Node buildComponent() {
 		String toPrintM = "In ViewMapComponent ";
-		String pathM = "src/logic/view/fxml_map.fxml";
+		String pathM = "bin/logic/view/fxml_map.fxml";
 		FXMLLoader viewMapwLoader = new FXMLLoader();
 		ScrollPane viewMap = new ScrollPane();
 		

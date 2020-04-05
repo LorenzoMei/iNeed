@@ -16,7 +16,7 @@ public class SignUpComponent implements ViewComponent{
 	@Override
 	public Node buildComponent() {
 		String toPrintS = "In SigunUpComponenet";
-		String pathS = "src/logic/view/fxml_signup.fxml";
+		String pathS = "bin/logic/view/fxml_signup.fxml";
 		FXMLLoader signupLoader = new FXMLLoader();
 		ScrollPane signup = new ScrollPane();
 		
