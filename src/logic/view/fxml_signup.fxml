@@ -84,7 +84,7 @@
                   <Label fx:id="username" contentDisplay="TOP" prefHeight="21.0" prefWidth="121.0" text="    Username:" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Label fx:id="password" contentDisplay="TOP" prefHeight="47.0" prefWidth="121.0" text="    Password&#10;    Verificaiton:" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="passwordVTextField" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="passwordVTextField" onAction="#handleSubmitButtonSignUp"  GridPane.columnIndex="3" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <Text fill="#515757" layoutX="404.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to iNeed!&#10;SignUp with:" textAlignment="CENTER">

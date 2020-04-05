@@ -72,7 +72,7 @@
                               <Label text="Username:" textFill="WHITE" />
                               <TextField fx:id="userNameTextField" GridPane.columnIndex="1" />
                               <Label text="Password: " textFill="WHITE" GridPane.rowIndex="1" />
-                              <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <PasswordField fx:id="passwordTextField" onAction="#handleSubmitButtonLogIn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
