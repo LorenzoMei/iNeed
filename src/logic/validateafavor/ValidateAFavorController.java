@@ -50,7 +50,7 @@ public class ValidateAFavorController {
 		Favor favorToValidate = new Favor();
 		logger.log(Level.INFO, "loading favor with requester, offerer, date: " + requester.getUsername() + " " + offerer.getUsername() + " " + bean.getDateOfRequest().getTime().toString());
 		daoFavor.loadFavor(favorToValidate, offerer, requester, bean.getDateOfRequest());
-		logger.log(Level.INFO, "validating favor with requester, offerer, date: " + favorToValidate.getRequester().getUsername() + " " + favorToValidate.getOfferer().getUsername() + " " + favorToValidate.getDateOfRequest().getTime().toString());
+		logger.log(Level.INFO, "validating favor with requester, offerer, date: " + favorToValidate.getRequesterUsername() + " " + favorToValidate.getOffererUsername() + " " + favorToValidate.getDateOfRequest().getTime().toString());
 		favorToValidate.setDateOfValidation(Calendar.getInstance());
 		offerer.gainAToken();
 		daoFavor.storeFavor(favorToValidate);

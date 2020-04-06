@@ -90,20 +90,12 @@ public class ViewCheckAnswersController implements Initializable {
 			}
 			
 			private void bContactUserHandler(ActionEvent event) {
-//				// TODO: ContactUser UC #226
 				AnswerDetailsBean selected = tvAnswers.getItems().get(getIndex());
 				RetrieveContactInfoBean retrieveContactInfoBean = new RetrieveContactInfoBean();
 				retrieveContactInfoBean.setUsername(selected.getAnswerer());
 				ContactUserController.getInstance().retrieveContactUserInfo(retrieveContactInfoBean);
 				ImageView iv = new ImageView();
 				iv.setImage(new Image(Media.DIALOG_INFO_CONTACTUSER.getPath()));
-//				TextInputDialog tidContactInfo= new TextInputDialog();
-//				tidContactInfo.setGraphic(iv);
-//				tidContactInfo.setTitle(MSG.INFO_CONTACTUSER.getMsg());
-//				tidContactInfo.setHeaderText("User Contact Info");
-//				tidContactInfo.setContentText(
-//				tidContactInfo.getEditor().setEditable(false);
-//				tidContactInfo.showAndWait();
 				Dialog<Boolean> dialog = new Dialog<>();
 				dialog.setGraphic(iv);
 				dialog.setTitle(MSG.INFO_CONTACTUSER.getMsg());
@@ -150,7 +142,7 @@ public class ViewCheckAnswersController implements Initializable {
 					aConfirm.setHeaderText("You already accepted another answer for this Request Ad!");
 					aConfirm.setContentText(
 							String.format("You already accepted anwer from user %s in date %s,\nwould you like to accept this one instead?", 
-									e.getOfferer(), 
+									e.getOffererUsername(), 
 									DateFormat.getDateInstance().format(e.getDate().getTime())
 									)
 							);
@@ -193,8 +185,8 @@ public class ViewCheckAnswersController implements Initializable {
 				
 				Alert dConfirm = new Alert(AlertType.CONFIRMATION);
 				dConfirm.setTitle(MSG.CONFIRM_DENIED_ANSWER_USER.getMsg());
-				dConfirm.setHeaderText("Are you sure you want denied this user?");
-				dConfirm.setContentText("By confirming you will no longer be able to see this user\nin the answers list. Are you sure?");
+				dConfirm.setHeaderText("Are you sure you want to Deny this Answer?");
+				dConfirm.setContentText("By confirming you will no longer be able to see this user\nin the answers list.\nIf this answer was first accepted, the respective Favor\nwill be deleted, so that you can accept another\nanswer.\nAre you sure?");
 				
 				ButtonType btnConfirm = new ButtonType("Confirm", ButtonData.YES);
 				ButtonType btnCancel = new ButtonType("Cancel", ButtonData.NO);
@@ -204,6 +196,7 @@ public class ViewCheckAnswersController implements Initializable {
 				if (ButtonData.YES.equals(result.get().getButtonData())){
 					try {
 						CheckAnswersController.getInstance().denyAnswer(bean);
+						bUpdate.fire();
 					} catch (AnswerNotFoundException e) {
 						logger.log(Level.SEVERE, e.toString());
 					}

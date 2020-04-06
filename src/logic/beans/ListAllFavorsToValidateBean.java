@@ -17,7 +17,7 @@ public class ListAllFavorsToValidateBean {
 	public List<String> getAllOfferersUsername(){
 		List <String> allOfferersUsername = new ArrayList<>();
 		for (Favor favor : this.favorsToValidate) {
-			allOfferersUsername.add(favor.getOfferer().getUsername());
+			allOfferersUsername.add(favor.getOffererUsername());
 		}
 		return allOfferersUsername;
 	}
@@ -25,7 +25,7 @@ public class ListAllFavorsToValidateBean {
 	public List<String> getAllRequestersUsername(){
 		List <String> allRequestersUsername = new ArrayList<>();
 		for (Favor favor : this.favorsToValidate) {
-			allRequestersUsername.add(favor.getRequester().getUsername());
+			allRequestersUsername.add(favor.getRequesterUsername());
 		}
 		return allRequestersUsername;
 	}

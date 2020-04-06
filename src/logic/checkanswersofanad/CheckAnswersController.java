@@ -97,31 +97,41 @@ public class CheckAnswersController {
 		}
 	}
 	
-	private void changeAcceptedAnswer(Favor favor, User newOfferer) {
+	private void changeAcceptedAnswer(Favor oldFavor, User newOfferer) {
 //		replace current favor with a new one
 		logger.log(Level.INFO, String.format("changeAcceptedAnswer invoked"));
-		this.daoFavor.deleteFavor(favor.getOfferer(), favor.getRequester(), favor.getDateOfRequest());
+		User oldOfferer = new User();
+		User requester = new User();
+		try {
+			daoUser.loadUser(oldOfferer, oldFavor.getOffererUsername());
+			daoUser.loadUser(requester, oldFavor.getRequesterUsername());
+		} catch (UserNotFoundException e) {
+			logger.log(Level.SEVERE, e.toString());
+		}
+		this.daoFavor.deleteFavor(oldOfferer, requester, oldFavor.getDateOfRequest());
 		Favor newFavor = new Favor();
-		newFavor.setAd(favor.getAd());
-		newFavor.setOfferer(newOfferer);
-		newFavor.setRequester(favor.getRequester());
+		newFavor.setAdId(oldFavor.getAdId());
+		newFavor.setAdType(oldFavor.getAdType());
+		newFavor.setOffererUsername(newOfferer.getUsername());
+		newFavor.setRequesterUsername(oldFavor.getRequesterUsername());
 		newFavor.setDateOfRequest(Calendar.getInstance());
 		this.daoFavor.storeFavor(newFavor);
 	}
 	
 	private void acceptRequestAnswer(ActionOnAnswerBean bean, User offerer, User requester, Ad ad) throws AnswerAlreadyAcceptedException, RequestAdHasAlreadyAnAnswerAcceptedException {
-		List<Favor> favors = this.daoFavor.loadFavorOfRequestAd(requester, ad);
+		List<Favor> favors = this.daoFavor.loadFavorsByAd(requester, ad);
 		if (favors.size() == 0) { 
 			logger.log(Level.INFO, "storing favor");
 			Favor favor = new Favor();
-			favor.setAd(ad);
-			favor.setOfferer(offerer);
-			favor.setRequester(requester);
+			favor.setAdId(ad.getId());
+			favor.setAdType(ad.getType());
+			favor.setOffererUsername(offerer.getUsername());
+			favor.setRequesterUsername(requester.getUsername());
 			favor.setDateOfRequest(Calendar.getInstance());
 			this.daoFavor.storeFavor(favor);
 		}
 		else {
-			if (favors.get(0).getOfferer().getUsername().compareTo(offerer.getUsername()) == 0) {
+			if (favors.get(0).getOffererUsername().compareTo(offerer.getUsername()) == 0) {
 				throw new AnswerAlreadyAcceptedException(favors.get(0).getDateOfRequest());
 			}
 			else {
@@ -138,18 +148,58 @@ public class CheckAnswersController {
 	
 	private void acceptOfferAnswer(ActionOnAnswerBean bean, User offerer, User requester, Ad ad) { 
 		Favor favor = new Favor();
-		favor.setAd(ad);
-		favor.setOfferer(offerer);
-		favor.setRequester(requester);
+		favor.setAdId(ad.getId());
+		favor.setAdType(ad.getType());
+		favor.setOffererUsername(offerer.getUsername());
+		favor.setRequesterUsername(requester.getUsername());
 		favor.setDateOfRequest(Calendar.getInstance());
 		this.daoFavor.storeFavor(favor);
 	}
 	
 	public void denyAnswer(ActionOnAnswerBean bean) throws AnswerNotFoundException {
-		Answer answer = new Answer();
-		this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
-		logger.log(Level.INFO, answer.isDenied().toString());
-		answer.setDenied(true);
-		this.daoAnswers.storeAnswer(answer);
+		
+		// PLEASE NOTE: this method assumes that currently there can't be more than one answer with same answerer and answered. This is not ideal, so it may change in the future.
+						
+		try {
+			Answer answer = new Answer();
+			User answerer = new User();
+			User answered = new User();
+			Ad ad = null;
+			List<Favor> favors = null;
+			User offererFavorToDelete = new User();
+			User requesterFavorToDelete = new User();
+			for (Ads t : Ads.values()) {
+				if (t.getName().compareTo(bean.getAdType()) == 0) {
+					ad = AdFactory.getReference().typePost(t);
+					break;
+				}
+			}
+			this.daoUser.loadUser(answerer, bean.getAnswererUsername());
+			this.daoUser.loadUser(answered, bean.getAnsweredUsername());
+			this.daoAd.loadAd(ad, bean.getAdId());
+			if (bean.getAdType().compareTo(Ads.REQUEST.getName()) == 0) {
+				favors = this.daoFavor.loadFavorsByAd(answered, answerer, ad);
+			}
+			else {
+				favors = this.daoFavor.loadFavorsByAd(answerer, answered, ad);
+			}
+			try {
+				this.daoUser.loadUser(requesterFavorToDelete, favors.get(0).getRequesterUsername());
+				this.daoUser.loadUser(offererFavorToDelete, favors.get(0).getOffererUsername());
+				this.daoFavor.deleteFavor(offererFavorToDelete, requesterFavorToDelete, favors.get(0).getDateOfRequest());
+			} catch (IndexOutOfBoundsException e) {}
+			finally {
+				this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
+				logger.log(Level.INFO, answer.isDenied().toString());
+				answer.setDenied(true);
+				this.daoAnswers.storeAnswer(answer);
+			}	
+		} catch (UserNotFoundException e) {
+			logger.log(Level.SEVERE, e.toString());
+		} catch (AdNotFoundException e) {
+			logger.log(Level.SEVERE, e.toString());
+		}
+		
+		
 	}
 }

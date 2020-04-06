@@ -37,6 +37,9 @@ public abstract class Ad {
 	
 	
 	//all the gets
+	public String getType() {
+		return this.getClass().getSimpleName();
+	}
 	public int getId() {
 		return id;
 	}

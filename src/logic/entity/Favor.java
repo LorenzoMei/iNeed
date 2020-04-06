@@ -3,21 +3,45 @@ package logic.entity;
 import java.util.Calendar;
 
 public class Favor {
-	private Ad ad;
-	private User offerer;
-	private User requester;
+	private int adId ;
+	private String adType;
+	private String offererUsername;
+	private String requesterUsername;
 	private Calendar dateOfRequest;
 	private Calendar dateOfDue;
 	private Calendar dateOfValidation;
-	
-	public void setAd(Ad ad) {
-		this.ad = ad;
+	public int getAdId() {
+		return adId;
 	}
-	public void setOfferer(User offerer) {
-		this.offerer = offerer;
+	public String getAdType() {
+		return adType;
 	}
-	public void setRequester(User requester) {
-		this.requester = requester;
+	public String getOffererUsername() {
+		return offererUsername;
+	}
+	public String getRequesterUsername() {
+		return requesterUsername;
+	}
+	public Calendar getDateOfRequest() {
+		return dateOfRequest;
+	}
+	public Calendar getDateOfDue() {
+		return dateOfDue;
+	}
+	public Calendar getDateOfValidation() {
+		return dateOfValidation;
+	}
+	public void setAdId(int adId) {
+		this.adId = adId;
+	}
+	public void setAdType(String adType) {
+		this.adType = adType;
+	}
+	public void setOffererUsername(String offererUsername) {
+		this.offererUsername = offererUsername;
+	}
+	public void setRequesterUsername(String requesterUsername) {
+		this.requesterUsername = requesterUsername;
 	}
 	public void setDateOfRequest(Calendar dateOfRequest) {
 		this.dateOfRequest = dateOfRequest;
@@ -29,22 +53,5 @@ public class Favor {
 		this.dateOfValidation = dateOfValidation;
 	}
 	
-	public Ad getAd() {
-		return this.ad;
-	}
-	public User getOfferer() {
-		return this.offerer;
-	}
-	public User getRequester() {
-		return this.requester;
-	}
-	public Calendar getDateOfRequest() {
-		return this.dateOfRequest;
-	}
-	public Calendar getDateOfDue() {
-		return this.dateOfDue;
-	}
-	public Calendar getDateOfValidation() {
-		return this.dateOfValidation;
-	}
+	
 }

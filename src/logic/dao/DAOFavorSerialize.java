@@ -36,8 +36,8 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	public void storeFavor(Favor favor) {
 		DateFormat dateFormatter = new SimpleDateFormat(DAOSerialize.DATE_TIME_FORMAT_STANDARD);
 		List <String> primaryKeyValues = new ArrayList<>();
-		primaryKeyValues.add(favor.getOfferer().getUsername());
-		primaryKeyValues.add(favor.getRequester().getUsername());
+		primaryKeyValues.add(favor.getOffererUsername());
+		primaryKeyValues.add(favor.getRequesterUsername());
 		primaryKeyValues.add(dateFormatter.format(favor.getDateOfRequest().getTime()));
 		try {
 			this.store(favor, primaryKeyValues);
@@ -158,15 +158,25 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		
 	}
 	@Override
-	public List<Favor> loadFavorOfRequestAd(User requester, Ad ad){
+	public List<Favor> loadFavorsByAd(User requester, Ad ad){
 		List<Favor> favors = this.loadFavors(requester);
+		this.removeFavorsOfOtherAds(favors, ad);
+		return favors;
+	}
+	@Override
+	public List<Favor> loadFavorsByAd(User requester, User offerer, Ad ad){
+		List<Favor> favors = this.loadFavors(requester, offerer);
+		this.removeFavorsOfOtherAds(favors, ad);
+		return favors;
+	}
+	
+	private void removeFavorsOfOtherAds(List<Favor> favors, Ad ad) {
 		for (Favor f : favors) {
-			if (f.getAd().getClass().getSimpleName().compareTo(ad.getClass().getSimpleName()) != 0 
-					|| f.getAd().getId() != ad.getId()) {
+			if (f.getAdType().compareTo(ad.getClass().getSimpleName()) != 0 
+					|| f.getAdId() != ad.getId()) {
 				favors.remove(f);
 			}
 		}
-		return favors;
 	}
 
 	@Override

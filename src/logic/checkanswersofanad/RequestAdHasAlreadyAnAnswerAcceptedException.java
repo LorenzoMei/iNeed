@@ -15,11 +15,11 @@ public class RequestAdHasAlreadyAnAnswerAcceptedException extends Exception {
 		this.favor = favor;
 	}
 	
-	public String getOfferer() {
-		return this.favor.getOfferer().getUsername();
+	public String getOffererUsername() {
+		return this.favor.getOffererUsername();
 	}
-	public String getRequester() {
-		return this.favor.getRequester().getUsername();
+	public String getRequesterUsername() {
+		return this.favor.getRequesterUsername();
 	}
 	public Calendar getDate() {
 		return this.favor.getDateOfRequest();

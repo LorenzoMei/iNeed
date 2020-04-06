@@ -35,8 +35,8 @@ public class TestValidateAFavorController {
 		}
 		Favor[] favors = {new Favor(),new Favor(),new Favor(),new Favor() };
 		for (int i = 0; i < favors.length; i ++) {
-			favors[i].setOfferer(offererThenRequester[0]);
-			favors[i].setRequester(offererThenRequester[1]);
+			favors[i].setOffererUsername(offererThenRequester[0].getUsername());
+			favors[i].setRequesterUsername(offererThenRequester[1].getUsername());
 			dateOfRequest.set(Calendar.YEAR, dateOfRequest.get(Calendar.YEAR) + i);
 			favors[i].setDateOfRequest(dateOfRequest);
 			daoFavor.storeFavor(favors[i]);

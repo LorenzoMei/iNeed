@@ -12,5 +12,6 @@ public interface DAOFavor {
 	public List<Favor> loadFavors(User offerer, User requester, Calendar dateOfRequest);
 	public void loadFavor (Favor favor, User offerer, User requester, Calendar dateOfRequest) throws FavorNotFoundException;
 	public void deleteFavor(User offerer, User requester, Calendar dateOfRequest);
-	List<Favor> loadFavorOfRequestAd(User requester, Ad ad);
+	List<Favor> loadFavorsByAd(User requester, Ad ad);
+	List<Favor> loadFavorsByAd(User requester, User offerer, Ad ad);
 }
