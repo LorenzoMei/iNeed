@@ -10,6 +10,7 @@ public enum BLabels {
 	DENY ("Deny"),
 	OK("Ok"),
 	SHOWDETAILS ("Show More"),
+	VALIDATE ("Validate")
 	;
 	
 	

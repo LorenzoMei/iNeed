@@ -9,7 +9,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import logic.view.components.ToolBarComponent;
-import logic.view.components.ViewValidateAFavorComponent;
+import logic.view.components.ValidateAFavorComponent;
 
 
 
@@ -21,7 +21,7 @@ public class ViewValidateAFavor extends View {
 		public Scene buildScene() {
 			BorderPane  root = new BorderPane();
 			ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-			ScrollPane viewValidateAFavor = (ScrollPane) (new ViewValidateAFavorComponent()).buildComponent();
+			ScrollPane viewValidateAFavor = (ScrollPane) (new ValidateAFavorComponent()).buildComponent();
 			loggerView.log(Level.INFO,"In ViewMap");
 			
 			VBox vBox = new VBox();

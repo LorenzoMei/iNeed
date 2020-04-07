@@ -26,11 +26,6 @@ public class ToolBarController implements Initializable {
 
 	
 	 Logger logger = Logger.getLogger(this.getClass().getName());
-//	 ViewProfileBean pBean = new ViewProfileBean();
-//	 ViewProfileController viewProfileController =  ViewProfileController.getInstance();
-//	 LoginController loginController =  LoginController.getInstance();
-//	 LogoutBean lBean = new LogoutBean(); 
-//	 public View nextView = (View) new ViewFlow();
 
 	 @FXML private MenuItem profileName;
 	 @FXML ImageView logoTB;

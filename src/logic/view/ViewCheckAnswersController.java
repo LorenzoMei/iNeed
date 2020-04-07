@@ -30,7 +30,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -129,7 +128,8 @@ public class ViewCheckAnswersController implements Initializable {
 					aSuccess.setTitle(MSG.INFO_SUCCESS.getMsg());
 					aSuccess.setHeaderText("You succesfully accepted this answer, nice!");
 					aSuccess.setContentText(String.format(
-							"After %s has done the favor, don't forget to validate it\nin Validate a Favor section.",
+							"After %s has done the favor, don't forget to validate it\n"
+							+ "in Validate a Favor section.",
 							bean.getAnswererUsername()
 							));
 					aSuccess.setGraphic(new ImageView(Media.DIALOG_INFO_COMPLETEDTASK.getPath()));
@@ -141,7 +141,9 @@ public class ViewCheckAnswersController implements Initializable {
 					aConfirm.setTitle(MSG.CONFIRM_CHANGE_ANSWER_ACCEPTED.getMsg());
 					aConfirm.setHeaderText("You already accepted another answer for this Request Ad!");
 					aConfirm.setContentText(
-							String.format("You already accepted anwer from user %s in date %s,\nwould you like to accept this one instead?", 
+							String.format(
+									"You already accepted anwer from user %s in date %s,\n"
+									+ "would you like to accept this one instead?", 
 									e.getOffererUsername(), 
 									DateFormat.getDateInstance().format(e.getDate().getTime())
 									)
@@ -186,7 +188,13 @@ public class ViewCheckAnswersController implements Initializable {
 				Alert dConfirm = new Alert(AlertType.CONFIRMATION);
 				dConfirm.setTitle(MSG.CONFIRM_DENIED_ANSWER_USER.getMsg());
 				dConfirm.setHeaderText("Are you sure you want to Deny this Answer?");
-				dConfirm.setContentText("By confirming you will no longer be able to see this user\nin the answers list.\nIf this answer was first accepted, the respective Favor\nwill be deleted, so that you can accept another\nanswer.\nAre you sure?");
+				dConfirm.setContentText(
+						"By confirming you will no longer be able to see this user\n"
+						+ "in the answers list.\n"
+						+ "If this answer was first accepted, the respective Favor\n"
+						+ "will be deleted, so that you can accept another\n"
+						+ "answer.\n"
+						+ "Are you sure?");
 				
 				ButtonType btnConfirm = new ButtonType("Confirm", ButtonData.YES);
 				ButtonType btnCancel = new ButtonType("Cancel", ButtonData.NO);

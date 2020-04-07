@@ -64,7 +64,7 @@ public class ViewFlowController implements Initializable{
 			@Override
 			public void handle(ActionEvent event) {
 
-				logger.log(Level.INFO, "button bShowMoreDetails clicked");
+				logger.log(Level.INFO, "button bValidate clicked");
 //				AdDetailsBean chosen = tvFlow.getItems().get(getIndex());
 				ViewFlow currentView = (ViewFlow) Context.getReference().getCurrentView();
 				logger.log(Level.INFO, 
