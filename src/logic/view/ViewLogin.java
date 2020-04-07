@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.view.components.LoginComponent;
+import logic.view.components.ViewLoginComponent;
 
 
 
@@ -20,7 +20,7 @@ public class ViewLogin extends View{
 	@Override
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
-		ScrollPane viewLogin = (ScrollPane) (new LoginComponent()).buildComponent();
+		ScrollPane viewLogin = (ScrollPane) (new ViewLoginComponent()).buildComponent();
 		
 		logger.log(Level.INFO, viewLogin.toString());
 		VBox vBox = new VBox();

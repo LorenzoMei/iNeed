@@ -16,7 +16,7 @@ public class ViewValidateAFavorComponent implements ViewComponent {
 	@Override
 	public Node buildComponent() {
 		String toPrintV = "In ViewUserComponenet ";
-		String pathV = "src/logic/view/fxml_validateafavor.fxml";
+		String pathV = FXMLPaths.VALIDATEFAVOR.getPath();
 		FXMLLoader viewValidateAFavorLoader = new FXMLLoader();
 		ScrollPane viewValidateAFavor = new ScrollPane();
 		

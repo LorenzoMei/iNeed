@@ -16,7 +16,7 @@ public class ToolBarComponent implements ViewComponent {
 	@Override
 	public Node buildComponent() {
 		String toPrintTB = "In ToolbarComponenet ";
-		String pathTB = "bin/logic/view/components/fxml_toolbar.fxml";
+		String pathTB = FXMLPaths.TOOLBAR.getPath();
 		
 		FXMLLoader toolBarLoader = new FXMLLoader();
 		ToolBar toolBar = new ToolBar();

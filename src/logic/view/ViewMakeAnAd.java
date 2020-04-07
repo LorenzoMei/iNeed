@@ -8,7 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.view.components.MakeAnAdComponent;
+import logic.view.components.ViewMakeAnAdComponent;
 import logic.view.components.ToolBarComponent;
 
 
@@ -21,7 +21,7 @@ public class ViewMakeAnAd extends View  {
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane makeAnAd = (ScrollPane) (new MakeAnAdComponent()).buildComponent();
+		ScrollPane makeAnAd = (ScrollPane) (new ViewMakeAnAdComponent()).buildComponent();
 		
 		
 		VBox vBox = new VBox();

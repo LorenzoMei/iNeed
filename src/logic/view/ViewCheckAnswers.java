@@ -5,7 +5,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.view.components.CheckAnswersComponent;
+import logic.view.components.ViewCheckAnswersComponent;
 import logic.view.components.ToolBarComponent;
 
 public class ViewCheckAnswers extends View {
@@ -33,7 +33,7 @@ public class ViewCheckAnswers extends View {
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane viewCheckAnswers = (ScrollPane) (new CheckAnswersComponent()).buildComponent();
+		ScrollPane viewCheckAnswers = (ScrollPane) (new ViewCheckAnswersComponent()).buildComponent();
 		
 		
 		VBox vBox = new VBox();

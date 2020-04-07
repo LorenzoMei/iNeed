@@ -11,7 +11,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import logic.view.components.ToolBarComponent;
-import logic.view.components.UserComponent;
+import logic.view.components.ViewUserComponent;
 
 
 public class ViewUser extends View{
@@ -21,7 +21,7 @@ public class ViewUser extends View{
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane viewUser = (ScrollPane) (new UserComponent()).buildComponent();
+		ScrollPane viewUser = (ScrollPane) (new ViewUserComponent()).buildComponent();
 		loggerView.log(Level.INFO,"In ViewMap");
 		
 		VBox vBox = new VBox();

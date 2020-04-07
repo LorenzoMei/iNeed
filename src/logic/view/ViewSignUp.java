@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.view.components.SignUpComponent;
+import logic.view.components.ViewSignUpComponent;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +18,7 @@ public class ViewSignUp extends View {
 	@Override
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
-		ScrollPane viewSignUp = (ScrollPane) (new SignUpComponent()).buildComponent();
+		ScrollPane viewSignUp = (ScrollPane) (new ViewSignUpComponent()).buildComponent();
 		
 		logger.log(Level.INFO, viewSignUp.toString());
 		VBox vBox = new VBox();

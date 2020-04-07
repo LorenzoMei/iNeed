@@ -9,7 +9,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import logic.view.components.ToolBarComponent;
-import logic.view.components.WalletComponent;
+import logic.view.components.ViewWalletComponent;
 
 public class ViewWallet extends View{
 	
@@ -19,7 +19,7 @@ public class ViewWallet extends View{
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane viewWallet = (ScrollPane) (new WalletComponent()).buildComponent();
+		ScrollPane viewWallet = (ScrollPane) (new ViewWalletComponent()).buildComponent();
 		loggerView.log(Level.INFO,"In ViewWallet");
 		
 		VBox vBox = new VBox();

@@ -7,7 +7,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.view.components.RegulationsComponent;
+import logic.view.components.ViewRegulationsComponent;
 import logic.view.components.ToolBarComponent;
 
 import java.util.logging.Logger;
@@ -20,7 +20,7 @@ public class ViewRegulations  extends View  {
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane regulations = (ScrollPane) (new RegulationsComponent()).buildComponent();
+		ScrollPane regulations = (ScrollPane) (new ViewRegulationsComponent()).buildComponent();
 		
 		
 		VBox vBox = new VBox();

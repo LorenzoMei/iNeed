@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root type="ScrollPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.components.ViewMapController">
+   <content>
+      <AnchorPane id="AnchorPane" minHeight="122.0" prefHeight="875.0" prefWidth="1100.0" style="-fx-background-color: #edf3f7;">
+         <children>
+            <HBox prefHeight="9.0" prefWidth="1100.0" spacing="75.0" style="-fx-background-color: #011c2e;" />
+            <ImageView fitHeight="64.0" fitWidth="103.0" layoutX="34.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="media/world.png" />
+               </image></ImageView>
+            <Text layoutX="128.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Map" wrappingWidth="173.99999797344208">
+               <font>
+                  <Font name="Gabriola" size="50.0" />
+               </font>
+            </Text>
+            <Text layoutX="146.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Google" />
+            <AnchorPane layoutX="34.0" layoutY="196.0" prefHeight="661.0" prefWidth="1034.0" style="-fx-background-color: White;">
+               <children>
+                  <ScrollPane>
+                     <content>
+                        <GoogleMapView fx:id="mapView" prefHeight="661.0" prefWidth="1034.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <effect>
+                  <DropShadow height="51.0" radius="25.0" width="51.0" />
+               </effect>
+            </AnchorPane>
+            <Text fx:id="tester" layoutX="509.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.6708984375">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="514.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="media/Red-Logomark.png" />
+               </image></ImageView>
+         </children>
+      </AnchorPane>
+   </content>
+</fx:root>

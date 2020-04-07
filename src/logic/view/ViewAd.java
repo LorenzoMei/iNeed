@@ -8,7 +8,7 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import logic.beans.ViewAdBean;
-import logic.view.components.AdComponent;
+import logic.view.components.ViewAdComponent;
 import logic.view.components.ToolBarComponent;
 
 public class ViewAd extends View {
@@ -31,7 +31,7 @@ public class ViewAd extends View {
 		
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane ad = (ScrollPane) (new AdComponent()).buildComponent();
+		ScrollPane ad = (ScrollPane) (new ViewAdComponent()).buildComponent();
 		
 		
 		VBox vBox = new VBox();

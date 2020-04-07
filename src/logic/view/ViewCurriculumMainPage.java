@@ -7,7 +7,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import logic.view.components.CurriculumMainPageCompononent;
+import logic.view.components.ViewCurriculumMainPageCompononent;
 import logic.view.components.ToolBarComponent;
 
 
@@ -19,7 +19,7 @@ public class ViewCurriculumMainPage extends View {
 	public Scene buildScene() {
 		BorderPane  root = new BorderPane();
 		ToolBar toolBar = (ToolBar) (new ToolBarComponent()).buildComponent();
-		ScrollPane curriculumMainPage = (ScrollPane) (new CurriculumMainPageCompononent()).buildComponent();
+		ScrollPane curriculumMainPage = (ScrollPane) (new ViewCurriculumMainPageCompononent()).buildComponent();
 		
 		
 		VBox vBox = new VBox();
