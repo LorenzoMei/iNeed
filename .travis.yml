@@ -5,8 +5,7 @@ addons:
         sonarcloud:
                 organization: lorenzomei
                 token:
-                        #secure: 4e4fc6ab727645cc72666e2eced67fee6f4e6a39
-                        4e4fc6ab727645cc72666e2eced67fee6f4e6a39
+                        secure: 4e4fc6ab727645cc72666e2eced67fee6f4e6a39
         apt:
                 packages:
                         openjdk-8-jre-headless
@@ -18,7 +17,9 @@ notifications:
 
 before-install:
         - sudo apt-get update -q
-        - sudo apt-get install ant-optional openjfx -y
+        - sudo apt-get install openjfx -y
 script:
-        - ant -v build test
+        - ant build
         - sonar-scanner
+
+
