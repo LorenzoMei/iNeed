@@ -44,8 +44,8 @@ public class TestValidateAFavorController {
 		favors[1].setDateOfValidation(Calendar.getInstance());
 		ListAllFavorsToValidateBean listAllFavorsToValidateBean = new ListAllFavorsToValidateBean();
 		listAllFavorsToValidateBean.setOrder(Order.TIME);
-		listAllFavorsToValidateBean.setOffererUsername(offererThenRequester[0].getUsername());
-		listAllFavorsToValidateBean.setRequesterUsername(offererThenRequester[1].getUsername());
+		listAllFavorsToValidateBean.setQueriedOffererUsername(offererThenRequester[0].getUsername());
+		listAllFavorsToValidateBean.setQueriedRequesterUsername(offererThenRequester[1].getUsername());
 		
 		ValidateAFavorController.getReference().listAllFavorsToValidate(listAllFavorsToValidateBean);
 		

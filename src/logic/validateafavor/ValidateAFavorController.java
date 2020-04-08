@@ -45,7 +45,7 @@ public class ValidateAFavorController {
 			daoUser.loadUser(offerer, bean.getOffererUsername());
 			logger.log(Level.INFO, "loaded offerer: " + offerer.getUsername());
 		} catch (UserNotFoundException e) {
-			logger.log(Level.WARNING, e.getMessage());
+			logger.log(Level.WARNING, e.toString());
 		}
 		Favor favorToValidate = new Favor();
 		logger.log(Level.INFO, "loading favor with requester, offerer, date: " + requester.getUsername() + " " + offerer.getUsername() + " " + bean.getDateOfRequest().getTime().toString());
@@ -64,19 +64,18 @@ public class ValidateAFavorController {
 		User requester = new User();
 		List<Favor> allFavors;
 		try {
-			daoUser.loadUser(requester, bean.getRequesterUsername());
+			daoUser.loadUser(requester, bean.getQueriedRequesterUsername());
 			logger.log(Level.INFO, "loaded requester: " + requester.getUsername());
-			daoUser.loadUser(offerer, bean.getOffererUsername());
+			daoUser.loadUser(offerer, bean.getQueriedOffererUsername());
 			logger.log(Level.INFO, "loaded offerer: " + offerer.getUsername());
 		} catch (UserNotFoundException e) {
-			logger.log(Level.WARNING, e.getMessage());
+			logger.log(Level.WARNING, e.toString());
 		}
-		allFavors = (daoFavor.loadFavors(requester, offerer, bean.getDateOfRequest()));
+		allFavors = (daoFavor.loadFavors(requester, offerer, bean.getQueriedDateOfRequest()));
 		logger.log(Level.INFO, "loaded " + allFavors.size() + " favors");
-		for (Favor favor : allFavors) {
-			if (favor.getDateOfValidation() != null) {
-				allFavors.remove(favor);
-				logger.log(Level.INFO, "Favor already validated in date: " + favor.getDateOfValidation().getTime().toString());
+		for (int i = 0; i < allFavors.size(); i ++) {
+			if (allFavors.get(i).getDateOfValidation() != null) {
+				allFavors.remove(allFavors.get(i));
 			}
 		}
 		if (bean.getOrder() != Order.UNSORTED) {
@@ -84,7 +83,7 @@ public class ValidateAFavorController {
 		}
 		
 		
-		bean.setFavorsToValidate(allFavors);
+		bean.setQueriedFavorsToValidate(allFavors);
 	}
 	
 	private void sortFavors(List<Favor> allFavors, Order order){

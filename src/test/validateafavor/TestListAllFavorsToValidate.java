@@ -43,7 +43,7 @@ public class TestListAllFavorsToValidate {
 		ListAllFavorsToValidateBean listAllFavorsToValidateBean = new ListAllFavorsToValidateBean();
 		listAllFavorsToValidateBean.setOrder(Order.TIME);
 //		listAllFavorsToValidateBean.setOffererUsername(offererThenRequester[0].getUsername());
-		listAllFavorsToValidateBean.setRequesterUsername(offererThenRequester[1].getUsername());
+		listAllFavorsToValidateBean.setQueriedRequesterUsername(offererThenRequester[1].getUsername());
 		
 		ValidateAFavorController.getReference().listAllFavorsToValidate(listAllFavorsToValidateBean);
 		

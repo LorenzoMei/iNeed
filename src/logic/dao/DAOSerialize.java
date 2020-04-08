@@ -19,6 +19,7 @@ public abstract class DAOSerialize {
 	protected static final String SERIALIZED_EXTENSION = ".ser";
 	protected static final String DATE_TIME_FORMAT_STANDARD = "YYYY-MM-dd-HH-mm-ss";
 	protected static final String DATE_TIME_SEPARATOR = "-";
+	protected static final String DBPATH = "db" + File.separator + "serialized" + File.separator;
 	
 	protected String[] tokenize(File stored){
 		return this.tokenize(stored.getName());
@@ -30,7 +31,7 @@ public abstract class DAOSerialize {
 	
 	protected String readDBPath() {
 //		TODO: stub
-		return "db" + File.separator + "serialized" + File.separator;
+		return DBPATH;
 	}
 
 	private String getPath(Object obj, List <String> primaryKeyValues){

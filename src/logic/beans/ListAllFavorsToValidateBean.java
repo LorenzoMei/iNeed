@@ -38,40 +38,54 @@ public class ListAllFavorsToValidateBean {
 		return allDateOfRequest;
 	}
 	
+	public int getNumOfFavors() {
+		return this.favorsToValidate.size();
+	}
+	
 	public Order getOrder() {
 		return this.order;
 	}
 	
-	public String getOffererUsername() {
+	public String getQueriedOffererUsername() {
 		return this.offererUsername;
 	}
 	
-	public String getRequesterUsername() {
+	public String getQueriedRequesterUsername() {
 		return this.requesterUsername;
 	}
 	
-	public Calendar getDateOfRequest() {
+	public Calendar getQueriedDateOfRequest() {
 		return this.dateOfRequest;
 	}
 	
-	public void setDateOfRequest(Calendar dateOfRequest) {
+	public void setQueriedDateOfRequest(Calendar dateOfRequest) {
 		this.dateOfRequest = dateOfRequest;
 	}
 	
-	public void setRequesterUsername (String requesterUsername) {
+	public void setQueriedRequesterUsername (String requesterUsername) {
 		this.requesterUsername = requesterUsername;
 	}
 	
-	public void setFavorsToValidate(List<Favor> favorsToValidate) {
+	public void setQueriedFavorsToValidate(List<Favor> favorsToValidate) {
 		this.favorsToValidate = favorsToValidate;
 	}
 	
-	public void setOffererUsername(String offererUsername) {
+	public void setQueriedOffererUsername(String offererUsername) {
 		this.offererUsername = offererUsername;
 	}
 	
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+	
+	public String getOffererUsername(int i) {
+		return this.favorsToValidate.get(i).getOffererUsername();
+	}
+	public String getRequesterUsername(int i) {
+		return this.favorsToValidate.get(i).getRequesterUsername();
+	}
+	public Calendar getDateOfRequest(int i) {
+		return this.favorsToValidate.get(i).getDateOfRequest();
 	}
 	
 }

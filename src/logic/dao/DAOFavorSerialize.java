@@ -24,13 +24,22 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	private static DAOFavorSerialize ref = null;
 	
 	public static DAOFavorSerialize getReference() {
+		
 		if (ref == null) {
 			ref = new DAOFavorSerialize();
 		}
+		ref.initializeFavorDB();
 		return ref;
 	}
 	
 	private DAOFavorSerialize() {}
+	
+	private void initializeFavorDB() {
+		File storeFolder = new File(this.storeFolderFromSuper);
+		if (!storeFolder.exists()) {
+			storeFolder.mkdirs();
+		}
+	}
 	
 	@Override
 	public void storeFavor(Favor favor) {
