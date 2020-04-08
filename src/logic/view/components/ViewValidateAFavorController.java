@@ -1,12 +1,15 @@
 package logic.view.components;
 
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,7 +24,12 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
+import logic.beans.ListAllFavorsToValidateBean;
+import logic.misc.Order;
+import logic.validateafavor.ValidateAFavorController;
 import logic.view.BLabels;
+import logic.view.Context;
+import logic.view.ViewValidateAFavor;
 
 public class ViewValidateAFavorController  implements Initializable {
 		
@@ -85,12 +93,26 @@ public class ViewValidateAFavorController  implements Initializable {
 		 tcOfferer.setCellValueFactory(new PropertyValueFactory<>("offerer"));
 		 tcValidate.setCellValueFactory(new isRowEmptyCallback());
 		 tcValidate.setCellFactory(new addButtonToRowCallback());
+		 this.bUpdate.fire();
     }
     
     @FXML protected void bUpdateHandler(ActionEvent event) {
     	// TODO: implement bUpdate logic #233
     	Button bClicked = (Button) event.getSource();
     	logger.log(Level.INFO, String.format("button %s clicked", bClicked.getText()));
+    	ViewValidateAFavor currentView = (ViewValidateAFavor) Context.getReference().getCurrentView();
+    	ObservableList<FavorDetailsBean> rows = FXCollections.observableArrayList();
+    	ListAllFavorsToValidateBean bean = new ListAllFavorsToValidateBean();
+    	bean.setOrder(Order.TIME);
+    	bean.setQueriedRequesterUsername(currentView.getProfileName());
+    	ValidateAFavorController.getReference().listAllFavorsToValidate(bean);
+    	for (int i = 0; i < bean.getNumOfFavors(); i ++) {
+    		rows.add(new FavorDetailsBean(
+    				bean.getOffererUsername(i),
+    				DateFormat.getDateInstance().format(bean.getDateOfRequest(i).getTime())
+    				));
+    	}
+    	this.tvFavors.setItems(rows);
     }
 
 }

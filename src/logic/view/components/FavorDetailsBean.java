@@ -7,6 +7,11 @@ public class FavorDetailsBean {
 	private StringProperty dateOfRequest = new SimpleStringProperty("dateOfRequest");
 	private StringProperty offerer = new SimpleStringProperty("offerer");
 	
+	public FavorDetailsBean() {}
+	public FavorDetailsBean(String offerer, String dateOfRequest) {
+		this.setOfferer(offerer);
+		this.setDateOfRequest(dateOfRequest);
+	}
 		
 	public String getDateOfRequest() {
 		return dateOfRequest.getValueSafe();
