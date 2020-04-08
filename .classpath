@@ -13,19 +13,18 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/External libraries/GMapsFX-2.10.0.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/External libraries/json-simple-1.1.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/jacocoagent.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/jacocoant.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/jacococli.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/org.jacoco.agent-0.8.5.201910111838.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/org.jacoco.ant-0.8.5.201910111838.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/org.jacoco.core-0.8.5.201910111838.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/jacoco-0.8.5/org.jacoco.report-0.8.5.201910111838.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/junit-jupiter-5.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeedWeb/Testing Libraries/junit-jupiter-api-5.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/External libraries/GMapsFX-2.10.0.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/External libraries/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/junit-jupiter-5.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/junit-jupiter-api-5.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/jacocoagent.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/jacocoant.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/jacococli.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/org.jacoco.agent-0.8.5.201910111838.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/org.jacoco.ant-0.8.5.201910111838.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/org.jacoco.core-0.8.5.201910111838.jar"/>
+	<classpathentry kind="lib" path="C:/My folder/Documents/Mike/Uni/ispw/Java/iNeed/Testing Libraries/jacoco-0.8.5/org.jacoco.report-0.8.5.201910111838.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
