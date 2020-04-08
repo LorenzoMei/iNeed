@@ -8,6 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import logic.beans.ListAllFavorsToValidateBean;
 import logic.view.components.ToolBarComponent;
 import logic.view.components.ViewValidateAFavorComponent;
 
@@ -16,7 +17,16 @@ import logic.view.components.ViewValidateAFavorComponent;
 public class ViewValidateAFavor extends View {
 		
 		Logger loggerV = Logger.getLogger(this.getClass().getName());
+		private ListAllFavorsToValidateBean listAllFavorsToValidateBean;
 		
+		public ListAllFavorsToValidateBean getAllFavorsToValidateBean() {
+			return listAllFavorsToValidateBean;
+		}
+
+		public void setAllFavorsToValidateBean(ListAllFavorsToValidateBean allFavors) {
+			this.listAllFavorsToValidateBean = allFavors;
+		}
+
 		@Override
 		public Scene buildScene() {
 			BorderPane  root = new BorderPane();
