@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import logic.entity.Answer;
+import logic.entity.Favor;
 
 public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 	
@@ -21,7 +22,10 @@ public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 		if (ref == null) {
 			ref = new DAOAnswerSerialize();
 		}
-		
+		File storeFolder = new File (ref.readDBPath() + Answer.class.getSimpleName());
+		if (!storeFolder.exists()) {
+			storeFolder.mkdirs();
+		}
 		return ref;
 	}
 	
