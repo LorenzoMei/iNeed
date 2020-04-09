@@ -5,50 +5,71 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="iNeed">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../var/lib/snapd/snap/eclipse/40/"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <import file="runAllTests.xml"/>
-    <path id="JUnit 5.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.opentest4j_1.1.1.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.apiguardian_1.0.0.v20190212-2109.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    <path id="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath">
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/el-api.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/ecj-4.13.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/catalina-ssi.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/annotations-api.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/catalina.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-jni.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-pt-BR.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/servlet-api.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/jsp-api.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-cs.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/jasper-el.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/jaspic-api.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/websocket-api.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/jasper.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../../../opt/apache-tomcat-9.0.33/lib/tomcat-api.jar"/>
     </path>
+    <path id="Web App Libraries.libraryclasspath"/>
+    <path id="EAR Libraries.libraryclasspath"/>
     <path id="iNeed.classpath">
         <pathelement location="bin"/>
+        <path refid="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <pathelement location="External libraries/json-simple-1.1.1.jar"/>
         <pathelement location="External libraries/GMapsFX-2.10.0.jar"/>
-        <pathelement location="Testing Libraries/hamcrest-core-1.3.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/jacocoagent.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/jacocoant.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/jacococli.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.agent-0.8.5.201910111838.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.ant-0.8.5.201910111838.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.core-0.8.5.201910111838.jar"/>
-        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.report-0.8.5.201910111838.jar"/>
-        <pathelement location="Testing Libraries/junit-jupiter-5.6.0.jar"/>
         <pathelement location="Testing Libraries/junit-jupiter-api-5.6.0.jar"/>
+        <pathelement location="Testing Libraries/junit-jupiter-5.6.0.jar"/>
         <pathelement location="Testing Libraries/junit-4.12.jar"/>
-        <path refid="JUnit 5.libraryclasspath"/>
+        <pathelement location="Testing Libraries/hamcrest-core-1.3.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.report-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.core-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.ant-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/org.jacoco.agent-0.8.5.201910111838.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/jacococli.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/jacocoant.jar"/>
+        <pathelement location="Testing Libraries/jacoco-0.8.5/jacocoagent.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.launch"/>
-                <exclude name="**/*.xtend"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -80,20 +101,29 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="TestDAOUser.testStoreAndLoadUserFriend">
+    <target name="TestReadReviews">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
+            <test name="test.reviews.TestReadReviews" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
     </target>
-    <target name="TestViewAnAdController">
+    <target name="TestAnswers">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="test.viewanad.TestViewAnAdController" todir="${junit.output.dir}"/>
+            <test name="test.answers.TestAnswers" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="iNeed.classpath"/>
+        </junit>
+    </target>
+    <target name="TestContactUserController">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.contactuser.TestContactUserController" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
@@ -107,130 +137,12 @@
             <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
             <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
+            <test name="test.dao.TestDaoFavor" todir="${junit.output.dir}"/>
             <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
             <test name="test.publishanad.TestPublishAnAdController" todir="${junit.output.dir}"/>
-            <test name="test.viewanad.TestViewAnAdController" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestDAOUser.testStoreAndLoadUserBirthdate">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="ViewLogin">
-        <java classname="logic.view.login.ViewLogin" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
-        </java>
-    </target>
-    <target name="test.login">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="test.dao">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
-            <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
-            <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestDaoAd">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestDaoAd.testStoreAndLoadAdUser">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestDAOUser.testStoreAndLoadUser">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="src (1)">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.answers.TestAnswers" todir="${junit.output.dir}"/>
-            <test name="test.contactuser.TestContactUserController" todir="${junit.output.dir}"/>
-            <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
-            <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
-            <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
-            <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
-            <test name="test.publishanad.TestPublishAnAdController" todir="${junit.output.dir}"/>
-            <test name="test.viewanad.TestViewAnAdController" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="logic.login">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestDaoAd.testStoreAndLoadAd">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDaoAd" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestLoginController">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.login.TestLoginController" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestSignup">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.view.signup.TestSignup" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestDaoFactory">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.dao.TestDaoFactory" todir="${junit.output.dir}"/>
+            <test name="test.reviews.TestReview" todir="${junit.output.dir}"/>
+            <test name="test.validateafavor.TestListAllFavorsToValidate" todir="${junit.output.dir}"/>
+            <test name="test.validateafavor.TestValidateAFavorController" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
@@ -240,39 +152,11 @@
             <classpath refid="iNeed.classpath"/>
         </java>
     </target>
-    <target name="TestDAOUser">
+    <target name="TestReview">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="test.dao.TestDAOUser" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="ViewSignUp">
-        <java classname="logic.view.signup.ViewSignUp" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
-        </java>
-    </target>
-    <target name="Signup">
-        <java classname="tesview.Signup" failonerror="true" fork="yes">
-            <classpath refid="iNeed.classpath"/>
-        </java>
-    </target>
-    <target name="TestContactUserController">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.contactuser.TestContactUserController" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="iNeed.classpath"/>
-        </junit>
-    </target>
-    <target name="TestAnswers">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="test.answers.TestAnswers" todir="${junit.output.dir}"/>
+            <test name="test.reviews.TestReview" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="iNeed.classpath"/>
         </junit>
