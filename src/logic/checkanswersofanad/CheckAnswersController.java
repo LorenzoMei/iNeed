@@ -183,23 +183,28 @@ public class CheckAnswersController {
 			else {
 				favors = this.daoFavor.loadFavorsByAd(answerer, answered, ad);
 			}
-			try {
-				this.daoUser.loadUser(requesterFavorToDelete, favors.get(0).getRequesterUsername());
-				this.daoUser.loadUser(offererFavorToDelete, favors.get(0).getOffererUsername());
-				this.daoFavor.deleteFavor(offererFavorToDelete, requesterFavorToDelete, favors.get(0).getDateOfRequest());
-			} catch (IndexOutOfBoundsException e) {
-				logger.log(Level.SEVERE, e.toString());
-			}
-			finally {
-				this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
-				logger.log(Level.INFO, answer.isDenied().toString());
-				answer.setDenied(true);
-				this.daoAnswers.storeAnswer(answer);
-			}	
+			deleteFavor(requesterFavorToDelete, offererFavorToDelete, favors, answer, bean);
 		} catch (UserNotFoundException | AdNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString());
+		}		
+	}
+	
+	private void deleteFavor(User requesterFavorToDelete, User offererFavorToDelete,
+			List<Favor> favors, Answer answer, ActionOnAnswerBean bean) throws UserNotFoundException, AnswerNotFoundException{
+		try {
+			this.daoUser.loadUser(requesterFavorToDelete, favors.get(0).getRequesterUsername());
+			this.daoUser.loadUser(offererFavorToDelete, favors.get(0).getOffererUsername());
+			this.daoFavor.deleteFavor(offererFavorToDelete, requesterFavorToDelete, favors.get(0).getDateOfRequest());
+		} catch (IndexOutOfBoundsException e) {
+			logger.log(Level.SEVERE, e.toString());
 		}
-		
+		finally {
+			this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
+			logger.log(Level.INFO, answer.isDenied().toString());
+			answer.setDenied(true);
+			this.daoAnswers.storeAnswer(answer);
+		}	
 		
 	}
+	
 }
