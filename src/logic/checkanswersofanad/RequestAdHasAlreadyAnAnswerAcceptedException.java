@@ -10,7 +10,7 @@ public class RequestAdHasAlreadyAnAnswerAcceptedException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 8796311611557090519L;
-	private Favor favor;
+	private final Favor favor;
 	public RequestAdHasAlreadyAnAnswerAcceptedException(Favor favor) {
 		this.favor = favor;
 	}

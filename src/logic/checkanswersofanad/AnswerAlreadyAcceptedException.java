@@ -13,7 +13,7 @@ public class AnswerAlreadyAcceptedException extends Exception {
 		this.dateOfRequest = date;
 	}
 	
-	private Calendar dateOfRequest;
+	private final Calendar dateOfRequest;
 
 	public Calendar getDateOfRequest() {
 		return dateOfRequest;

@@ -13,7 +13,7 @@ public class UserAlreadyAnsweredException extends Exception {
 		this.date = date;
 	}
 
-	private Calendar date;
+	private final Calendar date;
 
 	public Calendar getDate() {
 		return date;

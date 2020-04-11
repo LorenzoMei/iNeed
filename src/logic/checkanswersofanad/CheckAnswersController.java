@@ -46,6 +46,7 @@ public class CheckAnswersController {
 	}
 	
 	public void answersList(CheckAnswersBean answersBean){
+		int i = 0;
 		String type = RequestAd.class.getSimpleName();
 		
 		List <Answer> answersList = new ArrayList<>();
@@ -54,12 +55,13 @@ public class CheckAnswersController {
 			type = OfferAd.class.getSimpleName();
 		
 		daoAnswers.loadAnswers(answersBean.getAdId(), type, answersList);
-		
-		for(int i = 0; i < answersList.size(); i++){
+				
+		while(i < answersList.size()) {
 			if(answersList.get(i).isDenied()) {
-				System.out.println("Nome: " + answersList.get(i).getUsername());
 				answersList.remove(i);
-				i--;
+			}
+			else {
+				i++;
 			}
 		}
 		answersBean.setAnswersList(answersList);
@@ -88,18 +90,16 @@ public class CheckAnswersController {
 				this.acceptRequestAnswer(bean, answerer, answered, ad);
 			}
 			else {
-				this.acceptOfferAnswer(bean, answered, answerer, ad);
+				this.acceptOfferAnswer(answered, answerer, ad);
 			}	
-		} catch (UserNotFoundException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (AdNotFoundException e) {
+		} catch (UserNotFoundException | AdNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}
 	}
 	
 	private void changeAcceptedAnswer(Favor oldFavor, User newOfferer) {
 //		replace current favor with a new one
-		logger.log(Level.INFO, String.format("changeAcceptedAnswer invoked"));
+		logger.log(Level.INFO, "changeAcceptedAnswer invoked");
 		User oldOfferer = new User();
 		User requester = new User();
 		try {
@@ -146,7 +146,7 @@ public class CheckAnswersController {
 		}
 	}
 	
-	private void acceptOfferAnswer(ActionOnAnswerBean bean, User offerer, User requester, Ad ad) { 
+	private void acceptOfferAnswer(User offerer, User requester, Ad ad) { 
 		Favor favor = new Favor();
 		favor.setAdId(ad.getId());
 		favor.setAdType(ad.getType());
@@ -187,16 +187,16 @@ public class CheckAnswersController {
 				this.daoUser.loadUser(requesterFavorToDelete, favors.get(0).getRequesterUsername());
 				this.daoUser.loadUser(offererFavorToDelete, favors.get(0).getOffererUsername());
 				this.daoFavor.deleteFavor(offererFavorToDelete, requesterFavorToDelete, favors.get(0).getDateOfRequest());
-			} catch (IndexOutOfBoundsException e) {}
+			} catch (IndexOutOfBoundsException e) {
+				logger.log(Level.SEVERE, e.toString());
+			}
 			finally {
 				this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
 				logger.log(Level.INFO, answer.isDenied().toString());
 				answer.setDenied(true);
 				this.daoAnswers.storeAnswer(answer);
 			}	
-		} catch (UserNotFoundException e) {
-			logger.log(Level.SEVERE, e.toString());
-		} catch (AdNotFoundException e) {
+		} catch (UserNotFoundException | AdNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}
 		
