@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class SignUpBean {
 	
 	private String username;
-	private String passw;
+	private String password;
 	private String email;
 	private String city;
 	private String name;
@@ -15,7 +15,7 @@ public class SignUpBean {
 	
 	public SignUpBean() {
 		this.username = "";
-		this.passw = "";
+		this.password = "";
 		this.email = "";
 		this.city = "";
 		this.name = "";
@@ -30,7 +30,7 @@ public class SignUpBean {
 	}
 	
 	public void setPassword(String passw) {
-		this.passw = passw;
+		this.password = passw;
 	}
 	
 	public void setEmail(String email) {
@@ -60,7 +60,7 @@ public class SignUpBean {
 	}
 	
 	public String getPassword() {
-		return this.passw;
+		return this.password;
 	}
 	
 	public String getEmail() {
