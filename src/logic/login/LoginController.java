@@ -39,7 +39,7 @@ public class LoginController {
 		daoRef.loadUser(u, credentials.getUsername());
     	logger.log(Level.INFO, "Sono qui nel controller e ho caricato l'utente");
 		if (!this.userLoggedList.contains(credentials.getUsername())) {
-			if (u.getPassw().equals(credentials.getPassw())) {
+			if (u.getPassw().equals(credentials.getPassword())) {
 				this.userLoggedList.add(u.getUsername());
 			}
 			else {

@@ -24,7 +24,7 @@ public class TestLoginController {
 			SignUpController.getInstance().signUp(signupBean);
 		} catch (UsernameAlreadyTakenException e) {}
 		bean.setUsername(username);
-		bean.setPassw(passw);
+		bean.setPassword(passw);
 		
 		LoginController.getInstance().login(bean);
 		

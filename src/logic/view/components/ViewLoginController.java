@@ -125,7 +125,7 @@ public class ViewLoginController implements Initializable {
             	logger.log(Level.INFO, "Sono qui dopo il controller");
 
         		data.setUsername(username);
-        		data.setPassw(passw);
+        		data.setPassword(passw);
         		try {
     				controller.login(data);
                 	logger.log(Level.INFO, "I'm here after the bean controlelr and I send the data");

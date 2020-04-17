@@ -2,26 +2,26 @@ package logic.beans;
 
 public class CredentialsBean {
 	private String username;
-	private String passw;
+	private String password;
 	
 	public CredentialsBean() {
 		this.username = "";
-		this.passw = "";
+		this.password = "";
 	}
 	
 	public void setUsername(String username) {
 		this.username = username;
 	}
 	
-	public void setPassw(String passw) {
-		this.passw = passw;
+	public void setPassword(String passw) {
+		this.password = passw;
 	}
 	
 	public String getUsername() {
 		return this.username;
 	}
 	
-	public String getPassw() {
-		return this.passw;
+	public String getPassword() {
+		return this.password;
 	}
 }
