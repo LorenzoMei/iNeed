@@ -210,40 +210,38 @@ public class ViewSignupController implements Initializable {
             return;
     }
     
-		for(int i = 0; i < textInputFields.size(); i++) {
-		        logger.log(Level.INFO, textInputFields.get(i).getClass().getSimpleName());
-		        if(textInputFields.get(i).getText().isEmpty()) {
-		        	showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Service field Error!", "Empty Fields, complete all the obligatoryFileds");
-		            return;
-		        }
-		        else {
-		    		logger.log(Level.INFO, "0 Empty Fields");
+		for (int i = 0; i < textInputFields.size(); i++) {
+			logger.log(Level.INFO, textInputFields.get(i).getClass().getSimpleName());
+			if (textInputFields.get(i).getText().isEmpty()) {
+				showAlert(Alert.AlertType.ERROR, grid.getScene().getWindow(), "Service field Error!",
+						"Empty Fields, complete all the obligatoryFileds");
+				return;
+			} else {
+				logger.log(Level.INFO, "0 Empty Fields");
 
-		        }
-			        SignUpBean usersBean = new SignUpBean();
-		    		usersBean.setUsername(username);
-		    		usersBean.setPassword(passw);
-		    		usersBean.setCity(city);
-		    		usersBean.setEmail(email);
-		    		usersBean.setBirthDate(userBirthDate);
-		    		usersBean.setName(name);
-		    		usersBean.setSurName(surName);
-	    		
-	    		try {
-					SignUpController.getInstance().signUp(usersBean);
-				} catch (UsernameAlreadyTakenException e1) {
-                	logger.log(Level.WARNING, e1.toString());
-					actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
-					userNameTextField.setText("");
-					return;
-				}
-	    		
-	    		actionSignIn.setText("Signed in, welcome " + username);
+			}
+		}
+		SignUpBean usersBean = new SignUpBean();
+		usersBean.setUsername(username);
+		usersBean.setPassword(passw);
+		usersBean.setCity(city);
+		usersBean.setEmail(email);
+		usersBean.setBirthDate(userBirthDate);
+		usersBean.setName(name);
+		usersBean.setSurName(surName);
 
-	    		displayDialogS();
+		try {
+			SignUpController.getInstance().signUp(usersBean);
+		} catch (UsernameAlreadyTakenException e1) {
+			logger.log(Level.WARNING, e1.toString());
+			actionSignIn.setText("Sorry " + username + " was already take! Try " + username + "1");
+			userNameTextField.setText("");
+			return;
+		}
 
-	    	}
-        
+		actionSignIn.setText("Signed in, welcome " + username);
+
+		displayDialogS();
 
     }
     
