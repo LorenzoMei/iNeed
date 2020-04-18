@@ -10,7 +10,7 @@
 
 <%
 if (request.getParameter("signUp") != null) {
-	if(request.getParameter("passw").equals(request.getParameter("passwVer"))){
+	if(request.getParameter("password").equals(request.getParameter("passwVer"))){
 		try{
 			controller.signUp(signUpBean);%>
 			<jsp:forward page="index.jsp"/>
@@ -67,8 +67,8 @@ if (request.getParameter("signUp") != null) {
         </div>
         <div class="row">
             <div class="col form-group">
-                <label for="passw">Password</label>
-                <input id="passw" name="passw" type="password" required>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" required>
             </div>
         </div>
         <div class="row">
