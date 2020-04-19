@@ -106,17 +106,17 @@ box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
     font-size: 20px;
     border-radius: 11px;
     padding: :7px 14px;
-    border: 1px solid white;
-    border-bottom: 4px solid white;
+
     color: white;
 }
 #btn{
         margin-top: 10px;
     margin-bottom: -20px;
+
 }
-.btn:hover, btn:focus {
+.btn:hover {
+    border-bottom: 4px solid white;
     background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
-    border: 1px solid white;
 }
 .svg-inline--fa{
     font-size: 20px;

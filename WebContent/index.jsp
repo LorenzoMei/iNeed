@@ -74,6 +74,14 @@ if (request.getParameter("login") != null) {
                                     }%>
                                    </b>
                                 </p>
+                        <p id="error" style="color:red; text:bold">
+                                    <b>
+                                    <%if(session.getAttribute("Dati errati") != null){
+                                    out.print(session.getAttribute("Dati errati"));
+                                    session.removeAttribute("Dati errati");
+                                    }%>
+                                   </b>
+                                </p>
                         <div class="form-group">
                             <div class="form-group">
                                 
