@@ -120,6 +120,10 @@ box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
     border-bottom: 4px solid white;
     background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
 }
+.btn:active{
+    border-bottom: 1px solid white;
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+}
 .svg-inline--fa{
     font-size: 20px;
     margin-right: 7px;

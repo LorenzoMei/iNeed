@@ -20,17 +20,9 @@ if (request.getParameter("login") != null) {
 		<jsp:forward page="HelloWorld.jsp"/>
 	<%
 	}
-	catch(UserNotFoundException e){
-    	System.out.println("Wrong Username");
-
+	catch(UserNotFoundException | WrongPasswordException e){
 		session.setAttribute("error", "Dati errati");
 	}
-    catch(WrongPasswordException e1){
-       System.out.println("Wrong Password");
-       session.setAttribute("error", "Password errati");
-    }
-   	
-   	
 }%>
 
 <!-- HTML 5 -->
@@ -82,7 +74,14 @@ if (request.getParameter("login") != null) {
                                     }%>
                                    </b>
                                 </p>
-           
+                        <p id="error" style="color:red; text:bold">
+                                    <b>
+                                    <%if(session.getAttribute("Dati errati") != null){
+                                    out.print(session.getAttribute("Dati errati"));
+                                    session.removeAttribute("Dati errati");
+                                    }%>
+                                   </b>
+                                </p>
                         <div class="form-group">
                             <div class="form-group">
                                 
