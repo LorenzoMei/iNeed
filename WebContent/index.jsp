@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" import="logic.login.LoginController"
-         import="logic.dao.UserNotFoundException" import="logic.login.WrongPasswordException"%>
+         import="logic.dao.UserNotFoundException" import="logic.login.WrongPasswordException"
+         %>
 
-<%! LoginController controller = LoginController.getInstance(); %>
+<%! 
+
+LoginController controller = LoginController.getInstance();
+%>
 
 <!-- Si dichiara la variabile loginBean e istanzia un oggetto LoginBean -->
 <jsp:useBean id="loginBean" scope="request"
              class="logic.beans.CredentialsBean"/>
 
 <!-- Mappa automaticamente tutti gli attributi dell'oggetto loginBean e le proprietà JSP -->
-<jsp:setProperty name="loginBean" property="*"/>
-
+<jsp:setProperty name="loginBean" property="password"/>
+<jsp:setProperty name="loginBean" property="username"/>
 <%
 if (request.getParameter("login") != null) {
    	try{
@@ -21,7 +25,7 @@ if (request.getParameter("login") != null) {
 	<%
 	}
 	catch(UserNotFoundException | WrongPasswordException e){
-		session.setAttribute("error", "Dati errati");
+		session.setAttribute("error", "Username or Password is wrong!");
 	}
 }%>
 
@@ -74,14 +78,7 @@ if (request.getParameter("login") != null) {
                                     }%>
                                    </b>
                                 </p>
-                        <p id="error" style="color:red; text:bold">
-                                    <b>
-                                    <%if(session.getAttribute("Dati errati") != null){
-                                    out.print(session.getAttribute("Dati errati"));
-                                    session.removeAttribute("Dati errati");
-                                    }%>
-                                   </b>
-                                </p>
+                        
                         <div class="form-group">
                             <div class="form-group">
                                 
@@ -98,7 +95,7 @@ if (request.getParameter("login") != null) {
                             <input type="checkbox" class="check-box" > <span>Remember Password</span>
                         </div>
                         <div id="btn">
-                            <button name="login"  type="submit" id="login" value="Login" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
+                            <button name="login"  type="submit" id="login" value="login" class="btn"><i class="fas fa-sign-in-alt"></i>Login</button>
                         </div>
                     </div>
                 </form>

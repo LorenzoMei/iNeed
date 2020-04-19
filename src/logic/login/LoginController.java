@@ -31,6 +31,7 @@ public class LoginController {
 	
 	public void login(CredentialsBean credentials) throws WrongPasswordException, UserNotFoundException{
     	logger.log(Level.INFO, "Sono qui nel controller e ho passato la bean");
+		logger.log(Level.INFO, String.format("Attempt to login as %s with this password: %s", credentials.getUsername(), credentials.getPassword()));
 
 		DAOUser daoRef = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
     	logger.log(Level.INFO, "Sono qui nel controller e ho chiamato la DAO");
@@ -38,14 +39,15 @@ public class LoginController {
 		User u = new User();
 		daoRef.loadUser(u, credentials.getUsername());
     	logger.log(Level.INFO, "Sono qui nel controller e ho caricato l'utente");
-		if (!this.userLoggedList.contains(credentials.getUsername())) {
-			if (u.getPassw().equals(credentials.getPassword())) {
-				this.userLoggedList.add(u.getUsername());
-			}
-			else {
-				throw new WrongPasswordException();
-			}
-		}
+    	
+    	if (u.getPassw().equals(credentials.getPassword())) {
+    		if (!this.userLoggedList.contains(credentials.getUsername())) {
+    			this.userLoggedList.add(u.getUsername());
+    		}
+    	}
+    	else {
+    		throw new WrongPasswordException();
+    	}
 	}
 	
 	public void logout(LogoutBean bean) {

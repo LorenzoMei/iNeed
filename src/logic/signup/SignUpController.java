@@ -42,8 +42,9 @@ public class SignUpController{
 		
 		try {
 			dao.loadUser(userTemp, username);
+			throw new UsernameAlreadyTakenException();
 		} catch (UserNotFoundException e) {
-			logger.log(Level.WARNING, e.getMessage());
+			logger.log(Level.WARNING, e.toString());
 			userTemp.setUsername(username);
 			userTemp.setPassw(passw);
 			userTemp.setCity(city);
@@ -55,7 +56,6 @@ public class SignUpController{
 			return;
 		}
 		
-		throw new UsernameAlreadyTakenException();
 
 	}
 
