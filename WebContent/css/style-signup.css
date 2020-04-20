@@ -1,0 +1,151 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("../image/Mockup_002.png");
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(4px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.modal-dialog {
+    
+
+
+    
+  color: white;
+  font-weight: bold;
+
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content {
+    width: 650px;
+     background: rgba(72,177,219,1);
+    background: -moz-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(72,177,219,1)), color-stop(44%, rgba(27,127,158,1)), color-stop(50%, rgba(21,120,150,1)), color-stop(100%, rgba(66,69,102,1)));
+    background: -webkit-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -o-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -ms-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48b1db', endColorstr='#424566', GradientType=1 );
+    opacity: .9;
+    padding: 0 18px;
+    border-radius: 15px;
+    
+    -webkit-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+-moz-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+}
+.user-img img{
+    height: 120px;
+    width: 120px;
+}
+.user-img{
+    margin-top: -60px;
+    margin-bottom: 15px;
+}
+.form-group{
+    margin-bottom: 20px;
+    onfocus="(this.type='date')" onblur="(this.type='text')"
+}
+.form-group input{
+    width: 250;
+    height: 42px;
+    border-radius: 5px;
+    border: 0;
+    letter-spacing: 2px;
+    padding-left: 5px;
+}
+
+.form-group:focus, form-group:hover{
+    background-color: wheat;
+}
+.form-input button{
+    width: 40%;
+    margin: 5px 0 25px;
+}
+.btn{
+
+    background-color: #ff3939;
+    font-size: 20px;
+    border-radius: 11px;
+    padding: :7px 14px;
+    border: 1px solid white;
+    border-bottom: 4px solid white;
+    color: white;
+    margin-bottom: 10px;
+}
+#btn{
+        margin-top: 10px;
+    margin-bottom: 15px;
+}
+.btn:hover, btn:focus {
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, 
+    rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    border: 1px solid white;
+    border-bottom: 4px solid white;
+}
+.btn:active{
+    border: 1px solid white;
+}
+.svg-inline--fa{
+    font-size: 20px;
+    margin-right: 7px;
+}
+.login{
+    padding: 5px 0 25px;
+}
+.login a{
+    color: greenyellow;
+}
+.bg-text {
+
+    
+  color: white;
+  font-weight: bold;
+ font-size: 20px;
+  position: absolute;
+  top: 10%;
+  left: 47%;
+  transform: translate(-47%, -50%);
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+.title{
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sub-title {
+       margin-top: -20px; 
+  font-family: "Lucida Console", Courier, monospace;
+}
+.ref{
+    color: #ff3939;
+}
+
+
