@@ -35,21 +35,21 @@ public class ViewUserController  implements Initializable  {
 	 ViewProfileBean pBean = new ViewProfileBean();
 
 //	 private View nextViewU;
-	 Logger logger = Logger.getLogger(this.getClass().getName());
+	 Logger loggerU = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
 		 
 		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
-		 logger.log(Level.INFO, status);
+		 loggerU.log(Level.INFO, status);
 	   
 //		 nextViewU = (View) new ViewUser();
 
 		 pBean.setRequestedUsername(Context.getReference().getCurrentView().getProfileName());
 		 String nextClassName = "Initializing: " + this.getClass().getSimpleName();
-		 logger.log(Level.INFO, nextClassName );
+		 loggerU.log(Level.INFO, nextClassName );
 		 
 		 viewProfileController.loadProfile(pBean);
-		 logger.log(Level.INFO, "user in bean is " + pBean.getName());
+		 loggerU.log(Level.INFO, "user in bean is " + pBean.getName());
 		 
 		 String name = pBean.getName();
 		 String city = pBean.getCity();

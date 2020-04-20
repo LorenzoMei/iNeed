@@ -55,7 +55,7 @@
                   <Text fill="RED" layoutX="143.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Any issue? Something doesn't looks right? Make us know, &#10;first check Regulations and help page." textAlignment="CENTER" />
                   <HBox layoutX="95.0" layoutY="587.0">
                      <children>
-                        <Button fx:id="btnRegulations" mnemonicParsing="false" onAction="#handleSubmitButtonRegulations" text="Regulations" />
+                        <Button fx:id="btnRegulations" mnemonicParsing="false" onAction="#handleSubmitButtonRegulationsW" text="Regulations" />
                      </children>
                      <effect>
                         <DropShadow />
