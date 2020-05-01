@@ -1,3 +1,5 @@
+<%@ include file="components/AuthChecker.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="logic.viewanad.ViewAnAdController"
 	import="java.util.List" import="java.text.SimpleDateFormat"
@@ -5,9 +7,9 @@
 	import="logic.login.WrongPasswordException"%>
 
 
-
 <jsp:useBean id="viewFlowBean" scope="request"
 	class="logic.beans.OrderedAdsBean" />
+	
 
 <%
 	viewFlowBean.setOrderByTime();
