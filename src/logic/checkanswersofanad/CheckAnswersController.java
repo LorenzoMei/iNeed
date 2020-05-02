@@ -43,16 +43,20 @@ public class CheckAnswersController {
 	private DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 	
 	private CheckAnswersController() {
+		logger.log(Level.INFO, "CheckAnswersController initiated");
 	}
 	
 	public void answersList(CheckAnswersBean answersBean){
+		
+		logger.log(Level.INFO, String.format("answersBean values of ad id and type are: %d, %s)", answersBean.getAdId(), answersBean.getAdType()));
 		int i = 0;
 		String type = RequestAd.class.getSimpleName();
 		
 		List <Answer> answersList = new ArrayList<>();
 		
-		if(answersBean.getAdType() == OfferAd.class.getSimpleName()) 
+		if(answersBean.getAdType().compareTo(OfferAd.class.getSimpleName()) == 0) {
 			type = OfferAd.class.getSimpleName();
+		}
 		
 		daoAnswers.loadAnswers(answersBean.getAdId(), type, answersList);
 				

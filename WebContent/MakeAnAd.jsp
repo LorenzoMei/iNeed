@@ -21,7 +21,7 @@
 			<%
 		}
 		
-		if(request.getParameter("type") == typeRequest)
+		if(request.getParameter("type").compareTo(typeRequest) == 0)
 			publishAnAdBean.setRequestType();
 		else
 			publishAnAdBean.setOfferType();
@@ -81,12 +81,12 @@
 				<div class="form-group">
 					<label for="category">Category:</label>
 					<select class="form-control" id="category" name="category" onchange="enabledOther()">
-				        <option value="1">Electronics</option>
-				        <option value="2">Hydraulics</option>
-				        <option value="3">Gardering</option>
-				        <option value="4">Informatic</option>
-				        <option value="5">Bed sharing</option>
-				        <option value="6">Other...</option>
+				        <option value="Electronics">Electronics</option>
+				        <option value="Hydraulics">Hydraulics</option>
+				        <option value="Gardering">Gardering</option>
+				        <option value="Informatic">Informatic</option>
+				        <option value="Bed sharing">Bed sharing</option>
+				        <option value="Other">Other...</option>
 				    </select>
 			    </div>
 			    
@@ -111,7 +111,7 @@
 	<script>
     	function enabledOther(){
     		var value = document.getElementById("category").value;
-    		if(value == "6"){
+    		if(value == "Other"){
     			$("#other").prop("disabled", false);
     		}
     		else{
