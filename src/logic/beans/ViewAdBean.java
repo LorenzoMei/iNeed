@@ -19,6 +19,10 @@ public class ViewAdBean {
 		this.setId(id);
 	}
 	
+	public ViewAdBean() {
+		
+	}
+	
 	
 	
 	public int getId() {
