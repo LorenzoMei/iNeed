@@ -29,7 +29,7 @@
          <children>
             <HBox prefHeight="9.0" prefWidth="1100.0" spacing="75.0" style="-fx-background-color: #011c2e;" />
             
-            <Text fill="#4646f8" layoutX="105.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flow" wrappingWidth="117.00001955032349">
+            <Text fill="#4646f8" layoutX="106.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flow" wrappingWidth="162.0000195503235">
                <font>
                   <Font name="Gabriola" size="63.0" />
                </font>
