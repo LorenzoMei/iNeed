@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import="logic.signup.SignUpController"
 	import="logic.signup.UsernameAlreadyTakenException" pageEncoding="UTF-8"%>
+	<%@ include file="/components/TitleSetter.jsp"%>
 
 <%! SignUpController controller = SignUpController.getInstance(); %>
 

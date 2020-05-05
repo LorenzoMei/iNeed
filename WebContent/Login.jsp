@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1" import="logic.login.LoginController"
          import="logic.dao.UserNotFoundException" import="logic.login.WrongPasswordException"
          %>
+<%@ include file="components/TitleSetter.jsp"%>
 
 <%! 
 
@@ -21,7 +22,7 @@ if (request.getParameter("login") != null) {
    		controller.login(loginBean);
    		session.setAttribute("username", loginBean.getUsername());
    		%>
-		<jsp:forward page="HelloWorld.jsp"/>
+		<jsp:forward page="ViewFlow.jsp"/>
 	<%
 	}
 	catch(UserNotFoundException | WrongPasswordException e){
@@ -35,7 +36,7 @@ if (request.getParameter("login") != null) {
 <!-- Container tag for title, style, meta-information, linked resources or scripts -->
 <head>
     <!-- Browser title bar, favorites, name for search engines -->
-<title>Login page iNeed</title>
+<title></title>
 <!-- info about content, e.g.: content type, keywords, charset or description -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- linked CSS -->
