@@ -1,5 +1,5 @@
+<%@ include file="components/TitleSetter.jsp"%>
 <%@ include file="components/AuthChecker.jsp" %>
-<%@ include file="/components/TitleSetter.jsp"%>
 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"

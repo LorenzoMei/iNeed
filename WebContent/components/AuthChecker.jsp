@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Auth Checker</title>
+<title></title>
 </head>
 <body>
 <% if (session.getAttribute("username") == null){%>

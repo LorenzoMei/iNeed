@@ -14,23 +14,28 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+	<title>Auth Checker</title>
+	
 
 </head>
 <body>
-
 	<div class="container-fluid bg-light border border-info">
 		<div class="row">
 			<div class="col-sm-3">
-				<button type="button" class="btn-info btn-block btn-lg">
-					Make An Ad
-					<!-- TODO: implement button logic -->
-				</button>
+				<a href="MakeAnAd.jsp" target="_self">
+					<button type="button" class="btn-info btn-block btn-lg">
+						Make An Ad
+					</button>
+				</a>
+
 			</div>
 			<div class="col-sm-3">
+				<a href="ViewFlow.jsp">
 				<button type="button" class="btn-info btn-block btn-lg">
 					View Flow
-					<!-- TODO: implement button logic -->
 				</button>
+				</a>
+				
 			</div>
 			<div class="col-sm-3">
 				<button type="button" class="btn-info btn-block btn-lg">
@@ -43,7 +48,13 @@
 					<button class="btn-info dropdown-toggle btn-block btn-lg"
 						type="button" data-toggle="dropdown">
 						<%-- username here: --%>
-						<%="username".toString()%>
+						<% 
+						String username = "";
+						if (session.getAttribute("username") != null){
+							username = session.getAttribute("username").toString();
+						}
+						%>
+						<%= username %>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li>
