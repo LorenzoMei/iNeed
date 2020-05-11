@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="logic.publishanad.PublishAnAdController"%>
+    <%@ include file="components/TitleSetter.jsp"%>    
     <%@ include file="components/AuthChecker.jsp" %>
-    <%@ include file="components/TitleSetter.jsp"%>
+    
     
     
 <jsp:useBean id="publishAnAdBean" scope="request" 
