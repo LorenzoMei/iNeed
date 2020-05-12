@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +33,6 @@ public abstract class DAOSerialize {
 	}
 	
 	protected String readDBPath() {
-//		TODO: stub
 		return DBPATH;
 	}
 
@@ -46,7 +48,7 @@ public abstract class DAOSerialize {
 			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 		}
 		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
-		logger.log(Level.INFO, stringBuilder.toString());
+		logger.fine( stringBuilder.toString());
 		return stringBuilder.toString();
 	}
 	
@@ -73,8 +75,9 @@ public abstract class DAOSerialize {
 			throw new ElementInDBNotFoundException(this.getPath(obj, primaryKeyValues), e);
 		}
 	}
-	protected void delete(Object obj, List <String> primaryKeyValues) {
-		File target = new File (this.getPath(obj, primaryKeyValues));
-		target.delete();			
+	protected void delete(Object obj, List <String> primaryKeyValues) throws IOException {
+
+		Path path = Paths.get(this.getPath(obj, primaryKeyValues));
+		Files.delete(path);
 	}
 }

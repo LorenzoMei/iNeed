@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import logic.entity.Answer;
-import logic.entity.Favor;
+
 
 public class DAOAnswerSerialize extends DAOSerialize implements DAOAnswer{
 	

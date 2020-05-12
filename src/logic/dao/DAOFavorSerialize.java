@@ -195,7 +195,12 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 		primaryKeyValues.add(offerer.getUsername());
 		primaryKeyValues.add(requester.getUsername());
 		primaryKeyValues.add(dateFormatter.format(dateOfRequest.getTime()));
-		this.delete(new Favor(), primaryKeyValues);
+		try {
+			this.delete(new Favor(), primaryKeyValues);
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "PATH ERROR!");
+			e.printStackTrace();
+		}
 		
 	}
 }

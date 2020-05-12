@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 public class DAOFactory {
 	
+	String type1 = "Serialize";
 //	Singleton Factory
 	Logger logger = Logger.getLogger(this.getClass().getName());
 	
@@ -24,9 +25,8 @@ public class DAOFactory {
 	
 	private String readDBType() {
 		
-//		TODO stub
 		
-		return "Serialize";
+		return type1;
 	}
 	
 	public Object getDAOReference(DAOSupportedEntities entity) {
