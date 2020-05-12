@@ -48,7 +48,6 @@ public abstract class DAOSerialize {
 			stringBuilder.append(DAOSerialize.PRIMARY_KEY_VALUES_SEPARATOR);
 		}
 		stringBuilder.append(DAOSerialize.SERIALIZED_EXTENSION);
-		logger.log( Level.SEVERE, stringBuilder.toString());
 		return stringBuilder.toString();
 	}
 	
