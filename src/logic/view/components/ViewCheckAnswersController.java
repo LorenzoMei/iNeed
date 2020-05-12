@@ -119,9 +119,12 @@ public class ViewCheckAnswersController implements Initializable {
 				dpContactUser.getButtonTypes().add(ButtonType.OK);
 				dialog.setDialogPane(dpContactUser);
 				dialog.showAndWait();
+				logger.log(Level.INFO, "bContacUserHandler event is: " + event.toString());
+				
 				
 			}
 			private void bAcceptHandler(ActionEvent event) {
+				logger.log(Level.INFO, "bAcceptHandler event is: " + event.toString());
 				ViewCheckAnswers currentView = (ViewCheckAnswers) Context.getReference().getCurrentView();
 				ActionOnAnswerBean bean = new ActionOnAnswerBean();
 				bean.setAnswererUsername((tvAnswers.getItems().get(getIndex()).getAnswerer()));
@@ -166,9 +169,6 @@ public class ViewCheckAnswersController implements Initializable {
 							logger.log(Level.SEVERE, e.toString());
 						}
 					}
-					else {
-						return;
-					}
 					
 				} catch (AnswerAlreadyAcceptedException e) {
 					logger.log(Level.WARNING, e.toString());
@@ -184,6 +184,7 @@ public class ViewCheckAnswersController implements Initializable {
 				
 			}
 			private void bDenyHandler(ActionEvent event) {
+				logger.log(Level.INFO, "bDenyHandler event is: " + event.toString());
 				ViewCheckAnswers currentView = (ViewCheckAnswers) Context.getReference().getCurrentView();
 				ActionOnAnswerBean bean = new ActionOnAnswerBean();
 				bean.setAnswererUsername((tvAnswers.getItems().get(getIndex()).getAnswerer()));
@@ -214,9 +215,6 @@ public class ViewCheckAnswersController implements Initializable {
 					} catch (AnswerNotFoundException e) {
 						logger.log(Level.SEVERE, e.toString());
 					}
-				}
-				else {
-					return;
 				}
 			}
 		}

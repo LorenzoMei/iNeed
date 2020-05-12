@@ -23,7 +23,7 @@ public class FavorDetailsBean {
 		this.dateOfRequest.setValue(dateOfRequest);
 	}
 	public void setOfferer(String offerer) {
-		this.offerer.setValue(offerer); ;
+		this.offerer.setValue(offerer); 
 	}
 	
 	

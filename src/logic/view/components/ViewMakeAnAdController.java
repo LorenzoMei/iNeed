@@ -64,7 +64,6 @@ public class ViewMakeAnAdController implements Initializable {
      
      Image logo = new Image(getClass().getResourceAsStream("/media/Red-Logomark.png"));
 
- 	 private View nextViewM;
 
 	 
 	 Logger logger = Logger.getLogger(this.getClass().getName());
@@ -208,7 +207,6 @@ public class ViewMakeAnAdController implements Initializable {
 		     adBean.setBody(bodyTextArea.getText());
 			 logger.log(Level.INFO,  "Dopo setBody" );
 
-//		     nextViewM = (View) new ViewMakeAnAd();
 
 		     adBean.setOwnerUsername(Context.getReference().getCurrentView().getProfileName());
 			 logger.log(Level.INFO,  "Dopo setOwnerUsername" );
@@ -369,6 +367,8 @@ public class ViewMakeAnAdController implements Initializable {
 	 
 
 	@FXML protected void handleSubmitButtonRegulations(ActionEvent event) {
+	 	 View nextViewM;
+
 		 actionPrinte.setText("");
 	     actionPrinte.setText("go toRegulations");
 	     nextViewM = (View) new ViewRegulations();

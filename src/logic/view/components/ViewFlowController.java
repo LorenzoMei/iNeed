@@ -71,7 +71,6 @@ public class ViewFlowController implements Initializable{
 			public void handle(ActionEvent event) {
 
 				logger.log(Level.INFO, "button bValidate clicked");
-//				AdDetailsBean chosen = tvFlow.getItems().get(getIndex());
 				ViewFlow currentView = (ViewFlow) Context.getReference().getCurrentView();
 				logger.log(Level.INFO, 
 						String.format("clicked on ad in row %d with values: %s %s %s %s %s %s",
@@ -123,14 +122,14 @@ public class ViewFlowController implements Initializable{
 		}
 		
 	}
-	public class isRowEmptyCallback implements Callback<TableColumn.CellDataFeatures<AdDetailsBean, Boolean>, ObservableValue<Boolean>>{
+	public class IsRowEmptyCallback implements Callback<TableColumn.CellDataFeatures<AdDetailsBean, Boolean>, ObservableValue<Boolean>>{
 
 		@Override
 		public ObservableValue<Boolean> call(CellDataFeatures<AdDetailsBean, Boolean> features) {
 			return new SimpleBooleanProperty(features.getValue() != null);
 		}
 	 }
-	 public class addButtonToRowCallback implements Callback<TableColumn<AdDetailsBean, Boolean>, TableCell<AdDetailsBean, Boolean>>{
+	 public class AddButtonToRowCallback implements Callback<TableColumn<AdDetailsBean, Boolean>, TableCell<AdDetailsBean, Boolean>>{
 
 		@Override
 		public TableCell<AdDetailsBean, Boolean> call(TableColumn<AdDetailsBean, Boolean> tvFlowRowBooleanTableColumn) {
@@ -154,8 +153,8 @@ public class ViewFlowController implements Initializable{
 		 tcAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
 		 tcDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 		 tcCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
-		 tcShowMoreDetails.setCellValueFactory(new isRowEmptyCallback());
-		 tcShowMoreDetails.setCellFactory(new addButtonToRowCallback());
+		 tcShowMoreDetails.setCellValueFactory(new IsRowEmptyCallback());
+		 tcShowMoreDetails.setCellFactory(new AddButtonToRowCallback());
 		 String status = "My location " + locationflow + " my resoursources: " + resourcesflow;
 		 logger.log(Level.INFO, status);
 	     logger.log(Level.INFO, "In viewFlow the name of the user is: " + Context.getReference().getCurrentView().getProfileName());
@@ -237,7 +236,6 @@ public class ViewFlowController implements Initializable{
     		for (int i = 0; i < adsInTable.size(); i ++) {
     			if (adsInTable.get(i).getAuthor().compareTo(Context.getReference().getCurrentView().getProfileName()) != 0) {
     				adsInTable.remove(i);
-    				i --;
     			}
     		}
     	}

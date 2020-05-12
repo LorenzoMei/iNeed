@@ -81,6 +81,8 @@ public class ViewAdController implements Initializable {
     		bean.setType(currentView.getViewAdBean().getType());
     		bean.setUsername(currentView.getProfileName());
     		try {
+    			String answer1 = "You succefully submitted your answer to the owner of the ad, ";
+    			String answer2 = "who will contact you if he wants to trade favors with you";
 				AnswerAnAdController.getInstance().answer(bean);
 				ImageView ivSuccess = new ImageView();
 				ivSuccess.setImage(new Image(Media.DIALOG_INFO_COMPLETEDTASK.getPath()));
@@ -88,7 +90,7 @@ public class ViewAdController implements Initializable {
 				alert.setGraphic(ivSuccess);
 				alert.setTitle(MSG.INFO_SUCCESS.getMsg());
 				alert.setHeaderText("Your answer was successfully sent. Hooray!");
-				alert.setContentText(String.format("You succefully submitted your answer to the owner of the ad, \n who will contact you if he wants to trade favors with you"));
+				alert.setContentText(String.format(answer1 + "%n" + answer2 ));
 				alert.getDialogPane().getScene().getWindow().sizeToScene();
 				alert.showAndWait();
 			} catch (UserAlreadyAnsweredException e) {
