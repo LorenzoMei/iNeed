@@ -42,23 +42,21 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-  	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+
+
 	
 	<title>Make an ad</title>
 </head>
 <body id="corp">
-	<div>
-		<jsp:include page="components/ToolBar.jsp"></jsp:include>
-	</div>
-	<br>
+	
 	
 	<div class="row">
+	<div class="container-fluid">
+		<jsp:include page="components/ToolBar.jsp"></jsp:include>
+	</div>
+		<br>
+	
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
 			<div class="row">

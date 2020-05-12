@@ -58,10 +58,11 @@
 <link rel="stylesheet" type="text/css" href="css/style-ViewFlow.css">
 </head>
 <body>
+	<div >
+		<jsp:include page="components/ToolBar.jsp"></jsp:include>
+	</div>
 	<div class="container-fluid">
-		<div >
-			<jsp:include page="components/ToolBar.jsp"></jsp:include>
-		</div>
+		
 		<table class="table table-striped">
 			<thead>
 				<tr>

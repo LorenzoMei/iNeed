@@ -23,7 +23,9 @@
 					((ViewAdBean) request.getAttribute("viewAdBean")).getAuthor())%></title>
 </head>
 <body>
-	<jsp:include page="/components/ToolBar.jsp"></jsp:include>
+	<div>
+		<jsp:include page="/components/ToolBar.jsp"></jsp:include>
+	</div>
 	<div class="container bg-light border border-info">
 		<div>
 			<span id="titleText"> <%=((ViewAdBean) request.getAttribute("viewAdBean")).getTitle()%>

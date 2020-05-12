@@ -16,7 +16,7 @@
 <body>
 
 	<!-- puts all favors infos in a table -->
-	<div class="container-fluid">
+	
 		<div>
 			<jsp:include page="components/ToolBar.jsp"></jsp:include>
 		</div>
