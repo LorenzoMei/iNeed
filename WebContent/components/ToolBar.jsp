@@ -38,10 +38,12 @@
 				
 			</div>
 			<div class="col-sm-3">
-				<button type="button" class="btn-info btn-block btn-lg">
+				<a href="ValidateAFavor.jsp" target="_self">
+					<button type="button" class="btn-info btn-block btn-lg">
 					Validate A Favor
 					<!-- TODO: implement button logic -->
 				</button>
+				</a>
 			</div>
 			<div class="col-sm-3">
 				<div class="dropdown bg-info">
