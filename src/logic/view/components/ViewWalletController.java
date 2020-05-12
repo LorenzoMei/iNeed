@@ -4,18 +4,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
-import logic.beans.LogoutBean;
-import logic.beans.ViewProfileBean;
-import logic.login.LoginController;
 import logic.view.Context;
 import logic.view.View;
 import logic.view.ViewRegulations;
-import logic.viewprofile.ViewProfileController;
 
 public class ViewWalletController implements Initializable{
 	

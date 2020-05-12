@@ -34,15 +34,12 @@ public class ViewUserController  implements Initializable  {
 	 LogoutBean lBean = new LogoutBean();
 	 ViewProfileBean pBean = new ViewProfileBean();
 
-//	 private View nextViewU;
 	 Logger loggerU = Logger.getLogger(this.getClass().getName());
 
 	 public void initialize(URL locationUser, ResourceBundle resourcesUser) {
 		 
 		 String status = "My location " + locationUser + " my resoursources: " + resourcesUser;
 		 loggerU.log(Level.INFO, status);
-	   
-//		 nextViewU = (View) new ViewUser();
 
 		 pBean.setRequestedUsername(Context.getReference().getCurrentView().getProfileName());
 		 String nextClassName = "Initializing: " + this.getClass().getSimpleName();

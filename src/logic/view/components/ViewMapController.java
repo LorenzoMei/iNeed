@@ -23,10 +23,7 @@ import logic.view.View;
 
 
 public class ViewMapController implements Initializable, MapComponentInitializedListener{
-	//TODO : will gonna be used when a position will be inserted
-    
-		//private double lat;
-	    //private double lon;
+
 		
 		@FXML private Text testerMap;
 		@FXML private MenuItem profileName;

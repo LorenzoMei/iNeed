@@ -33,9 +33,6 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import logic.beans.ListAllFavorsToValidateBean;
 import logic.beans.ValidateAFavorBean;
-import logic.checkanswersofanad.AnswerAlreadyAcceptedException;
-import logic.checkanswersofanad.CheckAnswersController;
-import logic.checkanswersofanad.RequestAdHasAlreadyAnAnswerAcceptedException;
 import logic.dao.FavorNotFoundException;
 import logic.misc.Order;
 import logic.validateafavor.ValidateAFavorController;
@@ -52,7 +49,6 @@ public class ViewValidateAFavorController  implements Initializable {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO implement bValidate logic #234
 				ViewValidateAFavor currentView = (ViewValidateAFavor) Context.getReference().getCurrentView();
 				Alert aConfirm = new Alert(AlertType.CONFIRMATION);
 				aConfirm.setTitle(MSG.CONFIRM_VALIDATE_FAVOR.getMsg());
@@ -73,12 +69,10 @@ public class ViewValidateAFavorController  implements Initializable {
 				ButtonType btNo = new ButtonType("No", ButtonData.NO);
 				aConfirm.getButtonTypes().setAll(btYes, btNo);
 				Optional<ButtonType> result = aConfirm.showAndWait();
-				if (ButtonData.YES.equals(result.get().getButtonData())){
-					
-				}
-				else {
+				if (ButtonData.NO.equals(result.get().getButtonData())){
 					return;
 				}
+
 				try {
 					Button source = (Button) event.getSource();
 					logger.log(Level.INFO, String.format("Button %s clicked", source.getText()));
@@ -98,7 +92,6 @@ public class ViewValidateAFavorController  implements Initializable {
 					bUpdate.fire();
 					
 				} catch (FavorNotFoundException e) {
-					// TODO Auto-generated catch block
 					logger.log(Level.SEVERE, e.toString());
 				}
 				
@@ -127,14 +120,14 @@ public class ViewValidateAFavorController  implements Initializable {
 		}
 	}
 	
-	public class isRowEmptyCallback implements Callback<TableColumn.CellDataFeatures<FavorDetailsBean, Boolean>, ObservableValue<Boolean>>{
+	public class IsRowEmptyCallback implements Callback<TableColumn.CellDataFeatures<FavorDetailsBean, Boolean>, ObservableValue<Boolean>>{
 
 		@Override
 		public ObservableValue<Boolean> call(CellDataFeatures<FavorDetailsBean, Boolean> features) {
 			return new SimpleBooleanProperty(features.getValue() != null);
 		}
 	 }
-	 public class addButtonToRowCallback implements Callback<TableColumn<FavorDetailsBean, Boolean>, TableCell<FavorDetailsBean, Boolean>>{
+	 public class AddButtonToRowCallback implements Callback<TableColumn<FavorDetailsBean, Boolean>, TableCell<FavorDetailsBean, Boolean>>{
 
 		@Override
 		public TableCell<FavorDetailsBean, Boolean> call(TableColumn<FavorDetailsBean, Boolean> tvFavorDetailBeanBooleanTableColumn) {
@@ -154,8 +147,8 @@ public class ViewValidateAFavorController  implements Initializable {
     public void initialize(URL urlVAF, ResourceBundle resourceBundleVAF) { 
 		 tcDateOfRequest.setCellValueFactory(new PropertyValueFactory<>("dateOfRequest"));
 		 tcOfferer.setCellValueFactory(new PropertyValueFactory<>("offerer"));
-		 tcValidate.setCellValueFactory(new isRowEmptyCallback());
-		 tcValidate.setCellFactory(new addButtonToRowCallback());
+		 tcValidate.setCellValueFactory(new IsRowEmptyCallback());
+		 tcValidate.setCellFactory(new AddButtonToRowCallback());
 		 this.bUpdate.fire();
     }
     
