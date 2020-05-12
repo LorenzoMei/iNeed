@@ -53,7 +53,6 @@ public class SignUpController{
 			userTemp.setSurname(surName);
 			userTemp.setBDate(bDate);
 			dao.storeUser(userTemp);		
-			return;
 		}
 		
 
