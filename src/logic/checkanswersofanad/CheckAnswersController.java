@@ -37,17 +37,14 @@ public class CheckAnswersController {
 		return instance;
 	}
 	private Logger logger = Logger.getLogger(this.getClass().getName());
-	private DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
-	private DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
-	private DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
-	private DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
+//	private DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 	
 	private CheckAnswersController() {
 		logger.log(Level.INFO, "CheckAnswersController initiated");
 	}
 	
 	public void answersList(CheckAnswersBean answersBean){
-		
+		DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 		logger.log(Level.INFO, String.format("answersBean values of ad id and type are: %d, %s)", answersBean.getAdId(), answersBean.getAdType()));
 		int i = 0;
 		String type = RequestAd.class.getSimpleName();
@@ -72,8 +69,8 @@ public class CheckAnswersController {
 	}
 	
 	public void acceptAnswer(ActionOnAnswerBean bean) throws RequestAdHasAlreadyAnAnswerAcceptedException, AnswerAlreadyAcceptedException {
-		
-		
+		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
+		DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
 		Ad ad = null;
 		for (Ads t : Ads.values()) {
 			if (t.getName().compareTo(bean.getAdType()) == 0) {
@@ -84,12 +81,12 @@ public class CheckAnswersController {
 		User answerer = new User();
 		User answered = new User();
 		try {
-			this.daoUser.loadUser(answerer, bean.getAnswererUsername());
-			this.daoUser.loadUser(answered, bean.getAnsweredUsername());
+			daoUser.loadUser(answerer, bean.getAnswererUsername());
+			daoUser.loadUser(answered, bean.getAnsweredUsername());
 			logger.log(Level.INFO, String.format("bean.adType is: %s", bean.getAdType()));
 			logger.log(Level.INFO, String.format("bean.adId is: %d", bean.getAdId()));
 			logger.log(Level.INFO, String.format("ad reference is: %s", ad));
-			this.daoAd.loadAd(ad, bean.getAdId());
+			daoAd.loadAd(ad, bean.getAdId());
 			if (bean.getAdType().compareTo(Ads.REQUEST.getName()) == 0) {
 				this.acceptRequestAnswer(bean, answerer, answered, ad);
 			}
@@ -104,6 +101,8 @@ public class CheckAnswersController {
 	private void changeAcceptedAnswer(Favor oldFavor, User newOfferer) {
 //		replace current favor with a new one
 		logger.log(Level.INFO, "changeAcceptedAnswer invoked");
+		DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
+		DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
 		User oldOfferer = new User();
 		User requester = new User();
 		try {
@@ -112,18 +111,19 @@ public class CheckAnswersController {
 		} catch (UserNotFoundException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}
-		this.daoFavor.deleteFavor(oldOfferer, requester, oldFavor.getDateOfRequest());
+		daoFavor.deleteFavor(oldOfferer, requester, oldFavor.getDateOfRequest());
 		Favor newFavor = new Favor();
 		newFavor.setAdId(oldFavor.getAdId());
 		newFavor.setAdType(oldFavor.getAdType());
 		newFavor.setOffererUsername(newOfferer.getUsername());
 		newFavor.setRequesterUsername(oldFavor.getRequesterUsername());
 		newFavor.setDateOfRequest(Calendar.getInstance());
-		this.daoFavor.storeFavor(newFavor);
+		daoFavor.storeFavor(newFavor);
 	}
 	
 	private void acceptRequestAnswer(ActionOnAnswerBean bean, User offerer, User requester, Ad ad) throws AnswerAlreadyAcceptedException, RequestAdHasAlreadyAnAnswerAcceptedException {
-		List<Favor> favors = this.daoFavor.loadFavorsByAd(requester, ad);
+		DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
+		List<Favor> favors = daoFavor.loadFavorsByAd(requester, ad);
 		if (favors.size() == 0) { 
 			logger.log(Level.INFO, "storing favor");
 			Favor favor = new Favor();
@@ -132,7 +132,7 @@ public class CheckAnswersController {
 			favor.setOffererUsername(offerer.getUsername());
 			favor.setRequesterUsername(requester.getUsername());
 			favor.setDateOfRequest(Calendar.getInstance());
-			this.daoFavor.storeFavor(favor);
+			daoFavor.storeFavor(favor);
 		}
 		else {
 			if (favors.get(0).getOffererUsername().compareTo(offerer.getUsername()) == 0) {
@@ -151,13 +151,14 @@ public class CheckAnswersController {
 	}
 	
 	private void acceptOfferAnswer(User offerer, User requester, Ad ad) { 
+		DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
 		Favor favor = new Favor();
 		favor.setAdId(ad.getId());
 		favor.setAdType(ad.getType());
 		favor.setOffererUsername(offerer.getUsername());
 		favor.setRequesterUsername(requester.getUsername());
 		favor.setDateOfRequest(Calendar.getInstance());
-		this.daoFavor.storeFavor(favor);
+		daoFavor.storeFavor(favor);
 	}
 	
 	public void denyAnswer(ActionOnAnswerBean bean) throws AnswerNotFoundException {
@@ -165,6 +166,9 @@ public class CheckAnswersController {
 		// PLEASE NOTE: this method assumes that currently there can't be more than one answer with same answerer and answered. This is not ideal, so it may change in the future.
 						
 		try {
+			DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
+			DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
+			DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 			Answer answer = new Answer();
 			User answerer = new User();
 			User answered = new User();
@@ -178,14 +182,14 @@ public class CheckAnswersController {
 					break;
 				}
 			}
-			this.daoUser.loadUser(answerer, bean.getAnswererUsername());
-			this.daoUser.loadUser(answered, bean.getAnsweredUsername());
-			this.daoAd.loadAd(ad, bean.getAdId());
+			daoUser.loadUser(answerer, bean.getAnswererUsername());
+			daoUser.loadUser(answered, bean.getAnsweredUsername());
+			daoAd.loadAd(ad, bean.getAdId());
 			if (bean.getAdType().compareTo(Ads.REQUEST.getName()) == 0) {
-				favors = this.daoFavor.loadFavorsByAd(answered, answerer, ad);
+				favors = daoFavor.loadFavorsByAd(answered, answerer, ad);
 			}
 			else {
-				favors = this.daoFavor.loadFavorsByAd(answerer, answered, ad);
+				favors = daoFavor.loadFavorsByAd(answerer, answered, ad);
 			}
 			deleteFavor(requesterFavorToDelete, offererFavorToDelete, favors, answer, bean);
 		} catch (UserNotFoundException | AdNotFoundException e) {
@@ -195,18 +199,21 @@ public class CheckAnswersController {
 	
 	private void deleteFavor(User requesterFavorToDelete, User offererFavorToDelete,
 			List<Favor> favors, Answer answer, ActionOnAnswerBean bean) throws UserNotFoundException, AnswerNotFoundException{
+		DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
+		DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
+		DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 		try {
-			this.daoUser.loadUser(requesterFavorToDelete, favors.get(0).getRequesterUsername());
-			this.daoUser.loadUser(offererFavorToDelete, favors.get(0).getOffererUsername());
-			this.daoFavor.deleteFavor(offererFavorToDelete, requesterFavorToDelete, favors.get(0).getDateOfRequest());
+			daoUser.loadUser(requesterFavorToDelete, favors.get(0).getRequesterUsername());
+			daoUser.loadUser(offererFavorToDelete, favors.get(0).getOffererUsername());
+			daoFavor.deleteFavor(offererFavorToDelete, requesterFavorToDelete, favors.get(0).getDateOfRequest());
 		} catch (IndexOutOfBoundsException e) {
 			logger.log(Level.SEVERE, e.toString());
 		}
 		finally {
-			this.daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
+			daoAnswers.loadAnswer(bean.getAdId(), bean.getAdType(), bean.getAnswererUsername(), answer);
 			logger.log(Level.INFO, answer.isDenied().toString());
 			answer.setDenied(true);
-			this.daoAnswers.storeAnswer(answer);
+			daoAnswers.storeAnswer(answer);
 		}	
 		
 	}
