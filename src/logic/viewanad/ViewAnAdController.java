@@ -12,10 +12,15 @@ import logic.beans.OrderedAdsBean;
 import logic.dao.AdNotFoundException;
 import logic.dao.DAOAd;
 import logic.dao.DAOFactory;
+import logic.dao.DAOFavor;
 import logic.dao.DAOSupportedEntities;
+import logic.dao.DAOUser;
+import logic.dao.UserNotFoundException;
 import logic.entity.Ad;
+import logic.entity.Favor;
 import logic.entity.OfferAd;
 import logic.entity.RequestAd;
+import logic.entity.User;
 import logic.misc.EntityComparator;
 import logic.misc.NoSuchIsSortedByMethodException;
 import logic.misc.Order;
@@ -88,6 +93,7 @@ public class ViewAnAdController {
 	}
 
 	public void listAllAds(OrderedAdsBean bean) {
+		// Lists all ads in db
 		List<Ad> allAds = getAllAds();
 		if (bean.getOrder() != Order.UNSORTED) {
 			try {
@@ -99,6 +105,35 @@ public class ViewAnAdController {
 				bean.setOrderUnsorted();
 			}
 			finally {
+				// If it is a request ad and has a validated favor, removes that ad from the list
+				DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
+				DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
+				User owner = new User();
+				boolean removed = false;
+				for (int i = 0; i < allAds.size(); i += (!removed)? 1 : 0 ) {
+					removed = false;
+					if (allAds.get(i).getType().equals(RequestAd.class.getSimpleName())) {
+						logger.log(Level.INFO, "checking if "+allAds.get(i).getType()+allAds.get(i).getId()+ " has a validated favor");
+						
+						try {
+							daoUser.loadUser(owner, allAds.get(i).getOwnerUsername());
+							List<Favor> favors = daoFavor.loadFavorsByAd(owner, allAds.get(i));
+							for(Favor f : favors) {
+								if (f.getDateOfValidation() != null) {
+									allAds.remove(allAds.get(i));
+									logger.log(Level.INFO, "removed ad "+allAds.get(i).getType()+allAds.get(i).getId());
+									removed = true;
+								} 
+							}
+							
+						} catch (UserNotFoundException e) {
+							// This means that there is no user entity with same username as the one of the owner. This should never happen
+							logger.log(Level.SEVERE, "owner "+allAds.get(i).getOwnerUsername()+" does not exists (" +e.toString()+ ")" );
+						}
+					}
+					
+				}
+				// puts all remaining ads in bean
 				bean.setAds(allAds);		
 			}
 		}
