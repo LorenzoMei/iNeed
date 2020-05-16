@@ -180,10 +180,13 @@ public class DAOFavorSerialize extends DAOSerialize implements DAOFavor {
 	}
 	
 	private void removeFavorsOfOtherAds(List<Favor> favors, Ad ad) {
-		for (int i = 0; i < favors.size(); i ++) {
+		boolean removed = false;
+		for (int i = 0; i < favors.size(); i += (!removed)? 1 : 0) {
+			removed = false;
 			if (favors.get(i).getAdType().compareTo(ad.getClass().getSimpleName()) != 0 
 					|| favors.get(i).getAdId() != ad.getId()) {
 				favors.remove(favors.get(i));
+				removed = true;
 			}
 		}
 	}

@@ -113,15 +113,15 @@ public class ViewAnAdController {
 				for (int i = 0; i < allAds.size(); i += (!removed)? 1 : 0 ) {
 					removed = false;
 					if (allAds.get(i).getType().equals(RequestAd.class.getSimpleName())) {
-						logger.log(Level.INFO, "checking if "+allAds.get(i).getType()+allAds.get(i).getId()+ " has a validated favor");
+						logger.log(Level.INFO, "checking if "+allAds.get(i).getType()+allAds.get(i).getId()+ "in position "+i+" has a validated favor");
 						
 						try {
 							daoUser.loadUser(owner, allAds.get(i).getOwnerUsername());
 							List<Favor> favors = daoFavor.loadFavorsByAd(owner, allAds.get(i));
 							for(Favor f : favors) {
 								if (f.getDateOfValidation() != null) {
+									logger.log(Level.INFO, "removing ad "+allAds.get(i).getType()+allAds.get(i).getId());
 									allAds.remove(allAds.get(i));
-									logger.log(Level.INFO, "removed ad "+allAds.get(i).getType()+allAds.get(i).getId());
 									removed = true;
 								} 
 							}
