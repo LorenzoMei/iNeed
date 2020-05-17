@@ -13,7 +13,9 @@
 <title></title>
 </head>
 <body>
-<jsp:include page="components/ToolBar.jsp"></jsp:include>
+	<div> 
+		<jsp:include page="components/ToolBar.jsp"></jsp:include>
+	</div>
 <div class="container bg-light border border-warning">
 		<span>
 			<div class="row">

@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
 		<jsp:include page="components/ToolBar.jsp"></jsp:include>
-	
-	<p class="text-success">Favor validated successfully</p>
-
+	</div>
+	<div>
+		<p class="text-success">Favor validated successfully</p>
+	</div>
 </body>
 </html>

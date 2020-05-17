@@ -9,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
 		<jsp:include page="components/ToolBar.jsp"></jsp:include>
-	
+	</div>
 	<p class="text-danger">Unable to validate favor because this exception occurred: <%=request.getParameter("e") %></p>
 
 </body>
