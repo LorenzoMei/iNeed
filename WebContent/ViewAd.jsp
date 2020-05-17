@@ -1,22 +1,12 @@
+<%@ include file="components/TitleSetter.jsp"%>
+<%@ include file="components/AuthChecker.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="logic.beans.ViewAdBean"
 	import="java.text.DateFormat"%>
-<%@ include file="/components/TitleSetter.jsp"%>
-<%@ include file="/components/AuthChecker.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/style-view_ad.css">
 
 <title><%=String.format("%s#%d by %s", ((ViewAdBean) request.getAttribute("viewAdBean")).getType(),
 					((ViewAdBean) request.getAttribute("viewAdBean")).getId(),

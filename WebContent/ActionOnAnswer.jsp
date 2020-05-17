@@ -1,3 +1,6 @@
+<%@ include file="components/TitleSetter.jsp"%>
+<%@ include file="components/AuthChecker.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
     import="logic.checkanswersofanad.CheckAnswersController"
@@ -6,8 +9,6 @@
 	import="logic.dao.AnswerNotFoundException"
 	import="java.text.DateFormat"%>
     
-
-<%@ include file="components/AuthChecker.jsp" %>
     
 <jsp:useBean id="actionOnAnswerBean" scope="request"
 	class="logic.beans.ActionOnAnswerBean"/>
@@ -15,14 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-  	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 	
 	<title>Action On Answer</title>
 </head>
@@ -74,6 +68,9 @@
 			    <div class="row">
 			      <div class="col">
 			         <p id="body">After <% out.print(answererUsername); %> has done the favor, don't forget to validate it in Validate a Favor section.</p>
+			           <br>
+			      		<a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-info">Back</a>
+
 			      </div>
 			    </div>
 			</div>
@@ -113,6 +110,8 @@
 			    <div class="row">
 			      <div class="col">
 			         <p id="body">You already accepted this answer in date: <% out.print(DateFormat.getDateInstance().format(e.getDateOfRequest().getTime())); %></p>
+			      	<br>
+			      	<a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-danger">Back</a>
 			      </div>
 			    </div>
 			</div>
@@ -177,6 +176,8 @@
 			    <div class="row">
 			      <div class="col">
 			         <p id="body">The answer has been denied correctly, now you can choose another answer if you want.</p>
+			         <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-danger">Back</a>
+			         
 			      </div>
 			    </div>
 			</div>
@@ -194,6 +195,8 @@
 			    <div class="row">
 			      <div class="col">
 			         <p id="body">Cannot find this answer.</p>
+					 <br>
+			         <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-info">Back</a>			         
 			      </div>
 			    </div>
 			</div>

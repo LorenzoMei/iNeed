@@ -20,6 +20,7 @@
 		<div>
 			<jsp:include page="components/ToolBar.jsp"></jsp:include>
 		</div>
+		
 		<div>
 			<jsp:useBean class="logic.beans.ListAllFavorsToValidateBean" id="bean"></jsp:useBean>
 			

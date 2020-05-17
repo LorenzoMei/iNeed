@@ -1,3 +1,6 @@
+<%@ include file="components/TitleSetter.jsp"%>
+<%@ include file="components/AuthChecker.jsp" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.Calendar" import="java.text.SimpleDateFormat"
     import="logic.checkanswersofanad.CheckAnswersController"
@@ -5,8 +8,6 @@
     import="logic.beans.RetrieveContactInfoBean"
     import="logic.contactuser.ContactUserController"
     import="logic.beans.ContactInfo"%>
-
-<%@ include file="components/AuthChecker.jsp" %>
 
 <jsp:useBean id="checkAnswersBean" scope="request"
 	class="logic.beans.CheckAnswersBean" />
@@ -55,22 +56,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-  	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	
+
 	<title> Check Answers </title>
 </head>
 <body>
-	<div class="container-fluid">
 		<div >
 			<jsp:include page="components/ToolBar.jsp"></jsp:include>
 		</div>
+	<div class="container-fluid">
+
 		<table class="table table-striped">
 			<thead>
 				<tr>
