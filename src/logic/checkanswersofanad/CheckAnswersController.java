@@ -37,7 +37,6 @@ public class CheckAnswersController {
 		return instance;
 	}
 	private Logger logger = Logger.getLogger(this.getClass().getName());
-//	private DAOAnswer daoAnswers = (DAOAnswer) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.ANSWER);
 	
 	private CheckAnswersController() {
 		logger.log(Level.INFO, "CheckAnswersController initiated");

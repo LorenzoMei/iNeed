@@ -106,37 +106,39 @@ public class ViewAnAdController {
 			}
 			finally {
 				// If it is a request ad and has a validated favor, removes that ad from the list
-				DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
-				DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
-				User owner = new User();
-				boolean removed = false;
-				for (int i = 0; i < allAds.size(); i += (!removed)? 1 : 0 ) {
-					removed = false;
-					if (allAds.get(i).getType().equals(RequestAd.class.getSimpleName())) {
-						logger.log(Level.INFO, "checking if "+allAds.get(i).getType()+allAds.get(i).getId()+ "in position "+i+" has a validated favor");
-						
-						try {
-							daoUser.loadUser(owner, allAds.get(i).getOwnerUsername());
-							List<Favor> favors = daoFavor.loadFavorsByAd(owner, allAds.get(i));
-							for(Favor f : favors) {
-								if (f.getDateOfValidation() != null) {
-									logger.log(Level.INFO, "removing ad "+allAds.get(i).getType()+allAds.get(i).getId());
-									allAds.remove(allAds.get(i));
-									removed = true;
-								} 
-							}
-							
-						} catch (UserNotFoundException e) {
-							// This means that there is no user entity with same username as the one of the owner. This should never happen
-							logger.log(Level.SEVERE, "owner "+allAds.get(i).getOwnerUsername()+" does not exists (" +e.toString()+ ")" );
-						}
-					}
-					
-				}
+				this.removeRequestAdsWithAValidatedFavor(allAds);
 				// puts all remaining ads in bean
 				bean.setAds(allAds);		
 			}
 		}
 	}
-
+	
+	private void removeRequestAdsWithAValidatedFavor(List<Ad> allAds) {
+		DAOFavor daoFavor = (DAOFavor) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.FAVOR);
+		DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);
+		User owner = new User();
+		boolean removed = false;
+		for (int i = 0; i < allAds.size(); i += (!removed)? 1 : 0 ) {
+			removed = false;
+			if (allAds.get(i).getType().equals(RequestAd.class.getSimpleName())) {
+				logger.log(Level.INFO, "checking if "+allAds.get(i).getType()+allAds.get(i).getId()+ "in position "+i+" has a validated favor");
+				
+				try {
+					daoUser.loadUser(owner, allAds.get(i).getOwnerUsername());
+					List<Favor> favors = daoFavor.loadFavorsByAd(owner, allAds.get(i));
+					for(Favor f : favors) {
+						if (f.getDateOfValidation() != null) {
+							logger.log(Level.INFO, "removing ad "+allAds.get(i).getType()+allAds.get(i).getId());
+							allAds.remove(allAds.get(i));
+							removed = true;
+						} 
+					}
+					
+				} catch (UserNotFoundException e) {
+					// This means that there is no user entity with same username as the one of the owner. This should never happen
+					logger.log(Level.SEVERE, "owner "+allAds.get(i).getOwnerUsername()+" does not exists (" +e.toString()+ ")" );
+				}
+			}			
+		}
+	}
 }
