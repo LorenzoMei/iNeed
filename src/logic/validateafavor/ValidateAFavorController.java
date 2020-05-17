@@ -73,9 +73,12 @@ public class ValidateAFavorController {
 		}
 		allFavors = (daoFavor.loadFavors(requester, offerer, bean.getQueriedDateOfRequest()));
 		logger.log(Level.INFO, "loaded " + allFavors.size() + " favors");
-		for (int i = 0; i < allFavors.size(); i ++) {
+		boolean removed = false;
+		for (int i = 0; i < allFavors.size(); i += (!removed)? 1 : 0) {
+			removed = false;
 			if (allFavors.get(i).getDateOfValidation() != null) {
 				allFavors.remove(allFavors.get(i));
+				removed = true;
 			}
 		}
 		if (bean.getOrder() != Order.UNSORTED) {
