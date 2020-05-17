@@ -22,7 +22,7 @@
 </head>
 <body>
 	<nav>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark ">
             <a href="#" class="navbar-brand"><img class="logo" src="image/iNeed_Color.png" alt="logo"></a>
 <!--            Bottone per la toogle bar! per gestire il click si usa data-toggle scelto opzione collapse sul target con il tag navbarMenu-->
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -65,7 +65,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Curriculum</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">LogOut</a>
+                            <a class="dropdown-item" href="Logout.jsp">LogOut</a>
                         </div>
                     </li>
                 </ul>
