@@ -19,6 +19,7 @@
                 <batchtest todir="${junit.output.dir}">
                     <fileset dir="bin">
                         <include name="test/**/Test*.class"/>
+                        <exclude name="test/web/*"/>
                     </fileset>
                 </batchtest>
                 <formatter type="xml"/>
