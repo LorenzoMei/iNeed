@@ -114,7 +114,7 @@
 		        <h4 class="modal-title" id="modalHeader"></h4>
 		      </div>
 		      <div class="modal-body">
-		        <p id="modalBody"></p>
+		        <p id="modalBody"></p><p id="contactInfo"></p>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -130,7 +130,8 @@
 		function contact(author, email){
 			
 			document.getElementById("modalHeader").innerHTML = "Contact User";
-			document.getElementById("modalBody").innerHTML = "You can contact " + author + " using this info: " + email;
+			document.getElementById("modalBody").innerHTML = "You can contact " + author + " using this info: ";
+			document.getElementById("contactInfo").innerHTML = email;
 		}
 	</script>
 </body>

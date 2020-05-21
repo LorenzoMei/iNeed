@@ -1,5 +1,5 @@
 <%@ include file="components/TitleSetter.jsp"%>
-<%@ include file="components/AuthChecker.jsp" %>
+<%@ include file="components/AuthChecker.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="logic.beans.ViewAdBean"
 	import="java.text.DateFormat"%>
@@ -28,8 +28,15 @@
 		<div class="row">
 
 			<div class=col-sm>
-				<span> Ad by: <%=((ViewAdBean) request.getAttribute("viewAdBean")).getAuthor()%>
-				</span>
+				<div class="row">
+					<div class="col-sm-2">
+						<span> Ad by: </span>
+					</div>
+					<div class="col-sm-2">
+						<span> <%=((ViewAdBean) request.getAttribute("viewAdBean")).getAuthor()%>
+						</span>
+					</div>
+				</div>
 			</div>
 
 			<div class="col-sm">
