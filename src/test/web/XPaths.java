@@ -15,7 +15,11 @@ public enum XPaths {
 	MAKEANAD_SCATEGORY("//*[@id=\"category\"]"),
 	MAKEANAD_GARDERINGCATEGORY("/html/body/div/div[3]/form/div[3]/select/option[3]"),
 	MAKEANAD_FBODY("//*[@id=\"body\"]"),
-	MAKEANAD_BPUBLISH("//*[@id=\"publish\"]")
+	MAKEANAD_BPUBLISH("//*[@id=\"publish\"]"),
+	VALIDATEAFAVOR_BVALIDATEAFAVOR("/html/body/div[1]/nav/nav/div/ul/li[3]/a"),
+	VALIDATEAFAVOR_BVALIDATE("/html/body/table/tbody/tr/td[3]/a"),
+	VALIDATEAFAVOR_BGO("/html/body/div[2]/div/a[2]/button"),
+	VALIDATEAFAVOR_TRESULT("/html/body/div[2]/p")
 	;
 	private final String xpath;
 	private XPaths(String xpath) {
