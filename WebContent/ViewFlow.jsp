@@ -55,29 +55,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Home Page</title>
-<link rel="stylesheet" type="text/css" href="css/style-ViewFlow.css">
+        <link rel="stylesheet" type="text/css" href="css/style_flow.css">
 </head>
 <body>
 	<div >
 		<jsp:include page="components/ToolBar.jsp"></jsp:include>
 	</div>
-	<div class="container-fluid">
-		
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Title</th>
-					<th>Author</th>
-					<th>Category</th>
-					<th>Date</th>
-				</tr>
-			</thead>
-			<tbody>
+<div class="container"> 
+            <p id="logos">View Flow</p>
 
+               <br>
+               <div class="card" id="card-style">
+                   
+                   <img class="card-img-center" src="image/flow.png" text="a" alt="ViewFlow logo">
+                   <div class="card-body">
+                       <div class="table-wrapper-scroll-y my-custom-scrollbar">
+	                       <table id="tabella" class="table table-dark table-hover table-bordered">
+	                         <thead>
+	                           <tr>
+	                               <th>Type</th>
+	                               <th>Title</th>
+	                               <th>Author</th>
+	                               <th>Category</th>
+	                               <th>Date</th>
+	                           </tr>
+	                         </thead>
+	                         <tbody>
+	
 				<%
 					for (int i = 0; i < viewFlowBean.getNumOfAds(); i++) {
-
+	
 						int id = viewFlowBean.getId(i);
 						String type = viewFlowBean.getType(i);
 						String title = viewFlowBean.getTitle(i);
@@ -85,17 +92,21 @@
 						String category = viewFlowBean.getCategory(i);
 						SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 						String date = format.format(viewFlowBean.getDateOfPublication(i).getTime());
-
+	
 						String urlPage = String.format("ViewFlow.jsp?id=%d", i);
-
+	
 						out.print(String.format("<tr>" + "<td>%s</td>" + "<td><a href=%s>%s</a></td>" + "<td>%s</td>"
 								+ "<td>%s</td>" + "<td>%s</td>" + "</tr>", type, urlPage, title, author, category, date));
 					}
 				%>
-
-			</tbody>
-		</table>
-	</div>
-
-</body>
+	
+	                          </tbody>
+	                       </table>
+	                 </div>
+                 </div>
+               </div>
+               <br>
+        </div>
+    </body>
+    
 </html>

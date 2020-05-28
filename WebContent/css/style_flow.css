@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+.container{
+    text-align: center;
+}
+
+.jumbotron{
+
+   
+
+}
+#card-style{
+     position: relative;
+    top: 35px;
+    padding: 5px;
+    background: rgba(72,177,219,1);
+    background: -moz-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(72,177,219,1)), color-stop(44%, rgba(27,127,158,1)), color-stop(50%, rgba(21,120,150,1)), color-stop(100%, rgba(66,69,102,1)));
+    background: -webkit-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -o-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -ms-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48b1db', endColorstr='#424566', GradientType=1 );
+    opacity: .9;
+    padding: 0 18px;
+    border-radius: 15px;
+    
+    -webkit-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+    -moz-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+    box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+
+    
+    
+}
+
+.card .card-img-center{
+    height: 20%;
+    width: 70px;
+    content:"View Flow";
+    position: relative;
+    right: -47%;
+    align-items: center;
+
+    
+}
+
+#tabella{
+        background: #b4d8ed;
+    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48b1db', endColorstr='#424566', GradientType=1 );
+    opacity: .9;
+    padding: 0 18px;
+}
+
+tbody tr:nth-child(odd) {
+  background: #92c3d6;
+}
+
+#logos {
+  font-family: 'Open Sans', sans-serif;
+  color: #15226b;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 70px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+  top: -10%;
+   
+}
+
+.my-custom-scrollbar {
+position: relative;
+height: 350px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+
+#logos:after {
+  content:"View Flow";
+  position: absolute;
+  left: 369px;
+  top: 9px;
+}
+#logos:after {
+  background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
