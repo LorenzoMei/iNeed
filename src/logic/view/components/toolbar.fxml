@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
@@ -10,7 +16,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root prefHeight="45.0" prefWidth="1012.0" type="ToolBar" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.components.ToolBarController">
+<fx:root prefHeight="45.0" prefWidth="1012.0" type="ToolBar" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.components.ToolBarController">
   <items>
       <ImageView fx:id="loginTB" fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -65,7 +71,7 @@
                               </HBox>
                               <HBox fx:id="validateAFavorHBox" alignment="CENTER" prefHeight="45.0" prefWidth="138.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorU" prefWidth="180.0" text="Validate A Favor">
+                                    <Button mnemonicParsing="false" onAction="#handleSubmitButtonValidateAFavorU" prefHeight="31.0" prefWidth="138.0" text="Validate A Favor">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

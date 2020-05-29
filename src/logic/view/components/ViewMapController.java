@@ -1,3 +1,5 @@
+// THIS IS STILL WIP, NOT READY FOR PRODUCTION
+
 package logic.view.components;
 
 import java.net.URL;
@@ -20,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
 import logic.view.View;
+import logic.view.WIPAlertFactory;
 
 
 public class ViewMapController implements Initializable, MapComponentInitializedListener{
@@ -42,7 +45,11 @@ public class ViewMapController implements Initializable, MapComponentInitialized
  
 	    @Override
 	    public void mapInitialized() {
-	        GoogleMap map;
+	        // Remove this when this feature has been fully developed
+	    	// BEGIN
+	    	WIPAlertFactory.getReference().getWIPAlert().show();
+	    	// END
+	    	GoogleMap map;
 			logger.log(Level.SEVERE,"Load the map" );
 	        LatLong latLong = new LatLong(41.9102415, 12.3959136);
 	        MapOptions mapOptions = new MapOptions();
