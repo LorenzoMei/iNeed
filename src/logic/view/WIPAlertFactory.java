@@ -15,11 +15,10 @@ public class WIPAlertFactory  {
 		return ref;
 	}
 	
-	private WIPAlertFactory() {};
+	private WIPAlertFactory() {}
 	
 	public Alert getWIPAlert() {
 		Alert wipAlert = new Alert(AlertType.INFORMATION);
-		wipAlert = new Alert(AlertType.INFORMATION);
 		wipAlert.setTitle(MSG.INFO_WIP.toString());
 		wipAlert.setHeaderText("Coming soon!");
 		wipAlert.setContentText("This feature has not been fully\n"
