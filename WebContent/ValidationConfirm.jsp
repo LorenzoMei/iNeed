@@ -34,8 +34,8 @@
 			<p><strong>Are you sure?</strong></p>
 		</span>
 		<div class="btn-group">
-			<a href="ValidateAFavor.jsp"><button type="button" class=btn-outline-warning>Cancel</button></a>
-			<a href="Validation.jsp?i=<%= request.getParameter("i") %>&confirmed=y"> <button type="button" class=btn-outline-success> Go!</button> </a>
+			<a href="ValidateAFavor.jsp"><button type="button" class="btn btn-danger">Cancel</button></a>
+			<a href="Validation.jsp?i=<%= request.getParameter("i") %>&confirmed=y"> <button type="button" class="btn btn-success"> Go!</button> </a>
 		</div>
 	</div>
 </body>

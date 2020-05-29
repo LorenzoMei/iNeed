@@ -11,7 +11,7 @@
 
 <!-- Bootstrap CSS -->
 
-	<title>Auth Checker</title>
+	<title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -23,7 +23,7 @@
 <body>
 	<nav>
             <nav class="navbar navbar-expand-lg navbar-dark ">
-            <a href="#" class="navbar-brand"><img class="logo" src="image/iNeed_Color.png" alt="logo"></a>
+            <a href="index.jsp" class="navbar-brand"><img class="logo" src="image/iNeed_Color.png" alt="logo"></a>
 <!--            Bottone per la toogle bar! per gestire il click si usa data-toggle scelto opzione collapse sul target con il tag navbarMenu-->
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>

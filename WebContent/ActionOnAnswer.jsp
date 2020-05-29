@@ -58,7 +58,7 @@
 		try{
 			controller.acceptAnswer(actionOnAnswerBean);
 			%>
-			<div id="container">
+			<div class="container bg-light border border-success">
 			
 			    <div class="row">
 			      <div class="col">
@@ -69,7 +69,7 @@
 			      <div class="col">
 			         <p id="body">After <% out.print(answererUsername); %> has done the favor, don't forget to validate it in Validate a Favor section.</p>
 			           <br>
-			      		<a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-info">Back</a>
+			      		<a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-success">Back</a>
 
 			      </div>
 			    </div>
@@ -78,11 +78,14 @@
 		}catch(RequestAdHasAlreadyAnAnswerAcceptedException e){
 			String prevOfferer = e.getOffererUsername();
 			%>
-			<div id="container">
+			<div class="container bg-light border border-warning">
 			
 			    <div class="row">
-			      <div class="col">
+			      <div class="col-sm-10">
 			        <h4 id="header">You already accepted another answer for this Ad!</h4>
+			      </div>
+			      <div class="col-sm">
+			      <img alt="question mark" src="https://img.icons8.com/clouds/100/000000/question-mark.png">
 			      </div>
 			    </div>
 			    <div class="row">
@@ -92,8 +95,8 @@
 						 <input type="hidden" id="author" name="author" value="<%= answererUsername%>"/>
 						 <input type="hidden" id="adId" name="adId" value="<%= adId%>"/>
 						 <input type="hidden" id="adType" name="adType" value="<%= adType%>"/>
-						 <button type="submit" class ="btn btn-success">Yes</button>
 						 <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-danger">No</a>
+						 <button type="submit" class ="btn btn-success">Yes</button>
 					 </form>
 			      </div>
 			    </div>
@@ -101,7 +104,7 @@
 			<%
 		}catch(AnswerAlreadyAcceptedException e){
 			%>
-			<div id="container">
+			<div class="container bg-light border border-danger">
 			
 			    <div class="row">
 			      <div class="col">
@@ -125,15 +128,17 @@
 		String answererUsername = (String) request.getAttribute("author");
 		
 		%>
-		<div id="container">
+		<div class="container bg-light border border-warning">
 		
 		    <div class="row">
-		      <div class="col">
+		      <div class="col-sm-10">
 		        <h4 id="header">Are you sure you want to Deny this Answer?</h4>
 		      </div>
+		      <div class="col-sm">
+		      <img alt="question mark" src="https://img.icons8.com/clouds/100/000000/question-mark.png"></div>
 		    </div>
 		    <div class="row">
-		      <div class="col">
+		      <div class="col-sm">
 		         <p id="body">By confirming you will no longer be able to see this user in the answers list. <br>
 						If this answer was first accepted, the respective Favor
 						will be deleted, so that you can accept another
@@ -143,8 +148,8 @@
 					<input type="hidden" id="author" name="author" value="<%= answererUsername%>"/>
 					<input type="hidden" id="adId" name="adId" value="<%= adId%>"/>
 					<input type="hidden" id="adType" name="adType" value="<%= adType%>"/>
-					<button type="submit" class ="btn btn-success">Yes</button>
 					<a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-danger">No</a>
+					<button type="submit" class ="btn btn-success">Yes</button>
 				</form>
 		      </div>
 		    </div>
@@ -167,7 +172,7 @@
 		try{
 			controller.denyAnswer(actionOnAnswerBean);
 			%>
-			<div id="container">
+			<div class="container bg-light border border-success">
 			
 			    <div class="row">
 			      <div class="col">
@@ -177,7 +182,7 @@
 			    <div class="row">
 			      <div class="col">
 			         <p id="body">The answer has been denied correctly, now you can choose another answer if you want.</p>
-			         <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-danger">Back</a>
+			         <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-success">Back</a>
 			         
 			      </div>
 			    </div>
@@ -186,7 +191,7 @@
 		}
 		catch(AnswerNotFoundException e){
 			%>
-			<div id="container">
+			<div class="container bg-light border border-danger">
 			
 			    <div class="row">
 			      <div class="col">
@@ -197,7 +202,7 @@
 			      <div class="col">
 			         <p id="body">Cannot find this answer.</p>
 					 <br>
-			         <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-info">Back</a>			         
+			         <a href="CheckAnswers.jsp?adId=<%=adId%>&adType=<%=adType%>" class="btn btn-danger">Back</a>			         
 			      </div>
 			    </div>
 			</div>

@@ -33,7 +33,7 @@
 		try {
 				AnswerAnAdController.getInstance().answer(bean);
 	%>
-	<div class="container bg-light border border-info">
+	<div class="container bg-light border border-success">
 		<span>
 			<div class="row">
 				<div class="col-sm-10">
