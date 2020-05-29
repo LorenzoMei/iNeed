@@ -76,6 +76,7 @@
 			</div>
 			<%
 		}catch(RequestAdHasAlreadyAnAnswerAcceptedException e){
+			String prevOfferer = e.getOffererUsername();
 			%>
 			<div id="container">
 			
@@ -86,7 +87,7 @@
 			    </div>
 			    <div class="row">
 			      <div class="col">
-			         <p id="body">You already accepted answer from user <% out.print(answererUsername); %> in date <% out.print(DateFormat.getDateInstance().format(e.getDate().getTime())); %>, would you like to accept this one instead?</p>
+					 <p id="body">You already accepted answer from user <% out.print(prevOfferer); %> in date <% out.print(DateFormat.getDateInstance().format(e.getDate().getTime())); %>, would you like to accept this one instead?</p>
 			      	 <form action="ActionOnAnswer.jsp?action=acceptC" name="acceptConfirm" method="POST">
 						 <input type="hidden" id="author" name="author" value="<%= answererUsername%>"/>
 						 <input type="hidden" id="adId" name="adId" value="<%= adId%>"/>
