@@ -39,6 +39,7 @@ import logic.beans.PublishAnAdBean;
 import logic.publishanad.PublishAnAdController;
 import logic.view.Context;
 import logic.view.MSG;
+import logic.view.Media;
 import logic.view.View;
 import logic.view.ViewFlow;
 import logic.view.ViewMakeAnAd;
@@ -62,7 +63,7 @@ public class ViewMakeAnAdController implements Initializable {
      private static String category;
      private static boolean other = false;
      
-     Image logo = new Image(getClass().getResourceAsStream("/media/Red-Logomark.png"));
+     Image logo = new Image(getClass().getResourceAsStream(Media.LOGO.toString()));
 
 
 	 
@@ -71,9 +72,9 @@ public class ViewMakeAnAdController implements Initializable {
 	 public void initialize(URL locationAd, ResourceBundle resourcesAD) {
 		 titleTextField.setPromptText("*Es. I need a bed this weekend...");
 		 bodyTextArea.setPromptText("*Es. I need a bed this weekend after 3 pm, It's good even if room is shared... ");
-		 othersTextField.setPromptText("If you choose 'Other' above, you can specifie here...");
+		 othersTextField.setPromptText("If you choose 'Other' above, you can specifiy here...");
 		 othersTextField.setEditable(false);
-		 String status = "My location " + locationAd + " my resoursources: " + resourcesAD;
+		 String status = "My location " + locationAd + " my resources: " + resourcesAD;
 		 logger.log(Level.SEVERE, status);
 		}
 	 
@@ -131,20 +132,20 @@ public class ViewMakeAnAdController implements Initializable {
 	 }
 	 
 	 @FXML protected void handleSubmitButtonHydraulic(ActionEvent event) {
-		 ViewMakeAnAdController.setCategory("Hydraulic");
-		 categoryButton.setText("Hydraulic");
+		 ViewMakeAnAdController.setCategory("Plumbing");
+		 categoryButton.setText("Plumbing");
 		 setOtherField();
 	 }
 	 
 	 @FXML protected void handleSubmitButtonGardering(ActionEvent event) {
-		 ViewMakeAnAdController.setCategory("Gardering");
-		 categoryButton.setText("Gardering");
+		 ViewMakeAnAdController.setCategory("Gardening");
+		 categoryButton.setText("Gardening");
 		 setOtherField();
 	 }
 	 
 	 @FXML protected void handleSubmitButtonInformatic(ActionEvent event) {
-		 ViewMakeAnAdController.setCategory("Informatic");
-		 categoryButton.setText("Informatic");
+		 ViewMakeAnAdController.setCategory("Informatics");
+		 categoryButton.setText("Informatics");
 		 setOtherField();
 	 }
 	 
