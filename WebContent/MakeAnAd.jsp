@@ -91,11 +91,11 @@
                                 </select>
                             </div>
 
-                            <div class="field">
+                            <div class="form-group">
                            
                                 <section class="content bgcolor-1">
 									<span class="input input--nao">
-										<input class="input__field input__field--nao" type="text" id="other" disabled/>
+										<input class="input__field input__field--nao" type="text" name="other" id="other" disabled/>
 										<label class="input__label input__label--nao" for="input-3">
 											<span class="input__label-content input__label-content--nao">Other</span>
 										</label>
@@ -105,7 +105,7 @@
 									</span>
 									
 									<span class="input input--nao">
-										<input class="input__field input__field--nao" type="text" id="input-1" required/>
+										<input class="input__field input__field--nao" type="text" name="title"  id="title" required/>
 										<label class="input__label input__label--nao" for="title">
 											<span class="input__label-content input__label-content--nao">Title</span>
 										</label>
@@ -116,7 +116,7 @@
 								</section>
                             </div>
 							<br>
-                            <div class="field">
+                            <div class="form-group">
                                 <label for="body">Body:</label><br>
                                 <textarea id="body" name="body" style="resize:none; width:100%" required></textarea>
                             </div>
@@ -124,7 +124,7 @@
 							<br>
 
                             <div>
-                                <button style="width: 100%; height: 20%;" name="publish" type="submit" id="publish"  value="Publish" class="btn btn-sep icon-send" ><i class="fas fa-paper-plane"></i>   Publish</button>
+                                <button style="width: 100%; height: 20%;" name="publish" type="submit" id="publish"  value="Publish" class="btn" ><i class="fas fa-paper-plane"></i>Publish</button>
                             </div>
                         </form>
                   </div>

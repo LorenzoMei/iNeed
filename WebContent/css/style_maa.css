@@ -91,16 +91,6 @@
 	height: 200px;
 }
 
-#other{
-	width: 650px;
-}
-
-#title{
-	width: 650px;
-}
-
-
-
 
 
 .input {
@@ -108,7 +98,7 @@
 	z-index: 1;
 	display: inline-block;
 	margin: 1em;
-	max-width: 650px;
+	max-width: 655px;
 	width: calc(100% - 2em);
 	vertical-align: top;
 }
