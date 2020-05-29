@@ -1,0 +1,256 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+.body{
+		font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+}
+.container{
+	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: #696969;
+		    text-align: center;
+		
+	
+}
+
+.jumbotron{
+    width: 800px;
+    text-align: left;
+
+    position: relative;
+    top: 35px;
+    left: 12%;
+    padding: 2px;
+    background: rgba(72,177,219,1);
+    background: -moz-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(72,177,219,1)), color-stop(44%, rgba(27,127,158,1)), color-stop(50%, rgba(21,120,150,1)), color-stop(100%, rgba(66,69,102,1)));
+    background: -webkit-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -o-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: -ms-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48b1db', endColorstr='#424566', GradientType=1 );
+    opacity: .9;
+    padding: 0 18px;
+    border-radius: 15px;
+    
+    -webkit-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+    -moz-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+    box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
+    
+
+}
+#card-style{
+    padding: 20px;
+    border-radius: 15px;
+    background: #b4d8ed;
+    
+    
+}
+
+.card .card-img-center{
+    height: 20%;
+    width: 70px;
+    content:"Make An Ad";
+    position: relative;
+    right: -45%;
+    align-items: center;
+}
+
+
+#logos {
+  font-family: 'Open Sans', sans-serif;
+  color: #15226b;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 70px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+    
+}
+#logos:after {
+  content:"Make An Ad";
+  position: absolute;
+  left: 355px;
+  top: 9px;
+}
+#logos:after {
+  background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+
+#body{
+	height: 200px;
+}
+
+#other{
+	width: 650px;
+}
+
+#title{
+	width: 650px;
+}
+
+
+
+
+
+.input {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	margin: 1em;
+	max-width: 650px;
+	width: calc(100% - 2em);
+	vertical-align: top;
+}
+
+.input__field {
+	position: relative;
+	display: block;
+	float: right;
+	padding: 0.8em;
+	width: 60%;
+	border: none;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #aaa;
+	font-weight: 400;
+	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+	outline: none;
+}
+
+.input__label {
+	display: inline-block;
+	float: right;
+	padding: 0 1em;
+	width: 40%;
+	color: #696969;
+	font-weight: bold;
+	font-size: 70.25%;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.input__label-content {
+	position: relative;
+	display: block;
+	padding: 1.6em 0;
+	width: 100%;
+}
+
+.graphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	fill: none;
+}
+
+.icon {
+	color: #ddd;
+	font-size: 150%;
+}
+
+/* Individual styles */
+
+.input--nao {
+	overflow: hidden;
+	padding-top: 1em;
+}
+
+.input__field--nao {
+	padding: 0.5em 0em 0.25em;
+	width: 100%;
+	background: transparent;
+	color: #9da8b2;
+	font-size: 1.25em;
+}
+
+.input__label--nao {
+	position: absolute;
+	top: 0.95em;
+	font-size: 0.85em;
+	left: 0;
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 0em;
+	pointer-events: none;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transition: -webkit-transform 0.2s 0.15s, color 1s;
+	transition: transform 0.2s 0.15s, color 1s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+
+.graphic--nao {
+	stroke: #92989e;
+	pointer-events: none;
+	-webkit-transition: -webkit-transform 0.7s, stroke 0.7s;
+	transition: transform 0.7s, stroke 0.7s;
+	-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+	transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+} 
+
+.input__field--nao:focus + .input__label--nao,
+.input--filled .input__label--nao {
+	color: #333;
+	-webkit-transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+	transform: translate3d(0, -1.25em, 0) scale3d(0.75, 0.75, 1);
+}
+
+.input__field--nao:focus ~ .graphic--nao,
+.input--filled .graphic--nao {
+	stroke: #333;
+	-webkit-transform: translate3d(-66.6%, 0, 0);
+	transform: translate3d(-66.6%, 0, 0);
+}
+
+
+.btn{
+
+    background-color: #ff3939;
+    font-size: 20px;
+    border-radius: 11px;
+    padding: :7px 14px;
+    border: 1px solid white;
+    border-bottom: 4px solid white;
+
+    color: white;
+}
+#btn{
+        margin-top: 10px;
+    margin-bottom: -20px;
+
+}
+.btn:hover {
+    border-bottom: 4px solid white;
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+}
+.btn:active{
+    border-bottom: 1px solid white;
+    background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
+}
+.svg-inline--fas{
+    font-size: 20px;
+    margin-right: 7px;
+}
