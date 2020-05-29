@@ -70,14 +70,14 @@
                    <img class="card-img-center" src="image/flow.png" text="a" alt="ViewFlow logo">
                    <div class="card-body">
                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
-	                       <table id="tabella" class="table table-dark table-hover table-bordered">
+	                       <table id="tabella" class="table table-dark  table-bordered">
 	                         <thead>
 	                           <tr>
-	                               <th>Type</th>
-	                               <th>Title</th>
-	                               <th>Author</th>
-	                               <th>Category</th>
-	                               <th>Date</th>
+	                               <th><span class=table-title-column>Type</span></th>
+	                               <th><span class=table-title-column>Title</span></th>
+	                               <th><span class=table-title-column>Author</span></th>
+	                               <th><span class=table-title-column>Category</span></th>
+	                               <th><span class=table-title-column>Date</span></th>
 	                           </tr>
 	                         </thead>
 	                         <tbody>
@@ -95,8 +95,14 @@
 	
 						String urlPage = String.format("ViewFlow.jsp?id=%d", i);
 	
-						out.print(String.format("<tr>" + "<td>%s</td>" + "<td><a href=%s>%s</a></td>" + "<td>%s</td>"
-								+ "<td>%s</td>" + "<td>%s</td>" + "</tr>", type, urlPage, title, author, category, date));
+						out.print(String.format("<tr>" 
+												+ "<td><span class=table-row-text>%s</span></td>"
+												+ "<td><a href=%s>%s</a></td>"
+												+ "<td><span class=table-row-text>%s</span></td>"
+												+ "<td><span class=table-row-text>%s</span></td>" 
+												+ "<td><span class=table-row-text>%s</span></td>" 
+												+ "</tr>",
+												type, urlPage, title, author, category, date));
 					}
 				%>
 	
