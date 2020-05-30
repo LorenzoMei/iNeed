@@ -25,7 +25,7 @@ public class TestContactUser {
 	private static final String CREDENTIALS_USERNAME = "daniele";
 	private static final String CREDENTIALS_PASSWORD = "daniele";
 	// XPath of target ad (PLEASE NOTE: In order to enter checkAnswers UC, test user must own the ad)
-	private static final String XPATH_AD = "/html/body/div[2]/table/tbody/tr[1]/td[2]/a";
+	private static final String XPATH_AD = "/html/body/div[2]/div/div/div/table/tbody/tr[4]/td[2]/a";
 	// XPaths of answer (at least one answer must exist for chosen ad)
 	private static final String XPATH_ANSWER_ANSWERER = "//*[@id=\"authorCol\"]";
 	private static final String XPATH_ANSWER_BCONTACTUSER = "//*[@id=\"contactUser\"]";
