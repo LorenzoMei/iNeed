@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class TestValidateAFavor {
 
 	private static final String URL = "http://localhost:8081/iNeed/";
-	private static final String SUCCESS = "Favor validated successfully";
+	private static final String SUCCESS = "Favor validated successfully !";
 	
 	private static final String DRIVER = "webdriver.gecko.driver";
 	private static final Class<? extends WebDriver> DRIVER_CLASS = FirefoxDriver.class;

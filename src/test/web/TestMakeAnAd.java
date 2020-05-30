@@ -37,7 +37,7 @@ public class TestMakeAnAd {
 			String username = "prova";
 			String password = "123";
 			String title = "TITOLO TEST SELENIUM";
-			String type = "OfferAd";
+			String type = "Request Ad";
 			String body = "BODY TEST SELENIUM";
 			int newId = -1;
 			
