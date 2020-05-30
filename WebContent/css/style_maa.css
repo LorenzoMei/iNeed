@@ -6,21 +6,21 @@
 	
 }
 .container{
-	/*font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+	 /*font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
 		color: #696969;
-		    /*text-align: center*/;
-		
-	
+		text-align: center;
+		max-width: 850px;
+		width: 60%;
+  	
 }
 
-.jumbotron{
-    width: 800px;
+.base{
     text-align: left;
 
     /*position: relative;*/
     top: 35px;
     /*left: 12%;*/
-    padding: 2px;
+    padding: 50px;
     background: rgba(72,177,219,1);
     background: -moz-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
     background: -webkit-gradient(left top, right top, color-stop(0%, rgba(72,177,219,1)), color-stop(44%, rgba(27,127,158,1)), color-stop(50%, rgba(21,120,150,1)), color-stop(100%, rgba(66,69,102,1)));
@@ -30,7 +30,6 @@
     background: linear-gradient(to right, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#48b1db', endColorstr='#424566', GradientType=1 );
     opacity: .9;
-    padding: 0 18px;
     border-radius: 15px;
     
     -webkit-box-shadow: 15px 17px 23px 6px rgba(72,177,219,0.72);
@@ -40,7 +39,7 @@
 
 }
 #card-style{
-    padding: 20px;
+    padding: 50px;
     border-radius: 15px;
     background: #b4d8ed;
     
@@ -71,15 +70,14 @@
     
 }
 #logos:after {
-  content:"Make An Ad";
   position: absolute;
-  left: 355px;
-  top: 9px;
+  left: 479px;
+  top: 59px;
 }
 #logos:after {
-  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;
+  background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;
   background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
-  background-size: 4px 4px;*/
+  background-size: 4px 4px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /*z-index: -5;*/
@@ -170,7 +168,7 @@
 	padding: 0.5em 0em 0.25em;
 	width: 100%;
 	background: transparent;
-	color: #9da8b2;
+	color: black;
 	font-size: 1.25em;
 }
 

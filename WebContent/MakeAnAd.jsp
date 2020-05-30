@@ -60,11 +60,13 @@
 		<br>
 	
 		<div class="col-lg-4"></div>
+		
 		 <div class="container"> 
-            <p id="logos">Make An Ad</p>
+		 
+		<p id="logos">Make An Ad</p>
+		
+            <div class="base">
 
-            <div class="jumbotron">
-                <br>
                 <div class="card" id="card-style">
                     
                     <img class="card-img-center" src="image/ad.png" text="a" alt="Adlogo">
@@ -121,15 +123,14 @@
                                 <textarea id="body" name="body" style="resize:none; width:100%" required></textarea>
                             </div>
 
-							<br>
-
                             <div>
                                 <button style="width: 100%; height: 20%;" name="publish" type="submit" id="publish"  value="Publish" class="btn" ><i class="fas fa-paper-plane"></i>Publish</button>
                             </div>
                         </form>
                   </div>
                 </div>
-                <br>
+               <br>
+
             </div>
         </div>
      <script src="js/classie.js"></script>
