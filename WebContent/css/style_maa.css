@@ -6,9 +6,9 @@
 	
 }
 .container{
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/*font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
 		color: #696969;
-		    text-align: center;
+		    /*text-align: center*/;
 		
 	
 }
@@ -17,9 +17,9 @@
     width: 800px;
     text-align: left;
 
-    position: relative;
+    /*position: relative;*/
     top: 35px;
-    left: 12%;
+    /*left: 12%;*/
     padding: 2px;
     background: rgba(72,177,219,1);
     background: -moz-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
@@ -67,7 +67,7 @@
   letter-spacing: -3px;
   line-height: 1;
   text-shadow: #EDEDED 3px 2px 0;
-  position: relative;
+  /*position: relative;*/
     
 }
 #logos:after {
@@ -77,12 +77,12 @@
   top: 9px;
 }
 #logos:after {
-  background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;
   background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
-  background-size: 4px 4px;
+  background-size: 4px 4px;*/
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  z-index: -5;
+  /*z-index: -5;*/
   display: block;
   text-shadow: none;
 }
