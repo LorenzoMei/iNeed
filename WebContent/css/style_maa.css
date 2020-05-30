@@ -14,13 +14,14 @@
   	
 }
 
-.base{
+.basexyz{
+	width: 850px;
     text-align: left;
 
-    /*position: relative;*/
+    position: relative;
     top: 35px;
-    /*left: 12%;*/
-    padding: 50px;
+    left: 12%;
+    padding: 5px;
     background: rgba(72,177,219,1);
     background: -moz-linear-gradient(left, rgba(72,177,219,1) 0%, rgba(27,127,158,1) 44%, rgba(21,120,150,1) 50%, rgba(66,69,102,1) 100%);
     background: -webkit-gradient(left top, right top, color-stop(0%, rgba(72,177,219,1)), color-stop(44%, rgba(27,127,158,1)), color-stop(50%, rgba(21,120,150,1)), color-stop(100%, rgba(66,69,102,1)));

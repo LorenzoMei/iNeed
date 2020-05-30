@@ -57,15 +57,12 @@
 	<div class="container-fluid">
 		<jsp:include page="components/ToolBar.jsp"></jsp:include>
 	</div>
-		<br>
 	
-		<div class="col-lg-4"></div>
-		
-		 <div class="container"> 
-		 
+		 <div class="container"> 	
+	 
 		<p id="logos">Make An Ad</p>
 		
-            <div class="base">
+            <div class="basexyz">
 
                 <div class="card" id="card-style">
                     
@@ -129,8 +126,6 @@
                         </form>
                   </div>
                 </div>
-               <br>
-
             </div>
         </div>
      <script src="js/classie.js"></script>
