@@ -1,3 +1,4 @@
+// Daniele La Prova
 package test.dao;
 
 import java.util.Calendar;
@@ -14,22 +15,7 @@ import logic.entity.RequestAd;
 import logic.entity.User;
 
 public class TestDaoAd {
-/*	
-	@Test
-	public void testStoreAndLoadAd() throws AdNotFoundException {
-		
-		Ad storedAd = new Ad();
-		storedAd.setId(4);
-		
-		DAOAd daoAd = (DAOAd) DAOFactory.getReference("Ad").getDAOReference();
-		
-		daoAd.storeAd(storedAd);
-		Ad loadedAd = new Ad();
-		daoAd.loadAd(loadedAd, 4);
-		
-		Assert.assertEquals(storedAd.getId(), loadedAd.getId());
-	}
-*/
+
 	@Test
 	public void testStoreAndLoadAdUser() throws AdNotFoundException {
 		
@@ -47,8 +33,7 @@ public class TestDaoAd {
 		storedAd.setOwnerUsername(user.getUsername());
 		storedAd.setTitle(title);
 		storedAd.setBody(body);
-//		storedAd.setData(Calendar.getInstance());
-//		storedAd.setId(100);
+		storedAd.setData(Calendar.getInstance());
 		
 		DAOAd daoAd = (DAOAd) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.AD);
 		

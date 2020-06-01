@@ -1,3 +1,4 @@
+// Jianu Mihai
 package test.validateafavor;
 
 import org.junit.Test;
@@ -20,9 +21,7 @@ import java.util.Calendar;
 import org.junit.Assert;
 
 public class TestValidateAFavorController {
-	
-//	private Logger logger = Logger.getLogger(this.getClass().getName());
-	
+		
 	@Test
 	public void validateAFavor() throws FavorNotFoundException {
 		DAOUser daoUser = (DAOUser) DAOFactory.getReference().getDAOReference(DAOSupportedEntities.USER);

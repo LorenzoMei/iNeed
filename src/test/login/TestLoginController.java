@@ -1,6 +1,7 @@
+// Jianu Mihai
 package test.login;
 
-//import org.junit.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 import logic.login.*;
 import logic.signup.SignUpController;
@@ -28,8 +29,8 @@ public class TestLoginController {
 		
 		LoginController.getInstance().login(bean);
 		
-//		Assert.assertEquals(bean.getUser().getUsername(), username);
-//		Assert.assertEquals(bean.getUser().getPassw(), passw);
+		Assert.assertEquals(bean.getUsername(), username);
+		Assert.assertEquals(bean.getPassword(), passw);
 		
 	}
 
