@@ -82,9 +82,9 @@
                                 <label for="category">Category:</label>
                                 <select class="form-control" id="category" name="category" onchange="enabledOther()">
                                     <option value="Electronics">Electronics</option>
-                                    <option value="Hydraulics">Hydraulics</option>
-                                    <option value="Gardering">Gardering</option>
-                                    <option value="Informatic">Informatic</option>
+                                    <option value="Plumbings">Hydraulics</option>
+                                    <option value="Gardening">Gardering</option>
+                                    <option value="Informatics">Informatic</option>
                                     <option value="Bed sharing">Bed sharing</option>
                                     <option value="Other">Other...</option>
                                 </select>
